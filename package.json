@@ -11,11 +11,15 @@
   },
   "dependencies": {
     "next": "16.3.4",
+    "next-intl": "^4.14.2",
+    "next-themes": "^0.4.6",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "sass": "^1.104.0"
   },
   "devDependencies": {
     "@biomejs/biome": "2.4.2",
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

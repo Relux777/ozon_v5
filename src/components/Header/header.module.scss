@@ -1,0 +1,60 @@
+@use 'sass:math';
+
+.header {
+    --header-h: 60px;
+    --header-fade: 100px;   
+    --header-fade-top: 0px;
+
+    height: var(--header-h);
+    isolation: isolate; // фиксирует свой стек — z-index: -1 внутри не "убежит" наружу
+
+    // цветная подложка под текстом — читаемость поверх контента
+    &::before {
+        content: '';
+        position: absolute;
+        inset: calc(var(--header-fade-top) * -1) 0 auto 0;
+        height: var(--header-fade);
+        z-index: -2;
+        pointer-events: none;
+        background: linear-gradient(
+            to bottom,
+            rgb(var(--bg-1) / 100%) 0%,
+            rgb(var(--bg-1) / 60%) 50%,
+            rgb(var(--bg-1) / 0%) 100%
+        );
+    }
+
+    .gap {
+        width: 1px;
+        height: 20px;
+    }
+}
+
+.headerBlur {
+    inset: calc(var(--header-fade-top) * -1) 0 auto 0;
+    height: var(--header-fade);
+    z-index: -1;
+}
+
+$layers-count: 10;
+$blur-max: 4px;
+
+@for $i from 1 through $layers-count {
+    $segment: math.div(100%, $layers-count);
+    $start: $segment * ($i - 1);
+    $peak: $segment * $i;
+    $end: $segment * ($i + 1);
+    $blur: $blur-max * math.div($layers-count - $i, $layers-count - 1);
+
+    .headerBlurLayer:nth-child(#{$i}) {
+        backdrop-filter: blur(#{$blur});
+
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) #{$start},
+            rgba(0, 0, 0, 1) #{$peak},
+            rgba(0, 0, 0, 1) #{$peak},
+            rgba(0, 0, 0, 0) #{$end}
+        );
+    }
+}

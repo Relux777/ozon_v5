@@ -1,0 +1,79 @@
+@layer base {
+    /* 1. Глобально отключаем дефолтную подсветку тапа на мобилках */
+    
+    *, ::before, ::after {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+    ul, menu, dialog { padding: 0; margin: 0; }
+    li { list-style-type: none; }
+    dialog { border: 0; background: none; max-width: initial; max-height: initial; }
+    h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
+
+    body {
+        font-family: GeistVariable, Arial, Helvetica, sans-serif;
+        font-size: var(--base-font-size);
+        font-weight: 400;
+        line-height: 1.5;
+        background: rgb(var(--bg-phone) / 100%);
+        color: rgb(var(--bg-2) / 70%);
+        margin: 0;
+        min-height: 100dvh;
+
+        scroll-behavior: smooth;
+        scrollbar-gutter: stable;
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+
+        &::-webkit-scrollbar { width: 10px; }
+        &::-webkit-scrollbar-track { background-color: var(--scrollbar-track); border-left: solid 1px var(--header-city-border); }
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--scrollbar-thumb);
+            border-radius: 10px;
+
+            @media (hover: hover) and (pointer: fine) {
+                &:hover { background: var(--scrollbar-thumb-hover); }
+            }
+        }
+    }
+
+    a, button {
+        font-size: var(--base-font-size);
+        color: rgb(var(--bg-2) / 70%);
+        text-decoration: none;
+        opacity: 0.8;
+        border: none;
+        background: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+        outline: none;
+        cursor: pointer;
+        padding: 0;
+
+        @media (hover: hover) and (pointer: fine) {
+            &:hover { opacity: 1; }
+        }
+
+        &:active { 
+            opacity: 1;
+            transform: scale(0.98);
+        }
+    }
+    
+    img, svg { vertical-align: middle; max-width: 100%; }
+    textarea { resize: none;field-sizing: content; }
+    
+    input, textarea {
+        background: transparent;
+        color: rgb(var(--bg-2) / 70%);
+        outline: none;
+        border: none;
+        font-size: var(--base-font-size);
+        height: 100%;
+        width: 100%;
+        font-family: GeistVariable, Arial, Helvetica, sans-serif;
+        &:focus-visible { background-color: transparent; }
+    }
+    
+    input:-webkit-autofill,
+    input:-webkit-autofill:is(:hover, :focus) { -webkit-background-clip: text; }
+}

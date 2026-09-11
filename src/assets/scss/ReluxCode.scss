@@ -1,0 +1,12 @@
+// "ReluxCode" - v2.0.0
+
+// 1. СНАЧАЛА все импорты
+@use "variables";
+@use "base";
+@use "layout";
+@use "utilities";
+@use "animations";
+@use "media";
+
+// 2. ЗАТЕМ объявляем порядок слоев
+@layer base, layout, utilities, animations, media;
