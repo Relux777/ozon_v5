@@ -1,3 +1,5 @@
+//app/src/components/Header/index.tsx
+
 import Link from 'next/link'
 
 import { getTranslations } from 'next-intl/server';
@@ -12,6 +14,7 @@ export default async function HeaderComponent() {
 
     const BLUR_LAYERS_COUNT = 10;
     const t = await getTranslations('LanguageModal');
+    const headerT = await getTranslations('Header');
 
     return (
         <header className={`p-sticky t-0 z-20 ${styles.header}`}>
@@ -27,7 +30,7 @@ export default async function HeaderComponent() {
                     <li>
                         <Link href="/" className={`flex align-center gap-5 hover-80 ${styles.logo}`}>
                             <LogoIcon style={{ width: '30px', height: '30px' }} />
-                            <h2 className='font-22'>Озон Работа</h2>
+                            <h2 className='font-22'>{headerT('title')}</h2>
                         </Link>
                     </li>
                 </ul>

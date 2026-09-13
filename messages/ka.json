@@ -10,6 +10,9 @@
     "LanguageModal": {
         "title": "აირჩიეთ ენა"
     },
+    "Header": {
+        "title": "Ozon სამუშაო"
+    },
     "MenuPage": {
         "title": "მენიუ",
         "description": "Ozon-ის სამუშაო პლატფორმაზე არსებული აქტუალური მენიუ და ვაკანსიები."
