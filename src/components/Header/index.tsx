@@ -1,15 +1,17 @@
 import Link from 'next/link'
 
-import LanguageSwitcher from "@/hook/LanguageSwitcher";
+import { getTranslations } from 'next-intl/server';
+import LanguageSwitcher from '@/hook/LanguageSwitcher';
 import ThemeSwitch from "@/hook/ThemeSwitch";
 
 import LogoIcon from '@/assets/svg/logo.svg';
 
 import styles from './header.module.scss'
 
-export default function HeaderComponent() {
+export default async function HeaderComponent() {
 
     const BLUR_LAYERS_COUNT = 10;
+    const t = await getTranslations('LanguageModal');
 
     return (
         <header className={`p-sticky t-0 z-20 ${styles.header}`}>
@@ -31,7 +33,7 @@ export default function HeaderComponent() {
                 </ul>
                 <ul className='flex align-center gap-10'>
                     <li>
-                        <LanguageSwitcher />
+                        <LanguageSwitcher modalTitle={t('title')} />
                     </li>
                     <li><span className={`block bg-2-20 ${styles.gap}`}></span></li>
                     <li>

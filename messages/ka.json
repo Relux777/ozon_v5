@@ -1,0 +1,17 @@
+{
+    "Global": {
+        "SiteName": "РенДит",
+        "SiteDescription": "Современная структура ленты свайпами влево и вправо."
+    },
+
+    "Metadata": {
+        "siteName": "Ozon სამუშაო"
+    },
+    "LanguageModal": {
+        "title": "აირჩიეთ ენა"
+    },
+    "MenuPage": {
+        "title": "მენიუ",
+        "description": "Ozon-ის სამუშაო პლატფორმაზე არსებული აქტუალური მენიუ და ვაკანსიები."
+    }
+}

@@ -14,7 +14,7 @@ const NavBarLink = [
     { href: '/', label: 'Главная', icon: HomeSVG },
     { href: '/a', label: 'Акции', icon: HotSVG },
     { href: '/b', label: 'Склады', icon: LocationSVG },
-    { href: '/c', label: 'Меню', icon: MenuSVG },
+    { href: '/menu', label: 'Меню', icon: MenuSVG },
 ];
 
 export default function NavBarComponent() {
