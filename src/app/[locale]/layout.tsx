@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getLocaleFromParams } from '@/i18n/params';
 
 import { NextIntlClientProvider } from 'next-intl';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { SITE_CONFIG } from '@/config/site';
 
@@ -55,11 +55,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function RootLayout({ children, params }: Props) {
     const locale = await getLocaleFromParams(params);
+    const messages = await getMessages();
 
     return (
         <html lang={locale} className={`${geistSans.variable}`} suppressHydrationWarning>
             <body>
-                <NextIntlClientProvider locale={locale} messages={null}>
+                <NextIntlClientProvider locale={locale} messages={messages}>
                     <ThemeProvider
                       attribute="data-theme"
                       defaultTheme="system"

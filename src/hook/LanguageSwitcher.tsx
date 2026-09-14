@@ -8,7 +8,7 @@ import { useLocale } from 'next-intl';
 import ChevronDown from '@/assets/svg/chevron-down.svg';
 import { getLanguageByCode } from '@/config/languages';
 
-import Modal from '@/components/Modal';
+const Modal = dynamic(() => import('@/components/Modal'))
 import styles from '@/components/Modal/modal.module.scss';
 
 type LanguageModalProps = { title: string };

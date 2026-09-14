@@ -13,6 +13,12 @@
     "Header": {
         "title": "Ozon სამუშაო"
     },
+    "NavBar": {
+        "home": "მთავარი",
+        "promotions": "აქციები",
+        "warehouses": "საწყობები",
+        "menu": "მენიუ"
+    },
     "MenuPage": {
         "title": "მენიუ",
         "description": "Ozon-ის სამუშაო პლატფორმაზე არსებული აქტუალური მენიუ და ვაკანსიები."

@@ -13,6 +13,12 @@
     "Header": {
         "title": "Ozon Жұмыс"
     },
+    "NavBar": {
+        "home": "Басты бет",
+        "promotions": "Акциялар",
+        "warehouses": "Қоймалар",
+        "menu": "Мәзір"
+    },
     "MenuPage": {
         "title": "Мәзір",
         "description": "Ozon Жұмыс платформасындағы өзекті мәзір мен бос жұмыс орындары."

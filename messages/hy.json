@@ -13,6 +13,12 @@
     "Header": {
         "title": "Ozon Աշխատանք"
     },
+    "NavBar": {
+        "home": "Գլխավոր",
+        "promotions": "Ակցիաներ",
+        "warehouses": "Պահեստներ",
+        "menu": "Մենյու"
+    },
     "MenuPage": {
         "title": "Մենյու",
         "description": "Ozon Աշխատանք հարթակի արդիական մենյուն և թափուր աշխատատեղերը։"

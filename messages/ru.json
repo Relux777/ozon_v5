@@ -13,6 +13,12 @@
     "Header": {
         "title": "Озон Работа"
     },
+    "NavBar": {
+        "home": "Главная",
+        "promotions": "Акции",
+        "warehouses": "Склады",
+        "menu": "Меню"
+    },
     "MenuPage": {
         "title": "Меню",
         "description": "Актуальное меню и вакансии на платформе Озон Работа."

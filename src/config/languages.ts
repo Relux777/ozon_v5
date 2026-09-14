@@ -1,3 +1,4 @@
+//app/src/config/languages.ts
 import type { AppLocale } from '@/i18n/routing';
 
 import Flag_ru from '@/assets/svg/Language/ru.svg';

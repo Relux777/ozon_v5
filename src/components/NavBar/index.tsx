@@ -1,7 +1,8 @@
+// app/components/NavBar/index.tsx
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+import { usePathname, Link } from '@/i18n/navigation';
 import styles from './nav.module.scss';
 
 import HomeSVG from '@/assets/svg/home.svg';
@@ -9,16 +10,16 @@ import HotSVG from '@/assets/svg/hot.svg';
 import LocationSVG from '@/assets/svg/location.svg';
 import MenuSVG from '@/assets/svg/menu.svg';
 
-
 const NavBarLink = [
-    { href: '/', label: 'Главная', icon: HomeSVG },
-    { href: '/a', label: 'Акции', icon: HotSVG },
-    { href: '/b', label: 'Склады', icon: LocationSVG },
-    { href: '/menu', label: 'Меню', icon: MenuSVG },
-];
+    { href: '/', labelKey: 'home', icon: HomeSVG },
+    { href: '/a', labelKey: 'promotions', icon: HotSVG },
+    { href: '/b', labelKey: 'warehouses', icon: LocationSVG },
+    { href: '/menu', labelKey: 'menu', icon: MenuSVG },
+] as const;
 
 export default function NavBarComponent() {
     const pathname = usePathname();
+    const t = useTranslations('NavBar');
 
     return (
         <footer className={`p-fixed w-full z-10 ${styles.nav}`}>
@@ -37,7 +38,7 @@ export default function NavBarComponent() {
                                     className={itemClasses}
                                 >
                                     <Icon className={styles.nav_icon} width={24} height={24} />
-                                    <span className="block">{link.label}</span>
+                                    <span className="block">{t(link.labelKey)}</span>
                                 </Link>
                             </li>
                         );
@@ -46,7 +47,6 @@ export default function NavBarComponent() {
                     <li aria-hidden="true">
                         <div className={`${styles.slider} p-absolute t-0 l-0 br-36 shadow-2 bg-2-10 visible tr-bezier-5`} ></div>
                     </li>
-                    
                 </ul>
             </nav>
         </footer>

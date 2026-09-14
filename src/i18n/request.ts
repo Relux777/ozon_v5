@@ -17,6 +17,6 @@ export default getRequestConfig(async ({ locale }) => {
     return {
         locale,
         messages: (await import(`../../messages/${locale}.json`)).default,
-        timeZone: 'Asia/Tashkent', // подставь основной часовой пояс аудитории
+        timeZone: 'Europe/Moscow',
     };
 });

@@ -13,6 +13,12 @@
     "Header": {
         "title": "Ozon Ish"
     },
+    "NavBar": {
+        "home": "Bosh sahifa",
+        "promotions": "Aksiyalar",
+        "warehouses": "Omborlar",
+        "menu": "Menyu"
+    },
     "MenuPage": {
         "title": "Menyu",
         "description": "Ozon Ish platformasidagi dolzarb menyu va vakansiyalar."
