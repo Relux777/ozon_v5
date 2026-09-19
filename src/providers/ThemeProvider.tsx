@@ -6,6 +6,9 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 
 function useSuppressScriptTagWarning() {
   useEffect(() => {
+    // предупреждение next-themes + React 19 бывает только в dev; в проде console не трогаем
+    if (process.env.NODE_ENV === "production") return;
+
     const originalError = console.error;
 
     console.error = (...args: unknown[]) => {

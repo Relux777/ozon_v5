@@ -1,26 +1,119 @@
 {
-    "Global": {
-        "SiteName": "РенДит",
-        "SiteDescription": "Современная структура ленты свайпами влево и вправо."
+  "ManifestGlobal": {
+    "SiteName": "Ozon Ish",
+    "SiteDescription": "Ombor operatori vakansiyalari — Ozon Ish, har kuni to'lov"
+  },
+  "Metadata": {
+    "siteName": "Ozon Ish"
+  },
+  "A11y": {
+    "themeToggle": "Mavzuni almashtirish",
+    "chooseLanguage": "Tilni tanlash",
+    "close": "Yopish",
+    "breadcrumbs": "Sahifa yo'li"
+  },
+  "LanguageModal": {
+    "title": "Tilni tanlang"
+  },
+  "Header": {
+    "title": "Ozon Ish"
+  },
+  "NavBar": {
+    "home": "Bosh sahifa",
+    "promotions": "Aksiyalar",
+    "warehouses": "Omborlar",
+    "menu": "Menyu"
+  },
+  "NotFoundPage": {
+    "title": "Sahifa topilmadi",
+    "description": "Havola eskirgan yoki manzil noto'g'ri kiritilgan bo'lishi mumkin.",
+    "home": "Bosh sahifaga"
+  },
+  "ErrorPage": {
+    "title": "Nimadir xato ketdi",
+    "retry": "Qayta urinib ko'rish"
+  },
+  "SkladSearch": {
+    "label": "Shaharni qidirish",
+    "placeholder": "Shahar nomini kiriting",
+    "found": "Topilgan shaharlar: {count}",
+    "empty": "Shahar topilmadi. So'rovni o'zgartirib ko'ring.",
+    "count": "{count, plural, one {# ombor} other {# ombor}}",
+    "noData": "Manzillar aniqlanmoqda",
+    "listLabel": "Shaharlar ro'yxati"
+  },
+  "SkladPage": {
+    "title": "Ozon omborlari shaharlar bo'yicha: manzil, daromad, DMS va ovqat",
+    "description": "Ozon ombor operatori bo'lib ishlash mumkin bo'lgan shaharlar: ombor manzillari, daromad, DMS, ovqat va omborgacha transport. Shahringizni tanlang.",
+    "heading": "Shahringizni tanlang",
+    "lead": "Shahringizni toping va ombor operatori uchun ombor manzillari, daromad va bonuslarni bilib oling."
+  },
+  "CityPage": {
+    "titleWithData": "Ozon omborida ish, {city} sh.: manzillar, daromad va shartlar",
+    "titleNoData": "Ozon ombor operatori, {city} sh.: shartlar va vakansiyalar",
+    "descriptionWithData": "Ozon ombor operatori vakansiyalari, {city} sh.: ombor manzillari, daromad {income} va ish shartlari — ovqat, DMS, omborgacha transport, o'qitish.",
+    "descriptionNoData": "Ozon ombor operatori, {city} sh.: ish shartlari, to'lovlar, DMS, ovqat va transport. Ombor manzillarini rasmiy sahifada aniqlashtiring.",
+    "heading": "{site} — ombor operatori vakansiyasi, {city} sh.",
+    "leadWithData": "Ozon ombor operatori, {city} sh. — daromad {income}. Rasmiylashtirish tanlovi, birinchi kundan o'qitish, tajriba shart emas.",
+    "leadNoData": "Ozon ombor operatori, {city} sh. Ish shartlari, to'lovlar va bonuslar quyida. Ombor manzillarini rasmiy sahifada aniqlashtiring.",
+    "statWarehouses": "Omborlar",
+    "statIncome": "Daromad",
+    "statAverage": "O'rtacha",
+    "incomeRange": "{from, number} dan {to, number} ₽ gacha / oy",
+    "incomeUpTo": "{to, number} ₽ gacha / oy",
+    "warehousesTitle": "Ombor manzillari, {city} sh.",
+    "warehousesEmpty": "Bu shahardagi ombor manzillari hozircha aniqlanmoqda. Dolzarb vakansiyalarni Ozonning rasmiy sahifasida ko'ring.",
+    "perksTitle": "Omborlarda nima bor",
+    "perks": {
+      "transport": "Shahringizdan omborgacha transport",
+      "training": "Kasbga o'qitish",
+      "meal": "Ovqat",
+      "dms": "DMS"
     },
-
-    "Metadata": {
-        "siteName": "Ozon Ish"
-    },
-    "LanguageModal": {
-        "title": "Tilni tanlang"
-    },
-    "Header": {
-        "title": "Ozon Ish"
-    },
-    "NavBar": {
-        "home": "Bosh sahifa",
-        "promotions": "Aksiyalar",
-        "warehouses": "Omborlar",
-        "menu": "Menyu"
-    },
-    "MenuPage": {
-        "title": "Menyu",
-        "description": "Ozon Ish platformasidagi dolzarb menyu va vakansiyalar."
-    }
+    "offersTitle": "Ish shartlari",
+    "offers": [
+      "To'lovlar har kuni yoki har hafta — shartnoma turiga bog'liq",
+      "Rasmiylashtirish: RF Mehnat kodeksi, GPX shartnomasi yoki o'zini o'zi band qilgan sifatida",
+      "Qulay grafik: kunduzgi smenalar, qisman bandlik, qisqa smenalar",
+      "A sinfidagi zamonaviy va iliq ombor",
+      "Birinchi kundan ustoz bilan o'qitish",
+      "Tajriba shart emas, 18+"
+    ],
+    "dutiesTitle": "Nima bilan shug'ullanasiz",
+    "duties": [
+      "Saralash markazida ma'lumot yig'ish terminali (TSD) yordamida tovarlarni qayta ishlash",
+      "Nuqsonli mahsulotlarni aniqlash"
+    ],
+    "disclaimer": "Shartlar aniq omborga va rasmiylashtirish shakliga bog'liq. Ma'lumotlar Ozonning rasmiy vakansiyalar sahifasidan olingan, {date} holatiga.",
+    "source": "Ozonning rasmiy saytida vakansiyalarni ko'rish",
+    "allCities": "Barcha shaharlar",
+    "incomeFrom": "{from, number} ₽ dan / oy"
+  },
+  "MenuPage": {
+    "title": "Menyu",
+    "description": "Ozon Ish platformasidagi dolzarb menyu va vakansiyalar."
+  },
+  "HomePage": {
+    "title": "Ozonda ish: ombor operatori, to'lov har kuni",
+    "description": "Ozon ombor operatori vakansiyalari: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir marta. RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan. Noldan o'qitamiz.",
+    "heading": "Ombor operatori: smenadan keyin darhol pul oling",
+    "lead": "Buyurtmalarni yig'ing, saralang va qadoqlang, to'lovni esa smena tugashi bilanoq oling. Noldan o'qitamiz, operatsiyalar xilma-xil.",
+    "features": [
+      "Rasmiylashtirish tanlovi: RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan",
+      "To'lovlar har kuni yoki har hafta — kechikishsiz",
+      "Noldan o'qitish va smenada tushunarli vazifalar",
+      "Zamonaviy omborlar va texnika, xavfsiz sharoit",
+      "Karyera o'sishi: operatordan katta lavozimlargacha",
+      "Grafik: kunduzgi, tungi smenalar yoki erkin"
+    ]
+  },
+  "Promo": {
+    "title": "Ilovani o'rnatganlik uchun bonus",
+    "text": "Ilovani yuklab oling, ro'yxatdan o'tishda promokodni kiriting — aksiya shartlariga ko'ra {amount, number} ₽ oling.",
+    "codeLabel": "Promokod",
+    "copy": "Nusxalash",
+    "copied": "Nusxalandi",
+    "download": "Ilovani yuklab olish",
+    "disclosure": "Reklama. Biz mustaqil axborot saytimiz, Ozon emasmiz va uning vakili ham emasmiz. Ushbu promokod orqali taklif qilganimiz uchun mukofot olamiz. Aksiya shartlari va bonus miqdorini tashkilotchi belgilaydi, ular o'zgarishi mumkin — o'rnatishdan oldin tekshiring."
+  }
 }

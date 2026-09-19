@@ -5,7 +5,8 @@ import path from 'path';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
-  
+  poweredByHeader: false,
+
   sassOptions: {
     includePaths: [path.join(process.cwd(), 'src/assets/scss')],
   },
@@ -19,6 +20,19 @@ const nextConfig: NextConfig = {
     },
   },
 
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+    ];
+  },
 };
 
 const withNextIntl = createNextIntlPlugin();

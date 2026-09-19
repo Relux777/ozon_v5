@@ -1,4 +1,4 @@
-import { MetadataRoute } from 'next';
+import type { MetadataRoute } from 'next';
 import { SITE_CONFIG } from '@/config/site';
 
 const BASE_URL = SITE_CONFIG.url;
@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/api/', '/_next/'], // Закрываем технические пути
+      disallow: ['/api/'],
     },
     sitemap: `${BASE_URL}/sitemap.xml`,
   };

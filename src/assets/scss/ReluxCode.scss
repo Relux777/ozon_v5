@@ -1,12 +1,19 @@
-// "ReluxCode" - v2.0.0
+// "ReluxCode" - v2.1.0
+//
+// 2.1.0
+//  - порядок слоёв вынесен в _layers.scss и подключается первым
+//  - :hover только на устройствах с мышью (_mixins.scss), на тач-экранах — эффект на :active
+//  - мобильные фиксы: зум iOS в полях ввода, задержка тапа, автоувеличение текста, dvh вместо vh,
+//    overscroll-behavior, отступы под «челку», prefers-reduced-motion
+//  - новые утилиты: .sr-only, .truncate, .h-100dvh, .min-h-100dvh, .pt-safe/.pb-safe, .grid,
+//    .none-min-*, доп. модификаторы .flex; шкалы утилит настраиваются через @use ... with (...)
 
-// 1. СНАЧАЛА все импорты
+// Порядок важен: слои (@layer) объявляются первыми
+@use "layers";
 @use "variables";
+@use "mixins";
 @use "base";
 @use "layout";
 @use "utilities";
 @use "animations";
 @use "media";
-
-// 2. ЗАТЕМ объявляем порядок слоев
-@layer base, layout, utilities, animations, media;

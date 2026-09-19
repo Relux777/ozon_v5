@@ -1,0 +1,19 @@
+.code {
+    padding: 6px 12px;
+    letter-spacing: 0.08em;
+    user-select: all;
+}
+
+.button {
+    padding: 8px 14px;
+}
+
+.primary {
+    background: rgb(var(--bg-5) / 100%);
+    color: #fff;
+}
+
+.note {
+    margin: 0;
+    font-size: 12px;
+}

@@ -1,3 +1,9 @@
+// Адаптивные классы. Намеренно НЕ в @layer (см. _layers.scss): неслойные правила сильнее
+// слоёв, поэтому .none-max-620 и .f-w-* на мобилках перебивают .flex / .container / утилиты.
+//
+// Порядок: от больших экранов к малым. Класс-модификаторы:
+//   .none-max-N — скрыть на экранах ≤ N,   .none-min-N — скрыть на экранах ≥ N.
+
 @media (width >= 1400px) {
     .container { max-width: 1320px; }
 }
@@ -10,9 +16,13 @@
     .container { max-width: 960px; }
 }
 
+@media (width >= 990px) {
+    .none-min-990 { display: none; }
+}
+
 @media (width < 990px) {
     .container { max-width: 720px; }
-    .flex > [class^='f-w-'] { width: 100%; }
+    .flex > :is([class^='f-w-'], [class*=' f-w-']) { width: 100%; }
     .f-w-2 { width: 16.66666667% !important; }
     .f-h-6 { width: 50% !important; }
     .f-h-3 { width: 25% !important; }
@@ -22,6 +32,10 @@
 @media (width <= 770px) {
     .container { max-width: 700px; }
     .f-h-4 { width: 33.33333333% !important; }
+}
+
+@media (width >= 620px) {
+    .none-min-620 { display: none; }
 }
 
 @media (width <= 620px) {

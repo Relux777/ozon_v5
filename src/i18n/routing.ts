@@ -8,6 +8,10 @@ export const routing = defineRouting({
     // у остальных — с префиксом: /uz/menu, /ka/menu и т.д.
     localePrefix: 'as-needed',
 
+    // hreflang отдаём сами через metadata (lib/seo.ts) с каноничным хостом;
+    // заголовки Link от next-intl строятся по хосту запроса и могут с ними расходиться
+    alternateLinks: false,
+
     // помним выбор языка год, а не только сессию браузера
     localeCookie: {
         name: 'NEXT_LOCALE',

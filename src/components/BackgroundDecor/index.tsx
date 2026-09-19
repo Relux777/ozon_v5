@@ -1,4 +1,4 @@
-import Particles from '@/hook/BackgroundParticles'
+import Particles from './Particles'
 import styles from './background.module.scss'
 
 import Image from 'next/image'
@@ -17,7 +17,7 @@ export default function BackgroundDecor() {
             alt=""
             className={imageClasses}
             draggable={false}
-            priority
+            fetchPriority="low"
           />
         </div>
         <div className={`p-fixed ${styles.right}`} >
@@ -26,7 +26,7 @@ export default function BackgroundDecor() {
             alt=""
             className={imageClasses}
             draggable={false}
-            priority
+            fetchPriority="low"
           />
         </div>
     </div>

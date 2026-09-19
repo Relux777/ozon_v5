@@ -1,0 +1,20 @@
+// Миксины ReluxCode. Подключение: @use "mixins";  →  @include mixins.hover { ... }
+
+// :hover только там, где он реально работает: мышь/трекпад.
+// На телефоне :hover «залипает» после тапа и остаётся, пока не тапнешь в другое место.
+@mixin hover {
+    @media (hover: hover) and (pointer: fine) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+// Замена hover для сенсорных экранов: эффект на время нажатия (:active).
+@mixin touch-press {
+    @media (hover: none) {
+        &:active {
+            @content;
+        }
+    }
+}

@@ -18,8 +18,11 @@ export default function LanguageModalList() {
     function handleSelect(code: (typeof LANGUAGES)[number]['code']) {
         if (code === locale) return;
 
+        // сохраняем query (?utm_source=… и т.п.), иначе при смене языка теряется рекламная метка
+        const query = Object.fromEntries(new URLSearchParams(window.location.search));
+
         startTransition(() => {
-            router.replace(pathname, { locale: code });
+            router.replace({ pathname, query }, { locale: code });
         });
     }
 
@@ -31,6 +34,7 @@ export default function LanguageModalList() {
                 return (
                     <li key={code}>
                         <button
+                            type="button"
                             className={`flex align-center justify-between pd-10 br-8 w-full bg-2-3 mb-7 hover-80 ${isActive ? 'active' : ''}`}
                             onClick={() => handleSelect(code)}
                             disabled={isPending}

@@ -7,11 +7,11 @@ type Props = {
 
 export default function LanguageModal({ title }: Props) {
     return (
-        <main className="text_center pd-20">
-            <header className='mb-15'>
+        <div className="text_center pd-20">
+            <div className='mb-15'>
                 <h2>{title}</h2>
-            </header>
+            </div>
             <LanguageModalList />
-        </main>
+        </div>
     );
 }

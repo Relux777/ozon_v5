@@ -1,10 +1,10 @@
 //app/src/components/Header/index.tsx
 
-import Link from 'next/link'
+import { Link } from '@/i18n/navigation';
 
 import { getTranslations } from 'next-intl/server';
-import LanguageSwitcher from '@/hook/LanguageSwitcher';
-import ThemeSwitch from "@/hook/ThemeSwitch";
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+import ThemeSwitch from "@/components/ThemeSwitch";
 
 import LogoIcon from '@/assets/svg/logo.svg';
 
@@ -28,9 +28,10 @@ export default async function HeaderComponent() {
             <nav className="container flex justify-between align-center h-60">
                 <ul className='flex align-center gap-10'>
                     <li>
+                        {/* Link из next-intl сохраняет текущую локаль */}
                         <Link href="/" className={`flex align-center gap-5 hover-80 ${styles.logo}`}>
-                            <LogoIcon style={{ width: '30px', height: '30px' }} />
-                            <h2 className='font-22'>{headerT('title')}</h2>
+                            <LogoIcon style={{ width: '30px', height: '30px' }} aria-hidden="true" />
+                            <span className='font-22'>{headerT('title')}</span>
                         </Link>
                     </li>
                 </ul>

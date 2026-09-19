@@ -11,13 +11,43 @@ import HeaderComponent from "@/components/Header";
 import NavBarComponent from "@/components/NavBar";
 import BackgroundDecor from "@/components/BackgroundDecor";
 
-import { Geist } from "next/font/google";
+import { Geist, Noto_Sans_Armenian, Noto_Sans_Georgian } from "next/font/google";
 import "@/assets/scss/ReluxCode.scss";
+import "@/assets/scss/style.scss";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+// Основной шрифт: латиница + кириллица (ru, ky, kk) — их подгружаем с preload
+const geist = Geist({
+  variable: "--font-geist",
+  subsets: ["latin", "cyrillic"],
+  display: "swap",
 });
+
+// Расширенные наборы для uz/az (ʻ, ə, İ) и kk/ky (Қ, Ғ, Ө, Ү, Ң): тянутся по unicode-range только при надобности
+const geistExt = Geist({
+  variable: "--font-geist-ext",
+  subsets: ["latin-ext", "cyrillic-ext"],
+  display: "swap",
+  preload: false,
+});
+
+// Geist не содержит грузинский и армянский: без этих шрифтов ka/hy рендерятся системным
+const notoGeorgian = Noto_Sans_Georgian({
+  variable: "--font-ka",
+  subsets: ["georgian"],
+  display: "swap",
+  preload: false,
+});
+
+const notoArmenian = Noto_Sans_Armenian({
+  variable: "--font-hy",
+  subsets: ["armenian"],
+  display: "swap",
+  preload: false,
+});
+
+const fontVariables = [geist, geistExt, notoGeorgian, notoArmenian]
+  .map((font) => font.variable)
+  .join(' ');
 
 type Props = {
     children: React.ReactNode;
@@ -41,14 +71,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         applicationName: t('siteName'),
         formatDetection: { telephone: false },
         robots: { index: true, follow: true },
-        openGraph: {
-            siteName: t('siteName'),
-            type: 'website',
-            locale,
-        },
         icons: {
             icon: '/favicon.ico',
-            apple: '/apple-touch-icon.png',
         },
     };
 }
@@ -57,14 +81,20 @@ export default async function RootLayout({ children, params }: Props) {
     const locale = await getLocaleFromParams(params);
     const messages = await getMessages();
 
+    // В клиентский бандл уходят только ключи, которые реально читают клиентские компоненты
+    const clientMessages = {
+        NavBar: messages.NavBar,
+        A11y: messages.A11y,
+        SkladSearch: messages.SkladSearch,
+        Promo: messages.Promo,
+        ErrorPage: messages.ErrorPage,
+    };
+
     return (
-        <html lang={locale} className={`${geistSans.variable}`} suppressHydrationWarning>
+        <html lang={locale} className={fontVariables} suppressHydrationWarning>
             <body>
-                <NextIntlClientProvider locale={locale} messages={messages}>
+                <NextIntlClientProvider locale={locale} messages={clientMessages}>
                     <ThemeProvider
-                      attribute="data-theme"
-                      defaultTheme="system"
-                      enableSystem
                       storageKey="theme"
                     >
                       <HeaderComponent />

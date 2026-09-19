@@ -1,7 +1,6 @@
 'use client'
 
 import { useRef, useEffect, useCallback } from 'react'
-import { useMousePosition } from '@/hook/Mouse-position'
 
 interface Circle {
   x: number
@@ -25,6 +24,9 @@ interface ParticlesProps {
 
 const FIXED_COLOR = "82, 49, 158"
 
+const prefersReducedMotion = () =>
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
 export default function Particles({
   className = '',
   quantity = 30,
@@ -37,7 +39,6 @@ export default function Particles({
   const circlesRef = useRef<Circle[]>([])
   const animationFrameRef = useRef<number>(0)
   
-  const mousePosition = useMousePosition()
   const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
   const canvasSizeRef = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
   
@@ -104,21 +105,6 @@ export default function Particles({
     }
   }, [dpr])
 
-  const onMouseMove = useCallback(() => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-
-    const rect = canvas.getBoundingClientRect()
-    const { w, h } = canvasSizeRef.current
-    const x = mousePosition.x - rect.left - w / 2
-    const y = mousePosition.y - rect.top - h / 2
-    const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2
-    
-    if (inside) {
-      mouseRef.current = { x, y }
-    }
-  }, [mousePosition.x, mousePosition.y])
-
   const drawParticles = useCallback(() => {
     clearContext()
     for (let i = 0; i < quantity; i++) {
@@ -178,6 +164,8 @@ export default function Particles({
   }, [staticity, ease, circleParams, drawCircle, clearContext])
 
   useEffect(() => {
+    if (prefersReducedMotion()) return
+
     const handleResize = () => {
       cancelAnimationFrame(animationFrameRef.current)
       initCanvas()
@@ -192,11 +180,32 @@ export default function Particles({
     }
   }, [initCanvas, animate])
 
+  // Позиция курсора пишется прямо в ref: без setState и перерисовок React на каждый mousemove
   useEffect(() => {
-    onMouseMove()
-  }, [onMouseMove])
+    if (prefersReducedMotion()) return
+
+    const handleMouseMove = (event: MouseEvent) => {
+      const canvas = canvasRef.current
+      if (!canvas) return
+
+      const rect = canvas.getBoundingClientRect()
+      const { w, h } = canvasSizeRef.current
+      const x = event.clientX - rect.left - w / 2
+      const y = event.clientY - rect.top - h / 2
+      const inside = x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2
+
+      if (inside) {
+        mouseRef.current = { x, y }
+      }
+    }
+
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
 
   useEffect(() => {
+    if (prefersReducedMotion()) return
+
     if (canvasRef.current) {
       contextRef.current = canvasRef.current.getContext('2d')
       initCanvas()

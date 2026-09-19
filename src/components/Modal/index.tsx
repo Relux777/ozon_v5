@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { createPortal } from 'react-dom';
+import { useTranslations } from 'next-intl';
 import CloseIcon from '@/assets/svg/x.svg';
 import styles from './modal.module.scss';
 
@@ -11,12 +12,15 @@ export default function Modal({
   className = '',
   isOpen,
   onClose,
+  ariaLabel,
 }: {
   children: React.ReactNode;
   className?: string;
   isOpen: boolean;
   onClose: () => void;
+  ariaLabel: string;
 }) {
+  const t = useTranslations('A11y');
   const [mounted, setMounted] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -175,11 +179,43 @@ export default function Modal({
       handleDragEnd();
     };
 
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    // Фокус уходит в диалог и возвращается на кнопку, которая его открыла
+    // Пока идёт первый кадр перехода, диалог ещё visibility:hidden и фокус не принимает —
+    // повторяем попытку, пока он не станет видимым (не дольше ~1 с)
+    const previouslyFocused = document.activeElement as HTMLElement | null;
+    let focusTimer: ReturnType<typeof setTimeout>;
+    let focusTries = 0;
+    const focusDialog = () => {
+      content.focus({ preventScroll: true });
+      if (document.activeElement !== content && focusTries++ < 20) {
+        focusTimer = setTimeout(focusDialog, 50);
+      }
+    };
+    focusTimer = setTimeout(focusDialog, 50);
+
+    // запасной вариант: по окончании анимации появления диалог точно видим
+    const modal = modalRef.current;
+    const onTransitionEnd = (e: TransitionEvent) => {
+      if (e.target === modal && document.activeElement !== content) {
+        content.focus({ preventScroll: true });
+      }
+    };
+    modal?.addEventListener('transitionend', onTransitionEnd);
+
+    document.addEventListener('keydown', onKeyDown);
     content.addEventListener('touchstart', onTouchStart, { passive: false });
     content.addEventListener('touchmove', onTouchMove, { passive: false });
     content.addEventListener('touchend', onTouchEnd);
 
     return () => {
+      clearTimeout(focusTimer);
+      modal?.removeEventListener('transitionend', onTransitionEnd);
+      document.removeEventListener('keydown', onKeyDown);
+      previouslyFocused?.focus?.({ preventScroll: true });
       document.documentElement.style.overflow = '';
       document.documentElement.style.scrollbarGutter = '';
       resetStyles();
@@ -188,7 +224,7 @@ export default function Modal({
       content.removeEventListener('touchend', onTouchEnd);
       mouseCleanupRef.current?.();
     };
-  }, [isOpen, handleDragStart, handleDragMove, handleDragEnd, resetStyles]);
+  }, [isOpen, onClose, handleDragStart, handleDragMove, handleDragEnd, resetStyles]);
 
   if (!mounted) return null;
 
@@ -202,17 +238,22 @@ export default function Modal({
       ref={modalRef}
       role="dialog"
       aria-modal="true"
+      aria-label={ariaLabel}
       className={`${styles.modal} p-fixed flex justify-center z-20 cursor-pointer w-full visibility-hidden blur-7 inset-0 ${className} ${modalVisibilityClass}`}
       onClick={onClose}
     >
       <div
         ref={contentRef}
+        tabIndex={-1}
         className={`${styles.content} bg-3-100 cursor-auto br-20 shadow-3 scrollbar-none overflow-auto`}
         onClick={(e) => e.stopPropagation()}
         onMouseDown={(e) => handleDragStart(e.clientY, e)}
       >
         {/* Драг-ручка только для мыши, touch обрабатывается на content */}
         <button
+          type="button"
+          tabIndex={-1}
+          aria-hidden="true"
           className={`${styles.drag} flex justify-center w-full pd-20 active_scale_09 cursor-grab active:cursor-grabbing`}
           style={{ touchAction: 'none' }}
           onMouseDown={(e) => handleDragStart(e.clientY, e)}
@@ -221,6 +262,8 @@ export default function Modal({
         </button>
 
         <button
+          type="button"
+          aria-label={t('close')}
           onClick={onClose}
           onMouseDown={(e) => e.stopPropagation()}
           onTouchStart={(e) => e.stopPropagation()}

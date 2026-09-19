@@ -1,31 +1,41 @@
 :root {
+    color-scheme: light;
+
     --bg-phone: 237 237 237;
     --bg-1: 255 255 255;
     --bg-2: 0 0 0;
     --bg-3: 255 255 255;
     --bg-4: 60 130 255;
 
+    --bg-5: 0 91 255;
+
     --glass-reflex-dark: 1;
     --glass-reflex-light: 1;
     --glass-shadow-3: #fff;
 
     --glass-shadow: rgba(0, 0, 0, 0.1);
-    --glass-highlight: rgba(255, 255, 255, 0.8);    
+    --glass-highlight: rgba(255, 255, 255, 0.8);
     --glass-caustic: rgba(255, 255, 255, 0.4);
     --glass-border: rgba(255, 255, 255, 0.4);
 
     --base-font-size: 13px;
+    --header-h: 60px;
+    --focus-ring: rgb(var(--bg-5) / 100%);
     --scrollbar-track: #ecedee;
     --scrollbar-thumb: #b6bec6;
     --scrollbar-thumb-hover: #56999f;
 }
 
 [data-theme='dark'] {
+    color-scheme: dark;
+
     --bg-phone: 0 0 0;
     --bg-1: 0 0 0;
     --bg-2: 255 255 255;
     --bg-3: 14 14 14;
     --bg-4: 103 158 254;
+
+    --bg-5: 0 91 255;
 
     --glass-reflex-dark: 2;
     --glass-reflex-light: 0.2;
@@ -35,7 +45,7 @@
     --glass-highlight: rgba(255, 255, 255, 0.1);
     --glass-caustic: rgba(255, 255, 255, 0.05);
     --glass-border: rgba(255, 255, 255, 0.15);
-    
+
     --base-font-size: 13px;
     --scrollbar-track: #2c2c2c;
     --scrollbar-thumb: #4a4a4a;

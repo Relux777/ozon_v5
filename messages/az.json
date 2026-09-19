@@ -1,26 +1,119 @@
 {
-    "Global": {
-        "SiteName": "РенДит",
-        "SiteDescription": "Современная структура ленты свайпами влево и вправо."
+  "ManifestGlobal": {
+    "SiteName": "Ozon İş",
+    "SiteDescription": "Anbar operatoru vakansiyaları — Ozon İş, hər gün ödəniş"
+  },
+  "Metadata": {
+    "siteName": "Ozon İş"
+  },
+  "A11y": {
+    "themeToggle": "Mövzunu dəyişin",
+    "chooseLanguage": "Dil seçin",
+    "close": "Bağla",
+    "breadcrumbs": "Naviqasiya yolu"
+  },
+  "LanguageModal": {
+    "title": "Dil seçin"
+  },
+  "Header": {
+    "title": "Ozon İş"
+  },
+  "NavBar": {
+    "home": "Əsas səhifə",
+    "promotions": "Kampaniyalar",
+    "warehouses": "Anbarlar",
+    "menu": "Menyu"
+  },
+  "NotFoundPage": {
+    "title": "Səhifə tapılmadı",
+    "description": "Keçid köhnəlmiş və ya ünvan səhv daxil edilmiş ola bilər.",
+    "home": "Əsas səhifəyə"
+  },
+  "ErrorPage": {
+    "title": "Nəsə səhv getdi",
+    "retry": "Yenidən cəhd edin"
+  },
+  "SkladSearch": {
+    "label": "Şəhər axtarışı",
+    "placeholder": "Şəhərin adını daxil edin",
+    "found": "Tapılan şəhərlər: {count}",
+    "empty": "Şəhər tapılmadı. Sorğunu dəyişməyi yoxlayın.",
+    "count": "{count, plural, one {# anbar} other {# anbar}}",
+    "noData": "Ünvanlar dəqiqləşdirilir",
+    "listLabel": "Şəhərlərin siyahısı"
+  },
+  "SkladPage": {
+    "title": "Ozon anbarları şəhərlər üzrə: ünvan, gəlir, DMS və yemək",
+    "description": "Ozon anbar operatoru kimi işləmək mümkün olan şəhərlər: anbar ünvanları, gəlir, DMS, yemək və anbara nəqliyyat. Şəhərinizi seçin.",
+    "heading": "Şəhərinizi seçin",
+    "lead": "Şəhərinizi tapın və anbar operatoru üçün anbar ünvanlarını, gəliri və bonusları öyrənin."
+  },
+  "CityPage": {
+    "titleWithData": "Ozon anbarında iş, {city} ş.: ünvanlar, gəlir və şərtlər",
+    "titleNoData": "Ozon anbar operatoru işi, {city} ş.: şərtlər və vakansiyalar",
+    "descriptionWithData": "Ozon anbar operatoru vakansiyaları, {city} ş.: anbar ünvanları, gəlir {income} və iş şərtləri — yemək, DMS, anbara nəqliyyat, təlim.",
+    "descriptionNoData": "Ozon anbar operatoru, {city} ş.: iş şərtləri, ödənişlər, DMS, yemək və nəqliyyat. Anbar ünvanlarını rəsmi səhifədə dəqiqləşdirin.",
+    "heading": "{site} — anbar operatoru vakansiyası, {city} ş.",
+    "leadWithData": "Ozon anbar operatoru, {city} ş. — gəlir {income}. Rəsmiləşdirmə seçimi, ilk gündən təlim, təcrübə tələb olunmur.",
+    "leadNoData": "Ozon anbar operatoru, {city} ş. İş şərtləri, ödənişlər və bonuslar aşağıdadır. Anbar ünvanlarını rəsmi səhifədə dəqiqləşdirin.",
+    "statWarehouses": "Anbarlar",
+    "statIncome": "Gəlir",
+    "statAverage": "Orta",
+    "incomeRange": "{from, number} ₽-dən {to, number} ₽-dək / ay",
+    "incomeUpTo": "{to, number} ₽-dək / ay",
+    "warehousesTitle": "Anbar ünvanları, {city} ş.",
+    "warehousesEmpty": "Bu şəhərdə anbar ünvanları hələlik dəqiqləşdirilir. Aktual vakansiyalara Ozonun rəsmi səhifəsində baxın.",
+    "perksTitle": "Anbarlarda nə var",
+    "perks": {
+      "transport": "Şəhərinizdən anbara nəqliyyat",
+      "training": "Peşəyə təlim",
+      "meal": "Yemək",
+      "dms": "DMS"
     },
-
-    "Metadata": {
-        "siteName": "Ozon İş"
-    },
-    "LanguageModal": {
-        "title": "Dil seçin"
-    },
-    "Header": {
-        "title": "Ozon İş"
-    },
-    "NavBar": {
-        "home": "Əsas səhifə",
-        "promotions": "Kampaniyalar",
-        "warehouses": "Anbarlar",
-        "menu": "Menyu"
-    },
-    "MenuPage": {
-        "title": "Menyu",
-        "description": "Ozon İş platformasındakı aktual menyu və vakansiyalar."
-    }
+    "offersTitle": "İş şərtləri",
+    "offers": [
+      "Ödənişlər hər gün və ya həftəlik — müqavilə növündən asılıdır",
+      "Rəsmiləşdirmə: RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğul kimi",
+      "Rahat qrafik: gündüz növbələri, natamam məşğulluq, qısa növbələr",
+      "A sinfi müasir isti anbar",
+      "İlk gündən mentorla təlim",
+      "Təcrübə tələb olunmur, 18+"
+    ],
+    "dutiesTitle": "Nə ilə məşğul olacaqsınız",
+    "duties": [
+      "Çeşidləmə mərkəzində məlumat yığma terminalı (TSD) ilə malların emalı",
+      "Qüsurlu məhsulların aşkarlanması"
+    ],
+    "disclaimer": "Şərtlər konkret anbardan və rəsmiləşdirmə formasından asılıdır. Məlumatlar Ozonun rəsmi vakansiya səhifəsindən götürülüb, {date} tarixinə.",
+    "source": "Ozonun rəsmi saytında vakansiyalara baxın",
+    "allCities": "Bütün şəhərlər",
+    "incomeFrom": "{from, number} ₽-dən / ay"
+  },
+  "MenuPage": {
+    "title": "Menyu",
+    "description": "Ozon İş platformasındakı aktual menyu və vakansiyalar."
+  },
+  "HomePage": {
+    "title": "Ozon-da iş: anbar operatoru, hər gün ödəniş",
+    "description": "Ozon anbar operatoru vakansiyaları: sərbəst qrafik, gündüz və gecə növbələri, ödəniş hər gün və ya həftədə bir dəfə. RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
+    "heading": "Anbar operatoru: pulu növbədən dərhal sonra alın",
+    "lead": "Sifarişləri yığın, çeşidləyin və qablaşdırın, ödənişi isə növbə bitən kimi alın. Sıfırdan təlim, müxtəlif əməliyyatlar.",
+    "features": [
+      "Rəsmiləşdirmə seçimi: RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğulluq",
+      "Ödənişlər hər gün və ya həftəlik — gecikmədən",
+      "Sıfırdan təlim və növbədə aydın tapşırıqlar",
+      "Müasir anbarlar və texnika, təhlükəsiz şərait",
+      "Karyera artımı: operatordan baş vəzifələrə qədər",
+      "Qrafik: gündüz, gecə növbələri və ya sərbəst"
+    ]
+  },
+  "Promo": {
+    "title": "Tətbiqi quraşdırdığınıza görə bonus",
+    "text": "Tətbiqi yükləyin, qeydiyyat zamanı promokodu daxil edin — aksiyanın şərtlərinə uyğun {amount, number} ₽ qazanın.",
+    "codeLabel": "Promokod",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı",
+    "download": "Tətbiqi yüklə",
+    "disclosure": "Reklam. Biz müstəqil informasiya saytıyıq, Ozon deyilik və onun nümayəndəsi deyilik. Bu promokod vasitəsilə dəvət etdiyimiz üçün mükafat alırıq. Aksiyanın şərtlərini və bonusun məbləğini təşkilatçı müəyyən edir, dəyişə bilər — quraşdırmazdan əvvəl yoxlayın."
+  }
 }

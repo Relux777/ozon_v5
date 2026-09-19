@@ -1,23 +1,36 @@
+@use "mixins";
+
 @layer base {
     /* 1. Глобально отключаем дефолтную подсветку тапа на мобилках */
-    
+
     *, ::before, ::after {
         box-sizing: border-box;
         -webkit-tap-highlight-color: transparent;
     }
+
+    /* iOS/Android при повороте экрана сами увеличивают шрифт — отключаем */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+
+    /* [hidden] не должен проигрывать .flex / .block и т.п. */
+    [hidden] { display: none !important; }
+
     ul, menu, dialog { padding: 0; margin: 0; }
     li { list-style-type: none; }
     dialog { border: 0; background: none; max-width: initial; max-height: initial; }
     h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
 
     body {
-        font-family: GeistVariable, Arial, Helvetica, sans-serif;
+        font-family: var(--font-geist), var(--font-geist-ext), var(--font-ka), var(--font-hy), system-ui, Arial, Helvetica, sans-serif;
         font-size: var(--base-font-size);
         font-weight: 400;
         line-height: 1.5;
         background: rgb(var(--bg-phone) / 100%);
         color: rgb(var(--bg-2) / 70%);
         margin: 0;
+        min-height: 100vh;  /* запасной вариант для старых браузеров */
         min-height: 100dvh;
 
         scroll-behavior: smooth;
@@ -26,18 +39,19 @@
         scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 
         &::-webkit-scrollbar { width: 10px; }
-        &::-webkit-scrollbar-track { background-color: var(--scrollbar-track); border-left: solid 1px var(--header-city-border); }
+        &::-webkit-scrollbar-track { background-color: var(--scrollbar-track); }
         &::-webkit-scrollbar-thumb {
             background-color: var(--scrollbar-thumb);
             border-radius: 10px;
 
-            @media (hover: hover) and (pointer: fine) {
-                &:hover { background: var(--scrollbar-thumb-hover); }
+            @include mixins.hover {
+                background: var(--scrollbar-thumb-hover);
             }
         }
     }
 
     a, button {
+        font-family: inherit;
         font-size: var(--base-font-size);
         color: rgb(var(--bg-2) / 70%);
         text-decoration: none;
@@ -45,22 +59,38 @@
         border: none;
         background: none;
         transition: opacity 0.2s ease, transform 0.2s ease;
-        outline: none;
         cursor: pointer;
         padding: 0;
 
-        @media (hover: hover) and (pointer: fine) {
-            &:hover { opacity: 1; }
+        // видимый фокус для клавиатуры (мышью не показывается)
+        &:focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+            opacity: 1;
         }
 
-        &:active { 
+        // :hover — только для мыши (на телефоне «залипает» после тапа)
+        @include mixins.hover {
+            opacity: 1;
+        }
+
+        &:active {
             opacity: 1;
         }
     }
-    
+
+    button:disabled { cursor: not-allowed; }
+
+    // Убирает задержку и зум по двойному тапу на интерактивных элементах
+    a, button, input, select, textarea, label, summary, [role='button'] {
+        touch-action: manipulation;
+    }
+
     img, svg { vertical-align: middle; max-width: 100%; }
+    // с max-width без height:auto растровая картинка (width/height в атрибутах) сплющивается
+    img { height: auto; }
     textarea { resize: none;field-sizing: content; }
-    
+
     input, textarea {
         background: transparent;
         color: rgb(var(--bg-2) / 70%);
@@ -69,10 +99,32 @@
         font-size: var(--base-font-size);
         height: 100%;
         width: 100%;
-        font-family: GeistVariable, Arial, Helvetica, sans-serif;
+        font-family: inherit;
         &:focus-visible { background-color: transparent; }
     }
-    
+
+    input, textarea, select {
+        &:focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+        }
+    }
+
+    // iOS Safari приближает страницу при фокусе на поле со шрифтом меньше 16px
+    @media (pointer: coarse) {
+        input, textarea, select { font-size: max(16px, var(--base-font-size)); }
+    }
+
     input:-webkit-autofill,
     input:-webkit-autofill:is(:hover, :focus) { -webkit-background-clip: text; }
+
+    // Пользователям с «уменьшением движения» в системе — без анимаций
+    @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
 }
