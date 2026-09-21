@@ -96,15 +96,40 @@
   "HomePage": {
     "title": "Ozonda ish: ombor operatori, to'lov har kuni",
     "description": "Ozon ombor operatori vakansiyalari: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir marta. RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan. Noldan o'qitamiz.",
-    "heading": "Ombor operatori: smenadan keyin darhol pul oling",
-    "lead": "Buyurtmalarni yig'ing, saralang va qadoqlang, to'lovni esa smena tugashi bilanoq oling. Noldan o'qitamiz, operatsiyalar xilma-xil.",
+    "heading": "Ozon ombor operatori vakansiyasi: har kuni to'lovli ish",
+    "lead": "Shahringizdan ombor tanlang, haqiqiy manzillar va shartlarni bilib oling, ilovani o'rnatgach esa promokod bo'yicha 2 000 ₽ bonus oling.",
     "features": [
+      "To'lovlar har kuni yoki har hafta",
       "Rasmiylashtirish tanlovi: RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan",
-      "To'lovlar har kuni yoki har hafta — kechikishsiz",
-      "Noldan o'qitish va smenada tushunarli vazifalar",
-      "Zamonaviy omborlar va texnika, xavfsiz sharoit",
-      "Karyera o'sishi: operatordan katta lavozimlargacha",
-      "Grafik: kunduzgi, tungi smenalar yoki erkin"
+      "Birinchi kundan o'qitish, tajriba shart emas",
+      "Qulay grafik: kunduzgi/tungi smenalar, grafik o'zingiz tanlaysiz",
+      "RF fuqarolari uchun 16 yoshdan qo'shimcha ish (slotlar mavjudligi hudud va ombor turiga bog'liq)"
+    ],
+    "stats": [
+      {
+        "value": "50 000+",
+        "label": "shtatdagi xodimlar"
+      },
+      {
+        "value": "55+",
+        "label": "fulfilment-markazlar"
+      },
+      {
+        "value": "65 mln",
+        "label": "faol xaridorlar"
+      },
+      {
+        "value": "600 ming",
+        "label": "faol sotuvchilar"
+      },
+      {
+        "value": "20 000 ₽ gacha",
+        "label": "do'st uchun bonus"
+      },
+      {
+        "value": "5 mln m²",
+        "label": "logistika maydoni"
+      }
     ]
   },
   "Promo": {

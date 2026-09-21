@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     robots: { index: false, follow: false },
 };
 
+import Image from 'next/image'
+import ProfileImage from '@/assets/img/pg5.png'
+
 // ── Данные, которые вы будете менять ─────────────────────────────────────────
 const SITE_NAME = 'Озон Работа';
 
@@ -218,7 +221,9 @@ export default function Test1Page() {
 
                     <div className="f-w-5">
                         <div className={styles.heroCard}>
-                            <div className={`${styles.ph} ${styles.phHero}`}>Фото / иллюстрация: сотрудник склада</div>
+                            <div className={`${styles.ph} ${styles.phHero}`}>
+                                <Image src={ProfileImage} alt='2' />
+                            </div>
 
                             <div className={styles.floatPromo}>
                                 <span className={styles.floatLabel}>Промокод</span>

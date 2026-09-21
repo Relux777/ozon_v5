@@ -4,6 +4,10 @@
 // На сенсорных экранах тот же эффект показывается на время нажатия (mixins.touch-press),
 // поэтому классы .translate_0_5 / .scale_0_1 / .hover-* дают отклик и на телефоне.
 @layer animations {
+    .translate_0_2 {
+        @include mixins.hover { transform: translate(0px, -2px); }
+        @include mixins.touch-press { transform: translate(0px, -2px); }
+    }
     .translate_0_5 {
         @include mixins.hover { transform: translate(0px, -5px); }
         @include mixins.touch-press { transform: translate(0px, -5px); }
@@ -24,6 +28,12 @@
     .active_scale_09 {&:active {transform: scale(0.9);}}
     .active_scale_098 {&:active {transform: scale(0.98);}}
 
+    .hover-none {
+        opacity: 1;
+        @include mixins.hover { opacity: 1; }
+        @include mixins.touch-press { opacity: 1; }
+        &.active { opacity: 1; }
+    }
     .hover-80 {
         opacity: 1;
         @include mixins.hover { opacity: 0.8; }

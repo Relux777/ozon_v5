@@ -1,3 +1,28 @@
-section:first-of-type {
-    .container {min-height: calc(100dvh - 60px);}
+
+main {
+    position: relative;
+    section:first-of-type {
+        .container {
+            min-height: calc(100dvh - 200px);
+            h1 {    font-size: clamp(30px, 5.4vw, 45px);}
+        }
+    }
+    .checks-li {
+        li::before {
+        content: "✓";
+        background: rgb(var(--bg-5) / 14%);
+        width: 20px;
+        height: 20px;
+        color: rgb(var(--bg-5));
+        border-radius: 50%;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 700;
+        display: grid;
+        position: absolute;
+        top: 1px;
+        left: 0;
+
+        }
+    }
 }

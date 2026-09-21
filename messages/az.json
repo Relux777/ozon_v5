@@ -96,15 +96,40 @@
   "HomePage": {
     "title": "Ozon-da iş: anbar operatoru, hər gün ödəniş",
     "description": "Ozon anbar operatoru vakansiyaları: sərbəst qrafik, gündüz və gecə növbələri, ödəniş hər gün və ya həftədə bir dəfə. RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
-    "heading": "Anbar operatoru: pulu növbədən dərhal sonra alın",
-    "lead": "Sifarişləri yığın, çeşidləyin və qablaşdırın, ödənişi isə növbə bitən kimi alın. Sıfırdan təlim, müxtəlif əməliyyatlar.",
+    "heading": "Ozon anbar operatoru vakansiyası: gündəlik ödənişli iş",
+    "lead": "Şəhərinizdə anbar seçin, real ünvanlar və şərtlərlə tanış olun, tətbiqi quraşdırdıqdan sonra isə promokodla 2 000 ₽ bonus qazanın.",
     "features": [
+      "Ödənişlər hər gün və ya həftəlik",
       "Rəsmiləşdirmə seçimi: RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğulluq",
-      "Ödənişlər hər gün və ya həftəlik — gecikmədən",
-      "Sıfırdan təlim və növbədə aydın tapşırıqlar",
-      "Müasir anbarlar və texnika, təhlükəsiz şərait",
-      "Karyera artımı: operatordan baş vəzifələrə qədər",
-      "Qrafik: gündüz, gecə növbələri və ya sərbəst"
+      "İlk gündən təlim, təcrübə tələb olunmur",
+      "Rahat qrafik: gündüz/gecə növbələri, qrafik seçimi sizdədir",
+      "RF vətəndaşları üçün 16 yaşdan əlavə iş (slotların mövcudluğu region və anbar növündən asılıdır)"
+    ],
+    "stats": [
+      {
+        "value": "50 000+",
+        "label": "ştatlı işçi"
+      },
+      {
+        "value": "55+",
+        "label": "fulfilment mərkəzi"
+      },
+      {
+        "value": "65 mln",
+        "label": "aktiv alıcı"
+      },
+      {
+        "value": "600 min",
+        "label": "aktiv satıcı"
+      },
+      {
+        "value": "20 000 ₽-dək",
+        "label": "dost üçün bonus"
+      },
+      {
+        "value": "5 mln m²",
+        "label": "logistika sahəsi"
+      }
     ]
   },
   "Promo": {
