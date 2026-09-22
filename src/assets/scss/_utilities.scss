@@ -2,15 +2,15 @@
 //   @use "utilities" with ($pd-sizes: (0, 5, 10, 20), $gap-sizes: (4, 8));
 $transitions: (2: 0.2s, 3: 0.3s, 4: 0.4s, 5: 0.5s) !default;
 $pd-sizes: 0, 10, 20 !default;
-$pb-sizes: 0 !default;
+$pb-sizes: 0, 12 !default;
 $pt-sizes: 0 !default;
 $pr-sizes: 0 !default;
 $pl-sizes: 0, 30 !default;
-$px-sizes: 0, 24!default;
-$py-sizes: 0 !default;
+$px-sizes: 0, 10, 24 !default;
+$py-sizes: 0, 4, 20 !default;
 $md-sizes: 0 !default;
-$mb-sizes: 0, 7, 10, 15, 20 !default;
-$mt-sizes: 0, 7 !default;
+$mb-sizes: 0, 5, 7, 10, 15, 20 !default;
+$mt-sizes: 0, 7, 15 !default;
 $mr-sizes: 0 !default;
 $ml-sizes: 0 !default;
 $mx-sizes: 0 !default;
@@ -19,14 +19,15 @@ $t-sizes: 0, 10 !default;
 $b-sizes: 0 !default;
 $l-sizes: 0 !default;
 $r-sizes: 0, 10 !default;
-$border-radius-sizes: 8, 20, 36 !default;
-$gap-sizes: 2, 3, 5, 7, 10, 15 !default;
-$font-sizes: 14, 16, 22, 24, 36 !default;
-$font-weight: 400, 500 !default;
+$border-radius-sizes: 8, 20, 32, 36 !default;
+$gap-sizes: 2, 3, 5, 7, 8, 10, 12, 14, 15 !default;
+$font-sizes: 12, 14, 16, 18, 22, 24, 36 !default;
+$font-weight: 400, 500, 700 !default;
+$letter-spacing: 0, 6, 8, 12 !default; // сотые доли em
 $opacity-value: 100 !default;
-$z-index: 10, 20, 30 !default;
-$height-sizes: 0, 4, 36, 46, 60 !default;
-$width-sizes: 0, 36, 40 !default;
+$z-index: 1, 10, 20, 30 !default;
+$height-sizes: 0, 4, 20, 36, 46, 60 !default;
+$width-sizes: 0, 36, 40, 46 !default;
 $max-width-sizes-ch: 60 !default;
 $backdrop-filter-blur: 7 !default;
 $bg-colors: 1, 2, 3, 5 !default;
@@ -52,6 +53,9 @@ $border-b-opacities: 10 !default;
     .text_center { text-align: center; }
     .text_left { text-align: left; }
     .text_right { text-align: right; }
+    // balance — ровные строки в заголовках (без «одинокого слова» на последней), pretty — то же для абзацев
+    .text-balance { text-wrap: balance; }
+    .text-pretty { text-wrap: pretty; }
 
     // Sizing
     .w-full { width: 100%; }
@@ -93,6 +97,8 @@ $border-b-opacities: 10 !default;
     // overscroll-behavior: прокрутка внутри блока (модалка, список) не «протекает» на страницу — важно на телефонах
     .overflow-auto { overflow: auto; max-height: 100vh; max-height: 100dvh; overscroll-behavior: contain; }
     .overflow-hidden { overflow: hidden; }
+    // свой контекст наложения: z-index:-1 у декоративных ::before/::after не уходит под фон страницы
+    .isolate { isolation: isolate; }
     .overscroll-contain { overscroll-behavior: contain; }
     .scrollbar-none {
         scrollbar-width: none;
@@ -173,12 +179,16 @@ $border-b-opacities: 10 !default;
 
     // other
     @each $size in $border-radius-sizes { .br-#{$size} { border-radius: #{$size}px; } }
+    .br-round { border-radius: 50%; }
 
     @each $size in $gap-sizes { .gap-#{$size} { gap: #{$size}px; } }
 
     @each $size in $font-sizes { .font-#{$size} { font-size: #{$size}px; } }
 
     @each $size in $font-weight { .font-w-#{$size} { font-weight: #{$size}; } }
+
+    // значения шкалы — сотые доли em: letter-s-8 = 0.08em (масштабируется вместе с размером шрифта)
+    @each $size in $letter-spacing { .letter-s-#{$size} { letter-spacing: #{$size * 0.01}em; } }
 
     @each $size in $opacity-value { .opacity-#{$size} { opacity: #{$size * 0.01}; } }
 

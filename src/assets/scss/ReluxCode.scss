@@ -1,4 +1,15 @@
-// "ReluxCode" - v2.1.0
+// "ReluxCode" - v2.2.0
+//
+// 2.2.0
+//  - анимации «парения»: .float / .float-shadow
+//  - .inline-flex — строчный flex с теми же модификаторами, что и у .flex (align-center, justify-*, nowrap …)
+//  - .grid: модификаторы .place-center (place-items), .content-start (align-content) и
+//    .rows-auto-1fr (строки «по содержимому + остальное»)
+//  - утилиты: .font-12/.font-18, .font-w-700, .gap-8/.gap-12/.gap-14, .px-10, .py-4, .w-46, .z-1, .br-32, .br-round (50%),
+//    .isolate, .text-balance, .text-pretty
+//  - сброс отступов теперь и у <ol> (как у <ul>)
+//  - исправлено: плавная прокрутка к якорям (`scroll-behavior: smooth`) стояла на <body> и не работала — теперь на <html>
+//  - letter-spacing в утилитах — в сотых долях em (.letter-s-6/8/12)
 //
 // 2.1.0
 //  - порядок слоёв вынесен в _layers.scss и подключается первым

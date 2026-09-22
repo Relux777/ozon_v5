@@ -97,7 +97,7 @@
     "title": "Ozon-da iş: anbar operatoru, hər gün ödəniş",
     "description": "Ozon anbar operatoru vakansiyaları: sərbəst qrafik, gündüz və gecə növbələri, ödəniş hər gün və ya həftədə bir dəfə. RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
     "heading": "Ozon anbar operatoru vakansiyası: gündəlik ödənişli iş",
-    "lead": "Şəhərinizdə anbar seçin, real ünvanlar və şərtlərlə tanış olun, tətbiqi quraşdırdıqdan sonra isə promokodla 2 000 ₽ bonus qazanın.",
+    "lead": "Şəhərinizdə anbar seçin, real ünvanlar və şərtlərlə tanış olun, tətbiqi quraşdırdıqdan sonra isə promokodla {amount, number} ₽ bonus qazanın.",
     "features": [
       "Ödənişlər hər gün və ya həftəlik",
       "Rəsmiləşdirmə seçimi: RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğulluq",
@@ -130,7 +130,313 @@
         "value": "5 mln m²",
         "label": "logistika sahəsi"
       }
-    ]
+    ],
+    "statsEyebrow": "Rəqəmlərlə Ozon*",
+    "statsTitle": "Nə üçün Ozonda işləmək lazımdır",
+    "statsNote": "Rəqəmlər Ozonun açıq mənbələrindən götürülüb və yuvarlaqlaşdırılıb; nəşr anına aktualdır və dəyişə bilər. Dost üçün bonus anbardan və aksiyanın şərtlərindən asılıdır. Sayt müstəqildir və Ozonun rəsmi saytı deyil.",
+    "stepsEyebrow": "İlk addımlar",
+    "stepsTitle": "İlk növbəyə necə çıxmaq olar",
+    "stepLabel": "Addım {n} / {total}",
+    "stepsNeedsLabel": "Nə lazım olacaq",
+    "stepsNote": "** Ozon Job məlumat mərkəzinə görə (docs.ozon.ru), {date} tarixinə. Ödəniş müddətləri reytinq səviyyəsindən və kartın bankından asılıdır.",
+    "steps": [
+      {
+        "title": "Qeydiyyat",
+        "text": "Ozon Job tətbiqində: Qosuslugi və ya Ozon Bank vasitəsilə daxil olun. Anbarı seçin — region özü müəyyən olunacaq.",
+        "needs": [
+          "Qosuslugi və ya Ozon Bank",
+          "İNN və SNİLS"
+        ]
+      },
+      {
+        "title": "Əməkdaşlıq növü və rekvizitlər",
+        "text": "Mülki-hüquqi müqavilə, özünüməşğulluq və ya fərdi sahibkarlığı seçin və hesab rekvizitlərini göstərin. Anket yoxlamaya göndəriləcək — nəticə tətbiqə gələcək.",
+        "needs": [
+          "Mülki-hüquqi müqavilə · özünüməşğul · fərdi sahibkar",
+          "Ozon Bank kartı — ödənişlər daha sürətli**"
+        ]
+      },
+      {
+        "title": "Slota yazılma",
+        "text": "Yoxlamadan sonra 4–12 saatlıq slot bron edin və oferta müqaviləsini qəbul edin. Sənədləri özünüzlə götürün.",
+        "needs": [
+          "4–12 saatlıq slot",
+          "Pasport, SNİLS, İNN"
+        ]
+      },
+      {
+        "title": "Təlim və ilk növbə",
+        "text": "Birinci gün — anbarda oflayn təlim, o ödənilir. Sonra məlumat toplama terminalı — və iş.",
+        "needs": [
+          "Ödənişli ilk gün",
+          "3 saatdan ödəniş**"
+        ]
+      }
+    ],
+    "promo": {
+      "ad": "Reklam",
+      "kicker": "Ozon Job referal proqramı",
+      "title": "Dəvət kodu ilə qeydiyyatdan keçin — bonus şərtlər yerinə yetirildikdən sonra verilir",
+      "text": "Dəvət kodu tətbiqdə daxil edilir. Mükafat quraşdırmaya görə deyil, seçdiyiniz anbarda lazımi məbləğdə tapşırıqları yerinə yetirdikdən sonra verilir — məbləğ aksiyada göstərilib və anbardan asılıdır.",
+      "termsLabel": "İştirak şərtləri",
+      "terms": [
+        "Əvvəllər Ozonda işləməmisiniz",
+        "Kod tətbiqdə daxil edilir"
+      ],
+      "codeLabel": "Sizin dəvət kodunuz",
+      "copy": "Kopyala",
+      "copied": "Kopyalandı ✓",
+      "codeHint": "Harada daxil etmək olar: ana səhifədə, aksiya səhifəsində və ya Profil → Dostunu dəvət et bölməsində",
+      "storesLabel": "Ozon Job-u tətbiq mağazasından yükləyin",
+      "stepsLabel": "Bonusu necə almaq olar",
+      "steps": [
+        {
+          "title": "Ozon Job-u yükləyin",
+          "text": "Tətbiqi açın və «Qoşul» düyməsini basın."
+        },
+        {
+          "title": "Qeydiyyatdan keçin",
+          "text": "Qosuslugi və ya Ozon Bank vasitəsilə, İNN və SNİLS göstərin, anbarı seçin."
+        },
+        {
+          "title": "Kodu daxil edin",
+          "text": "Ana səhifədə, aksiya səhifəsində və ya Profil → Dostunu dəvət et bölməsində."
+        },
+        {
+          "title": "Şərtləri yerinə yetirin",
+          "text": "Slota yazılın və aksiyada göstərilən məbləğdə tapşırıqları yerinə yetirin."
+        }
+      ],
+      "warn": "Vacib: yalnız əvvəllər Ozonda işləməyən şəxs iştirak edə bilər. Əgər Ozonla artıq əməkdaşlıq etmisinizsə, aksiya əlçatan deyil. Şərtləri və məbləğləri Ozon müəyyən edir və dəyişə bilər.",
+      "note": "Reklam. Biz müstəqil məlumat saytıyıq, Ozon deyilik. Bizim kodla qeydiyyatdan keçsəniz, Ozondan mükafat ala bilərik. [Reklamverən məlumatları: ad/təşkilat, VÖEN]",
+      "bonus": "Kodu daxil edin və <sum>{amount, number} ₽</sum> əldə edin*",
+      "condition": "* Bonus aksiyanın şərtləri yerinə yetirildikdən sonra verilir: anbardan asılı məbləğdə tapşırıqlar."
+    },
+    "heroCity": "Şəhəri seçin",
+    "heroBonus": "{amount, number} ₽ əldə et",
+    "friend": {
+      "eyebrow": "Dostunu dəvət et",
+      "title": "Kodla dəvət necə işləyir",
+      "lead": "Hərəkətlər qaydası və qaydalar — Ozon Job məlumat mərkəzinə görə: dəvət olunanlar və dəvət edənlər üçün.",
+      "invited": {
+        "kicker": "Sizi dəvət ediblər",
+        "title": "Kodu necə tətbiq etmək olar",
+        "steps": [
+          {
+            "title": "Ozon Job-da qeydiyyatdan keçin",
+            "text": "Qosuslugi və ya Ozon Bank vasitəsilə. Dəvət olunan şəxs əvvəllər Ozonda işləməmiş olmalıdır."
+          },
+          {
+            "title": "Kodu tətbiq edin",
+            "text": "Ana səhifədə, aksiya səhifəsində və ya Profil → Dostunu dəvət et bölməsində kodu daxil edib «Tətbiq et» düyməsini basın."
+          },
+          {
+            "title": "Slotlara yazılın",
+            "text": "Yazılın və anbarda əməliyyatları yerinə yetirin."
+          },
+          {
+            "title": "Gedişatı izləyin",
+            "text": "Lazımi məbləğə nə qədər qaldığı aksiya səhifəsində göstərilir."
+          }
+        ]
+      },
+      "inviter": {
+        "kicker": "Siz dəvət edirsiniz",
+        "title": "Mükafatı necə almaq olar",
+        "steps": [
+          {
+            "title": "Slota çıxın",
+            "text": "Ən azı bir slotda tapşırıqları yerinə yetirmisinizsə, dəvət göndərə bilərsiniz."
+          },
+          {
+            "title": "Aksiyanı açın",
+            "text": "Şəxsi kabinetdə «Dostunu dəvət et» aksiyasına toxunun."
+          },
+          {
+            "title": "Kodu göndərin",
+            "text": "Dostunuza aksiyadakı kod və ya dəvət uyğundur."
+          },
+          {
+            "title": "Mükafatı alın",
+            "text": "Dostunuz lazımi məbləğdə əməliyyatları yerinə yetirdikdə. Vergilər çıxılmaqla ödənilir — Ödənişlər → Əməliyyatlar bölməsinə baxın."
+          }
+        ]
+      },
+      "rulesTitle": "Nələri bilmək vacibdir",
+      "rules": [
+        {
+          "title": "Məbləğ anbardan asılıdır",
+          "text": "Dostunuz müəyyən məbləğdə əməliyyatları yerinə yetirməlidir. İlk yazılış üçün seçdiyi anbardakı əməliyyatlar hesaba alınır."
+        },
+        {
+          "title": "Anbar aksiyadan çıxıb",
+          "text": "Gedişat saxlanılır — tapşırıqlar hesaba alınmağa davam edir."
+        },
+        {
+          "title": "Dost məbləği yığmayıb",
+          "text": "Məbləğ yığılmayıbsa və müqavilə ləğv edilibsə, mükafat verilmir."
+        },
+        {
+          "title": "Yeni müqavilə — yeni kod",
+          "text": "Müqavilə yenidən imzalananda kod dəyişir. Köhnə kodla dəvət olunan dostlara görə mükafat ödənilmir."
+        }
+      ],
+      "note": "Mükafatın məbləği və şərtlər anbardan və aksiyadan asılıdır — onlara tətbiqdə baxın. Ozon məlumat mərkəzində mükafat dəvət edən üçün təsvir olunub.",
+      "noteLink": "Şərtlər və iştirakçı anbarların siyahısı →"
+    },
+    "pay": {
+      "eyebrow": "Pul",
+      "title": "Ödənişlər necə hesablanır və nə vaxt gəlir",
+      "lead": "Ozon Job məlumat mərkəzinə görə. Müddətlər reytinq səviyyəsindən və kartın bankından asılıdır.",
+      "formulaLabel": "Slot üçün ödəniş necə hesablanır",
+      "formula": [
+        {
+          "title": "Piklər",
+          "text": "Məlumat toplama terminalındakı hər əməliyyat — bir «pik»"
+        },
+        {
+          "title": "Tarif",
+          "text": "Malın ölçüsündən, həcmindən və çəkisindən asılıdır. Tariflər dinamikdir"
+        },
+        {
+          "title": "Mükafat",
+          "text": "Slot üçün məbləğ — vergilər və tutulmalar çıxılmamışdan əvvəl"
+        }
+      ],
+      "taxTitle": "Yekun məbləğdən vergilər və tutulmalar çıxılır.",
+      "taxText": "MHM üzrə vergini Ozon tutur və ödəyir, özünüməşğullar və fərdi sahibkarlar özləri ödəyir.",
+      "timesTitle": "Pul nə vaxt gələcək",
+      "times": [
+        {
+          "big": "3 saat",
+          "title": "«Новичок» və «Бриллиант»",
+          "text": "Pul slot bitdikdən 3 saat sonra Ozon Bank kartına özü daxil olur."
+        },
+        {
+          "big": "12 saat",
+          "title": "Reytinqin digər səviyyələri",
+          "text": "Ozon Bank kartına — slot bitdikdən 12 saat sonra."
+        },
+        {
+          "big": "1 saat",
+          "title": "«Бриллиант»: əllə çıxarış",
+          "text": "Saatda bir dəfə: Ödənişlər → «Pulu çıxar». 5 dəqiqə ərzində daxil olur. Ozon Bank kartı lazımdır."
+        },
+        {
+          "big": "Ç.a.",
+          "title": "Digər bankların kartları",
+          "text": "Həftədə bir dəfə, çərşənbə axşamı. Bu gün bayramdırsa, ödəniş ondan sonrakı ilk iş günü daxil olur."
+        }
+      ],
+      "fastTag": "ən sürətli",
+      "timesNote": "Ozon Bank bayram günlərində də ödəyir. Hesablama slotun bitməsindən başlayır.",
+      "tipsTitle": "Nəyə diqqət etməli",
+      "tips": [
+        {
+          "title": "Gözlənilən ödəniş",
+          "text": "Anbar kartında — 1 saat və 12 saatlıq slot üçün, «Бриллиант» səviyyəsinin orta gəlirinə görə. Öz səviyyəniz üçün — yazılarkən «Tarif» düyməsi. Bu zəmanət deyil."
+        },
+        {
+          "title": "Ətraflı hesab",
+          "text": "Ətraflı hesablama tətbiqdə slotdan sonrakı gün görünür."
+        },
+        {
+          "title": "İlk gün",
+          "text": "Təlim «Поддержка на старте» aksiyası üzrə ödənilir — tam slot kimi deyil. Çıxışdan əvvəl onlayn kurslar daha çox pik etməyə kömək edir."
+        },
+        {
+          "title": "Taymer",
+          "text": "Vaxt üzrə əməliyyatlar saatbasaat ödənilir: əvvəldə taymeri işə salın, sonda dayandırın — əks halda ödəniş gəlməyəcək."
+        },
+        {
+          "title": "Tariflər dəyişir",
+          "text": "Ödəniş xidmət göstərilən andakı tarif üzrədir, yazılış anındakı deyil: anbardakı yüklənməyə görə artır və azalır."
+        },
+        {
+          "title": "Reytinq səviyyəsi",
+          "text": "«Новичок»dan «Бриллиант»a qədər: ödəniş müddətləri ondan asılıdır. Səviyyə obyektlərdə 55 saatdan sonra görünür, ballar son 30 gün üçün hesablanır."
+        }
+      ],
+      "note": "Ozon Job məlumat mərkəzinə (docs.ozon.ru) görə, {date} tarixinə yoxlanılıb. Şərtlər dəyişə bilər."
+    },
+    "firstDay": {
+      "eyebrow": "İlk çıxış",
+      "title": "Nə götürmək lazımdır və ilk gün necə keçəcək",
+      "lead": "Sənədlər və ilk günün qaydası — Ozon Job məlumat mərkəzinə görə.",
+      "docsTitle": "İlk çıxış üçün sənədlər",
+      "docs": [
+        {
+          "name": "Pasport",
+          "note": ""
+        },
+        {
+          "name": "SNİLS",
+          "note": "elektron formada ola bilər"
+        },
+        {
+          "name": "İNN",
+          "note": "elektron formada ola bilər"
+        },
+        {
+          "name": "Müvəqqəti qeydiyyat sənədi",
+          "note": "varsa"
+        },
+        {
+          "name": "№086U arayışı və valideyn razılığı",
+          "note": "18 yaşdan kiçiksinizsə (razılıq nümunəsi — oferta daxilindədir)"
+        }
+      ],
+      "progress": "Toplanıb:",
+      "docsNote": "Əcnəbi vətəndaşlar üçün — pasport və RF-də olma əsasını təsdiq edən sənəd. Anbarlar üçün tibbi kitabça tələb olunmur; varsa — özünüzlə götürün.",
+      "dayTitle": "Çıxışdan əvvəl və ilk gün",
+      "day": [
+        {
+          "title": "Onlayn kurslar",
+          "text": "Tətbiqdə təyin olunmuş kursları keçin (Ana səhifə → Məcburi təlim). Kursun müddəti varsa — yazılışdan ən azı 3 saat əvvəl, əks halda yazılış ləğv olunur."
+        },
+        {
+          "title": "Yol",
+          "text": "Slotdan 30 dəqiqə əvvəl gəlin: buraxılış məntəqəsindən keçmək və geyim dəyişmək lazımdır. Anbara özünüz və ya nəqliyyatla gedə bilərsiniz — anbarda nişan varsa."
+        },
+        {
+          "title": "Buraxılış",
+          "text": "Buraxılış şöbəsində müvəqqəti buraxılış alın — təlim şöbəsinə necə getməyi orada deyəcəklər."
+        },
+        {
+          "title": "Təlim və TSD",
+          "text": "Anbar qaydaları və seçilmiş əməliyyatlar; sonra məlumat toplama terminalı verilir. Sənədləri unutmusunuzsa — slota yenidən yazılın və onları gətirin."
+        }
+      ],
+      "note": "Ozon Job məlumat mərkəzinə (docs.ozon.ru) görə, {date} tarixinə yoxlanılıb: «İlk çıxış üçün sənədlər», «İlk çıxış»."
+    },
+    "types": {
+      "eyebrow": "Rəsmiləşdirmə",
+      "title": "MHM, özünüməşğulluq, fərdi sahibkar və ya ştat",
+      "taxLabel": "Vergilər",
+      "items": [
+        {
+          "name": "MHM",
+          "tax": "Vergini Ozon tutur və ödəyir",
+          "note": "Ozonla müqavilə, əmək münasibətləri olmadan. Hər slotdan sonra göstərilən xidmətlər aktları tərtib olunur."
+        },
+        {
+          "name": "Özünüməşğulluq",
+          "tax": "Vergini özünüz ödəyirsiniz (FNS, «Mənim vergim»)",
+          "note": "Anbarlarda ayda 8 slotadək: 3 ay ardıcıl aşılsa, MHM-ə keçmək təklif olunacaq. Son 2 ildə Ozon qrupunda işləmisinizsə, əlçatan deyil."
+        },
+        {
+          "name": "Fərdi sahibkar",
+          "tax": "Vergini özünüz ödəyirsiniz",
+          "note": "Status əvvəlcədən rəsmiləşdirilməlidir — FNS-də, Qosuslugi və ya bank vasitəsilə."
+        },
+        {
+          "name": "Ştat (RF ƏM)",
+          "tax": "Vergini işəgötürən ödəyir",
+          "note": "Təcrübəli icraçılar üçün: 18 yaşdan yuxarı RF vətəndaşları, bir obyektdə sabit cədvəl. Müraciət — tətbiqdə."
+        }
+      ],
+      "note": "Əməkdaşlıq növünü yalnız RF vətəndaşları dəyişə bilər və bütün dövr ərzində 4 dəfədən çox olmamaq şərti ilə. Ozon Job məlumat mərkəzinə görə, {date} tarixinə yoxlanılıb."
+    }
   },
   "Promo": {
     "title": "Tətbiqi quraşdırdığınıza görə bonus",

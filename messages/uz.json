@@ -97,7 +97,7 @@
     "title": "Ozonda ish: ombor operatori, to'lov har kuni",
     "description": "Ozon ombor operatori vakansiyalari: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir marta. RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan. Noldan o'qitamiz.",
     "heading": "Ozon ombor operatori vakansiyasi: har kuni to'lovli ish",
-    "lead": "Shahringizdan ombor tanlang, haqiqiy manzillar va shartlarni bilib oling, ilovani o'rnatgach esa promokod bo'yicha 2 000 ₽ bonus oling.",
+    "lead": "Shahringizdan ombor tanlang, haqiqiy manzillar va shartlarni bilib oling, ilovani o'rnatgach esa promokod bo'yicha {amount, number} ₽ bonus oling.",
     "features": [
       "To'lovlar har kuni yoki har hafta",
       "Rasmiylashtirish tanlovi: RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan",
@@ -130,7 +130,313 @@
         "value": "5 mln m²",
         "label": "logistika maydoni"
       }
-    ]
+    ],
+    "statsEyebrow": "Raqamlarda Ozon*",
+    "statsTitle": "Nima uchun Ozonda ishlash kerak",
+    "statsNote": "* Raqamlar Ozonning ochiq manbalaridan olingan va yaxlitlangan; nashr vaqtida dolzarb, o'zgarishi mumkin. Do'st uchun bonus ombor va aksiya shartlariga bog'liq. Sayt mustaqil va Ozonning rasmiy sayti emas.",
+    "stepsEyebrow": "Birinchi qadamlar",
+    "stepsTitle": "Birinchi smenaga qanday chiqish mumkin",
+    "stepLabel": "{n}-qadam, jami {total} ta",
+    "stepsNeedsLabel": "Nima kerak bo'ladi",
+    "stepsNote": "** Ozon Job ma'lumotnomasi bo'yicha (docs.ozon.ru), {date} holatiga. To'lov muddatlari reyting darajasi va karta bankiga bog'liq.",
+    "steps": [
+      {
+        "title": "Ro'yxatdan o'tish",
+        "text": "Ozon Job ilovasida: Gosuslugi yoki Ozon Bank orqali kiring. Omborni tanlang — hudud o'zi aniqlanadi.",
+        "needs": [
+          "Gosuslugi yoki Ozon Bank",
+          "INN va SNILS"
+        ]
+      },
+      {
+        "title": "Hamkorlik turi va rekvizitlar",
+        "text": "GPX, o'zini o'zi band qilgan yoki yakka tadbirkorni tanlang va hisob rekvizitlarini kiriting. Anketa tekshiruvga ketadi — natija ilovaga keladi.",
+        "needs": [
+          "GPX shartnomasi · o'zini o'zi band qilgan · yakka tadbirkor",
+          "Ozon Bank kartasi — to'lovlar tezroq**"
+        ]
+      },
+      {
+        "title": "Slotga yozilish",
+        "text": "Tekshiruvdan keyin 4–12 soatlik slotni band qiling va oferta shartnomasini qabul qiling. Hujjatlarni o'zingiz bilan olib keling.",
+        "needs": [
+          "4–12 soatlik slot",
+          "Pasport, SNILS, INN"
+        ]
+      },
+      {
+        "title": "O'qitish va birinchi smena",
+        "text": "Birinchi kun — omborda oflayn o'qitish, u to'lanadi. Keyin ma'lumot yig'ish terminali — va ish.",
+        "needs": [
+          "To'lanadigan birinchi kun",
+          "3 soatdan to'lov**"
+        ]
+      }
+    ],
+    "promo": {
+      "ad": "Reklama",
+      "kicker": "Ozon Job referal dasturi",
+      "title": "Taklif kodi bilan ro'yxatdan o'ting — bonus shartlar bajarilgach beriladi",
+      "text": "Taklif kodi ilovada kiritiladi. Mukofot o'rnatish uchun emas, tanlangan omborda kerakli summadagi topshiriqlarni bajarganingizdan keyin beriladi — summa aksiyada ko'rsatilgan va omborga bog'liq.",
+      "termsLabel": "Ishtirok shartlari",
+      "terms": [
+        "Ilgari Ozonda ishlamagan bo'lishingiz kerak",
+        "Kod ilovada kiritiladi"
+      ],
+      "codeLabel": "Sizning taklif kodingiz",
+      "copy": "Nusxa olish",
+      "copied": "Nusxa olindi ✓",
+      "codeHint": "Qayerga kiritiladi: bosh sahifada, aksiya sahifasida yoki Profil → Do'stingizni taklif qiling bo'limida",
+      "storesLabel": "Ozon Job ni ilovalar do'konidan yuklab oling",
+      "stepsLabel": "Bonusni qanday olish mumkin",
+      "steps": [
+        {
+          "title": "Ozon Job ni yuklab oling",
+          "text": "Ilovani oching va «Qo'shilish» tugmasini bosing."
+        },
+        {
+          "title": "Ro'yxatdan o'ting",
+          "text": "Gosuslugi yoki Ozon Bank orqali, INN va SNILS ni kiriting, omborni tanlang."
+        },
+        {
+          "title": "Kodni kiriting",
+          "text": "Bosh sahifada, aksiya sahifasida yoki Profil → Do'stingizni taklif qiling bo'limida."
+        },
+        {
+          "title": "Shartlarni bajaring",
+          "text": "Slotga yoziling va aksiyada ko'rsatilgan summadagi topshiriqlarni bajaring."
+        }
+      ],
+      "warn": "Muhim: faqat ilgari Ozonda ishlamagan kishi qatnasha oladi. Agar siz Ozon bilan hamkorlik qilgan bo'lsangiz — aksiya mavjud emas. Shartlar va summalarni Ozon belgilaydi va ular o'zgarishi mumkin.",
+      "note": "Reklama. Biz mustaqil axborot saytimiz, Ozon emas. Bizning kod orqali ro'yxatdan o'tsangiz, biz Ozondan mukofot olishimiz mumkin. [Reklama beruvchi ma'lumotlari: F.I.SH./nomi, INN]",
+      "bonus": "Kodni kiriting va <sum>{amount, number} ₽</sum> oling*",
+      "condition": "* Bonus aksiya shartlari bajarilgach beriladi: omborga bog'liq summadagi topshiriqlar."
+    },
+    "heroCity": "Shaharni tanlash",
+    "heroBonus": "{amount, number} ₽ olish",
+    "friend": {
+      "eyebrow": "Do'stingizni taklif qiling",
+      "title": "Taklif kodi qanday ishlaydi",
+      "lead": "Harakatlar tartibi va qoidalar — Ozon Job ma'lumotnomasi bo'yicha: taklif qilinganlar va taklif qiluvchilar uchun.",
+      "invited": {
+        "kicker": "Sizni taklif qilishdi",
+        "title": "Kodni qanday qo'llash kerak",
+        "steps": [
+          {
+            "title": "Ozon Job da ro'yxatdan o'ting",
+            "text": "Gosuslugi yoki Ozon Bank orqali. Taklif qilinishi mumkin bo'lgan kishi — ilgari Ozonda ishlamagan."
+          },
+          {
+            "title": "Kodni qo'llang",
+            "text": "Bosh sahifada, aksiya sahifasida yoki Profil → Do'stingizni taklif qiling bo'limida: kodni kiriting va «Qo'llash» tugmasini bosing."
+          },
+          {
+            "title": "Slotlarga yoziling",
+            "text": "Yoziling va omborda operatsiyalarni bajaring."
+          },
+          {
+            "title": "Jarayonni kuzating",
+            "text": "Kerakli summagacha qancha qolgani — aksiya sahifasida."
+          }
+        ]
+      },
+      "inviter": {
+        "kicker": "Siz taklif qilasiz",
+        "title": "Mukofotni qanday olish mumkin",
+        "steps": [
+          {
+            "title": "Slotga chiqing",
+            "text": "Kamida bitta slotda topshiriqlarni bajargan bo'lsangiz, taklif yuborish mumkin."
+          },
+          {
+            "title": "Aksiyani oching",
+            "text": "Shaxsiy kabinetda «Do'stingizni taklif qiling» aksiyasini bosing."
+          },
+          {
+            "title": "Kodni yuboring",
+            "text": "Do'stingizga aksiyadagi kod yoki taklif mos keladi."
+          },
+          {
+            "title": "Mukofotni oling",
+            "text": "Do'stingiz kerakli summada operatsiyalarni bajargach. U soliqlar ushlab qolingan holda keladi — To'lovlar → Operatsiyalar bo'limida ko'ring."
+          }
+        ]
+      },
+      "rulesTitle": "Nimalarni bilish muhim",
+      "rules": [
+        {
+          "title": "Summa omborga bog'liq",
+          "text": "Do'stingiz ma'lum summada operatsiyalarni bajarishi kerak. U birinchi yozilish uchun tanlagan ombordagi operatsiyalar hisobga olinadi."
+        },
+        {
+          "title": "Ombor aksiyadan chiqdi",
+          "text": "Jarayoningiz saqlanadi — topshiriqlar hisobga olinaveradi."
+        },
+        {
+          "title": "Do'st summani yig'a olmadi",
+          "text": "Summa yig'ilmasa va shartnoma bekor qilinsa, mukofot berilmaydi."
+        },
+        {
+          "title": "Yangi shartnoma — yangi kod",
+          "text": "Shartnoma qayta imzolansa, kod o'zgaradi. Eski kod bo'yicha taklif qilingan do'stlar uchun mukofot berilmaydi."
+        }
+      ],
+      "note": "Mukofot miqdori va shartlar ombor va aksiyaga bog'liq — ularni ilovada ko'ring. Ozon ma'lumotnomasida mukofot taklif qiluvchi uchun tasvirlangan.",
+      "noteLink": "Shartlar va ishtirokchi omborlar ro'yxati →"
+    },
+    "pay": {
+      "eyebrow": "Pul",
+      "title": "To'lovlar qanday hisoblanadi va qachon keladi",
+      "lead": "Ozon Job ma'lumotnomasi bo'yicha. Muddatlar reyting darajasi va karta bankiga bog'liq.",
+      "formulaLabel": "Slot uchun to'lov qanday hisoblanadi",
+      "formula": [
+        {
+          "title": "Piklar",
+          "text": "Ma'lumot yig'ish terminalidagi har bir operatsiya — bitta «pik»"
+        },
+        {
+          "title": "Tarif",
+          "text": "Tovarning o'lchami, hajmi va og'irligiga bog'liq. Tariflar dinamik"
+        },
+        {
+          "title": "Mukofot",
+          "text": "Slot uchun summa — soliq va ushlab qolishlardan oldin"
+        }
+      ],
+      "taxTitle": "Yakuniy summadan soliq va ushlab qolishlar chegiriladi.",
+      "taxText": "GPX bo'yicha soliqni Ozon ushlab qoladi va to'laydi, o'zini o'zi band qilganlar va yakka tadbirkorlar o'zlari to'laydi.",
+      "timesTitle": "Pul qachon keladi",
+      "times": [
+        {
+          "big": "3 soat",
+          "title": "«Новичок» va «Бриллиант»",
+          "text": "Pul slot tugaganidan 3 soat o'tib Ozon Bank kartasiga o'zi keladi."
+        },
+        {
+          "big": "12 soat",
+          "title": "Reytingning boshqa darajalari",
+          "text": "Ozon Bank kartasiga — slot tugaganidan 12 soat o'tib."
+        },
+        {
+          "big": "1 soat",
+          "title": "«Бриллиант»: qo'lda yechish",
+          "text": "Soatiga bir marta: To'lovlar → «Pulni yechish». 5 daqiqa ichida tushadi. Ozon Bank kartasi kerak."
+        },
+        {
+          "big": "Sesh",
+          "title": "Boshqa banklar kartalari",
+          "text": "Haftada bir marta, seshanba kuni. Seshanba bayram bo'lsa, to'lov undan keyingi birinchi ish kunida keladi."
+        }
+      ],
+      "fastTag": "eng tez",
+      "timesNote": "Ozon Bank bayram kunlari ham to'laydi. Hisob slot tugaganidan boshlanadi.",
+      "tipsTitle": "Nimalarga e'tibor berish kerak",
+      "tips": [
+        {
+          "title": "Kutilayotgan to'lov",
+          "text": "Ombor kartochkasida — 1 soat va 12 soatlik slot uchun, «Бриллиант» darajasining o'rtacha daromadi bo'yicha. O'z darajangiz uchun — yozilishda «Tarif» tugmasi. Bu kafolat emas."
+        },
+        {
+          "title": "Batafsil hisob",
+          "text": "Batafsil hisob-kitob ilovada slotdan keyingi kuni paydo bo'ladi."
+        },
+        {
+          "title": "Birinchi kun",
+          "text": "O'qitish «Поддержка на старте» aksiyasi bo'yicha to'lanadi — to'liq slot kabi emas. Chiqishdan oldingi onlayn kurslar ko'proq pik qilishga yordam beradi."
+        },
+        {
+          "title": "Taymer",
+          "text": "Vaqt bo'yicha operatsiyalar soatbay to'lanadi: boshida taymerni yoqing, oxirida o'chiring — aks holda to'lov kelmaydi."
+        },
+        {
+          "title": "Tariflar o'zgaradi",
+          "text": "To'lov xizmat ko'rsatilgan paytdagi tarif bo'yicha, yozilgan paytdagi bo'yicha emas: u ombordagi yuklamaga qarab o'sadi va tushadi."
+        },
+        {
+          "title": "Reyting darajasi",
+          "text": "«Новичок»dan «Бриллиант»gacha: to'lov muddatlari unga bog'liq. Daraja obyektlarda 55 soatdan keyin ko'rinadi, ballar oxirgi 30 kun uchun hisoblanadi."
+        }
+      ],
+      "note": "Ozon Job ma'lumotnomasi (docs.ozon.ru) bo'yicha, {date} holatiga tekshirilgan. Shartlar o'zgarishi mumkin."
+    },
+    "firstDay": {
+      "eyebrow": "Birinchi chiqish",
+      "title": "Nimani olib kelish kerak va birinchi kun qanday o'tadi",
+      "lead": "Hujjatlar va birinchi kun tartibi — Ozon Job ma'lumotnomasi bo'yicha.",
+      "docsTitle": "Birinchi chiqish uchun hujjatlar",
+      "docs": [
+        {
+          "name": "Pasport",
+          "note": ""
+        },
+        {
+          "name": "SNILS",
+          "note": "elektron ko'rinishda bo'lishi mumkin"
+        },
+        {
+          "name": "INN",
+          "note": "elektron ko'rinishda bo'lishi mumkin"
+        },
+        {
+          "name": "Vaqtinchalik ro'yxatga olish hujjati",
+          "note": "agar bo'lsa"
+        },
+        {
+          "name": "Ma'lumotnoma №086U va ota-onaning roziligi",
+          "note": "faqat 18 yoshga to'lmagan bo'lsangiz (rozilik namunasi — ofertada)"
+        }
+      ],
+      "progress": "Yig'ildi:",
+      "docsNote": "Xorijiy fuqarolar uchun — pasport va RFda bo'lish asosini tasdiqlovchi hujjat. Omborlar uchun tibbiy daftarcha talab qilinmaydi; agar bor bo'lsa — o'zingiz bilan oling.",
+      "dayTitle": "Chiqishdan oldin va birinchi kuni",
+      "day": [
+        {
+          "title": "Onlayn kurslar",
+          "text": "Ilovada belgilangan kurslarni tugating (Bosh sahifa → Majburiy o'qitish). Kursning muddati bo'lsa — yozilishdan kamida 3 soat oldin, aks holda yozilish bekor bo'ladi."
+        },
+        {
+          "title": "Yo'l",
+          "text": "Slotdan 30 daqiqa oldin keling: nazorat punktidan o'tish va kiyim almashtirish kerak. Omborga o'zingiz yoki transportda borishingiz mumkin — agar omborda nishon bo'lsa."
+        },
+        {
+          "title": "Ruxsatnoma",
+          "text": "Ruxsatnomalar bo'limida vaqtinchalik ruxsatnoma oling — o'qitish bo'limiga qanday borishni u yerda aytishadi."
+        },
+        {
+          "title": "O'qitish va TSD",
+          "text": "Ombor qoidalari va tanlangan operatsiyalar; keyin ma'lumot yig'ish terminali beriladi. Hujjatlarni unutgan bo'lsangiz — slotga qayta yoziling va ularni olib keling."
+        }
+      ],
+      "note": "Ozon Job ma'lumotnomasi (docs.ozon.ru) bo'yicha, {date} holatiga tekshirilgan: «Birinchi chiqish uchun hujjatlar», «Birinchi chiqish»."
+    },
+    "types": {
+      "eyebrow": "Rasmiylashtirish",
+      "title": "GPX, o'zini o'zi band qilish, yakka tadbirkor yoki shtat",
+      "taxLabel": "Soliqlar",
+      "items": [
+        {
+          "name": "GPX",
+          "tax": "Soliqni Ozon ushlab qoladi va to'laydi",
+          "note": "Ozon bilan shartnoma, mehnat munosabatlarisiz. Har bir slotdan keyin ko'rsatilgan xizmatlar dalolatnomalari tuziladi."
+        },
+        {
+          "name": "O'zini o'zi band qilish",
+          "tax": "Soliqni o'zingiz to'laysiz (FNS, «Mening soliqim»)",
+          "note": "Omborlarda oyiga 8 tagacha slot: 3 oy ketma-ket oshirilsa, GPXga o'tish taklif qilinadi. Oxirgi 2 yil Ozon guruhida ishlagan bo'lsangiz, mavjud emas."
+        },
+        {
+          "name": "Yakka tadbirkor",
+          "tax": "Soliqni o'zingiz to'laysiz",
+          "note": "Maqomni oldindan rasmiylashtirish kerak — FNS orqali, Gosuslugi yoki bank orqali."
+        },
+        {
+          "name": "Shtat (TK RF)",
+          "tax": "Soliqni ish beruvchi to'laydi",
+          "note": "Tajribali ijrochilar uchun: 18 yoshdan oshgan RF fuqarolari, bitta obyektda qat'iy jadval. Ariza — ilovada."
+        }
+      ],
+      "note": "Hamkorlik turini faqat RF fuqarolari o'zgartira oladi va butun davr mobaynida 4 martadan ko'p emas. Ozon Job ma'lumotnomasi bo'yicha, {date} holatiga tekshirilgan."
+    }
   },
   "Promo": {
     "title": "Ilovani o'rnatganlik uchun bonus",

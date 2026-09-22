@@ -12,12 +12,14 @@
     html {
         -webkit-text-size-adjust: 100%;
         text-size-adjust: 100%;
+        // плавная прокрутка к якорям (#id) — задаётся на <html>: это он прокручивается, а не <body>
+        scroll-behavior: smooth;
     }
 
     /* [hidden] не должен проигрывать .flex / .block и т.п. */
     [hidden] { display: none !important; }
 
-    ul, menu, dialog { padding: 0; margin: 0; }
+    ul, ol, menu, dialog { padding: 0; margin: 0; }
     li { list-style-type: none; }
     dialog { border: 0; background: none; max-width: initial; max-height: initial; }
     h1, h2, h3, h4 { margin: 0; line-height: 1.2; }
@@ -33,7 +35,6 @@
         min-height: 100vh;  /* запасной вариант для старых браузеров */
         min-height: 100dvh;
 
-        scroll-behavior: smooth;
         scrollbar-gutter: stable;
         scrollbar-width: thin;
         scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);

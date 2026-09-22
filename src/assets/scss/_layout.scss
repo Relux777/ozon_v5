@@ -10,11 +10,16 @@
         z-index: 9;
     }
 
-    .flex {
-        display: flex;
+    .flex { display: flex; }
+    // строчный вариант (кнопки, метки, «таблетки»): те же модификаторы, что и у .flex
+    .inline-flex { display: inline-flex; }
+
+    .flex,
+    .inline-flex {
         flex-wrap: wrap;
         // f-w-* необязательно должен стоять первым в className
         > :is([class^='f-w-'], [class*=' f-w-']) { padding-inline: 10px; position: relative; }
+
         &.align-center { align-items: center; }
         &.align-flex-end { align-items: flex-end; }
         &.align-start { align-items: flex-start; }
@@ -39,6 +44,14 @@
         &.row-reverse { flex-direction: row-reverse; }
     }
 
+    .grid { 
+        display: grid; 
+        &.justify-i-center {justify-items: center;}
+        &.place-center { place-items: center; }
+        // строки не растягиваются, а прижаты к началу (карточки с текстом «сверху вниз»)
+        &.content-start { align-content: start; }
+        &.rows-auto-1fr { grid-template-rows: auto minmax(0, 1fr); }
+    }
 
 
     .flex-1 { flex: 1; }
@@ -46,8 +59,9 @@
     .shrink-0 { flex-shrink: 0; }
     .block { display: block; }
     .inline-block { display: inline-block; }
-    .grid { display: grid; }
     .none { display: none; }
+    
+    .container-type-inline {container-type: inline-size;}
 
     @for $i from 1 through 12 {
         .f-w-#{$i} { width: math.percentage(math.div($i, 12)); }

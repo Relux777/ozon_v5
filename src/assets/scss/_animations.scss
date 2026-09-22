@@ -3,7 +3,50 @@
 // :hover работает только на устройствах с мышью (см. mixins.hover).
 // На сенсорных экранах тот же эффект показывается на время нажатия (mixins.touch-press),
 // поэтому классы .translate_0_5 / .scale_0_1 / .hover-* дают отклик и на телефоне.
+// ── «Парение» ────────────────────────────────────────────────────────────────
+// Картинка плавно поднимается и опускается (.float), а тень под ней синхронно сжимается и бледнеет,
+// когда картинка выше, и растёт, когда ниже (.float-shadow). Обе анимации — с одним `alternate`-циклом.
+//
+// Почему так (актуально на 2026):
+//  • анимируются только `translate`, `scale` и `opacity` — это compositor-свойства: без перерисовки и layout,
+//    работают в отдельном потоке, не тормозят при загруженном JS;
+//  • отдельные свойства `translate`/`scale` (не `transform`) не конфликтуют с другими трансформациями
+//    элемента (hover, rotate и т.п.) — они складываются;
+//  • тень — статичный градиент, а не `box-shadow`/`filter: blur` (их анимация дорогая);
+//  • `ease-in-out` + `alternate` даёт плавные «остановки» на краях (у линейной анимации был бы рывок);
+//  • при `prefers-reduced-motion: reduce` анимация отключается полностью.
+//
+// Настройка через CSS-переменные на самом элементе или на родителе:
+//   --float-distance  (амплитуда, по умолчанию -12px: вверх)
+//   --float-duration  (полпериода, по умолчанию 3s)
+//   --float-shadow-scale / --float-shadow-opacity (минимум тени)
+@keyframes float-y {
+    from { translate: 0 0; }
+    to   { translate: 0 var(--float-distance, -12px); }
+}
+
+@keyframes float-shadow {
+    from { scale: 1; opacity: 1; }
+    to   { scale: var(--float-shadow-scale, 0.8); opacity: var(--float-shadow-opacity, 0.55); }
+}
+
 @layer animations {
+    .float,
+    .float-shadow {
+        animation-duration: var(--float-duration, 2s);
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+    .float { animation-name: float-y; }
+    .float-shadow { animation-name: float-shadow; }
+
+    // после объявления animation-name, иначе имя перебьёт `none`
+    @media (prefers-reduced-motion: reduce) {
+        .float,
+        .float-shadow { animation: none; }
+    }
+
     .translate_0_2 {
         @include mixins.hover { transform: translate(0px, -2px); }
         @include mixins.touch-press { transform: translate(0px, -2px); }

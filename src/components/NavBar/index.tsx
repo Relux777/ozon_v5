@@ -24,7 +24,7 @@ export default function NavBarComponent() {
     return (
         <div className={`p-fixed w-full z-10 ${styles.nav}`}>
             <nav className="flex justify-center align-center gap-5 p-events-none">
-                <ul className={`flex nowrap overflow-hidden p-relative br-36 shadow-1 blur-7 p-events-all ${styles.ul} ${styles.home}`}>
+                <ul className={`flex nowrap overflow-hidden p-relative br-36 shadow-1 blur-7 p-events-all bg-1-7 ${styles.ul} ${styles.home}`}>
                     {NavBarLink.map((link) => {
                         const Icon = link.icon;
                         const isActive = link.href === '/'

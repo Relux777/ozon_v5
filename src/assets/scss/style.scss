@@ -1,12 +1,615 @@
+@use "mixins";
+
+// ── Шаги («Как выйти на первую смену») ───────────────────────────────────────────────────────
+// Раскладка берётся из утилит ReluxCode (.grid .rows-auto-1fr .place-center .gap-14 .p-relative …),
+// здесь — только то, чего в ReluxCode нет: линия между шагами, container query и scroll-анимации.
+//
+//   <div class="container-type-inline">          ← по ширине этого контейнера переключается раскладка
+//     <ol class="stepper grid">
+//       <li class="stepper-item p-relative grid rows-auto-1fr gap-14" style="--i: 0">
+//         <span class="stepper-node p-relative z-1 grid place-center w-46 h-46 br-round font-18 font-w-700 …">1</span>
+//         <div class="stepper-card grid gap-8 content-start h-full …">…</div>
+//       </li>
+//     </ol>
+//   </div>
+// .container-type-inline нельзя делать дочерним элементом `.flex` (ширина схлопнется).
+// Размер узла (w-46/h-46) должен совпадать с --stepper-node: от него считается положение линии.
+
+// Заливка линии: масштаб от 0 до 1 вдоль линии (по горизонтали или вертикали — см. --stepper-fx/-fy)
+@keyframes stepper-fill {
+    from { scale: var(--stepper-fx, 0) var(--stepper-fy, 1); }
+    to { scale: 1 1; }
+}
+
+// Появление шага
+@keyframes stepper-rise {
+    from { opacity: 0; translate: 0 22px; }
+}
+
+.stepper {
+    --stepper-node: 46px;
+    --stepper-gap: 20px;
+
+    grid-template-columns: repeat(var(--stepper-cols, 4), minmax(0, 1fr));
+    gap: var(--stepper-gap);
+}
+
+.stepper-item {
+    // направление заливки линии: по горизонтали (широкий экран) или по вертикали (см. @container ниже)
+    --stepper-fx: 0;
+    --stepper-fy: 1;
+
+    // именованная шкала прокрутки: заливку линии ведёт весь шаг, а не сама двухпиксельная линия
+    view-timeline: --step block;
+
+    // линия до следующего шага: серая основа (::before) и цветная заливка поверх (::after)
+    &:not(:last-child)::before,
+    &:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: calc(var(--stepper-node) / 2 - 1px);
+        left: calc(var(--stepper-node) + 8px);
+        width: calc(100% + var(--stepper-gap) - var(--stepper-node) - 16px);
+        height: 2px;
+        border-radius: 2px;
+    }
+
+    &:not(:last-child)::before {
+        background: rgb(var(--bg-2) / 12%);
+    }
+
+    &:not(:last-child)::after {
+        background: rgb(var(--bg-5));
+        transform-origin: left center;
+    }
+
+    // активный шаг: поднимается и номер, и карточка
+    @include mixins.hover {
+        .stepper-node {
+            translate: 0 -4px;
+            scale: 1.08;
+            background: rgb(var(--bg-5));
+            color: rgb(var(--bg-6));
+        }
+
+        .stepper-card {
+            translate: 0 -4px;
+            box-shadow: 0 22px 40px -26px rgb(var(--bg-5) / 60%);
+        }
+    }
+}
+
+.stepper-node {
+    border: 2px solid rgb(var(--bg-5) / 55%);
+    // «ореол» вокруг узла
+    box-shadow: 0 0 0 6px rgb(var(--bg-5) / 10%);
+    transition: translate 0.25s, scale 0.25s, background 0.2s, color 0.2s;
+}
+
+.stepper-card {
+    transition: translate 0.25s, box-shadow 0.25s;
+
+    > * {
+        margin: 0;
+    }
+}
+
+// Узкий контейнер (планшет/телефон): шаги друг под другом, линия — вертикальная слева
+@container (max-width: 780px) {
+    .stepper {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .stepper-item {
+        --stepper-fx: 1;
+        --stepper-fy: 0;
+
+        grid-template-columns: var(--stepper-node) minmax(0, 1fr);
+        grid-template-rows: auto;
+        align-items: start;
+        column-gap: 14px;
+        padding-bottom: 14px;
+
+        &:not(:last-child)::before,
+        &:not(:last-child)::after {
+            top: calc(var(--stepper-node) + 6px);
+            left: calc(var(--stepper-node) / 2 - 1px);
+            width: 2px;
+            height: calc(100% - var(--stepper-node) - 6px);
+        }
+
+        &:not(:last-child)::after {
+            transform-origin: center top;
+        }
+    }
+}
+
+// Scroll-driven анимации — только там, где поддерживаются и не отключены в системе.
+// Без них линия просто полностью залита, карточки видны сразу.
+// Все диапазоны — только «entry» (шаг въезжает в экран), чтобы заливка гарантированно
+// завершалась и у шагов внизу страницы, куда уже нельзя прокрутить дальше.
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .stepper-item {
+            animation: stepper-rise linear both;
+            animation-timeline: --step;
+            animation-range: entry calc(var(--i, 0) * 4%) entry calc(45% + var(--i, 0) * 4%);
+
+            &:not(:last-child)::after {
+                scale: var(--stepper-fx) var(--stepper-fy);
+                animation: stepper-fill linear both;
+                animation-timeline: --step;
+                animation-range: entry calc(10% + var(--i, 0) * 6%) entry calc(70% + var(--i, 0) * 6%);
+            }
+        }
+    }
+}
+
+// ── Реферальная программа (секция #promo на главной) ────────────────────────────────────────
+// Раскладка и типографика — утилитами ReluxCode в разметке; здесь только оформление блока:
+// синий градиент с белым текстом (одинаково в светлой и тёмной теме), «стекло», «купон», кнопки.
+// Блок сам — контейнер (`container-type-inline` в разметке): число колонок у шагов задаётся его
+// шириной, а не шириной окна. Для телефона: колонки .f-w-* сами становятся 100% (см. ReluxCode),
+// кнопки на всю ширину, магазины — сеткой «сколько влезет».
+.promo {
+    display: grid;
+    gap: 20px;
+    padding: clamp(18px, 4vw, 40px);
+    background: linear-gradient(135deg, #0044c2 0%, #005bff 45%, #3f9bff 100%);
+    color: rgb(255 255 255 / 90%);
+    box-shadow: 0 40px 80px -40px rgb(var(--bg-5) / 80%);
+
+    > * { min-width: 0; }
+    p { margin: 0; }
+    h2, h3 { color: #fff; }
+
+    // мягкие световые пятна на фоне (за содержимым: у .promo есть .isolate)
+    &::before,
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    &::before {
+        top: -140px;
+        right: -100px;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(closest-side, rgb(255 255 255 / 26%), transparent);
+    }
+
+    &::after {
+        bottom: -160px;
+        left: -120px;
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(closest-side, rgb(0 20 90 / 45%), transparent);
+    }
+}
+
+// у колонок .f-w-* внутри .flex есть padding-inline:10px — компенсируем, чтобы край совпадал с остальным блоком
+.promo-top {
+    margin-inline: -10px;
+    row-gap: 24px;
+}
+
+.promo-kicker { opacity: 0.9; }
+
+// пометка «Реклама» — на виду, а не мелким шрифтом внизу
+.promo-badge {
+    padding-block: 3px;
+    border: 1px solid rgb(255 255 255 / 35%);
+    background: rgb(255 255 255 / 20%);
+    line-height: 1.4;
+}
+
+.promo-title {
+    font-size: clamp(24px, 4vw, 36px);
+    line-height: 1.12;
+}
+
+.promo-text { color: rgb(255 255 255 / 88%); }
+
+// условия участия — «чипы» с галочкой
+.promo-terms li {
+    padding: 6px 12px 6px 8px;
+    background: rgb(255 255 255 / 14%);
+
+    &::before {
+        content: '✓';
+        display: grid;
+        place-items: center;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background: #fff;
+        color: #005bff;
+        font-size: 12px;
+        font-weight: 700;
+    }
+}
+
+// «купон»: стеклянная карточка с кодом и ссылками на магазины приложений
+.promo-coupon {
+    padding: clamp(14px, 3vw, 20px);
+    border: 1px dashed rgb(255 255 255 / 45%);
+    background: rgb(255 255 255 / 12%);
+    backdrop-filter: blur(8px);
+}
+
+.promo-label,
+.promo-hint { color: rgb(255 255 255 / 80%); }
+
+// белая «таблетка» с кодом — читается на синем
+.promo-code {
+    padding: 6px 6px 6px 18px;
+    background: #fff;
+    color: #0a1f44;
+    box-shadow: 0 6px 20px -8px rgb(0 0 0 / 35%);
+
+    code {
+        min-width: 0;
+        overflow-wrap: anywhere;
+        user-select: all;
+    }
+}
+
+.promo-copy {
+    min-height: 40px;
+    padding-inline: 16px;
+    background: #005bff;
+    color: #fff;
+    opacity: 1;
+    transition: background 0.2s, scale 0.15s;
+
+    @include mixins.hover { background: #0047cc; }
+    @include mixins.touch-press { scale: 0.96; }
+}
+
+// сумма бонуса, обведённая зелёным
+.promo-sum {
+    border: 2px solid #3ddc84;
+    background: rgb(61 220 132 / 16%);
+    color: #fff;
+    white-space: nowrap;
+}
+
+// кнопки магазинов: сколько влезет в ряд (на телефоне — 2–3 в строке)
+.promo-stores { grid-template-columns: repeat(auto-fit, minmax(88px, 1fr)); }
+
+.promo-store {
+    border: 1px solid rgb(255 255 255 / 30%);
+    background: rgb(255 255 255 / 16%);
+    color: #fff;
+    opacity: 1;
+    text-align: center;
+    transition: translate 0.2s, background 0.2s, scale 0.15s;
+
+    @include mixins.hover {
+        translate: 0 -2px;
+        background: rgb(255 255 255 / 26%);
+    }
+
+    @include mixins.touch-press { scale: 0.97; }
+}
+
+// переход по якорю «Получить …» из первого экрана: не прятать блок под шапкой и коротко подсветить купон
+#promo { scroll-margin-top: calc(var(--header-h, 60px) + 12px); }
+
+@keyframes promo-pulse {
+    from { box-shadow: 0 0 0 0 rgb(61 220 132 / 70%); }
+    to { box-shadow: 0 0 0 18px rgb(61 220 132 / 0%); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    #promo:target .promo-coupon { animation: promo-pulse 1s ease-out 0.5s 2; }
+}
+
+// шаги: колонки выбирает сам блок (container query)
+.promo-steps {
+    grid-template-columns: 1fr;
+
+    li {
+        border: 1px solid rgb(255 255 255 / 20%);
+        background: rgb(255 255 255 / 12%);
+        backdrop-filter: blur(8px);
+        transition: translate 0.25s, background 0.25s, box-shadow 0.25s;
+
+        @include mixins.hover {
+            translate: 0 -4px;
+            background: rgb(255 255 255 / 18%);
+            box-shadow: 0 18px 30px -20px rgb(0 20 90 / 70%);
+        }
+
+        // последний шаг — «цель»: белая карточка
+        &:last-child {
+            border-color: transparent;
+            background: #fff;
+            color: rgb(10 31 68 / 80%);
+
+            h3 { color: #0a1f44; }
+            .promo-num { background: #005bff; color: #fff; }
+            .promo-ghost { color: rgb(0 91 255 / 10%); }
+        }
+    }
+
+    @container (min-width: 480px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @container (min-width: 820px) {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+        // «стрелка» к следующему шагу
+        li:not(:last-child)::after {
+            content: '›';
+            position: absolute;
+            top: 14px;
+            right: 12px;
+            font-size: 22px;
+            line-height: 1;
+            color: rgb(255 255 255 / 55%);
+        }
+    }
+}
+
+// крупная «призрачная» цифра в углу карточки
+.promo-ghost {
+    right: 10px;
+    bottom: -14px;
+    font-size: 84px;
+    line-height: 1;
+    color: rgb(255 255 255 / 10%);
+}
+
+.promo-num {
+    background: #fff;
+    color: #0044c2;
+}
+
+.promo-condition { color: rgb(255 255 255 / 90%); }
+
+.promo-warn {
+    padding: 12px 14px;
+    background: rgb(255 255 255 / 14%);
+    color: #fff;
+}
+
+.promo-note { color: rgb(255 255 255 / 75%); }
+
+// ── Блоки ниже промо: приглашение, выплаты, первый день ──────────────────────────────────────
+// Раскладка и типографика — утилитами ReluxCode в разметке; здесь только то, чего в ReluxCode нет.
+
+// 3D-иконка в шапке карточки (картинки — прозрачные PNG)
+.role-img {
+    width: 64px;
+    height: auto;
+    --float-distance: -4px;
+    --float-duration: 2s;
+}
+
+// нумерованный список коротких шагов: номер — счётчиком, между номерами линия
+.mini-steps {
+    counter-reset: mini;
+
+    li {
+        padding-left: 44px;
+        counter-increment: mini;
+
+        &::before {
+            content: counter(mini);
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: grid;
+            place-items: center;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgb(var(--bg-5) / 14%);
+            color: rgb(var(--bg-5));
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 34px;
+            bottom: -10px;
+            left: 14px;
+            width: 2px;
+            border-radius: 2px;
+            background: rgb(var(--bg-5) / 18%);
+        }
+    }
+}
+
+// фото рядом с блоками выплат: держится на месте, пока читаются карточки справа (только на широком экране)
+
+@media (width >= 990px) {
+    .pay-photo-wrap {
+        position: sticky;
+        top: calc(var(--header-h, 60px) + 20px);
+    }
+}
+
+// на телефоне портретное фото обрезаем, чтобы не занимало весь экран
+@media (width < 990px) {
+    .pay-photo {
+        aspect-ratio: 4 / 3;
+        object-position: center 30%;
+    }
+}
+
+// формула «пики × тариф = вознаграждение»: в широком контейнере — в ряд, в узком — столбиком
+.formula {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: stretch;
+
+    @container (max-width: 560px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+// сроки выплат — одна линия из 4 карточек: без верхних отступов внутри ленты метка «быстрее всего» и подъём карточки при
+// наведении обрезались бы, поэтому у ленты есть запас сверху (компенсирован отрицательным margin)
+.time-row {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding-top: 12px;
+    margin-top: -12px;
+
+    li { line-height: 1.35; }
+}
+
+.time-tag { top: -10px; }
+
+// самая быстрая выплата — с акцентной рамкой и подложкой
+.time-fast {
+    border-color: rgb(var(--bg-5) / 60%);
+    background: rgb(var(--bg-5) / 8%);
+}
+
+// телефон: не сжимаем в 4 узкие колонки, а делаем ленту со свайпом (следующая карточка выглядывает)
+@media (width < 620px) {
+    .time-row {
+        grid-template-columns: none;
+        grid-auto-flow: column;
+        grid-auto-columns: minmax(200px, 72%);
+        overflow-x: auto;
+        overscroll-behavior-x: contain;
+        scroll-snap-type: x mandatory;
+
+        li { scroll-snap-align: start; }
+    }
+}
+
+// аккордеон «на что обратить внимание» (нативный <details>, работает без JS)
+.tip {
+    transition: background 0.2s, border-color 0.2s;
+
+    summary {
+        padding: 14px 16px;
+        list-style: none;
+
+        &::-webkit-details-marker { display: none; }
+
+        // плюс, который при открытии превращается в минус
+        &::after {
+            content: '+';
+            flex-shrink: 0;
+            font-size: 22px;
+            font-weight: 400;
+            line-height: 1;
+            color: rgb(var(--bg-5));
+            transition: rotate 0.25s;
+        }
+    }
+
+    p {
+        margin: 0;
+        padding: 0 16px 16px;
+    }
+
+    &[open] {
+        background: rgb(var(--bg-5) / 8%);
+
+        summary::after { rotate: 45deg; }
+    }
+}
+
+// чек-лист документов: настоящие чекбоксы (работают без JS), выбранный пункт зачёркивается
+.docs { counter-reset: done; }
+
+.doc {
+    padding: 10px 12px;
+    transition: background 0.2s;
+
+    @include mixins.hover { background: rgb(var(--bg-5) / 10%); }
+}
+
+// сам чекбокс скрыт визуально, но доступен с клавиатуры и скринридерам
+.doc-input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+
+    &:checked { counter-increment: done; }
+    &:focus-visible + .doc-box { outline: 2px solid rgb(var(--bg-5)); outline-offset: 2px; }
+
+    &:checked + .doc-box {
+        border-color: rgb(var(--bg-5));
+        background: rgb(var(--bg-5));
+
+        &::after {
+            opacity: 1;
+            scale: 1;
+        }
+    }
+
+    &:checked ~ span .doc-name {
+        text-decoration: line-through;
+        opacity: 0.55;
+    }
+}
+
+.doc-box {
+    width: 24px;
+    height: 24px;
+    margin-top: 1px;
+    border: 2px solid rgb(var(--bg-5) / 55%);
+    transition: background 0.2s, border-color 0.2s;
+
+    &::after {
+        content: '✓';
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        opacity: 0;
+        scale: 0.5;
+        transition: opacity 0.2s, scale 0.2s;
+    }
+}
+
+.doc-name { transition: opacity 0.2s; }
+
+// счётчик «выбрано / всего»: --total задаётся в разметке строкой
+.docs-count::after { content: counter(done) ' / ' var(--total); }
 
 main {
     position: relative;
     section:first-of-type {
         .container {
-            min-height: calc(100dvh - 200px);
-            h1 {    font-size: clamp(30px, 5.4vw, 45px);}
+            min-height: calc(100dvh - 60px);
+            .home-img {
+                --float-distance: -14px;
+                --float-duration: 2s;
+
+                img {
+                    max-width: 340px;
+                    height: auto;
+                }
+
+                .shadow {
+                    width: 62%;
+                    max-width: 220px;
+                    border-radius: 50%;
+                    background: radial-gradient(closest-side, rgb(var(--bg-5) / 55%), rgb(var(--bg-5) / 0%));
+                }
+            }
         }
     }
+
     .checks-li {
         li::before {
         content: "✓";
@@ -25,4 +628,35 @@ main {
 
         }
     }
+
+    // Последний шаг — акцентный, «цель» пути
+    .stepper-item:last-child {
+        .stepper-node {
+            border-color: transparent;
+            background: rgb(var(--bg-5));
+            color: rgb(var(--bg-6));
+        }
+
+        .stepper-card {
+            border-color: transparent;
+            background: linear-gradient(140deg, #005bff 0%, #3f9bff 100%);
+            box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
+            color: rgb(255 255 255 / 90%);
+
+            h3,
+            .stepper-label {
+                color: #fff;
+            }
+
+            .pill {
+                background: rgb(255 255 255 / 18%);
+                color: #fff;
+            }
+        }
+    }
+
+    h1 {font-size: clamp(30px, 5.4vw, 45px);}
+    h2 {font-size: clamp(23px, 4vw, 32px);}
+
+
 }
