@@ -1,37 +1,29 @@
 // Партнёрская программа: пользователь устанавливает приложение и вводит промокод.
 //
-// Код и сумма бонуса живут ТОЛЬКО в .env.local (PROMO_CODE, PROMO_USER_BONUS) — в коде значений по
-// умолчанию нет, чтобы на сайт никогда не попал придуманный код или сумма. Если переменной нет,
-// сборка/запуск упадёт с понятным сообщением.
+// Значения — прямо здесь, без .env: их редко меняют, а так проще редактировать и видно сразу,
+// что нужно заменить перед публикацией.
 //
 // ВАЖНО перед публикацией:
-//  1. Сверьте условия акции в актуальных правилах программы: сумма бонуса, срок, кто и когда его получает.
+//  1. Замените CODE и USER_BONUS на реальные и сверьте условия акции в актуальных правилах программы:
+//     сумма бонуса, срок, кто и когда его получает.
 //  2. Не публикуйте сумму вашего вознаграждения — только то, что получает пользователь.
-//
-// Файл читается только на сервере (в клиентские компоненты значения передаются пропсами).
 
-function required(name: string): string {
-    const value = process.env[name]?.trim();
-    if (!value) {
-        throw new Error(`[config/promo] не задана переменная окружения ${name} — добавьте её в .env.local`);
-    }
-    return value;
-}
+/** Промокод — пример, замените на свой */
+const CODE = 'J485DG';
+
+/** Сколько получает пользователь, ₽ — пример, сверьте с правилами акции */
+const USER_BONUS = 2000;
 
 /** Официальная страница приложения Ozon Job: кнопка «Скачать» сама ведёт в нужный магазин */
 const OFFICIAL_APP_PAGE = 'https://job.ozon.ru/app';
 
-const userBonus = Number(required('PROMO_USER_BONUS'));
-if (!Number.isFinite(userBonus) || userBonus <= 0) {
-    throw new Error('[config/promo] PROMO_USER_BONUS должна быть положительным числом (рубли), например 2000');
-}
+/** Ссылка для страниц городов; пусто — используется официальная страница выше. Сюда можно вписать свою реферальную ссылку */
+const APP_URL = '';
 
 export const PROMO = {
-    code: required('PROMO_CODE'),
-    /** сколько получает пользователь, ₽ */
-    userBonus,
-    /** ссылка на приложение для страниц городов; по умолчанию — официальная страница, можно подставить реферальную ссылку */
-    appUrl: process.env.PROMO_APP_URL || OFFICIAL_APP_PAGE,
+    code: CODE,
+    userBonus: USER_BONUS,
+    appUrl: APP_URL || OFFICIAL_APP_PAGE,
 } as const;
 
 /**
@@ -42,21 +34,28 @@ export const APP_STORES = [
     {
         id: 'appStore',
         name: 'App Store',
-        url: process.env.PROMO_URL_APPSTORE || 'https://apps.apple.com/ru/app/ozon-job/id6498711171',
+        url: 'https://apps.apple.com/ru/app/ozon-job/id6498711171',
     },
     {
         id: 'googlePlay',
         name: 'Google Play',
-        url: process.env.PROMO_URL_GOOGLEPLAY || 'https://play.google.com/store/apps/details?id=ru.ozon.hire',
+        url: 'https://play.google.com/store/apps/details?id=ru.ozon.hire',
     },
     {
         id: 'ruStore',
         name: 'RuStore',
-        url: process.env.PROMO_URL_RUSTORE || 'https://www.rustore.ru/catalog/app/ru.ozon.hire',
+        url: 'https://www.rustore.ru/catalog/app/ru.ozon.hire',
     },
     {
         id: 'appGallery',
         name: 'AppGallery',
-        url: process.env.PROMO_URL_APPGALLERY || '',
+        url: '',
     },
 ] as const;
+
+// Ozon Карта — реферальная ссылка «Приведи друга» из Ozon Банка (другая программа, не PROMO выше).
+// Ссылка персональная (выдаётся в приложении банка): Ozon Банк → Выгода → Пригласите друзей.
+// Сверено 2026-09-23: https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral
+export const CARD = {
+    url: 'https://ozon.ru/fintech/promo/ref/Q8Z2WF91J',
+} as const;

@@ -381,6 +381,96 @@
 
 .promo-note { color: rgb(255 255 255 / 75%); }
 
+// белая кнопка на градиенте .promo (для CTA, где не подходит .promo-copy — та скруглена под пару к .promo-code)
+.promo-btn {
+    height: 46px;
+    padding-inline: 24px;
+    border-radius: 36px;
+    background: #fff;
+    color: #0a2a6b;
+    font-weight: 500;
+    opacity: 1;
+    transition: translate 0.2s, scale 0.15s;
+
+    @include mixins.hover { translate: 0 -2px; }
+    @include mixins.touch-press { scale: 0.97; }
+}
+
+// прозрачная кнопка-«призрак» рядом с .promo-btn — вторым действием (открыть, а не скопировать)
+.promo-btn-outline {
+    border: 1px solid rgb(255 255 255 / 55%);
+    color: #fff;
+    opacity: 1;
+    transition: translate 0.2s, background 0.2s;
+
+    @include mixins.hover {
+        translate: 0 -2px;
+        background: rgb(255 255 255 / 12%);
+    }
+}
+
+// ── Ozon Карта: мини-макет карты, на неё внахлёст — QR (секция #card) ─────────────────────────
+// QR лежит внутри .card-visual (position:relative) и торчит за нижний правый угол — компактнее
+// по высоте, чем карта и QR друг под другом. margin-bottom у карты — место под выступающий QR,
+// иначе он перекрывал бы соседний контент снизу.
+.card-visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+    margin-bottom: 56px;
+    aspect-ratio: 1.586;
+    padding: 22px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #0a1f44 0%, #005bff 70%, #79b8ff 120%);
+    color: #fff;
+    box-shadow: 0 20px 40px -24px rgb(0 20 90 / 70%);
+    rotate: -4deg;
+}
+
+.card-chip {
+    width: 42px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #ffe08a, #d9a441);
+}
+
+.card-brand {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.card-number {
+    font-size: 15px;
+    letter-spacing: 0.14em;
+    opacity: 0.9;
+}
+
+// белая карточка с QR — заходит на нижний правый угол карты; наклон в другую сторону для живости
+.card-qr {
+    position: absolute;
+    z-index: 1;
+    right: -14px;
+    bottom: -56px;
+    width: 38%;
+    max-width: 132px;
+    padding: 10px;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 20px 40px -20px rgb(0 20 90 / 70%);
+    rotate: 4deg;
+}
+
+.card-qr-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
 // ── Блоки ниже промо: приглашение, выплаты, первый день ──────────────────────────────────────
 // Раскладка и типографика — утилитами ReluxCode в разметке; здесь только то, чего в ReluxCode нет.
 
@@ -446,6 +536,11 @@
     }
 }
 
+// правая колонка #pay — грид с одной неявной колонкой (auto): без min-width:0 браузер меряет
+// ширину колонки по самому широкому потомку (формула на всю ширину) и раздувает секцию вбок
+// на телефоне (тот же приём, что и `.promo > * { min-width: 0; }` выше для блока #promo).
+#pay .f-w-8 > * { min-width: 0; }
+
 // формула «пики × тариф = вознаграждение»: в широком контейнере — в ряд, в узком — столбиком
 .formula {
     grid-template-columns: 1fr auto 1fr auto 1fr;
@@ -474,18 +569,9 @@
     background: rgb(var(--bg-5) / 8%);
 }
 
-// телефон: не сжимаем в 4 узкие колонки, а делаем ленту со свайпом (следующая карточка выглядывает)
+// телефон: без прокрутки — те же 4 карточки сеткой 2×2
 @media (width < 620px) {
-    .time-row {
-        grid-template-columns: none;
-        grid-auto-flow: column;
-        grid-auto-columns: minmax(200px, 72%);
-        overflow-x: auto;
-        overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory;
-
-        li { scroll-snap-align: start; }
-    }
+    .time-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 // аккордеон «на что обратить внимание» (нативный <details>, работает без JS)

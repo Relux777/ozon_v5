@@ -436,6 +436,43 @@
         }
       ],
       "note": "Hamkorlik turini faqat RF fuqarolari o'zgartira oladi va butun davr mobaynida 4 martadan ko'p emas. Ozon Job ma'lumotnomasi bo'yicha, {date} holatiga tekshirilgan."
+    },
+    "card": {
+      "ad": "Reklama",
+      "kicker": "Ozon Bank · Debet kartasi",
+      "title": "Bizning havola orqali Ozon Kartani rasmiylashtiring — 25% gacha keshbek",
+      "text": "Ozon Bankning bepul debet kartasi: ochish va xizmat ko'rsatish — 0 ₽, to'ldirish va o'tkazmalar uchun komissiyasiz. U bilan Ozon tashqarisida to'lang — 25% gacha rublda keshbek yoki 1 ₽ ga mahsulotlar oling, Ozonning o'zida esa — 30% gacha chegirma.",
+      "perksLabel": "Karta afzalliklari",
+      "perks": [
+        "Ozon tashqarisidagi xaridlar uchun 25% gacha keshbek yoki 1 ₽ ga mahsulotlar",
+        "Ozonda xaridlar uchun 30% gacha chegirma",
+        "Bepul: ochish, xizmat ko'rsatish, to'ldirish va o'tkazmalar"
+      ],
+      "copy": "Havolani nusxalash",
+      "copied": "Nusxalandi ✓",
+      "openLink": "Havolani ochish",
+      "qrLabel": "Taklif QR-kodi",
+      "stepsLabel": "Keshbekni qanday olish mumkin",
+      "steps": [
+        {
+          "title": "Havola yoki QR-kod orqali o'ting",
+          "text": "Ozon Bankda hisobingiz bo'lmasa — havola orqali shu yerda ro'yxatdan o'tasiz."
+        },
+        {
+          "title": "Kartani buyurtma qiling",
+          "text": "O'tishdan keyin 72 soat ichida. Ulgurmadingizmi — muammo emas, shu havolani yana oching."
+        },
+        {
+          "title": "Faollashtiring va 5 ta xarid qiling",
+          "text": "45 kun ichida — karta bilan, Ozon tashqarisida, QR-kod va SBP orqali emas."
+        },
+        {
+          "title": "Keshbek oling",
+          "text": "25% gacha rublda yoki 1 ₽ ga mahsulotlar — keshbek to'lanadigan kuni."
+        }
+      ],
+      "warn": "Havola «yonib ketmaydi»: kartani 72 soat ichida buyurtma qilishga ulgurmadingizmi — shu havolani yana oching, hisob qaytadan boshlanadi. Keshbek, chegirmalar va xizmat ko'rsatish shartlari — karta tarifiga ko'ra, o'zgarishi mumkin.",
+      "note": "Reklama. Biz mustaqil axborot saytimiz, Ozon ham, Ozon Bank ham emasmiz. Havola referal: agar siz karta orqali rasmiylashtirsangiz, bank bizga mukofot to'lashi mumkin — bu sizning keshbekingizga ta'sir qilmaydi. «Ozon Karta» xizmatini «OZON Bank» MChJ taqdim etadi, Rossiya banki litsenziyasi № 3542, 12.04.2023."
     }
   },
   "Promo": {

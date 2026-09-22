@@ -8,6 +8,7 @@ import type { Metadata } from 'next';
 import { Fragment, type CSSProperties } from 'react';
 import { Link } from '@/i18n/navigation';
 import CopyCode from '../_test/CopyCode';
+import CopyLink from '../_test/CopyLink';
 import styles from './test1.module.scss';
 
 export const metadata: Metadata = {
@@ -27,10 +28,47 @@ const PROMO = {
     appUrl: '#', // ссылка на скачивание приложения Ozon Job (реферальная)
 };
 
+// Ozon Карта — реферальная ссылка «Приведи друга» из Ozon Банка (не путать с «Приведите друга» в
+// Ozon Job выше — разные программы, разные ссылки и правила). Пишем блок от лица читателя: это ОН
+// переходит по нашей ссылке и получает кешбэк, а не «вы» (заголовок «Вам 800 ₽» вводил в заблуждение —
+// это сумма, которую получаем МЫ как пригласившие, читателю её никто не даёт).
+// Сверено 2026-09-23: https://finance.ozon.ru (тариф карты) и
+// https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral (реферальная программа).
+//
+// ВНИМАНИЕ: ссылка персональная (выдаётся в приложении банка), наше вознаграждение — тоже:
+// «Размер выплаты определяется индивидуально» (написано прямо в справке Ozon Банка). Подставьте свою
+// ссылку из Ozon Банк → Выгода → Пригласите друзей — там же смотрите точную сумму и историю начислений.
 const CARD = {
-    url: '#', // реферальная ссылка на оформление Ozon Карты
-    promo: 'CARD-XXXX', // что ввести при оформлении, если акция требует (заглушка)
+    url: '#', // ваша персональная ссылка-приглашение (или доверьте кнопке «Поделиться» в приложении)
+    friendGets: 'кешбэк до 25% или товары за 1 ₽', // условия для того, кто оформит карту по ссылке — сверьте в приложении
 };
+
+// Почему вообще стоит оформить (по тарифу карты на finance.ozon.ru)
+const CARD_PERKS = [
+    'Кешбэк до 25% или товары за 1 ₽ за покупки вне Ozon',
+    'Скидки до 30% на покупки на Ozon',
+    'Бесплатно: открытие, обслуживание, пополнение и переводы',
+];
+
+// Шаги — от лица читателя: это он переходит по ссылке и получает кешбэк
+const CARD_STEPS = [
+    {
+        title: 'Перейдите по ссылке или QR-коду',
+        text: 'Если аккаунта в Ozon Банке ещё нет — зарегистрируетесь тут же, по ссылке.',
+    },
+    {
+        title: 'Закажите карту',
+        text: 'В течение 72 часов после перехода. Не успели — ничего страшного, откройте ту же ссылку ещё раз.',
+    },
+    {
+        title: 'Активируйте и оплатите 5 покупок',
+        text: 'В течение 45 дней — картой, вне Ozon, не по QR-коду и не через СБП.',
+    },
+    {
+        title: 'Получите кешбэк',
+        text: 'До 25% рублями или товары за 1 ₽ — в дату выплаты кешбэка.',
+    },
+];
 
 const DOCS_URL = 'https://docs.ozon.ru/job-ff-help';
 
@@ -231,13 +269,6 @@ const TYPES = [
     { name: 'Штат (ТК РФ)', tax: 'Работодатель', note: 'Для опытных исполнителей: граждане РФ старше 18 лет, фиксированный график на один объект.' },
 ];
 
-const CARD_FEATURES = [
-    'Выплаты за слоты — на карту Ozon Банка, через 3 часа**',
-    '«Бриллиант» выводит деньги каждый час, поступление — в течение 5 минут**',
-    'Ozon Банк платит и в праздничные дни; другие банки — по вторникам**',
-    'Кешбэк и проценты — по тарифам банка',
-];
-
 const CITIES = [
     ['moscow', 'Москва'],
     ['saint-petersburg', 'Санкт-Петербург'],
@@ -292,6 +323,10 @@ const FAQ = [
         q: 'Оплачивается ли обучение?',
         a: 'Да. Первый день на складе — обучение, оно проходит офлайн и оплачивается; для новичков действует акция «Поддержка на старте». После обучения выдают терминал сбора данных.',
     },
+    {
+        q: 'Ссылка на Ozon Карту — это то же самое, что код приглашения Ozon Job?',
+        a: 'Нет, это две разные программы. Код приглашения Ozon Job — про работу на складе. Ссылка на Ozon Карту — реферальная ссылка «Приведи друга» из Ozon Банка: если вы оформите по ней карту, закажете её, активируете и оплатите ей 5 покупок вне Ozon в течение 45 дней, получите кешбэк до 25% или товары за 1 ₽ — банк может выплатить вознаграждение и нам, но на ваш кешбэк это не влияет. Ссылка персональная и не «сгорает»: если 72 часа на заказ карты истекут, по ней можно перейти ещё раз.',
+    },
 ];
 
 const SOURCES = [
@@ -303,6 +338,7 @@ const SOURCES = [
     ['Расчёт выплат', `${DOCS_URL}/payments/payout/rewards/`],
     ['Документы для первого выхода', `${DOCS_URL}/shifts/documents/`],
     ['Уровни и баллы', `${DOCS_URL}/rating/rating/`],
+    ['Приведи друга (Ozon Банк)', 'https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral'],
 ] as const;
 
 export default function Test1Page() {
@@ -788,51 +824,80 @@ export default function Test1Page() {
                 </div>
             </section>
 
-            {/* ───────── 9. OZON КАРТА ───────── */}
+            {/* ───────── 9. OZON КАРТА: ПРИВЕДИ ДРУГА ───────── */}
             <section className={styles.section} id="card">
                 <div className="container">
-                    <div className={`flex align-center ${styles.cardBlock}`}>
-                        <div className="f-w-6">
-                            <div className={styles.cardVisual}>
-                                <span className={styles.cardChip} />
-                                <span className={styles.cardBrand}>Ozon Карта</span>
-                                <span className={styles.cardNumber}>•••• •••• •••• 0000</span>
+                    <div className={styles.promo}>
+                        <div className={`flex align-center ${styles.promoTop}`}>
+                            <div className="f-w-7">
+                                <p className={styles.promoKicker}>
+                                    <span className={styles.adBadge}>Реклама</span>
+                                    Ozon Банк · Дебетовая карта
+                                </p>
+                                <h2 className={styles.promoTitle}>Оформите Ozon Карту по нашей ссылке — кешбэк до 25%</h2>
+                                <p className={styles.promoText}>
+                                    Бесплатная дебетовая карта Ozon Банка: открытие и обслуживание — 0 ₽, без комиссии за пополнение
+                                    и переводы. Платите ей вне Ozon — получайте кешбэк до 25% рублями или товары за 1 ₽, а на самом
+                                    Ozon — скидки до 30%.
+                                </p>
+
+                                <ul className={styles.terms} aria-label="Преимущества карты">
+                                    {CARD_PERKS.map((perk) => (
+                                        <li key={perk}>{perk}</li>
+                                    ))}
+                                </ul>
+
+                                <div className={`flex align-center gap-10 mb-15 ${styles.promoActions}`}>
+                                    <CopyLink url={CARD.url} className={`${styles.btn} ${styles.btnLight}`} />
+                                    <a
+                                        href={CARD.url}
+                                        className={`${styles.btn} ${styles.btnOutline}`}
+                                        target="_blank"
+                                        rel="sponsored nofollow noopener noreferrer"
+                                    >
+                                        Открыть ссылку
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className="f-w-5">
+                                <div className={styles.cardMedia}>
+                                    <div className={styles.cardVisual}>
+                                        <span className={styles.cardChip} />
+                                        <span className={styles.cardBrand}>Ozon Карта</span>
+                                        <span className={styles.cardNumber}>•••• •••• •••• 0000</span>
+                                    </div>
+                                    <div className={styles.qrCard}>
+                                        {/* заглушка: замените на настоящий QR-код с вашей ссылкой-приглашением */}
+                                        <div className={styles.qrFrame} role="img" aria-label="QR-код с приглашением">
+                                            <span>QR-код</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="f-w-6">
-                            <p className={styles.kicker}>Реклама · Ozon Банк</p>
-                            <h2 className={styles.h2}>Ozon Карта: деньги за смену — быстрее</h2>
-                            <p className="mb-15">
-                                Если в приложении указаны реквизиты карты Ozon Банка, выплаты за слоты приходят в срок от 3 часов, а не
-                                раз в неделю, как на карты других банков.
-                            </p>
+                        <ol className={styles.promoSteps}>
+                            {CARD_STEPS.map((step, index) => (
+                                <li key={step.title} style={{ '--i': index } as CSSProperties}>
+                                    <span className={styles.promoGhost} aria-hidden="true">{index + 1}</span>
+                                    <span className={styles.promoNum} aria-hidden="true">{index + 1}</span>
+                                    <b>{step.title}</b>
+                                    <span>{step.text}</span>
+                                </li>
+                            ))}
+                        </ol>
 
-                            <ul className={`${styles.checks} ${styles.checksDark}`}>
-                                {CARD_FEATURES.map((item) => (
-                                    <li key={item}>{item}</li>
-                                ))}
-                            </ul>
+                        <p className={styles.promoWarn}>
+                            Ссылка не «сгорает»: не успели заказать карту за 72 часа — откройте эту же ссылку ещё раз, отсчёт
+                            начнётся заново. Кешбэк, скидки и условия обслуживания — по тарифу карты, могут меняться.
+                        </p>
 
-                            <div className={`flex align-center gap-10 mb-15 ${styles.actions}`}>
-                                <a
-                                    href={CARD.url}
-                                    className={`${styles.btn} ${styles.btnPrimary}`}
-                                    target="_blank"
-                                    rel="sponsored nofollow noopener noreferrer"
-                                >
-                                    Оформить Ozon Карту
-                                </a>
-                                <span className={styles.cardPromo}>
-                                    В акции укажите: <b>{CARD.promo}</b>
-                                </span>
-                            </div>
-
-                            <p className={styles.note}>
-                                Реклама. Условия обслуживания, кешбэк и проценты — по тарифам Ozon Банка. [Наименование
-                                рекламодателя, реквизиты, данные о лицензии банка — по требованиям закона о рекламе.]
-                            </p>
-                        </div>
+                        <p className={styles.promoNote}>
+                            Реклама. Мы — независимый информационный сайт, не Ozon и не Ozon Банк. Ссылка реферальная: если вы
+                            оформите карту по ней, банк может выплатить нам вознаграждение — на ваш кешбэк это не влияет. Услугу
+                            «Ozon Карта» предоставляет ООО «ОЗОН Банк», лицензия Банка России № 3542 от 12.04.2023.
+                        </p>
                     </div>
                 </div>
             </section>

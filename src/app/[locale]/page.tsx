@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Fragment, type CSSProperties } from 'react';
 import { getFormatter, getTranslations } from 'next-intl/server';
-import { APP_STORES, PROMO } from '@/config/promo';
+import { APP_STORES, CARD, PROMO } from '@/config/promo';
 import CopyCode from '@/components/CopyCode';
+import CopyLink from '@/components/CopyLink';
 import { Link } from '@/i18n/navigation';
 import { getLocaleFromParams } from '@/i18n/params';
 import { buildPageMetadata, generateJsonLd } from '@/lib/seo';
@@ -23,6 +24,7 @@ import InviteIcon1 from '@/assets/img/invitation/1.png';
 import InviteIcon2 from '@/assets/img/invitation/2.png';
 import DocsIcon1 from '@/assets/img/documents/1.png';
 import DocsIcon2 from '@/assets/img/documents/2.png';
+import CardQr from '@/assets/svg/card-qr.svg';
 
 // Порядок картинок = порядок элементов HomePage.stats в messages/*.json
 const STAT_IMAGES = [
@@ -85,6 +87,8 @@ export default async function HomePage({ params }: Props) {
     const docs = t.raw('firstDay.docs') as { name: string; note: string }[];
     const dayOne = t.raw('firstDay.day') as Titled[];
     const typeItems = t.raw('types.items') as { name: string; tax: string; note: string }[];
+    const cardPerks = t.raw('card.perks') as string[];
+    const cardSteps = t.raw('card.steps') as Titled[];
     // кнопки магазинов без ссылки не показываем
     const stores = APP_STORES.filter((store) => store.url);
     const format = await getFormatter({ locale });
@@ -194,10 +198,10 @@ export default async function HomePage({ params }: Props) {
                                 <p className='promo-text max-w-60-ch'>{t('promo.text')}</p>
                                 <ul className='promo-terms flex gap-8' aria-label={t('promo.termsLabel')}>
                                     {promoTerms.map((term) => (
-                                        <li className='inline-flex align-center gap-8 br-36 font-14' key={term}>{term}</li>
+                                        <li className='inline-flex nowrap align-center gap-8 br-36 font-14' key={term}>{term}</li>
                                     ))}
-                                    {/* сумму бонуса обводим зелёным; значение берётся из PROMO_USER_BONUS */}
-                                    <li className='inline-flex align-center gap-8 br-36 font-14'>
+                                    {/* сумму бонуса обводим зелёным; значение берётся из config/promo.ts */}
+                                    <li className='inline-flex nowrap align-center gap-8 br-36 font-14'>
                                         <span>
                                             {t.rich('promo.bonus', {
                                                 amount: PROMO.userBonus,
@@ -309,7 +313,7 @@ export default async function HomePage({ params }: Props) {
                             {/* фото держится на месте, пока читаются блоки справа */}
                             <div className='pay-photo-wrap'>
                                 <Image
-                                    className='br-36 w-full cover'
+                                    className='pay-photo br-36 w-full cover'
                                     src={PayPhoto}
                                     alt=''
                                     sizes='(max-width: 990px) 100vw, 380px'
@@ -442,6 +446,66 @@ export default async function HomePage({ params }: Props) {
                         ))}
                     </ul>
                     <p className='font-12'>{t('types.note', { date: dataDate })}</p>
+                </div>
+            </section>
+            <section className='py-20' id='card'>
+                <div className='container'>
+                    <div className='promo p-relative isolate overflow-hidden br-32 container-type-inline'>
+                        <div className='promo-top flex align-center'>
+                            <div className='f-w-7 grid gap-15 content-start'>
+                                <p className='promo-kicker flex align-center gap-8 text-uppercase letter-s-8 font-12'>
+                                    <span className='promo-badge inline-flex align-center px-10 br-36 letter-s-6'>{t('card.ad')}</span>
+                                    {t('card.kicker')}
+                                </p>
+                                <h2 className='promo-title text-balance'>{t('card.title')}</h2>
+                                <p className='promo-text max-w-60-ch'>{t('card.text')}</p>
+
+                                <ul className='promo-terms flex gap-8' aria-label={t('card.perksLabel')}>
+                                    {cardPerks.map((perk) => (
+                                        <li className='inline-flex nowrap align-center gap-8 br-36 font-14' key={perk}>{perk}</li>
+                                    ))}
+                                </ul>
+
+                                <div className='flex align-center gap-10 mb-15'>
+                                    <CopyLink url={CARD.url} copyLabel={t('card.copy')} copiedLabel={t('card.copied')} className='promo-btn flex align-center justify-center' />
+                                    <a
+                                        href={CARD.url}
+                                        className='promo-btn-outline flex align-center justify-center h-46 px-24 br-36 font-w-500'
+                                        target='_blank'
+                                        rel='sponsored nofollow noopener noreferrer'
+                                    >
+                                        {t('card.openLink')}
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div className='f-w-5'>
+                                {/* QR наезжает на нижний правый угол карты — компактнее по высоте, чем два блока друг под другом */}
+                                <div className='card-visual'>
+                                    <span className='card-chip' />
+                                    <span className='card-brand'>Ozon Карта</span>
+                                    <span className='card-number'>•••• •••• •••• 0000</span>
+                                    <div className='card-qr'>
+                                        <CardQr className='card-qr-image' role='img' aria-label={t('card.qrLabel')} />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ol className='promo-steps grid gap-12' aria-label={t('card.stepsLabel')}>
+                            {cardSteps.map((step, i) => (
+                                <li className='p-relative overflow-hidden grid gap-8 content-start br-20 pd-20 font-14' key={step.title}>
+                                    <span className='promo-ghost p-absolute font-w-700 p-events-none u-select-none' aria-hidden='true'>{i + 1}</span>
+                                    <span className='promo-num grid place-center w-36 h-36 br-round font-w-700' aria-hidden='true'>{i + 1}</span>
+                                    <h3 className='font-16'>{step.title}</h3>
+                                    <p>{step.text}</p>
+                                </li>
+                            ))}
+                        </ol>
+
+                        <p className='promo-warn br-20 font-14'>{t('card.warn')}</p>
+                        <p className='promo-note font-12'>{t('card.note')}</p>
+                    </div>
                 </div>
             </section>
             <section className='py-20'>

@@ -165,10 +165,6 @@ $strong: rgb(var(--bg-2) / 90%);
     }
 }
 
-.checksDark li {
-    font-size: 14px;
-}
-
 .trust {
     margin: 0;
 
@@ -461,7 +457,9 @@ $strong: rgb(var(--bg-2) / 90%);
     display: grid;
     justify-items: center;
     gap: 12px;
-    max-width: min(100%, 240px);
+    // ширина явная (не max-width): у родителя `justify-items: center`, поэтому без подписи под QR
+    // (единственного «широкого» потомка) карточка сжималась по содержимому — до размера текста-заглушки
+    width: min(100%, 240px);
     margin-inline: auto;
     padding: 16px;
     border-radius: 28px;
@@ -675,10 +673,15 @@ $strong: rgb(var(--bg-2) / 90%);
     color: rgb(255 255 255 / 75%);
 }
 
-// ── Ozon Карта ───────────────────────────────────────────────────────────────
-.cardBlock {
-    padding: clamp(18px, 3vw, 32px) 0;
-    row-gap: 24px;
+// ── Ozon Карта: «Приведи друга» ────────────────────────────────────────────────
+// Раздел оформлен так же, как реферальный блок Ozon Job выше (.promo/.promoSteps/.terms) —
+// это тоже промо-блок с шагами и условиями, только программа и правила у него свои (Ozon Банк).
+
+// колонка с картинкой: маленькая карта поверх QR — стопкой, по центру
+.cardMedia {
+    display: grid;
+    justify-items: center;
+    gap: 20px;
 }
 
 .cardVisual {
@@ -686,15 +689,15 @@ $strong: rgb(var(--bg-2) / 90%);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 380px;
+    width: 100%;
+    max-width: 320px;
     aspect-ratio: 1.586;
-    margin-inline: auto;
     padding: 22px;
     border-radius: 22px;
     background: linear-gradient(135deg, #0a1f44 0%, #005bff 70%, #79b8ff 120%);
     color: #fff;
-    box-shadow: 0 30px 60px -30px rgb(var(--bg-5) / 80%);
-    transform: rotate(-4deg);
+    box-shadow: 0 20px 40px -24px rgb(0 20 90 / 70%);
+    rotate: -4deg;
 }
 
 .cardChip {
@@ -715,12 +718,6 @@ $strong: rgb(var(--bg-2) / 90%);
     opacity: 0.9;
 }
 
-.cardPromo {
-    padding: 8px 14px;
-    border-radius: 36px;
-    border: 1px dashed rgb(var(--bg-5) / 60%);
-    font-size: 13px;
-}
 
 // ── Шаги: «степпер» (горизонтальный на десктопе, вертикальный на узком контейнере) ──────────
 // Приёмы 2026: container query вместо media (реагирует на ширину блока, а не окна), линия прогресса

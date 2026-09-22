@@ -436,6 +436,43 @@
         }
       ],
       "note": "Əməkdaşlıq növünü yalnız RF vətəndaşları dəyişə bilər və bütün dövr ərzində 4 dəfədən çox olmamaq şərti ilə. Ozon Job məlumat mərkəzinə görə, {date} tarixinə yoxlanılıb."
+    },
+    "card": {
+      "ad": "Reklam",
+      "kicker": "Ozon Bank · Debet kartı",
+      "title": "Bizim linklə Ozon Kartı əldə edin — 25%-ə qədər keşbek",
+      "text": "Ozon Bankın pulsuz debet kartı: açılış və xidmət — 0 ₽, hesab artırma və köçürmələr üçün komissiyasız. Onunla Ozondan kənarda ödəniş edin — 25%-ə qədər rubl keşbek və ya 1 ₽-ə mallar əldə edin, Ozonun özündə isə — 30%-ə qədər endirim.",
+      "perksLabel": "Kartın üstünlükləri",
+      "perks": [
+        "Ozondan kənar alışlar üçün 25%-ə qədər keşbek və ya 1 ₽-ə mallar",
+        "Ozonda alışlara 30%-ə qədər endirim",
+        "Pulsuz: açılış, xidmət, hesab artırma və köçürmələr"
+      ],
+      "copy": "Linki kopyala",
+      "copied": "Kopyalandı ✓",
+      "openLink": "Linki aç",
+      "qrLabel": "Dəvət QR-kodu",
+      "stepsLabel": "Keşbeki necə əldə etmək olar",
+      "steps": [
+        {
+          "title": "Link və ya QR-kodla keçin",
+          "text": "Ozon Bankda hesabınız yoxdursa — birbaşa link vasitəsilə qeydiyyatdan keçəcəksiniz."
+        },
+        {
+          "title": "Kart sifariş edin",
+          "text": "Keçiddən sonra 72 saat ərzində. Vaxtında çatdırmasanız — problem deyil, elə bu linki yenidən açın."
+        },
+        {
+          "title": "Aktivləşdirin və 5 alış edin",
+          "text": "45 gün ərzində — kartla, Ozondan kənarda, QR-kod və ya SFO ilə deyil."
+        },
+        {
+          "title": "Keşbek əldə edin",
+          "text": "25%-ə qədər rubl və ya 1 ₽-ə mallar — keşbekin ödənildiyi tarixdə."
+        }
+      ],
+      "warn": "Link «yanmır»: kartı 72 saat ərzində sifariş etməyə vaxtınız çatmadısa — elə bu linki yenidən açın, hesablama yenidən başlayacaq. Keşbek, endirimlər və xidmət şərtləri kartın tarifinə görədir, dəyişə bilər.",
+      "note": "Reklam. Biz müstəqil məlumat saytıyıq, nə Ozonuq, nə də Ozon Bank. Link referaldır: kartı onunla rəsmiləşdirsəniz, bank bizə mükafat ödəyə bilər — bu sizin keşbekinizə təsir etmir. «Ozon Kart» xidmətini «OZON Bank» MMC təqdim edir, Rusiya Bankının lisenziyası № 3542, 12.04.2023."
     }
   },
   "Promo": {
