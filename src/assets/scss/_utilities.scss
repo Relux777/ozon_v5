@@ -1,13 +1,13 @@
 // Шкалы ниже можно переопределить при подключении, не трогая этот файл:
 //   @use "utilities" with ($pd-sizes: (0, 5, 10, 20), $gap-sizes: (4, 8));
 $transitions: (2: 0.2s, 3: 0.3s, 4: 0.4s, 5: 0.5s) !default;
-$pd-sizes: 0, 10, 20 !default;
+$pd-sizes: 0, 5, 10, 20 !default;
 $pb-sizes: 0, 12 !default;
 $pt-sizes: 0 !default;
 $pr-sizes: 0 !default;
 $pl-sizes: 0, 10, 20, 30 !default;
 $px-sizes: 0, 10, 16, 24 !default;
-$py-sizes: 0, 4, 20 !default;
+$py-sizes: 0, 4, 5, 20 !default;
 $md-sizes: 0 !default;
 $mb-sizes: 0, 5, 7, 10, 15, 20 !default;
 $mt-sizes: 0, 7, 15 !default;
@@ -16,9 +16,9 @@ $ml-sizes: 0 !default;
 $mx-sizes: 0 !default;
 $my-sizes: 0 !default;
 $t-sizes: 0, 10 !default;
-$b-sizes: 0 !default;
+$b-sizes: 0, 20 !default;
 $l-sizes: 0 !default;
-$r-sizes: 0, 10 !default;
+$r-sizes: 0, 10, 20 !default;
 $border-radius-sizes: 8, 20, 32, 36 !default;
 $gap-sizes: 2, 3, 5, 7, 8, 10, 12, 14, 15 !default;
 $font-sizes: 12, 14, 16, 18, 22, 24, 36 !default;

@@ -4,7 +4,7 @@ import { routing } from '@/i18n/routing';
 import { getCitiesWithWarehouses } from '@/lib/sklad';
 import { SITE_CONFIG } from '@/config/site';
 
-// /a — заглушка (noindex). Города без адресов складов тоже не включаем: у них noindex.
+// /stocks — заглушка «В разработке» (noindex). Города без адресов складов тоже не включаем: у них noindex.
 const STATIC_PAGES = ['/', '/menu', '/sklad'];
 
 export default function sitemap(): MetadataRoute.Sitemap {

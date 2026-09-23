@@ -10,7 +10,8 @@
     "themeToggle": "Mavzuni almashtirish",
     "chooseLanguage": "Tilni tanlash",
     "close": "Yopish",
-    "breadcrumbs": "Sahifa yo'li"
+    "breadcrumbs": "Sahifa yo'li",
+    "scrollTop": "Tepaga"
   },
   "LanguageModal": {
     "title": "Tilni tanlang"
@@ -91,10 +92,44 @@
   },
   "MenuPage": {
     "title": "Menyu",
-    "description": "Ozon Ish platformasidagi dolzarb menyu va vakansiyalar."
+    "description": "Ozon Ish platformasidagi dolzarb menyu va vakansiyalar.",
+    "heading": "Menyu",
+    "lead": "Loyiha haqida va foydali havolalar — siyosat, shartnoma, reklama, reyting darajalari va savol-javoblar.",
+    "items": [
+      {
+        "title": "Loyiha haqida",
+        "text": "Biz kimmiz va sayt nega mustaqil",
+        "href": "/menu/about"
+      },
+      {
+        "title": "Maxfiylik siyosati",
+        "text": "Saytga tashrif chog'ida qanday ma'lumotlar saqlanadi",
+        "href": "/menu/privacy"
+      },
+      {
+        "title": "Foydalanuvchi shartnomasi",
+        "text": "Saytdan foydalanish shartlari",
+        "href": "/menu/terms"
+      },
+      {
+        "title": "Reklama va mukofot",
+        "text": "Referal havolalardan qanday daromad topamiz",
+        "href": "/menu/ads"
+      },
+      {
+        "title": "Reyting darajalari",
+        "text": "Reyting to'lovlar va slotlarga qanday ta'sir qiladi",
+        "href": "/menu/level"
+      },
+      {
+        "title": "Savol-javoblar",
+        "text": "Ozon Job orqali ishlash haqida tez-tez so'raladigan savollar",
+        "href": "/menu/support"
+      }
+    ]
   },
   "HomePage": {
-    "pageNavLabel": "Быстрый переход по странице",
+    "pageNavLabel": "Sahifa bo'ylab tezkor o'tish",
     "title": "Ozonda ish: ombor operatori, to'lov har kuni",
     "description": "Ozon ombor operatori vakansiyalari: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir marta. RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan. Noldan o'qitamiz.",
     "heading": "Ozon ombor operatori vakansiyasi: har kuni to'lovli ish",
@@ -331,9 +366,9 @@
       ],
       "fastTag": "eng tez",
       "timesNote": "Ozon Bank bayram kunlari ham to'laydi. Hisob slot tugaganidan boshlanadi.",
-      "levelsLink": "Все уровни рейтинга и как они устроены →",
-      "tipsAllLink": "Все вопросы и ответы →",
-      "tipsEyebrow": "Вопросы",
+      "levelsLink": "Barcha reyting darajalari va ularning tuzilishi →",
+      "tipsAllLink": "Barcha savol-javoblar →",
+      "tipsEyebrow": "Savollar",
       "tipsTitle": "Nimalarga e'tibor berish kerak",
       "tips": [
         {
@@ -368,46 +403,46 @@
       "title": "Nimani olib kelish kerak va birinchi kun qanday o'tadi",
       "lead": "Hujjatlar va birinchi kun tartibi — Ozon Job ma'lumotnomasi bo'yicha.",
       "docsTitle": "Birinchi chiqish uchun hujjatlar",
-      "docsModeLabel": "Как оформляетесь",
+      "docsModeLabel": "Qanday rasmiylashtirasiz",
       "docsModes": [
         {
           "id": "app",
-          "label": "Ozon Job (в приложении)",
+          "label": "Ozon Job (ilovada)",
           "docs": [
             {
-              "name": "Паспорт",
+              "name": "Pasport",
               "note": ""
             },
             {
-              "name": "Справка №086У и согласие родителей",
-              "note": "только если вам меньше 18 (шаблон согласия — в оферте)"
+              "name": "№086U ma'lumotnomasi va ota-onalar roziligi",
+              "note": "faqat 18 yoshga to'lmaganlar uchun (rozilik shabloni ofertada)"
             }
           ]
         },
         {
           "id": "staff",
-          "label": "Штат, официально (ТК РФ)",
+          "label": "Shtat, rasmiy (RF Mehnat kodeksi)",
           "docs": [
             {
-              "name": "Паспорт",
+              "name": "Pasport",
               "note": ""
             },
             {
-              "name": "Трудовая книжка",
-              "note": "если её нет — оформит работодатель"
+              "name": "Mehnat daftarchasi",
+              "note": "bo'lmasa — ish beruvchi rasmiylashtiradi"
             },
             {
-              "name": "СНИЛС",
+              "name": "SNILS",
               "note": ""
             },
             {
-              "name": "Документы воинского учёта",
-              "note": "для военнообязанных"
+              "name": "Harbiy hisob hujjatlari",
+              "note": "harbiy xizmatga majburlar uchun"
             }
           ]
         }
       ],
-      "docsModeNote": "Для Ozon Job (регистрация в приложении) физически нужен только паспорт — ИНН и СНИЛС указываются в анкете, необязательно бумагами. Для штата по трудовому договору — стандартный список по ст. 65 ТК РФ, полный перечень уточнит работодатель.",
+      "docsModeNote": "Ozon Job uchun (ilovada ro'yxatdan o'tish) jismonan faqat pasport kerak — INN va SNILS anketada ko'rsatiladi, qog'ozda shart emas. Mehnat shartnomasi bo'yicha shtatga — RF Mehnat kodeksining 65-moddasiga muvofiq standart ro'yxat, to'liq ro'yxatni ish beruvchi aniqlashtiradi.",
       "progress": "Yig'ildi:",
       "docsNote": "Xorijiy fuqarolar uchun — pasport va RFda bo'lish asosini tasdiqlovchi hujjat. Omborlar uchun tibbiy daftarcha talab qilinmaydi; agar bor bo'lsa — o'zingiz bilan oling.",
       "dayTitle": "Chiqishdan oldin va birinchi kuni",
@@ -496,9 +531,9 @@
       "warn": "Havola «yonib ketmaydi»: kartani 72 soat ichida buyurtma qilishga ulgurmadingizmi — shu havolani yana oching, hisob qaytadan boshlanadi. Keshbek, chegirmalar va xizmat ko'rsatish shartlari — karta tarifiga ko'ra, o'zgarishi mumkin.",
       "note": "Reklama. Biz mustaqil axborot saytimiz, Ozon ham, Ozon Bank ham emasmiz. Havola referal: agar siz karta orqali rasmiylashtirsangiz, bank bizga mukofot to'lashi mumkin — bu sizning keshbekingizga ta'sir qilmaydi. «Ozon Karta» xizmatini «OZON Bank» MChJ taqdim etadi, Rossiya banki litsenziyasi № 3542, 12.04.2023."
     },
-    "sourcesEyebrow": "Источники",
-    "sourcesTitle": "Источники (справка Ozon Job, сверено {date})",
-    "sourcesNote": "Разделы справки, на которые мы ссылаемся на этой странице. Сверено {date}."
+    "sourcesEyebrow": "Manbalar",
+    "sourcesTitle": "Ozon Job ma'lumotnomasi",
+    "sourcesNote": "Ushbu sahifada foydalanilgan ma'lumotnoma bo'limlari. Tekshirilgan sana: {date}."
   },
   "Promo": {
     "title": "Ilovani o'rnatganlik uchun bonus",

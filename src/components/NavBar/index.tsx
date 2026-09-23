@@ -12,7 +12,7 @@ import MenuSVG from '@/assets/svg/menu.svg';
 
 const NavBarLink = [
     { href: '/', labelKey: 'home', icon: HomeSVG },
-    { href: '/a', labelKey: 'promotions', icon: HotSVG },
+    { href: '/stocks', labelKey: 'promotions', icon: HotSVG },
     { href: '/sklad', labelKey: 'warehouses', icon: LocationSVG },
     { href: '/menu', labelKey: 'menu', icon: MenuSVG },
 ] as const;

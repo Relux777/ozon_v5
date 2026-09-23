@@ -19,8 +19,8 @@ import AdvantagesPhoto1  from '@/assets/img/advantages/1.png';
 import AdvantagesPhoto2  from '@/assets/img/advantages/2.png';
 import AdvantagesPhoto3  from '@/assets/img/advantages/3.png';
 import AdvantagesPhoto4  from '@/assets/img/advantages/4.png';
-import AdvantagesPhoto6  from '@/assets/img/advantages/6.png';
-import AdvantagesPhoto5  from '@/assets/img/advantages/5.png';
+import AdvantagesPhoto5  from '@/assets/img/advantages/6.png';
+import AdvantagesPhoto6  from '@/assets/img/advantages/5.png';
 
 import PayPhoto from '@/assets/img/pg3.png';
 import TipsPhoto from '@/assets/img/pg4.webp';
@@ -49,8 +49,8 @@ const PAY_OPS = ['×', '='] as const;
 // Какая карточка сроков получает метку «быстрее всего» (порядок как в HomePage.pay.times)
 const FAST_TIME = 2;
 
-// Источники (справка Ozon Job, docs.ozon.ru) — по разделам главной страницы; названия не переводим,
-// как и в /test1 (ссылки одинаковые для всех языков)
+// Источники (справка Ozon Job, docs.ozon.ru) — по разделам главной страницы; названия не переводим
+// (ссылки одинаковые для всех языков)
 const SOURCES = [
     ['Приведите друга', `${DOCS_URL}/benefits/refferal/`],
     ['Регистрация', `${DOCS_URL}/personal-account/registration/`],
@@ -566,7 +566,7 @@ export default async function HomePage({ params }: Props) {
                                     <span className='card-chip br-8' />
                                     <span className='card-brand font-22 font-w-500'>Ozon Карта</span>
                                     <span className='card-number font-14 letter-s-14 opacity-90'>•••• •••• •••• 0000</span>
-                                    <div className='card-qr p-absolute z-1 pd-10 br-20'>
+                                    <div className='card-qr p-absolute z-1 pd-5 br-20'>
                                         <CardQr className='block w-full br-8' role='img' aria-label={t('card.qrLabel')} />
                                     </div>
                                 </div>

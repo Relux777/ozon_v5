@@ -14,18 +14,18 @@ export default function PageNavModal({ title, items, onNavigate }: Props) {
     return (
         <div className='pd-20'>
             <h2 className='font-18 mb-20'>{title}</h2>
-            <ul className='grid gap-15'>
+            <ul className='grid'>
                 {items.map((item) => (
                     <li className='grid gap-5 pb-12 border-b-1px-1-10' key={item.href}>
                         <p className='color-2-80 font-12'>{item.kicker}</p>
-                        <a href={item.href} onClick={onNavigate} className='page-nav-link block py-4 br-8 pl-10 color-5-100 font-w-500'>
+                        <a href={item.href} onClick={onNavigate} className='page-nav-link block py-5 br-8 pl-10 color-5-100 font-w-500'>
                             {item.title}
                         </a>
                         {item.links && (
                             <ul className='grid gap-1'>
                                 {item.links.map((link) => (
                                     <li key={link.href}>
-                                        <a href={link.href} onClick={onNavigate} className='page-nav-link block py-4 br-8 pl-20 color-5-100 font-14'>
+                                        <a href={link.href} onClick={onNavigate} className='page-nav-link block py-5 br-8 pl-20 color-5-100 font-14'>
                                             {link.label}
                                         </a>
                                     </li>

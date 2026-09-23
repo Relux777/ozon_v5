@@ -440,12 +440,11 @@ $promo-navy: #0a1f44;
 }
 
 // белая карточка с QR — заходит на нижний правый угол карты; наклон в другую сторону для живости.
-// Позиционирование/паддинг/радиус — утилитами (p-absolute z-1 pd-10 br-20), здесь — смещение и тень
+// Позиционирование/паддинг/радиус — утилитами (p-absolute z-1 pd-5 br-20), здесь — смещение и тень
 .card-qr {
     right: -14px;
     bottom: -56px;
-    width: 38%;
-    max-width: 132px;
+    max-width: 140px;
     background: #fff;
     box-shadow: 0 20px 40px -20px rgb(0 20 90 / 70%);
     rotate: 4deg;
@@ -726,13 +725,6 @@ $promo-navy: #0a1f44;
 // шапка `position:sticky` перекрывала бы верх раздела при переходе по ссылке
 .scroll-anchor { scroll-margin-top: calc(var(--header-h, 60px) + 12px); }
 
-// плавающая кнопка быстрой навигации по странице (PageNav) — справа, по центру высоты экрана
-.page-nav-btn {
-    top: 50%;
-    right: 16px;
-    translate: 0 -50%;
-}
-
 // ссылки в модалке быстрой навигации: подсветка при наведении (мышь) — сам вид/отступы в разметке
 .page-nav-link {
     transition: background 0.15s;
@@ -740,44 +732,43 @@ $promo-navy: #0a1f44;
     @include mixins.hover { background: rgb(var(--bg-5) / 8%); }
 }
 
-// ── /sklad: строка поиска города — «прилипает» под шапкой при прокрутке и сжимается ──────────────
-// .p-sticky (в разметке) сам держит позицию, класс .search-bar-compact (переключается по scrollY
-// в CitySearch) только скрывает подпись и уменьшает поле — без ручного скачка layout.
-.search-bar {
-    top: calc(var(--header-h, 60px) + 10px);
-    padding-block: 8px 2px;
-    background: rgb(var(--bg-1) / 92%);
-    backdrop-filter: blur(7px);
-}
-
-.search-label {
-    transition: opacity 0.2s, height 0.2s, margin 0.2s;
-}
-
+// ── /sklad: строка поиска города — стеклянная, как ссылки городов, с «свечением» при фокусе ──────
+// (было: прилипание к шапке при скролле — убрано по просьбе владельца)
 .search-input {
-    height: 46px;
-    padding-inline: 16px;
     color: rgb(var(--bg-2) / 90%);
-    transition: height 0.2s;
+    transition: box-shadow 0.25s, scale 0.2s;
 
     &::placeholder { color: rgb(var(--bg-2) / 45%); }
 
     &:focus-visible {
-        outline: 2px solid rgb(var(--bg-5) / 100%);
-        outline-offset: 2px;
+        outline: none;
+        scale: 1.01;
+        box-shadow: 0 0 0 4px rgb(var(--bg-5) / 18%), 0 16px 30px -16px rgb(var(--bg-5) / 50%);
     }
-}
-
-.search-bar-compact {
-    .search-label { margin: 0; height: 0; opacity: 0; overflow: hidden; }
-    .search-input { height: 38px; }
 }
 
 // 400+ карточек: браузер не считает раскладку тех, что вне экрана
 .city-cell {
     content-visibility: auto;
-    contain-intrinsic-size: auto 64px;
+    contain-intrinsic-size: auto 44px;
 }
+
+// плавающая круглая кнопка снизу справа (ScrollTop, PageNav) — появляется/исчезает по скроллу.
+// Позиция — утилитами в разметке (r-20 b-20), здесь только сама анимация показа/скрытия.
+.float-btn {
+    opacity: 0;
+    translate: 0 12px;
+    transition: opacity 0.25s, translate 0.25s;
+    pointer-events: none;
+
+    &.float-btn-visible {
+        opacity: 1;
+        translate: 0;
+        pointer-events: auto;
+    }
+}
+
+.scroll-top-icon { rotate: 180deg; }
 
 // ── /sklad/[город]: карточка с промокодом (PromoCode) ────────────────────────────────────────────
 .promo-code-inline { user-select: all; }
@@ -790,6 +781,7 @@ $promo-navy: #0a1f44;
 }
 
 main {
+    padding-top: 20px;
     position: relative;
     padding-bottom: 86px;
     section:first-of-type {

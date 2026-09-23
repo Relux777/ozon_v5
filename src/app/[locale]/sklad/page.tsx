@@ -3,8 +3,8 @@ import { getTranslations } from 'next-intl/server';
 import { getLocaleFromParams } from '@/i18n/params';
 import { breadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 import { getCityIndex } from '@/lib/sklad';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import CitySearch from '@/components/CitySearch';
+import ScrollTop from '@/components/ScrollTop';
 import JsonLd from '@/components/JsonLd';
 
 type Props = {
@@ -39,13 +39,12 @@ export default async function SkladPage({ params }: Props) {
     return (
         <main>
             <JsonLd data={jsonLd} />
+            <ScrollTop />
 
             {/* Одна секция: у первой секции на сайте высота на весь экран (style.scss),
                 поэтому поиск должен быть внутри неё, а не ниже */}
             <section>
                 <div className='container'>
-                    <Breadcrumbs items={[{ label: tNav('home'), href: '/' }, { label: tNav('warehouses') }]} />
-
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{tNav('warehouses')}</p>
                     <h1 className='mb-7 color-2-90 text-balance'>{t('heading')}</h1>
                     <p className='max-w-60-ch mb-20'>{t('lead')}</p>
