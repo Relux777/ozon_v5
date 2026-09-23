@@ -16,7 +16,6 @@ import { PROMO } from '@/config/promo';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import PromoCode from '@/components/PromoCode';
-import styles from '../sklad.module.scss';
 
 type Props = {
     params: Promise<{ locale: string; city: string }>;
@@ -93,126 +92,118 @@ export default async function CityPage({ params }: Props) {
     ]);
 
     return (
-        <main className={styles.page}>
+        <main>
             <JsonLd data={jsonLd} />
 
             <section>
-                <div className="container flex align-center">
-                    <div className="f-w-8">
-                        <Breadcrumbs
-                            items={[
-                                { label: tNav('home'), href: '/' },
-                                { label: tNav('warehouses'), href: '/sklad' },
-                                { label: city.name },
-                            ]}
-                        />
+                <div className="container">
+                    <Breadcrumbs
+                        items={[
+                            { label: tNav('home'), href: '/' },
+                            { label: tNav('warehouses'), href: '/sklad' },
+                            { label: city.name },
+                        ]}
+                    />
 
-                        <p className="color-5-100">{tMeta('siteName')}</p>
+                    <p className="color-5-100 font-14">{tMeta('siteName')}</p>
+                    <h1 className="mb-7 color-2-90 text-balance">{t('heading', { site: tMeta('siteName'), city: city.name })}</h1>
+                    <p className="max-w-60-ch mb-20">{stats ? t('leadWithData', values) : t('leadNoData', values)}</p>
 
-                        <h1 className="font-36">{t('heading', { site: tMeta('siteName'), city: city.name })}</h1>
-
-                        <p>{stats ? t('leadWithData', values) : t('leadNoData', values)}</p>
-
-                        <ul aria-label={t('offersTitle')}>
-                            {offers.map((offer) => (
-                                <li key={offer}>{offer}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <ul className="font-14 checks-li grid gap-7 mb-20" aria-label={t('offersTitle')}>
+                        {offers.map((offer) => (
+                            <li className="p-relative pl-30" key={offer}>{offer}</li>
+                        ))}
+                    </ul>
                 </div>
             </section>
 
-            <section className={styles.section}>
-                <div className="container flex">
-                    <div className="f-w-12">
-                        {stats && (
-                            <dl className={`flex ${styles.row}`}>
+            <section className="py-20">
+                <div className="container">
+                    {stats && (
+                        <dl className="flex row-flush mb-15">
+                            <div className="f-w-4 mb-15">
+                                <div className="bg-3-100 br-20 pd-20 border-1px-2-10 shadow-3">
+                                    <dt className="color-2-80">{t('statWarehouses')}</dt>
+                                    <dd className="md-0 font-22 font-w-500 color-2-90">{stats.count}</dd>
+                                </div>
+                            </div>
+                            <div className="f-w-4 mb-15">
+                                <div className="bg-3-100 br-20 pd-20 border-1px-2-10 shadow-3">
+                                    <dt className="color-2-80">{t('statIncome')}</dt>
+                                    <dd className="md-0 font-22 font-w-500 color-5-100">{income}</dd>
+                                </div>
+                            </div>
+                            {stats.average && stats.count > 1 && (
                                 <div className="f-w-4 mb-15">
-                                    <div className="bg-3-100 br-20 pd-20 border-1px-2-10">
-                                        <dt className="color-2-80">{t('statWarehouses')}</dt>
-                                        <dd className={`font-22 font-w-500 ${styles.dd}`}>{stats.count}</dd>
+                                    <div className="bg-3-100 br-20 pd-20 border-1px-2-10 shadow-3">
+                                        <dt className="color-2-80">{t('statAverage')}</dt>
+                                        <dd className="md-0 font-22 font-w-500 color-2-90">{t('incomeUpTo', { to: stats.average })}</dd>
                                     </div>
                                 </div>
-                                <div className="f-w-4 mb-15">
-                                    <div className="bg-3-100 br-20 pd-20 border-1px-2-10">
-                                        <dt className="color-2-80">{t('statIncome')}</dt>
-                                        <dd className={`font-22 font-w-500 ${styles.dd}`}>{income}</dd>
-                                    </div>
-                                </div>
-                                {stats.average && stats.count > 1 && (
-                                    <div className="f-w-4 mb-15">
-                                        <div className="bg-3-100 br-20 pd-20 border-1px-2-10">
-                                            <dt className="color-2-80">{t('statAverage')}</dt>
-                                            <dd className={`font-22 font-w-500 ${styles.dd}`}>
-                                                {t('incomeUpTo', { to: stats.average })}
-                                            </dd>
-                                        </div>
-                                    </div>
-                                )}
-                            </dl>
-                        )}
+                            )}
+                        </dl>
+                    )}
 
-                        {stats && (
-                            <>
-                                <h2 className="font-24 mb-15">{t('perksTitle')}</h2>
-                                <ul className="flex gap-5 mb-15">
-                                    {stats.perks.map((perk) => (
-                                        <li key={perk} className={`br-36 bg-2-10 color-5-100 ${styles.tag}`}>
-                                            {t(`perks.${perk}`)}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </>
-                        )}
-
-                        <h2 className="font-24 mb-15">{t('warehousesTitle', values)}</h2>
-
-                        {city.warehouses.length > 0 ? (
-                            <ul className={`flex ${styles.row}`}>
-                                {city.warehouses.map((warehouse) => (
-                                    <li key={warehouse.address} className="f-w-4 mb-15">
-                                        <div className="bg-3-100 br-20 pd-20 border-1px-2-10">
-                                            <p className="font-w-500 mb-7">{warehouse.address}</p>
-                                            <p className="color-5-100 mb-7">{incomeLabel(t, warehouse.income)}</p>
-                                            <ul className="flex gap-5">
-                                                {warehouse.perks.map((perk) => (
-                                                    <li key={perk} className={`br-36 bg-2-10 ${styles.tag}`}>
-                                                        {t(`perks.${perk}`)}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
+                    {stats && (
+                        <>
+                            <h2 className="font-22 mb-15 color-2-90">{t('perksTitle')}</h2>
+                            <ul className="flex gap-5 mb-20" aria-label={t('perksTitle')}>
+                                {stats.perks.map((perk) => (
+                                    <li className="inline-flex nowrap align-center px-10 py-4 br-36 bg-5-10 color-5-100 font-14" key={perk}>
+                                        {t(`perks.${perk}`)}
                                     </li>
                                 ))}
                             </ul>
-                        ) : (
-                            <p className="mb-15">{t('warehousesEmpty')}</p>
-                        )}
+                        </>
+                    )}
 
-                        <h2 className="font-24 mb-15">{t('dutiesTitle')}</h2>
-                        <ul className="mb-15">
-                            {duties.map((duty) => (
-                                <li key={duty}>{duty}</li>
+                    <h2 className="font-22 mb-15 color-2-90">{t('warehousesTitle', values)}</h2>
+
+                    {city.warehouses.length > 0 ? (
+                        <ul className="flex row-flush mb-15">
+                            {city.warehouses.map((warehouse) => (
+                                <li className="f-w-4 mb-15" key={warehouse.address}>
+                                    <div className="grid gap-7 content-start h-full bg-3-100 br-20 pd-20 border-1px-2-10 shadow-3 translate_0_5 tr-2">
+                                        <p className="md-0 font-w-500 color-2-90">{warehouse.address}</p>
+                                        <p className="md-0 color-5-100 font-14">{incomeLabel(t, warehouse.income)}</p>
+                                        <ul className="flex gap-5">
+                                            {warehouse.perks.map((perk) => (
+                                                <li className="inline-flex nowrap align-center px-10 py-4 br-36 bg-2-7 font-12" key={perk}>
+                                                    {t(`perks.${perk}`)}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </li>
                             ))}
                         </ul>
+                    ) : (
+                        <p className="mb-20">{t('warehousesEmpty')}</p>
+                    )}
 
-                        <PromoCode code={PROMO.code} amount={PROMO.userBonus} appUrl={PROMO.appUrl || undefined} />
+                    <h2 className="font-22 mb-15 color-2-90">{t('dutiesTitle')}</h2>
+                    <ul className="font-14 checks-li grid gap-7 mb-20">
+                        {duties.map((duty) => (
+                            <li className="p-relative pl-30" key={duty}>{duty}</li>
+                        ))}
+                    </ul>
 
-                        <p className={`color-2-80 mb-15 ${styles.note}`}>{t('disclaimer', { date: updatedAt })}</p>
+                    <PromoCode code={PROMO.code} amount={PROMO.userBonus} appUrl={PROMO.appUrl || undefined} />
 
-                        <div className="flex gap-10">
-                            <a
-                                className={`br-36 ${styles.button} ${styles.primary}`}
-                                href={getOzonCityUrl(city)}
-                                target="_blank"
-                                rel="nofollow noopener noreferrer"
-                            >
-                                {t('source')}
-                            </a>
-                            <Link className={`br-36 bg-2-10 ${styles.button}`} href="/sklad">
-                                {t('allCities')}
-                            </Link>
-                        </div>
+                    <p className="color-2-80 font-12 mb-15">{t('disclaimer', { date: updatedAt })}</p>
+
+                    <div className="flex gap-10">
+                        <a
+                            className="hover-none flex align-center bg-5-100 hover-bg-5-80 br-36 h-46 px-24 color-6-100 translate_0_2 shadow-1"
+                            href={getOzonCityUrl(city)}
+                            target="_blank"
+                            rel="nofollow noopener noreferrer"
+                        >
+                            {t('source')}
+                        </a>
+                        <Link href="/sklad" className="hover-none flex align-center bg-2-7 br-36 h-46 px-24 color-2-100 translate_0_2 shadow-3">
+                            {t('allCities')}
+                        </Link>
                     </div>
                 </div>
             </section>

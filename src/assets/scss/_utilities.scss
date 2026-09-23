@@ -5,8 +5,8 @@ $pd-sizes: 0, 10, 20 !default;
 $pb-sizes: 0, 12 !default;
 $pt-sizes: 0 !default;
 $pr-sizes: 0 !default;
-$pl-sizes: 0, 30 !default;
-$px-sizes: 0, 10, 24 !default;
+$pl-sizes: 0, 10, 20, 30 !default;
+$px-sizes: 0, 10, 16, 24 !default;
 $py-sizes: 0, 4, 20 !default;
 $md-sizes: 0 !default;
 $mb-sizes: 0, 5, 7, 10, 15, 20 !default;
@@ -23,13 +23,13 @@ $border-radius-sizes: 8, 20, 32, 36 !default;
 $gap-sizes: 2, 3, 5, 7, 8, 10, 12, 14, 15 !default;
 $font-sizes: 12, 14, 16, 18, 22, 24, 36 !default;
 $font-weight: 400, 500, 700 !default;
-$letter-spacing: 0, 6, 8, 12 !default; // сотые доли em
-$opacity-value: 100 !default;
+$letter-spacing: 0, 6, 8, 12, 14 !default; // сотые доли em
+$opacity-value: 90, 100 !default;
 $z-index: 1, 10, 20, 30 !default;
 $height-sizes: 0, 4, 20, 36, 46, 60 !default;
 $width-sizes: 0, 36, 40, 46 !default;
 $max-width-sizes-ch: 60 !default;
-$backdrop-filter-blur: 7 !default;
+$backdrop-filter-blur: 3, 7 !default;
 $bg-colors: 1, 2, 3, 5 !default;
 $bg-opacities: 3, 7, 10, 20, 50, 80, 100 !default;
 $fill-colors: 1 !default;

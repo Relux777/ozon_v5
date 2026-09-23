@@ -4,6 +4,9 @@ import { getFormatter, getTranslations } from 'next-intl/server';
 import { APP_STORES, CARD, PROMO } from '@/config/promo';
 import CopyCode from '@/components/CopyCode';
 import CopyLink from '@/components/CopyLink';
+import FaqAccordion from '@/components/FaqAccordion';
+import PageNav from '@/components/PageNav';
+import type { PageNavItem } from '@/components/Modal/content/PageNavModal';
 import { Link } from '@/i18n/navigation';
 import { getLocaleFromParams } from '@/i18n/params';
 import { buildPageMetadata, generateJsonLd } from '@/lib/seo';
@@ -20,6 +23,7 @@ import AdvantagesPhoto6  from '@/assets/img/advantages/6.png';
 import AdvantagesPhoto5  from '@/assets/img/advantages/5.png';
 
 import PayPhoto from '@/assets/img/pg3.png';
+import TipsPhoto from '@/assets/img/pg4.webp';
 import InviteIcon1 from '@/assets/img/invitation/1.png';
 import InviteIcon2 from '@/assets/img/invitation/2.png';
 import DocsIcon1 from '@/assets/img/documents/1.png';
@@ -45,7 +49,24 @@ const PAY_OPS = ['×', '='] as const;
 // Какая карточка сроков получает метку «быстрее всего» (порядок как в HomePage.pay.times)
 const FAST_TIME = 2;
 
+// Источники (справка Ozon Job, docs.ozon.ru) — по разделам главной страницы; названия не переводим,
+// как и в /test1 (ссылки одинаковые для всех языков)
+const SOURCES = [
+    ['Приведите друга', `${DOCS_URL}/benefits/refferal/`],
+    ['Регистрация', `${DOCS_URL}/personal-account/registration/`],
+    ['Регистрация иностранных граждан', `${DOCS_URL}/personal-account/registration-foreigners/`],
+    ['Условия сотрудничества', `${DOCS_URL}/conditions/basic-rules/`],
+    ['График выплат', `${DOCS_URL}/payments/payout/payment-schedule/`],
+    ['Расчёт выплат', `${DOCS_URL}/payments/payout/rewards/`],
+    ['Тарифы', `${DOCS_URL}/payments/tariffs/`],
+    ['Документы для первого выхода', `${DOCS_URL}/shifts/documents/`],
+    ['Первый выход', `${DOCS_URL}/shifts/onboarding/`],
+    ['Уровни и баллы', `${DOCS_URL}/rating/rating/`],
+    ['Приведи друга (Ozon Банк)', 'https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral'],
+] as const;
+
 type Titled = { title: string; text: string };
+type DocMode = { id: string; label: string; docs: { name: string; note: string }[] };
 
 type Props = {
     params: Promise<{ locale: string }>;
@@ -84,7 +105,7 @@ export default async function HomePage({ params }: Props) {
     const payFormula = t.raw('pay.formula') as Titled[];
     const payTimes = t.raw('pay.times') as { big: string; title: string; text: string }[];
     const payTips = t.raw('pay.tips') as Titled[];
-    const docs = t.raw('firstDay.docs') as { name: string; note: string }[];
+    const docModes = t.raw('firstDay.docsModes') as DocMode[];
     const dayOne = t.raw('firstDay.day') as Titled[];
     const typeItems = t.raw('types.items') as { name: string; tax: string; note: string }[];
     const cardPerks = t.raw('card.perks') as string[];
@@ -94,6 +115,41 @@ export default async function HomePage({ params }: Props) {
     const format = await getFormatter({ locale });
     const dataDate = format.dateTime(new Date(STEPS_CHECKED_AT), { dateStyle: 'long' });
 
+    // Быстрая навигация по странице (PageNav): переиспользует уже переведённые заголовки секций —
+    // новых ключей не потребовалось, кроме подписи самой кнопки/модалки (pageNavLabel)
+    const navItems: PageNavItem[] = [
+        { kicker: t('statsEyebrow'), title: t('statsTitle'), href: '#stats' },
+        { kicker: t('stepsEyebrow'), title: t('stepsTitle'), href: '#steps' },
+        { kicker: t('promo.kicker'), title: t('promo.stepsLabel'), href: '#promo' },
+        {
+            kicker: t('friend.eyebrow'),
+            title: t('friend.title'),
+            href: '#friend',
+            links: friendRoles.map((role) => ({ label: role.title, href: `#friend-${role.key}` })),
+        },
+        {
+            kicker: t('pay.eyebrow'),
+            title: t('pay.title'),
+            href: '#pay',
+            links: [
+                { label: t('pay.formulaLabel'), href: '#pay-formula' },
+                { label: t('pay.timesTitle'), href: '#pay-times' },
+            ],
+        },
+        {
+            kicker: t('firstDay.eyebrow'),
+            title: t('firstDay.title'),
+            href: '#first-day',
+            links: [
+                { label: t('firstDay.docsTitle'), href: '#first-day-docs' },
+                { label: t('firstDay.dayTitle'), href: '#first-day-day' },
+            ],
+        },
+        { kicker: t('types.eyebrow'), title: t('types.title'), href: '#types' },
+        { kicker: t('card.kicker'), title: t('card.stepsLabel'), href: '#card' },
+        { kicker: t('pay.tipsEyebrow'), title: t('pay.tipsTitle'), href: '#tips' },
+    ];
+
     const jsonLd = generateJsonLd(locale, 'WebSite', {
         name: tMeta('siteName'),
         description: t('description'),
@@ -102,6 +158,7 @@ export default async function HomePage({ params }: Props) {
     return (
         <main className='home_page'>
             <JsonLd data={jsonLd} />
+            <PageNav label={t('pageNavLabel')} items={navItems} />
             <section>
                 <div className="container flex align-center">
                     <div className="f-w-8">
@@ -138,7 +195,7 @@ export default async function HomePage({ params }: Props) {
                     </div>
                 </div>
             </section>
-            <section className='py-20'>
+            <section className='py-20 scroll-anchor' id='stats'>
                 <div className="container">
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('statsEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('statsTitle')}</h2>
@@ -156,7 +213,7 @@ export default async function HomePage({ params }: Props) {
                     <p className='font-12'>{t('statsNote')}</p>
                 </div>
             </section>
-            <section className='py-20'>
+            <section className='py-20 scroll-anchor' id='steps'>
                 <div className="container">
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('stepsEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('stepsTitle')}</h2>
@@ -185,7 +242,7 @@ export default async function HomePage({ params }: Props) {
                     <p className='font-12 mt-20'>{t('stepsNote', { date: dataDate })}</p>
                 </div>
             </section>
-            <section className='py-20' id='promo'>
+            <section className='py-20 scroll-anchor' id='promo'>
                 <div className='container'>
                     <div className='promo p-relative isolate overflow-hidden br-32 container-type-inline'>
                         <div className='promo-top flex align-center'>
@@ -223,7 +280,7 @@ export default async function HomePage({ params }: Props) {
                                         {stores.map((store) => (
                                             <li key={store.id}>
                                                 <a
-                                                    className='promo-store flex align-center justify-center br-36 h-46 px-0 font-14 font-w-500'
+                                                    className='promo-store hover-none flex align-center justify-center br-36 h-46 px-0 font-14 font-w-500'
                                                     href={store.url}
                                                     target='_blank'
                                                     rel='nofollow noopener noreferrer'
@@ -254,7 +311,7 @@ export default async function HomePage({ params }: Props) {
                     </div>
                 </div>
             </section>
-            <section className='py-20' id='friend'>
+            <section className='py-20 scroll-anchor' id='friend'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('friend.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('friend.title')}</h2>
@@ -262,7 +319,7 @@ export default async function HomePage({ params }: Props) {
                     <div className='flex'>
                         {friendRoles.map((role) => (
                             <div className='f-w-6 mb-20' key={role.key}>
-                                <article className='role p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20'>
+                                <article className='role scroll-anchor p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20' id={`friend-${role.key}`}>
                                     <header className='flex nowrap align-center gap-14'>
                                         <Image className='role-img float shrink-0' src={role.image} width={96} height={96} sizes='96px' alt='' />
                                         <div>
@@ -302,7 +359,7 @@ export default async function HomePage({ params }: Props) {
                     </p>
                 </div>
             </section>
-            <section className='py-20' id='pay'>
+            <section className='py-20 scroll-anchor' id='pay'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('pay.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('pay.title')}</h2>
@@ -322,8 +379,8 @@ export default async function HomePage({ params }: Props) {
                         </div>
 
                         <div className='f-w-8 grid gap-15 content-start'>
-                            
-                        <div className='container-type-inline bg-3-100 br-20 border-1px-2-10 pd-20 mb-20'>
+
+                        <div className='container-type-inline scroll-anchor bg-3-100 br-20 border-1px-2-10 pd-20 mb-20' id='pay-formula'>
                             <ol className='formula grid gap-10' aria-label={t('pay.formulaLabel')}>
                                         {payFormula.map((item, i) => (
                                             <Fragment key={item.title}>
@@ -343,13 +400,13 @@ export default async function HomePage({ params }: Props) {
                                 <b className='color-2-90'>{t('pay.taxTitle')}</b> {t('pay.taxText')}
                             </p>
                         </div>
-                            <div>
+                            <div className='scroll-anchor' id='pay-times'>
                                 <h3 className='font-18 color-2-90 mb-15'>{t('pay.timesTitle')}</h3>
                                 {/* одна линия: на широком экране 4 колонки, на телефоне — лента со свайпом */}
                                 <ul className='time-row grid gap-10 scrollbar-none'>
                                     {payTimes.map((item, i) => (
                                         <li
-                                            className={`time-item p-relative grid gap-3 content-start bg-3-100 br-20 border-1px-2-10 pd-10 font-12 translate_0_5 tr-2${i === FAST_TIME ? ' time-fast' : ''}`}
+                                            className={`time-item p-relative grid gap-3 content-start bg-3-100 br-20 border-1px-2-10 pd-10 font-12 translate_0_5 tr-2${i === FAST_TIME ? ' time-fast blur-3' : ''}`}
                                             key={item.title}
                                         >
                                             {/* метка «быстрее всего» — на верхней грани карточки, высоту не увеличивает */}
@@ -362,53 +419,77 @@ export default async function HomePage({ params }: Props) {
                                         </li>
                                     ))}
                                 </ul>
+                                <p className='font-12 mt-10'>
+                                    {t('pay.timesNote')}{' '}
+                                    <Link href='/menu/level' className='color-5-100'>{t('pay.levelsLink')}</Link>
+                                </p>
                             </div>
 
-                            
+
                         </div>
                     </div>
                     <p className='font-12 mt-20'>{t('pay.note', { date: dataDate })}</p>
                 </div>
             </section>
-            <section className='py-20' id='first-day'>
+            <section className='py-20 scroll-anchor' id='first-day'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('firstDay.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('firstDay.title')}</h2>
                     <p className='max-w-60-ch mb-20'>{t('firstDay.lead')}</p>
                     <div className='flex'>
                         <div className='f-w-6 mb-20'>
-                            {/* чек-лист: галочки работают без JS, счётчик «собрано» — на CSS-счётчиках */}
-                            <div
-                                className='p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20'
-                                style={{ '--total': `"${docs.length}"` } as CSSProperties}
-                            >
+                            {/* переключатель режима + чек-лист: радио и чекбоксы работают без JS (см. .doc-mode-* в style.scss) */}
+                            <div className='doc-mode-wrap scroll-anchor p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20' id='first-day-docs'>
                                 <header className='flex nowrap align-center gap-14'>
                                     <Image className='role-img float shrink-0' src={DocsIcon1} width={96} height={96} sizes='96px' alt='' />
                                     <h3 className='font-22 color-2-90'>{t('firstDay.docsTitle')}</h3>
                                 </header>
-                                <ul className='docs grid gap-8'>
-                                    {docs.map((doc) => (
-                                        <li key={doc.name}>
-                                            <label className='doc p-relative flex nowrap align-start gap-12 br-20 bg-2-3 cursor-pointer'>
-                                                <input className='doc-input' type='checkbox' />
-                                                <span className='doc-box p-relative shrink-0 br-round' aria-hidden='true' />
-                                                <span className='grid gap-2 font-14'>
-                                                    <b className='doc-name color-2-90'>{doc.name}</b>
-                                                    {doc.note && <small className='font-12'>{doc.note}</small>}
-                                                </span>
+
+                                <div className='flex gap-8' role='radiogroup' aria-label={t('firstDay.docsModeLabel')}>
+                                    {docModes.map((mode, i) => (
+                                        <Fragment key={mode.id}>
+                                            <input className='doc-mode-input sr-only' type='radio' name='doc-mode' id={`doc-mode-${mode.id}`} defaultChecked={i === 0} />
+                                            <label className='doc-mode-label inline-flex align-center px-16 py-4 br-36 bg-2-7 font-14 font-w-500 cursor-pointer' htmlFor={`doc-mode-${mode.id}`}>
+                                                {mode.label}
                                             </label>
-                                        </li>
+                                        </Fragment>
                                     ))}
-                                </ul>
-                                <p className='font-14 font-w-500 color-5-100 md-0'>
-                                    {t('firstDay.progress')} <span className='docs-count' />
-                                </p>
+                                </div>
+
+                                {docModes.map((mode) => (
+                                    <div
+                                        className='doc-mode-panel grid gap-15 content-start'
+                                        data-doc-mode={mode.id}
+                                        key={mode.id}
+                                        style={{ '--total': `"${mode.docs.length}"` } as CSSProperties}
+                                    >
+                                        <ul className='docs grid gap-8'>
+                                            {mode.docs.map((doc) => (
+                                                <li key={doc.name}>
+                                                    <label className='doc p-relative flex nowrap align-start gap-12 br-20 bg-2-3 cursor-pointer'>
+                                                        <input className='doc-input' type='checkbox' />
+                                                        <span className='doc-box p-relative shrink-0 br-round' aria-hidden='true' />
+                                                        <span className='grid gap-2 font-14'>
+                                                            <b className='doc-name color-2-90'>{doc.name}</b>
+                                                            {doc.note && <small className='font-12'>{doc.note}</small>}
+                                                        </span>
+                                                    </label>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <p className='font-14 font-w-500 color-5-100 md-0 mt-15'>
+                                            {t('firstDay.progress')} <span className='docs-count' />
+                                        </p>
+                                    </div>
+                                ))}
+
+                                <p className='font-12 md-0'>{t('firstDay.docsModeNote')}</p>
                                 <p className='font-12 md-0'>{t('firstDay.docsNote')}</p>
                             </div>
                         </div>
 
                         <div className='f-w-6 mb-20'>
-                            <div className='p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20'>
+                            <div className='scroll-anchor p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20' id='first-day-day'>
                                 <header className='flex nowrap align-center gap-14'>
                                     <Image className='role-img float shrink-0' src={DocsIcon2} width={96} height={96} sizes='96px' alt='' />
                                     <h3 className='font-22 color-2-90'>{t('firstDay.dayTitle')}</h3>
@@ -427,7 +508,7 @@ export default async function HomePage({ params }: Props) {
                     <p className='font-12'>{t('firstDay.note', { date: dataDate })}</p>
                 </div>
             </section>
-            <section className='py-20' id='types'>
+            <section className='py-20 scroll-anchor' id='types'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('types.eyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('types.title')}</h2>
@@ -448,7 +529,7 @@ export default async function HomePage({ params }: Props) {
                     <p className='font-12'>{t('types.note', { date: dataDate })}</p>
                 </div>
             </section>
-            <section className='py-20' id='card'>
+            <section className='py-20 scroll-anchor' id='card'>
                 <div className='container'>
                     <div className='promo p-relative isolate overflow-hidden br-32 container-type-inline'>
                         <div className='promo-top flex align-center'>
@@ -467,10 +548,10 @@ export default async function HomePage({ params }: Props) {
                                 </ul>
 
                                 <div className='flex align-center gap-10 mb-15'>
-                                    <CopyLink url={CARD.url} copyLabel={t('card.copy')} copiedLabel={t('card.copied')} className='promo-btn flex align-center justify-center' />
+                                    <CopyLink url={CARD.url} copyLabel={t('card.copy')} copiedLabel={t('card.copied')} className='promo-btn hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500' />
                                     <a
                                         href={CARD.url}
-                                        className='promo-btn-outline flex align-center justify-center h-46 px-24 br-36 font-w-500'
+                                        className='promo-btn-outline hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500'
                                         target='_blank'
                                         rel='sponsored nofollow noopener noreferrer'
                                     >
@@ -481,12 +562,12 @@ export default async function HomePage({ params }: Props) {
 
                             <div className='f-w-5'>
                                 {/* QR наезжает на нижний правый угол карты — компактнее по высоте, чем два блока друг под другом */}
-                                <div className='card-visual'>
-                                    <span className='card-chip' />
-                                    <span className='card-brand'>Ozon Карта</span>
-                                    <span className='card-number'>•••• •••• •••• 0000</span>
-                                    <div className='card-qr'>
-                                        <CardQr className='card-qr-image' role='img' aria-label={t('card.qrLabel')} />
+                                <div className='card-visual flex column justify-between p-relative w-full pd-20 br-20'>
+                                    <span className='card-chip br-8' />
+                                    <span className='card-brand font-22 font-w-500'>Ozon Карта</span>
+                                    <span className='card-number font-14 letter-s-14 opacity-90'>•••• •••• •••• 0000</span>
+                                    <div className='card-qr p-absolute z-1 pd-10 br-20'>
+                                        <CardQr className='block w-full br-8' role='img' aria-label={t('card.qrLabel')} />
                                     </div>
                                 </div>
                             </div>
@@ -508,20 +589,45 @@ export default async function HomePage({ params }: Props) {
                     </div>
                 </div>
             </section>
-            <section className='py-20'>
+            <section className='py-20 scroll-anchor' id='tips'>
                 <div className='container'>
-                    <h3 className='font-18 color-2-90 mb-15'>{t('pay.tipsTitle')}</h3>
-                        <div className='grid gap-8'>
-                            {payTips.map((tip, i) => (
-                                <details className='tip bg-3-100 br-20 border-1px-2-10' name='pay-tips' open={i === 0} key={tip.title}>
-                                    <summary className='flex nowrap justify-between align-center gap-10 font-w-500 color-2-90 cursor-pointer'>
-                                        {tip.title}
-                                    </summary>
-                                    <p className='font-14'>{tip.text}</p>
-                                </details>
-                            ))}
+                    <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('pay.tipsEyebrow')}</p>
+                    <h2 className='mb-20 color-2-90 text-balance'>{t('pay.tipsTitle')}</h2>
+                    <div className='flex align-center'>
+                        <div className='f-w-8 grid gap-15 content-start mb-20'>
+                            <FaqAccordion items={payTips} />
+                            <p className='font-12'>
+                                <Link href='/menu/support' className='color-5-100'>{t('pay.tipsAllLink')}</Link>
+                            </p>
+                        </div>
+                        <div className='f-w-4 mb-20'>
+                            <div className='pay-photo-wrap'>
+                                <Image
+                                    className='pay-photo br-36 w-full cover'
+                                    src={TipsPhoto}
+                                    alt=''
+                                    sizes='(max-width: 990px) 100vw, 380px'
+                                />
+                            </div>
                         </div>
                     </div>
+                </div>
+            </section>
+            <section className='py-20'>
+                <div className='container'>
+                    <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('sourcesEyebrow')}</p>
+                    <h2 className='mb-20 color-2-90 text-balance'>{t('sourcesTitle')}</h2>
+                    <ul className='sources-scroll flex nowrap align-center gap-7 h-60'>
+                        {SOURCES.map(([title, href]) => (
+                            <li className='shrink-0' key={href}>
+                                <a href={href} className='source-chip inline-flex nowrap align-center gap-4 px-10 h-36 br-36 blur-3 font-12 font-w-500' target='_blank' rel='nofollow noopener noreferrer'>
+                                    {title} ↗
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                    <p className='font-12 mt-15'>{t('sourcesNote', { date: dataDate })}</p>
+                </div>
             </section>
             </main>
     );

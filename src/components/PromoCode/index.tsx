@@ -3,7 +3,6 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import styles from './promo.module.scss';
 
 type Props = {
     code: string;
@@ -32,19 +31,19 @@ export default function PromoCode({ code, amount, appUrl }: Props) {
     }
 
     return (
-        <aside className="bg-3-100 br-20 pd-20 border-1px-2-10 mb-15">
-            <h2 className="font-24 mb-7">{t('title')}</h2>
+        <aside className="bg-3-100 br-20 pd-20 border-1px-2-10 shadow-3 mb-15">
+            <h2 className="font-24 mb-7 color-2-90">{t('title')}</h2>
             <p className="mb-15">{t('text', { amount })}</p>
 
             <div className="flex align-center gap-10 mb-15">
                 <span className="color-2-80">{t('codeLabel')}</span>
-                <code className={`br-8 bg-2-10 font-w-500 ${styles.code}`}>{code}</code>
-                <button type="button" className={`br-36 bg-2-10 ${styles.button}`} onClick={copy} aria-live="polite">
+                <code className="promo-code-inline br-8 bg-2-10 font-w-500 letter-s-8 px-10 py-4">{code}</code>
+                <button type="button" className="hover-none h-36 px-16 br-36 bg-2-10 font-w-500" onClick={copy} aria-live="polite">
                     {copied ? t('copied') : t('copy')}
                 </button>
                 {appUrl && (
                     <a
-                        className={`br-36 ${styles.button} ${styles.primary}`}
+                        className="hover-none flex align-center h-36 px-16 br-36 bg-5-100 color-6-100 font-w-500"
                         href={appUrl}
                         target="_blank"
                         rel="sponsored nofollow noopener noreferrer"
@@ -54,7 +53,7 @@ export default function PromoCode({ code, amount, appUrl }: Props) {
                 )}
             </div>
 
-            <p className={`color-2-80 ${styles.note}`}>{t('disclosure')}</p>
+            <p className="color-2-80 font-12">{t('disclosure')}</p>
         </aside>
     );
 }

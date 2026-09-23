@@ -94,10 +94,13 @@
     "description": "Ozon İş platformasındakı aktual menyu və vakansiyalar."
   },
   "HomePage": {
+    "pageNavLabel": "Быстрый переход по странице",
     "title": "Ozon-da iş: anbar operatoru, hər gün ödəniş",
     "description": "Ozon anbar operatoru vakansiyaları: sərbəst qrafik, gündüz və gecə növbələri, ödəniş hər gün və ya həftədə bir dəfə. RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
     "heading": "Ozon anbar operatoru vakansiyası: gündəlik ödənişli iş",
     "lead": "Şəhərinizdə anbar seçin, real ünvanlar və şərtlərlə tanış olun, tətbiqi quraşdırdıqdan sonra isə promokodla {amount, number} ₽ bonus qazanın.",
+    "heroCity": "Şəhəri seçin",
+    "heroBonus": "{amount, number} ₽ əldə et",
     "features": [
       "Ödənişlər hər gün və ya həftəlik",
       "Rəsmiləşdirmə seçimi: RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğulluq",
@@ -183,6 +186,8 @@
         "Əvvəllər Ozonda işləməmisiniz",
         "Kod tətbiqdə daxil edilir"
       ],
+      "bonus": "Kodu daxil edin və <sum>{amount, number} ₽</sum> əldə edin*",
+      "condition": "* Bonus aksiyanın şərtləri yerinə yetirildikdən sonra verilir: anbardan asılı məbləğdə tapşırıqlar.",
       "codeLabel": "Sizin dəvət kodunuz",
       "copy": "Kopyala",
       "copied": "Kopyalandı ✓",
@@ -208,12 +213,8 @@
         }
       ],
       "warn": "Vacib: yalnız əvvəllər Ozonda işləməyən şəxs iştirak edə bilər. Əgər Ozonla artıq əməkdaşlıq etmisinizsə, aksiya əlçatan deyil. Şərtləri və məbləğləri Ozon müəyyən edir və dəyişə bilər.",
-      "note": "Reklam. Biz müstəqil məlumat saytıyıq, Ozon deyilik. Bizim kodla qeydiyyatdan keçsəniz, Ozondan mükafat ala bilərik. [Reklamverən məlumatları: ad/təşkilat, VÖEN]",
-      "bonus": "Kodu daxil edin və <sum>{amount, number} ₽</sum> əldə edin*",
-      "condition": "* Bonus aksiyanın şərtləri yerinə yetirildikdən sonra verilir: anbardan asılı məbləğdə tapşırıqlar."
+      "note": "Reklam. Biz müstəqil məlumat saytıyıq, Ozon deyilik. Bizim kodla qeydiyyatdan keçsəniz, Ozondan mükafat ala bilərik. [Reklamverən məlumatları: ad/təşkilat, VÖEN]"
     },
-    "heroCity": "Şəhəri seçin",
-    "heroBonus": "{amount, number} ₽ əldə et",
     "friend": {
       "eyebrow": "Dostunu dəvət et",
       "title": "Kodla dəvət necə işləyir",
@@ -330,6 +331,9 @@
       ],
       "fastTag": "ən sürətli",
       "timesNote": "Ozon Bank bayram günlərində də ödəyir. Hesablama slotun bitməsindən başlayır.",
+      "levelsLink": "Все уровни рейтинга и как они устроены →",
+      "tipsAllLink": "Все вопросы и ответы →",
+      "tipsEyebrow": "Вопросы",
       "tipsTitle": "Nəyə diqqət etməli",
       "tips": [
         {
@@ -364,28 +368,46 @@
       "title": "Nə götürmək lazımdır və ilk gün necə keçəcək",
       "lead": "Sənədlər və ilk günün qaydası — Ozon Job məlumat mərkəzinə görə.",
       "docsTitle": "İlk çıxış üçün sənədlər",
-      "docs": [
+      "docsModeLabel": "Как оформляетесь",
+      "docsModes": [
         {
-          "name": "Pasport",
-          "note": ""
+          "id": "app",
+          "label": "Ozon Job (в приложении)",
+          "docs": [
+            {
+              "name": "Паспорт",
+              "note": ""
+            },
+            {
+              "name": "Справка №086У и согласие родителей",
+              "note": "только если вам меньше 18 (шаблон согласия — в оферте)"
+            }
+          ]
         },
         {
-          "name": "SNİLS",
-          "note": "elektron formada ola bilər"
-        },
-        {
-          "name": "İNN",
-          "note": "elektron formada ola bilər"
-        },
-        {
-          "name": "Müvəqqəti qeydiyyat sənədi",
-          "note": "varsa"
-        },
-        {
-          "name": "№086U arayışı və valideyn razılığı",
-          "note": "18 yaşdan kiçiksinizsə (razılıq nümunəsi — oferta daxilindədir)"
+          "id": "staff",
+          "label": "Штат, официально (ТК РФ)",
+          "docs": [
+            {
+              "name": "Паспорт",
+              "note": ""
+            },
+            {
+              "name": "Трудовая книжка",
+              "note": "если её нет — оформит работодатель"
+            },
+            {
+              "name": "СНИЛС",
+              "note": ""
+            },
+            {
+              "name": "Документы воинского учёта",
+              "note": "для военнообязанных"
+            }
+          ]
         }
       ],
+      "docsModeNote": "Для Ozon Job (регистрация в приложении) физически нужен только паспорт — ИНН и СНИЛС указываются в анкете, необязательно бумагами. Для штата по трудовому договору — стандартный список по ст. 65 ТК РФ, полный перечень уточнит работодатель.",
       "progress": "Toplanıb:",
       "docsNote": "Əcnəbi vətəndaşlar üçün — pasport və RF-də olma əsasını təsdiq edən sənəd. Anbarlar üçün tibbi kitabça tələb olunmur; varsa — özünüzlə götürün.",
       "dayTitle": "Çıxışdan əvvəl və ilk gün",
@@ -473,7 +495,10 @@
       ],
       "warn": "Link «yanmır»: kartı 72 saat ərzində sifariş etməyə vaxtınız çatmadısa — elə bu linki yenidən açın, hesablama yenidən başlayacaq. Keşbek, endirimlər və xidmət şərtləri kartın tarifinə görədir, dəyişə bilər.",
       "note": "Reklam. Biz müstəqil məlumat saytıyıq, nə Ozonuq, nə də Ozon Bank. Link referaldır: kartı onunla rəsmiləşdirsəniz, bank bizə mükafat ödəyə bilər — bu sizin keşbekinizə təsir etmir. «Ozon Kart» xidmətini «OZON Bank» MMC təqdim edir, Rusiya Bankının lisenziyası № 3542, 12.04.2023."
-    }
+    },
+    "sourcesEyebrow": "Источники",
+    "sourcesTitle": "Источники (справка Ozon Job, сверено {date})",
+    "sourcesNote": "Разделы справки, на которые мы ссылаемся на этой странице. Сверено {date}."
   },
   "Promo": {
     "title": "Tətbiqi quraşdırdığınıza görə bonus",

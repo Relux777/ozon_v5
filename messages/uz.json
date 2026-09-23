@@ -94,10 +94,13 @@
     "description": "Ozon Ish platformasidagi dolzarb menyu va vakansiyalar."
   },
   "HomePage": {
+    "pageNavLabel": "Быстрый переход по странице",
     "title": "Ozonda ish: ombor operatori, to'lov har kuni",
     "description": "Ozon ombor operatori vakansiyalari: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir marta. RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan. Noldan o'qitamiz.",
     "heading": "Ozon ombor operatori vakansiyasi: har kuni to'lovli ish",
     "lead": "Shahringizdan ombor tanlang, haqiqiy manzillar va shartlarni bilib oling, ilovani o'rnatgach esa promokod bo'yicha {amount, number} ₽ bonus oling.",
+    "heroCity": "Shaharni tanlash",
+    "heroBonus": "{amount, number} ₽ olish",
     "features": [
       "To'lovlar har kuni yoki har hafta",
       "Rasmiylashtirish tanlovi: RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan",
@@ -183,6 +186,8 @@
         "Ilgari Ozonda ishlamagan bo'lishingiz kerak",
         "Kod ilovada kiritiladi"
       ],
+      "bonus": "Kodni kiriting va <sum>{amount, number} ₽</sum> oling*",
+      "condition": "* Bonus aksiya shartlari bajarilgach beriladi: omborga bog'liq summadagi topshiriqlar.",
       "codeLabel": "Sizning taklif kodingiz",
       "copy": "Nusxa olish",
       "copied": "Nusxa olindi ✓",
@@ -208,12 +213,8 @@
         }
       ],
       "warn": "Muhim: faqat ilgari Ozonda ishlamagan kishi qatnasha oladi. Agar siz Ozon bilan hamkorlik qilgan bo'lsangiz — aksiya mavjud emas. Shartlar va summalarni Ozon belgilaydi va ular o'zgarishi mumkin.",
-      "note": "Reklama. Biz mustaqil axborot saytimiz, Ozon emas. Bizning kod orqali ro'yxatdan o'tsangiz, biz Ozondan mukofot olishimiz mumkin. [Reklama beruvchi ma'lumotlari: F.I.SH./nomi, INN]",
-      "bonus": "Kodni kiriting va <sum>{amount, number} ₽</sum> oling*",
-      "condition": "* Bonus aksiya shartlari bajarilgach beriladi: omborga bog'liq summadagi topshiriqlar."
+      "note": "Reklama. Biz mustaqil axborot saytimiz, Ozon emas. Bizning kod orqali ro'yxatdan o'tsangiz, biz Ozondan mukofot olishimiz mumkin. [Reklama beruvchi ma'lumotlari: F.I.SH./nomi, INN]"
     },
-    "heroCity": "Shaharni tanlash",
-    "heroBonus": "{amount, number} ₽ olish",
     "friend": {
       "eyebrow": "Do'stingizni taklif qiling",
       "title": "Taklif kodi qanday ishlaydi",
@@ -330,6 +331,9 @@
       ],
       "fastTag": "eng tez",
       "timesNote": "Ozon Bank bayram kunlari ham to'laydi. Hisob slot tugaganidan boshlanadi.",
+      "levelsLink": "Все уровни рейтинга и как они устроены →",
+      "tipsAllLink": "Все вопросы и ответы →",
+      "tipsEyebrow": "Вопросы",
       "tipsTitle": "Nimalarga e'tibor berish kerak",
       "tips": [
         {
@@ -364,28 +368,46 @@
       "title": "Nimani olib kelish kerak va birinchi kun qanday o'tadi",
       "lead": "Hujjatlar va birinchi kun tartibi — Ozon Job ma'lumotnomasi bo'yicha.",
       "docsTitle": "Birinchi chiqish uchun hujjatlar",
-      "docs": [
+      "docsModeLabel": "Как оформляетесь",
+      "docsModes": [
         {
-          "name": "Pasport",
-          "note": ""
+          "id": "app",
+          "label": "Ozon Job (в приложении)",
+          "docs": [
+            {
+              "name": "Паспорт",
+              "note": ""
+            },
+            {
+              "name": "Справка №086У и согласие родителей",
+              "note": "только если вам меньше 18 (шаблон согласия — в оферте)"
+            }
+          ]
         },
         {
-          "name": "SNILS",
-          "note": "elektron ko'rinishda bo'lishi mumkin"
-        },
-        {
-          "name": "INN",
-          "note": "elektron ko'rinishda bo'lishi mumkin"
-        },
-        {
-          "name": "Vaqtinchalik ro'yxatga olish hujjati",
-          "note": "agar bo'lsa"
-        },
-        {
-          "name": "Ma'lumotnoma №086U va ota-onaning roziligi",
-          "note": "faqat 18 yoshga to'lmagan bo'lsangiz (rozilik namunasi — ofertada)"
+          "id": "staff",
+          "label": "Штат, официально (ТК РФ)",
+          "docs": [
+            {
+              "name": "Паспорт",
+              "note": ""
+            },
+            {
+              "name": "Трудовая книжка",
+              "note": "если её нет — оформит работодатель"
+            },
+            {
+              "name": "СНИЛС",
+              "note": ""
+            },
+            {
+              "name": "Документы воинского учёта",
+              "note": "для военнообязанных"
+            }
+          ]
         }
       ],
+      "docsModeNote": "Для Ozon Job (регистрация в приложении) физически нужен только паспорт — ИНН и СНИЛС указываются в анкете, необязательно бумагами. Для штата по трудовому договору — стандартный список по ст. 65 ТК РФ, полный перечень уточнит работодатель.",
       "progress": "Yig'ildi:",
       "docsNote": "Xorijiy fuqarolar uchun — pasport va RFda bo'lish asosini tasdiqlovchi hujjat. Omborlar uchun tibbiy daftarcha talab qilinmaydi; agar bor bo'lsa — o'zingiz bilan oling.",
       "dayTitle": "Chiqishdan oldin va birinchi kuni",
@@ -473,7 +495,10 @@
       ],
       "warn": "Havola «yonib ketmaydi»: kartani 72 soat ichida buyurtma qilishga ulgurmadingizmi — shu havolani yana oching, hisob qaytadan boshlanadi. Keshbek, chegirmalar va xizmat ko'rsatish shartlari — karta tarifiga ko'ra, o'zgarishi mumkin.",
       "note": "Reklama. Biz mustaqil axborot saytimiz, Ozon ham, Ozon Bank ham emasmiz. Havola referal: agar siz karta orqali rasmiylashtirsangiz, bank bizga mukofot to'lashi mumkin — bu sizning keshbekingizga ta'sir qilmaydi. «Ozon Karta» xizmatini «OZON Bank» MChJ taqdim etadi, Rossiya banki litsenziyasi № 3542, 12.04.2023."
-    }
+    },
+    "sourcesEyebrow": "Источники",
+    "sourcesTitle": "Источники (справка Ozon Job, сверено {date})",
+    "sourcesNote": "Разделы справки, на которые мы ссылаемся на этой странице. Сверено {date}."
   },
   "Promo": {
     "title": "Ilovani o'rnatganlik uchun bonus",

@@ -1,5 +1,27 @@
 @use "mixins";
 
+// Фирменный синий берём из токена --bg-5 (= #005bff, одинаков в светлой и тёмной теме — см. _variables.scss).
+// Эти два — только оттенки градиента синего блока-акции (.promo/.card-visual/«целевой» шаг степпера),
+// в токенах темы их нет, поэтому — переменные, чтобы значение не повторялось по файлу как «магическое число».
+$promo-blue-dark: #0044c2;
+$promo-blue-light: #3f9bff;
+$promo-navy: #0a1f44;
+
+// «галочка в кружке»: общий вид для чипов (.promo-terms) и чек-листа (.checks-li) — отличаются
+// только фоном кружка и способом расположения (в потоке текста / поверх текста абсолютно)
+@mixin check-circle($bg) {
+    content: '✓';
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #{$bg};
+    color: rgb(var(--bg-5));
+    font-size: 12px;
+    font-weight: 700;
+}
+
 // ── Шаги («Как выйти на первую смену») ───────────────────────────────────────────────────────
 // Раскладка берётся из утилит ReluxCode (.grid .rows-auto-1fr .place-center .gap-14 .p-relative …),
 // здесь — только то, чего в ReluxCode нет: линия между шагами, container query и scroll-анимации.
@@ -156,7 +178,7 @@
     display: grid;
     gap: 20px;
     padding: clamp(18px, 4vw, 40px);
-    background: linear-gradient(135deg, #0044c2 0%, #005bff 45%, #3f9bff 100%);
+    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 45%, $promo-blue-light 100%);
     color: rgb(255 255 255 / 90%);
     box-shadow: 0 40px 80px -40px rgb(var(--bg-5) / 80%);
 
@@ -220,17 +242,8 @@
     background: rgb(255 255 255 / 14%);
 
     &::before {
-        content: '✓';
-        display: grid;
-        place-items: center;
+        @include check-circle(#fff);
         min-width: 20px;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #fff;
-        color: #005bff;
-        font-size: 12px;
-        font-weight: 700;
     }
 }
 
@@ -249,7 +262,7 @@
 .promo-code {
     padding: 6px 6px 6px 18px;
     background: #fff;
-    color: #0a1f44;
+    color: $promo-navy;
     box-shadow: 0 6px 20px -8px rgb(0 0 0 / 35%);
 
     code {
@@ -259,12 +272,11 @@
     }
 }
 
+// .hover-none (в разметке) отменяет стандартное затемнение a/button до hover — снимает opacity:1 отсюда
 .promo-copy {
     min-height: 40px;
-    padding-inline: 16px;
-    background: #005bff;
+    background: rgb(var(--bg-5));
     color: #fff;
-    opacity: 1;
     transition: background 0.2s, scale 0.15s;
 
     @include mixins.hover { background: #0047cc; }
@@ -282,11 +294,11 @@
 // кнопки магазинов: сколько влезет в ряд (на телефоне — 2–3 в строке)
 .promo-stores { grid-template-columns: repeat(auto-fit, minmax(88px, 1fr)); }
 
+// .hover-none (в разметке) отменяет стандартное затемнение a/button до hover — снимает opacity:1 отсюда
 .promo-store {
     border: 1px solid rgb(255 255 255 / 30%);
     background: rgb(255 255 255 / 16%);
     color: #fff;
-    opacity: 1;
     text-align: center;
     transition: translate 0.2s, background 0.2s, scale 0.15s;
 
@@ -298,9 +310,7 @@
     @include mixins.touch-press { scale: 0.97; }
 }
 
-// переход по якорю «Получить …» из первого экрана: не прятать блок под шапкой и коротко подсветить купон
-#promo { scroll-margin-top: calc(var(--header-h, 60px) + 12px); }
-
+// переход по якорю «Получить …» из первого экрана: подсветить купон (scroll-margin — в .scroll-anchor)
 @keyframes promo-pulse {
     from { box-shadow: 0 0 0 0 rgb(61 220 132 / 70%); }
     to { box-shadow: 0 0 0 18px rgb(61 220 132 / 0%); }
@@ -332,8 +342,8 @@
             background: #fff;
             color: rgb(10 31 68 / 80%);
 
-            h3 { color: #0a1f44; }
-            .promo-num { background: #005bff; color: #fff; }
+            h3 { color: $promo-navy; }
+            .promo-num { background: rgb(var(--bg-5)); color: #fff; }
             .promo-ghost { color: rgb(0 91 255 / 10%); }
         }
     }
@@ -369,7 +379,7 @@
 
 .promo-num {
     background: #fff;
-    color: #0044c2;
+    color: $promo-blue-dark;
 }
 
 .promo-condition { color: rgb(255 255 255 / 90%); }
@@ -383,14 +393,10 @@
 .promo-note { color: rgb(255 255 255 / 75%); }
 
 // белая кнопка на градиенте .promo (для CTA, где не подходит .promo-copy — та скруглена под пару к .promo-code)
+// раскладка/отступы/радиус — утилитами ReluxCode в разметке (h-46 px-24 br-36 font-w-500), здесь только цвет и hover
 .promo-btn {
-    height: 46px;
-    padding-inline: 24px;
-    border-radius: 36px;
     background: #fff;
     color: #0a2a6b;
-    font-weight: 500;
-    opacity: 1;
     transition: translate 0.2s, scale 0.15s;
 
     @include mixins.hover { translate: 0 -2px; }
@@ -401,7 +407,6 @@
 .promo-btn-outline {
     border: 1px solid rgb(255 255 255 / 55%);
     color: #fff;
-    opacity: 1;
     transition: translate 0.2s, background 0.2s;
 
     @include mixins.hover {
@@ -411,65 +416,39 @@
 }
 
 // ── Ozon Карта: мини-макет карты, на неё внахлёст — QR (секция #card) ─────────────────────────
-// QR лежит внутри .card-visual (position:relative) и торчит за нижний правый угол — компактнее
+// QR лежит внутри .card-visual (p-relative в разметке) и торчит за нижний правый угол — компактнее
 // по высоте, чем карта и QR друг под другом. margin-bottom у карты — место под выступающий QR,
-// иначе он перекрывал бы соседний контент снизу.
+// иначе он перекрывал бы соседний контент снизу. Раскладка/паддинг/радиус — утилитами ReluxCode
+// в разметке (flex column justify-between p-relative w-full pd-20 br-20), здесь — то, чего в ReluxCode нет:
+// точный максимальный размер карты, пропорция 1.586 (как у банковской карты), градиент, наклон.
 .card-visual {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 100%;
     max-width: 320px;
     margin-inline: auto;
     margin-bottom: 56px;
     aspect-ratio: 1.586;
-    padding: 22px;
-    border-radius: 22px;
-    background: linear-gradient(135deg, #0a1f44 0%, #005bff 70%, #79b8ff 120%);
+    background: linear-gradient(135deg, $promo-navy 0%, rgb(var(--bg-5)) 70%, #79b8ff 120%);
     color: #fff;
     box-shadow: 0 20px 40px -24px rgb(0 20 90 / 70%);
     rotate: -4deg;
 }
 
+// декоративный чип карты — размер и градиент специфичны, радиус (br-8) и остальное — в разметке
 .card-chip {
     width: 42px;
     height: 32px;
-    border-radius: 8px;
     background: linear-gradient(135deg, #ffe08a, #d9a441);
 }
 
-.card-brand {
-    font-size: 20px;
-    font-weight: 500;
-}
-
-.card-number {
-    font-size: 15px;
-    letter-spacing: 0.14em;
-    opacity: 0.9;
-}
-
-// белая карточка с QR — заходит на нижний правый угол карты; наклон в другую сторону для живости
+// белая карточка с QR — заходит на нижний правый угол карты; наклон в другую сторону для живости.
+// Позиционирование/паддинг/радиус — утилитами (p-absolute z-1 pd-10 br-20), здесь — смещение и тень
 .card-qr {
-    position: absolute;
-    z-index: 1;
     right: -14px;
     bottom: -56px;
     width: 38%;
     max-width: 132px;
-    padding: 10px;
-    border-radius: 18px;
     background: #fff;
     box-shadow: 0 20px 40px -20px rgb(0 20 90 / 70%);
     rotate: 4deg;
-}
-
-.card-qr-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
 }
 
 // ── Блоки ниже промо: приглашение, выплаты, первый день ──────────────────────────────────────
@@ -575,38 +554,51 @@
     .time-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
-// аккордеон «на что обратить внимание» (нативный <details>, работает без JS)
+// аккордеон «на что обратить внимание»: кнопка (не <summary>) — раскрытие анимировано через
+// grid-template-rows 0fr→1fr на .tip-body (см. FaqAccordion — только один пункт открыт за раз)
 .tip {
     transition: background 0.2s, border-color 0.2s;
+}
 
-    summary {
-        padding: 14px 16px;
-        list-style: none;
+.tip-summary {
+    padding: 14px 16px;
+    text-align: left;
 
-        &::-webkit-details-marker { display: none; }
-
-        // плюс, который при открытии превращается в минус
-        &::after {
-            content: '+';
-            flex-shrink: 0;
-            font-size: 22px;
-            font-weight: 400;
-            line-height: 1;
-            color: rgb(var(--bg-5));
-            transition: rotate 0.25s;
-        }
+    // плюс, который при открытии превращается в минус
+    &::after {
+        content: '+';
+        flex-shrink: 0;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1;
+        color: rgb(var(--bg-5));
+        transition: rotate 0.25s;
     }
+}
+
+.tip-body {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    @media (prefers-reduced-motion: no-preference) {
+        transition: grid-template-rows 0.25s ease;
+    }
+}
+
+.tip-body-inner {
+    overflow: hidden;
 
     p {
         margin: 0;
         padding: 0 16px 16px;
     }
+}
 
-    &[open] {
-        background: rgb(var(--bg-5) / 8%);
+.tip-open {
+    background: rgb(var(--bg-5) / 8%);
 
-        summary::after { rotate: 45deg; }
-    }
+    .tip-summary::after { rotate: 45deg; }
+    .tip-body { grid-template-rows: 1fr; }
 }
 
 // чек-лист документов: настоящие чекбоксы (работают без JS), выбранный пункт зачёркивается
@@ -673,8 +665,133 @@
 // счётчик «выбрано / всего»: --total задаётся в разметке строкой
 .docs-count::after { content: counter(done) ' / ' var(--total); }
 
+// переключатель «через Ozon Job / в штат» над документами первого дня: радио + :has(), без JS.
+// Раскладка/цвет в обычном состоянии — утилитами в разметке (bg-2-7 и т.п.), здесь — только состояния,
+// для которых нет утилит (акцент выбранного варианта и переключение панели документов).
+.doc-mode-input:checked + .doc-mode-label {
+    background: rgb(var(--bg-5));
+    color: #fff;
+}
+
+.doc-mode-input:focus-visible + .doc-mode-label {
+    outline: 2px solid rgb(var(--bg-5));
+    outline-offset: 2px;
+}
+
+.doc-mode-panel { display: none; }
+
+.doc-mode-wrap {
+    &:has(#doc-mode-app:checked) [data-doc-mode='app'] { display: grid; }
+    &:has(#doc-mode-staff:checked) [data-doc-mode='staff'] { display: grid; }
+}
+
+// «Источники»: ссылки в один ряд с горизонтальной прокруткой — сама полоса тонкая и в цвет бренда
+// (вместо системной серой), а не скрыта полностью (как .scrollbar-none у .time-row)
+.sources-scroll {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: -10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--bg-5) / 40%) transparent;
+
+    &::-webkit-scrollbar { height: 6px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgb(var(--bg-5) / 40%);
+        border-radius: 10px;
+
+        @include mixins.hover { background: rgb(var(--bg-5) / 60%); }
+    }
+}
+
+// чип-ссылка на источник: лёгкая синяя заливка со «стеклом» (blur-3 в разметке), при наведении —
+// заливается фирменным синим сплошь, текст белеет и чип чуть приподнимается (как .promo-store/.time-tag)
+.source-chip {
+    background: rgb(var(--bg-5) / 10%);
+    color: rgb(var(--bg-5));
+    transition: background 0.2s, color 0.2s, translate 0.2s, box-shadow 0.2s;
+
+    @include mixins.hover {
+        background: rgb(var(--bg-5));
+        color: #fff;
+        translate: 0 -2px;
+        box-shadow: 0 12px 24px -14px rgb(var(--bg-5) / 60%);
+    }
+
+    @include mixins.touch-press { scale: 0.97; }
+}
+
+// разделы главной, на которые ведут якоря (#promo уже был, остальные — из PageNav): без этого
+// шапка `position:sticky` перекрывала бы верх раздела при переходе по ссылке
+.scroll-anchor { scroll-margin-top: calc(var(--header-h, 60px) + 12px); }
+
+// плавающая кнопка быстрой навигации по странице (PageNav) — справа, по центру высоты экрана
+.page-nav-btn {
+    top: 50%;
+    right: 16px;
+    translate: 0 -50%;
+}
+
+// ссылки в модалке быстрой навигации: подсветка при наведении (мышь) — сам вид/отступы в разметке
+.page-nav-link {
+    transition: background 0.15s;
+
+    @include mixins.hover { background: rgb(var(--bg-5) / 8%); }
+}
+
+// ── /sklad: строка поиска города — «прилипает» под шапкой при прокрутке и сжимается ──────────────
+// .p-sticky (в разметке) сам держит позицию, класс .search-bar-compact (переключается по scrollY
+// в CitySearch) только скрывает подпись и уменьшает поле — без ручного скачка layout.
+.search-bar {
+    top: calc(var(--header-h, 60px) + 10px);
+    padding-block: 8px 2px;
+    background: rgb(var(--bg-1) / 92%);
+    backdrop-filter: blur(7px);
+}
+
+.search-label {
+    transition: opacity 0.2s, height 0.2s, margin 0.2s;
+}
+
+.search-input {
+    height: 46px;
+    padding-inline: 16px;
+    color: rgb(var(--bg-2) / 90%);
+    transition: height 0.2s;
+
+    &::placeholder { color: rgb(var(--bg-2) / 45%); }
+
+    &:focus-visible {
+        outline: 2px solid rgb(var(--bg-5) / 100%);
+        outline-offset: 2px;
+    }
+}
+
+.search-bar-compact {
+    .search-label { margin: 0; height: 0; opacity: 0; overflow: hidden; }
+    .search-input { height: 38px; }
+}
+
+// 400+ карточек: браузер не считает раскладку тех, что вне экрана
+.city-cell {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 64px;
+}
+
+// ── /sklad/[город]: карточка с промокодом (PromoCode) ────────────────────────────────────────────
+.promo-code-inline { user-select: all; }
+
+// хлебные крошки: разделитель «/» между пунктами
+.breadcrumbs li + li::before {
+    content: '/';
+    margin-right: 7px;
+    opacity: 0.4;
+}
+
 main {
     position: relative;
+    padding-bottom: 86px;
     section:first-of-type {
         .container {
             min-height: calc(100dvh - 60px);
@@ -699,20 +816,10 @@ main {
 
     .checks-li {
         li::before {
-        content: "✓";
-        background: rgb(var(--bg-5) / 14%);
-        width: 20px;
-        height: 20px;
-        color: rgb(var(--bg-5));
-        border-radius: 50%;
-        place-items: center;
-        font-size: 12px;
-        font-weight: 700;
-        display: grid;
-        position: absolute;
-        top: 1px;
-        left: 0;
-
+            @include check-circle(rgb(var(--bg-5) / 14%));
+            position: absolute;
+            top: 1px;
+            left: 0;
         }
     }
 
@@ -726,7 +833,7 @@ main {
 
         .stepper-card {
             border-color: transparent;
-            background: linear-gradient(140deg, #005bff 0%, #3f9bff 100%);
+            background: linear-gradient(140deg, rgb(var(--bg-5)) 0%, $promo-blue-light 100%);
             box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
             color: rgb(255 255 255 / 90%);
 

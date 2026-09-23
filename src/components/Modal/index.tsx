@@ -64,6 +64,12 @@ export default function Modal({
       const deltaY = clientY - startY.current;
 
       if (deltaY > DRAG_START_THRESHOLD) {
+        // контент внутри модалки ещё проскроллен — палец тянет список вверх, а не закрывает модалку;
+        // отдаём жест нативному скроллу (не трогаем e.preventDefault) и больше не обрабатываем его
+        if (contentRef.current && contentRef.current.scrollTop > 0) {
+          startY.current = null;
+          return;
+        }
         if (e && e.cancelable) {
           e.preventDefault();
         }
@@ -115,7 +121,19 @@ export default function Modal({
     mouseCleanupRef.current = null;
 
     if (currentY.current > SWIPE_THRESHOLD) {
-      resetStyles();
+      // доводим панель дальше туда же, куда её тянул палец, а не дёргаем обратно к открытому
+      // положению (resetStyles() здесь снял бы инлайн-transform и на миг вернул бы панель в открытое
+      // состояние ещё до того, как класс .active уйдёт и запустится обычный переход на закрытие —
+      // выглядело как рывок). Инлайн-стили очистит resetStyles() при следующем открытии.
+      if (contentRef.current) {
+        contentRef.current.style.transition = 'transform 0.3s ease-out';
+        contentRef.current.style.transform = `translate3d(0, ${contentHeight.current}px, 0)`;
+      }
+      if (modalRef.current) {
+        modalRef.current.style.transition = 'backdrop-filter 0.3s ease-out, -webkit-backdrop-filter 0.3s ease-out';
+        modalRef.current.style.backdropFilter = '';
+        modalRef.current.style.removeProperty('-webkit-backdrop-filter');
+      }
       onClose();
     } else {
       // Возвращаем на место

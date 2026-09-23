@@ -31,7 +31,7 @@ export default function CopyCode({ code, copyLabel, copiedLabel }: Props) {
     return (
         <div className="promo-code flex nowrap align-center justify-between gap-10 br-36 w-full">
             <code className="font-18 font-w-700 letter-s-12">{code}</code>
-            <button type="button" className="promo-copy br-36 font-w-500 space-nowrap" onClick={copy}>
+            <button type="button" className="promo-copy hover-none px-10 br-36 font-w-500 space-nowrap" onClick={copy}>
                 {copied ? copiedLabel : copyLabel}
             </button>
             <span className="sr-only" role="status">

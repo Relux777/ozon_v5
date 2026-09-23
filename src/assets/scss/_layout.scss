@@ -63,6 +63,10 @@
     
     .container-type-inline {container-type: inline-size;}
 
+    // компенсация padding-inline:10px у колонок .f-w-* внутри .flex — чтобы край списка совпадал
+    // с текстом рядом (без неё карточки/строки сдвинуты на 10px правее заголовка)
+    .row-flush { margin-inline: -10px; }
+
     @for $i from 1 through 12 {
         .f-w-#{$i} { width: math.percentage(math.div($i, 12)); }
     }
