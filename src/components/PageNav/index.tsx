@@ -37,7 +37,7 @@ export default function PageNav({ label, items }: Props) {
         <>
             <button
                 type='button'
-                className={`float-btn p-fixed z-20 grid place-center w-46 h-46 br-round bg-1-7 shadow-1 blur-7 active_scale_09 r-20 b-20${visible ? ' float-btn-visible' : ''}`}
+                className={`float-btn p-fixed z-20 grid place-center w-46 h-46 br-round bg-1-7 shadow-1 blur-7 active_scale_09 r-10 b-20${visible ? ' float-btn-visible' : ''}`}
                 onClick={() => setIsOpen(true)}
                 aria-label={label}
                 aria-haspopup='dialog'
