@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getPathname } from '@/i18n/navigation';
 import { routing, type AppLocale } from '@/i18n/routing';
-import { SITE_CONFIG } from '@/config/site';
+import { OG_IMAGE, SITE_CONFIG } from '@/config/site';
 
 const BASE_URL = SITE_CONFIG.url;
 
@@ -65,8 +65,11 @@ export function buildPageMetadata({
             description,
             locale: OG_LOCALES[locale],
             alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => OG_LOCALES[l]),
+            // превью ссылки в Telegram/WhatsApp/VK/соцсетях; без картинки summary_large_image был пустым.
+            // JPEG до 300 КБ — иначе WhatsApp не показывает превью
+            images: [{ ...OG_IMAGE, alt: siteName }],
         },
-        twitter: { card: 'summary_large_image', title, description },
+        twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
     };
 }
 
@@ -79,6 +82,23 @@ export function breadcrumbJsonLd(locale: AppLocale, items: { name: string; href:
             position: index + 1,
             name: item.name,
             item: `${BASE_URL}${getPathname({ locale, href: item.href })}`,
+        })),
+    };
+}
+
+/**
+ * Разметка FAQPage (вопрос — ответ). Только для настоящих вопросов, видимых на странице целиком, и только
+ * на ОДНОЙ странице сайта: одинаковые вопросы на многих страницах Google размечать не рекомендует.
+ */
+export function faqJsonLd(locale: AppLocale, items: { title: string; text: string }[]) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        inLanguage: locale,
+        mainEntity: items.map((item) => ({
+            '@type': 'Question',
+            name: item.title,
+            acceptedAnswer: { '@type': 'Answer', text: item.text },
         })),
     };
 }

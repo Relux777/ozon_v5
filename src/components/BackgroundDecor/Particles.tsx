@@ -42,7 +42,8 @@ export default function Particles({
   const mouseRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 })
   const canvasSizeRef = useRef<{ w: number; h: number }>({ w: 0, h: 0 })
   
-  const dpr = typeof window !== 'undefined' ? window.devicePixelRatio : 1
+  // частицы 1–2 px: выше 2x разницы не видно, а площадь canvas (и работа на каждом кадре) растёт квадратично
+  const dpr = typeof window !== 'undefined' ? Math.min(window.devicePixelRatio, 2) : 1
 
   const circleParams = useCallback((): Circle => ({
     x: Math.floor(Math.random() * canvasSizeRef.current.w),
@@ -167,6 +168,14 @@ export default function Particles({
     if (prefersReducedMotion()) return
 
     const handleResize = () => {
+      // resize бывает и без смены размера области (масштаб, панели браузера) — тогда не пересоздаём частицы
+      const container = canvasContainerRef.current
+      if (
+        container &&
+        container.offsetWidth === canvasSizeRef.current.w &&
+        container.offsetHeight === canvasSizeRef.current.h
+      ) return
+
       cancelAnimationFrame(animationFrameRef.current)
       initCanvas()
       animate()

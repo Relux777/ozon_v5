@@ -2,9 +2,10 @@
 
 import { Link } from '@/i18n/navigation';
 
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitch from "@/components/ThemeSwitch";
+import { getLanguageByCode } from '@/config/languages';
 
 import LogoIcon from '@/assets/svg/logo.svg';
 
@@ -15,6 +16,9 @@ export default async function HeaderComponent() {
     const BLUR_LAYERS_COUNT = 10;
     const t = await getTranslations('LanguageModal');
     const headerT = await getTranslations('Header');
+    // флаг и название текущего языка — на сервере: так 7 SVG-флагов не попадают в общий клиентский JS
+    // (весь список нужен только в модалке выбора языка, она грузится отдельным чанком)
+    const { label: languageLabel, flag: Flag } = getLanguageByCode(await getLocale());
 
     return (
         <header className={`p-sticky t-0 z-20 ${styles.header}`}>
@@ -37,7 +41,11 @@ export default async function HeaderComponent() {
                 </ul>
                 <ul className='flex align-center gap-10'>
                     <li>
-                        <LanguageSwitcher modalTitle={t('title')} />
+                        <LanguageSwitcher
+                            modalTitle={t('title')}
+                            label={languageLabel}
+                            flag={<Flag width={22} height={22} aria-hidden="true" />}
+                        />
                     </li>
                     <li><span className={`block bg-2-20 ${styles.gap}`}></span></li>
                     <li>

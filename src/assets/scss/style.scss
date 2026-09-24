@@ -7,6 +7,13 @@ $promo-blue-dark: #0044c2;
 $promo-blue-light: #3f9bff;
 $promo-navy: #0a1f44;
 
+// ── Шрифты письменностей, которых нет в Geist ────────────────────────────────────────────────
+// Noto Georgian/Armenian — только на страницах ka/hy. Раньше они стояли в общем стеке, и на ЛЮБОЙ
+// странице браузер скачивал до 5 файлов Noto (~90 КБ): ради «→ ✓ ↗» (их нет в Geist) и ради
+// названий языков в скрытой модалке. Теперь такие символы берутся из системного шрифта.
+body:lang(ka) { font-family: var(--font-geist), var(--font-ka), system-ui, Arial, Helvetica, sans-serif; }
+body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial, Helvetica, sans-serif; }
+
 // «галочка в кружке»: общий вид для чипов (.promo-terms) и чек-листа (.checks-li) — отличаются
 // только фоном кружка и способом расположения (в потоке текста / поверх текста абсолютно)
 @mixin check-circle($bg) {
@@ -248,11 +255,14 @@ $promo-navy: #0a1f44;
 }
 
 // «купон»: стеклянная карточка с кодом и ссылками на магазины приложений
+// backdrop-filter у купона и шагов — только для мыши: под ними гладкий градиент .promo, размытие
+// визуально почти ничего не меняет, а на телефоне пересчитывается на каждом кадре прокрутки
 .promo-coupon {
     padding: clamp(14px, 3vw, 20px);
     border: 1px dashed rgb(255 255 255 / 45%);
     background: rgb(255 255 255 / 12%);
-    backdrop-filter: blur(8px);
+
+    @media (hover: hover) { backdrop-filter: blur(8px); }
 }
 
 .promo-label,
@@ -327,8 +337,9 @@ $promo-navy: #0a1f44;
     li {
         border: 1px solid rgb(255 255 255 / 20%);
         background: rgb(255 255 255 / 12%);
-        backdrop-filter: blur(8px);
         transition: translate 0.25s, background 0.25s, box-shadow 0.25s;
+
+        @media (hover: hover) { backdrop-filter: blur(8px); }
 
         @include mixins.hover {
             translate: 0 -4px;
@@ -530,6 +541,16 @@ $promo-navy: #0a1f44;
     }
 }
 
+// итог формулы («Вознаграждение») — синий, как блок-акция: сразу видно, что получается в результате
+.formula-result {
+    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+    color: rgb(255 255 255 / 88%);
+    box-shadow: 0 18px 36px -24px rgb(var(--bg-5) / 80%);
+
+    b { color: #fff; }
+    .icon-badge { color: #fff; background: rgb(255 255 255 / 18%); }
+}
+
 // сроки выплат — одна линия из 4 карточек: без верхних отступов внутри ленты метка «быстрее всего» и подъём карточки при
 // наведении обрезались бы, поэтому у ленты есть запас сверху (компенсирован отрицательным margin)
 .time-row {
@@ -725,11 +746,46 @@ $promo-navy: #0a1f44;
 // шапка `position:sticky` перекрывала бы верх раздела при переходе по ссылке
 .scroll-anchor { scroll-margin-top: calc(var(--header-h, 60px) + 12px); }
 
-// ссылки в модалке быстрой навигации: подсветка при наведении (мышь) — сам вид/отступы в разметке
-.page-nav-link {
+// ── Модалка быстрой навигации (PageNav): оглавление страницы ───────────────────────────────────
+// Раскладка/отступы — утилитами в разметке (PageNavModal), здесь только цвета и состояния.
+
+// строка раздела (номер + подпись + заголовок + стрелка) — вся кликабельна
+.page-nav-head {
     transition: background 0.15s;
 
     @include mixins.hover { background: rgb(var(--bg-5) / 8%); }
+    @include mixins.touch-press { background: rgb(var(--bg-5) / 12%); }
+}
+
+// номер раздела в кружке (и кружок с иконкой у ссылок «Полезные ссылки»)
+.page-nav-num {
+    background: rgb(var(--bg-5) / 10%);
+    color: rgb(var(--bg-5));
+}
+
+// стрелка «перейти» — повёрнутая chevron-down
+.page-nav-arrow { rotate: -90deg; }
+
+// под-разделы «таблетками» — с отступом под текст заголовка (10px паддинг строки + 36px номер + 12px зазор)
+.page-nav-sub { padding: 0 10px 10px 58px; }
+
+.page-nav-chip {
+    transition: background 0.15s, color 0.15s;
+
+    @include mixins.hover {
+        background: rgb(var(--bg-5));
+        color: #fff;
+    }
+}
+
+// раздел, который был на экране в момент открытия модалки
+.page-nav-item-active {
+    background: rgb(var(--bg-5) / 8%);
+
+    .page-nav-num {
+        background: rgb(var(--bg-5));
+        color: #fff;
+    }
 }
 
 // ── /sklad: строка поиска города — стеклянная, как ссылки городов, с «свечением» при фокусе ──────
@@ -770,8 +826,128 @@ $promo-navy: #0a1f44;
 
 .scroll-top-icon { rotate: 180deg; }
 
-// ── /sklad/[город]: карточка с промокодом (PromoCode) ────────────────────────────────────────────
-.promo-code-inline { user-select: all; }
+// ThemeSwitch: иконку выбирает CSS по data-theme на <html> (next-themes ставит его до первой отрисовки) —
+// кнопка есть сразу в серверном HTML, без пустой заглушки до гидратации и без сдвига шапки
+.theme-icon-sun { display: none; }
+
+[data-theme='dark'] {
+    .theme-icon-sun { display: inline; }
+    .theme-icon-moon { display: none; }
+}
+
+// ── /sklad/[город]: наши данные, удобства, адреса, условия ───────────────────────────────────────
+// Раскладка и размеры — утилитами в разметке (grid place-center w-46 h-46 br-round pd-20 …),
+// здесь только цвета/градиенты и состояния, для которых в ReluxCode нет утилит.
+
+// иконка в круглой «плашке»: цвет — --accent (задаётся в разметке, по умолчанию фирменный синий),
+// фон — тот же цвет на 12%: так карточки разного смысла различаются цветом, но остаются в одной системе
+.icon-badge {
+    color: var(--accent, rgb(var(--bg-5)));
+    background: color-mix(in srgb, var(--accent, rgb(var(--bg-5))) 12%, transparent);
+}
+
+// тот же --accent для текста («на 14 из 16 складов») и заливки полоски-шкалы; ширина заливки — в разметке
+.accent-text { color: var(--accent, rgb(var(--bg-5))); }
+.accent-fill { background: var(--accent, rgb(var(--bg-5))); }
+
+// крупная цифра в карточках «наши данные»: на телефоне меньше, чтобы «до 125 000 ₽» не переносилось
+.city-stat-value {
+    font-size: clamp(26px, 6vw, 36px);
+    line-height: 1.15;
+}
+
+// карточка «средний доход» — синяя, как блок-акция (.promo): главная цифра страницы, белый текст в обеих темах
+.city-stat-accent {
+    border-color: transparent;
+    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+    color: rgb(255 255 255 / 88%);
+    box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
+
+    h3 { color: #fff; }
+    .icon-badge { color: #fff; background: rgb(255 255 255 / 18%); }
+    .city-stat-value { color: #fff; }
+
+    // метки частей карточки: «В штате» — полупрозрачная, «Через Ozon Job» — белая (сайт про Ozon Job, это главное)
+    .city-stat-tag {
+        justify-self: start;
+        background: rgb(255 255 255 / 18%);
+        color: #fff;
+    }
+
+    .city-stat-tag-job {
+        background: #fff;
+        color: rgb(var(--bg-5));
+    }
+
+    // полоски «сколько слотов в месяц» (Ozon Job): дорожка полупрозрачная, заливка белая
+    .city-stat-track { background: rgb(255 255 255 / 20%); }
+    .city-stat-fill { background: #fff; }
+
+    // «выше среднего на N%» — плашка по содержимому, а не на всю ширину ячейки грида
+    .city-stat-chip {
+        justify-self: start;
+        background: rgb(255 255 255 / 18%);
+        color: #fff;
+    }
+}
+
+// часть «Через Ozon Job» в карточке дохода отделена линией: на широком экране — слева, на узком — сверху
+.city-stat-job {
+    @media (width >= 990px) { border-left: 1px solid rgb(255 255 255 / 22%); }
+
+    @media (width < 990px) {
+        border-top: 1px solid rgb(255 255 255 / 22%);
+        margin-top: 10px;
+        padding-top: 15px;
+    }
+}
+
+// отметка на плитке удобства: касается ли оно подработки через Ozon Job (цвет — --accent в разметке)
+.job-tone {
+    justify-self: start;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+// карточка адреса: кнопки прижаты к низу, даже когда адрес короче, чем у соседей по ряду
+.address-card { grid-template-rows: auto auto 1fr auto; }
+
+// «Показать все адреса»: нативный <details> (работает без JS, скрытые адреса всё равно в HTML для поисковиков);
+// стандартный треугольник скрыт, подпись и стрелка меняются при открытии
+.city-more {
+    // кнопка по центру: ширина по содержимому + auto-отступы
+    > summary {
+        width: fit-content;
+        margin-inline: auto;
+        list-style: none;
+
+        &::-webkit-details-marker { display: none; }
+    }
+
+    .city-more-less { display: none; }
+
+    &[open] {
+        .city-more-open { display: none; }
+        .city-more-less { display: inline; }
+        .city-more-icon { rotate: 180deg; }
+    }
+}
+
+.city-more-icon { transition: rotate 0.2s; }
+
+// краткая справка в модалке быстрой навигации (страница города) — в стиле синего блока-акции
+.city-summary {
+    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+    color: rgb(255 255 255 / 88%);
+
+    p { margin: 0; }
+    b { color: #fff; }
+}
+
+.city-summary-chip {
+    background: rgb(255 255 255 / 16%);
+    color: #fff;
+}
 
 // хлебные крошки: разделитель «/» между пунктами
 .breadcrumbs li + li::before {

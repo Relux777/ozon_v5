@@ -54,9 +54,21 @@
     .m-br-b-0 { border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
 
     .flex.m-align-end { align-items: flex-end; }
+    .flex.m-justify-center { justify-content: center; }
 
     .none-max-620 { display: none; }
 }
 @media (width <= 360px) {
     .none-max-360 { display: none; }
+}
+
+// Сенсорные экраны (телефоны/планшеты). backdrop-filter пересчитывается на каждом кадре прокрутки
+// для каждого «стеклянного» элемента в кадре — на слабых Android это главный источник подтормаживаний.
+// .touch-no-blur — для ДЕКОРАТИВНОГО стекла (карточки, чипы, ссылки-«пилюли»): на тач-экране
+// остаётся полупрозрачная подложка без размытия. Функциональное стекло поверх текста
+// (нижнее меню, модалки, плавающие кнопки) этим классом не помечать.
+// Только стандартное свойство: если рядом написать и -webkit-backdrop-filter, минификатор (Lightning CSS)
+// склеивает их и оставляет лишь префиксный вариант, который Chrome игнорирует — правило не работает.
+@media (hover: none) {
+    .touch-no-blur { backdrop-filter: none; }
 }

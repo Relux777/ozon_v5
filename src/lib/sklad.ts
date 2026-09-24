@@ -10,7 +10,10 @@ export type Perk = (typeof PERKS)[number];
 export type Income = { from?: number; to?: number };
 
 export type Warehouse = {
+    /** адрес как на career.ozon.ru (краткий, иногда без региона) — он же уникальный ключ записи */
     address: string;
+    /** полный адрес: регион, район/город, населённый пункт, улица, дом — его показываем, копируем и ищем на карте */
+    fullAddress: string;
     income: Income;
     perks: Perk[];
 };
@@ -37,6 +40,15 @@ export type CityStats = {
     /** среднее по верхним границам дохода, округлено до 1 000 ₽ */
     average?: number;
     perks: Perk[];
+    /** на скольких складах города есть каждое из удобств */
+    perkCounts: Record<Perk, number>;
+};
+
+/** Сводка по всей базе (все склады из warehouses.json) — для сравнения города со средним */
+export type NationalStats = {
+    count: number;
+    /** среднее по верхним границам дохода, округлено до 1 000 ₽ */
+    average: number;
 };
 
 export type CityIndexItem = { slug: string; name: string; count: number };
@@ -71,23 +83,63 @@ export function getCity(slug: string): City | undefined {
     return CITIES_BY_SLUG.get(slug);
 }
 
+/** среднее, округлённое до 1 000 ₽ */
+const roundedAverage = (values: number[]) =>
+    Math.round(values.reduce((sum, value) => sum + value, 0) / values.length / 1000) * 1000;
+
 export function getCityStats(city: City): CityStats | null {
     const { warehouses } = city;
     if (warehouses.length === 0) return null;
 
     const bottoms = warehouses.flatMap((w) => (w.income.from ? [w.income.from] : []));
     const tops = warehouses.flatMap((w) => (w.income.to ? [w.income.to] : []));
+    const perkCounts = Object.fromEntries(
+        PERKS.map((perk) => [perk, warehouses.filter((w) => w.perks.includes(perk)).length])
+    ) as Record<Perk, number>;
 
     return {
         count: warehouses.length,
         min: bottoms.length > 0 ? Math.min(...bottoms) : undefined,
         max: tops.length > 0 ? Math.max(...tops) : undefined,
-        average:
-            tops.length > 0
-                ? Math.round(tops.reduce((sum, value) => sum + value, 0) / tops.length / 1000) * 1000
-                : undefined,
-        perks: PERKS.filter((perk) => warehouses.some((w) => w.perks.includes(perk))),
+        average: tops.length > 0 ? roundedAverage(tops) : undefined,
+        perks: PERKS.filter((perk) => perkCounts[perk] > 0),
+        perkCounts,
     };
+}
+
+// Считается один раз при загрузке модуля: каждый склад в warehouses.json — одна запись,
+// даже если он показывается на страницах нескольких городов
+const ALL_WAREHOUSES = warehousesData.warehouses as RawWarehouse[];
+const NATIONAL_STATS: NationalStats = {
+    count: ALL_WAREHOUSES.length,
+    average: roundedAverage(ALL_WAREHOUSES.flatMap((w) => (w.income.to ? [w.income.to] : []))),
+};
+
+export function getNationalStats(): NationalStats {
+    return NATIONAL_STATS;
+}
+
+/**
+ * Соседние страницы: города и регионы, на которых показываются те же склады (агломерация, область).
+ * Сначала те, у кого общих складов больше. Нужны для перелинковки «Соседние города и районы».
+ */
+export function getRelatedCities(city: City): City[] {
+    const shared = new Map<string, number>();
+
+    for (const warehouse of ALL_WAREHOUSES) {
+        if (!warehouse.cities.includes(city.slug)) continue;
+        for (const slug of warehouse.cities) {
+            if (slug !== city.slug) shared.set(slug, (shared.get(slug) ?? 0) + 1);
+        }
+    }
+
+    return [...shared.entries()]
+        .flatMap(([slug, count]) => {
+            const related = CITIES_BY_SLUG.get(slug);
+            return related ? [{ related, count }] : [];
+        })
+        .sort((a, b) => b.count - a.count || a.related.name.localeCompare(b.related.name, 'ru'))
+        .map(({ related }) => related);
 }
 
 /** Города, для которых есть адреса складов: их индексируем и включаем в sitemap */

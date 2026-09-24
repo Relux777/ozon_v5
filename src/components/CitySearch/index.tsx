@@ -29,7 +29,7 @@ export default function CitySearch({ cities }: Props) {
                 </label>
                 <input
                     id={inputId}
-                    className="search-input w-full h-46 px-16 br-36 bg-2-3 blur-7 border-1px-2-10 shadow-3"
+                    className="search-input w-full h-46 px-16 br-36 bg-2-3 blur-7 touch-no-blur border-1px-2-10 shadow-3"
                     type="search"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
@@ -43,13 +43,14 @@ export default function CitySearch({ cities }: Props) {
                 {visible.length > 0 ? t('found', { count: visible.length }) : t('empty')}
             </p>
 
-            {/* Весь список рендерится на сервере: ссылки видны поисковикам без JS */}
+            {/* Весь список рендерится на сервере: ссылки видны поисковикам без JS.
+                touch-no-blur: 418 «стеклянных» ссылок на телефоне = 418 backdrop-filter на каждом кадре прокрутки */}
             <ul className="flex row-flush" aria-label={t('listLabel')}>
                 {visible.map(({ slug, name, count }) => (
                     <li key={slug} className="f-w-3 mb-15">
                         <Link
                             href={`/sklad/${slug}`}
-                            className="flex nowrap justify-between border-1px-2-10 align-center bg-2-3 blur-7 pd-10 shadow-3 br-36 text_center translate_0_5 tr-2 cursor-pointer"
+                            className="flex nowrap justify-between border-1px-2-10 align-center bg-2-3 blur-7 touch-no-blur pd-10 shadow-3 br-36 text_center translate_0_5 tr-2 cursor-pointer"
                         >
                             <span className="font-w-500 color-2-90">{name}</span>
                             {count > 0 ? (

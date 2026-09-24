@@ -1,19 +1,22 @@
 // src/components/CopyLink/index.tsx
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 
 type Props = {
+    /** что копировать: ссылку, адрес склада и т.п. */
     url: string;
     /** подписи приходят с сервера — так клиентскому компоненту не нужны свои переводы */
     copyLabel: string;
     copiedLabel: string;
     className?: string;
+    /** иконка перед подписью (готовая разметка с сервера), необязательно */
+    icon?: ReactNode;
 };
 
-// Кнопка «Скопировать ссылку» — в отличие от CopyCode не показывает само значение:
-// ссылка длинная, выводить её текстом незачем.
-export default function CopyLink({ url, copyLabel, copiedLabel, className }: Props) {
+// Кнопка «Скопировать …» — в отличие от CopyCode не показывает само значение:
+// ссылка длинная, выводить её текстом незачем. Используется и для адресов складов на странице города.
+export default function CopyLink({ url, copyLabel, copiedLabel, className, icon }: Props) {
     const [copied, setCopied] = useState(false);
     const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -32,6 +35,7 @@ export default function CopyLink({ url, copyLabel, copiedLabel, className }: Pro
 
     return (
         <button type="button" className={className} onClick={copy} aria-live="polite">
+            {icon}
             {copied ? copiedLabel : copyLabel}
         </button>
     );

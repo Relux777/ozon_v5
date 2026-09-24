@@ -3,31 +3,20 @@
 
 import { useTheme } from 'next-themes';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
 
 import Sun from '@/assets/svg/ThemeSwitch/sun.svg';
 import Moon from '@/assets/svg/ThemeSwitch/moon.svg';
 
+// Обе иконки есть в разметке, видимую выбирает CSS по data-theme (.theme-icon-* в style.scss):
+// кнопка рендерится на сервере сразу — без пустой заглушки до гидратации и без сдвига шапки.
+// Тема на клиенте известна к моменту клика, поэтому переключение работает как раньше.
 export default function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
   const t = useTranslations('A11y');
-
-  // После монтирования клиент знает реальную тему
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
-
-  // Заглушка, чтобы избежать сдвига layout
-  if (!mounted) {
-    return <div className="w-5 h-5" aria-hidden="true" />;
-  }
-
-  const isDark = resolvedTheme === 'dark';
 
   return (
     <button
@@ -36,11 +25,8 @@ export default function ThemeSwitch() {
       onClick={toggleTheme}
       aria-label={t('themeToggle')}
     >
-      {isDark ? (
-        <Sun width={22} height={22} viewBox="0 0 24 24" aria-hidden="true" />
-      ) : (
-        <Moon width={22} height={22} viewBox="0 0 24 24" aria-hidden="true" />
-      )}
+      <Sun className='theme-icon-sun' width={22} height={22} viewBox="0 0 24 24" aria-hidden="true" />
+      <Moon className='theme-icon-moon' width={22} height={22} viewBox="0 0 24 24" aria-hidden="true" />
     </button>
   );
 }

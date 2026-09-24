@@ -1,12 +1,11 @@
 // src/components/LanguageSwitcher/index.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
 import ChevronDown from '@/assets/svg/chevron-down.svg';
-import { getLanguageByCode } from '@/config/languages';
 import styles from '@/components/Modal/modal.module.scss';
 
 const Modal = dynamic(() => import('@/components/Modal'));
@@ -15,27 +14,45 @@ type LanguageModalProps = { title: string };
 const LanguageModal = dynamic<LanguageModalProps>(
     () => import('@/components/Modal/content/LanguageModal')
 );
+// тот же модуль — тот же чанк: вызов заранее просто прогревает его к моменту клика
+const preloadLanguageModal = () => import('@/components/Modal/content/LanguageModal');
 
 type Props = {
     modalTitle: string;
+    /** название и флаг текущего языка рендерит сервер (Header) — флаги не попадают в общий клиентский JS */
+    label: string;
+    flag: ReactNode;
 };
 
-export default function LanguageSwitcher({ modalTitle }: Props) {
+export default function LanguageSwitcher({ modalTitle, label, flag }: Props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const locale = useLocale();
+    // Список языков рендерим только после первого открытия: в нём названия на 7 алфавитах, и даже
+    // скрытый (visibility:hidden) он заставлял браузер на КАЖДОЙ странице качать грузинский, армянский
+    // и расширенные начертания шрифтов. Код списка подгружаем заранее — при наведении/касании кнопки.
+    const [wasOpened, setWasOpened] = useState(false);
     const t = useTranslations('A11y');
-    const { label, flag: Flag } = getLanguageByCode(locale);
+
+    const open = () => {
+        setWasOpened(true);
+        setIsModalOpen(true);
+    };
+
+    const preload = () => {
+        void preloadLanguageModal();
+    };
 
     return (
         <div className='language'>
             <button
                 type="button"
                 className='flex align-center gap-5 hover-80'
-                onClick={() => setIsModalOpen(true)}
+                onClick={open}
+                onPointerEnter={preload}
+                onFocus={preload}
                 aria-label={`${t('chooseLanguage')}: ${label}`}
                 aria-haspopup="dialog"
             >
-                <Flag width={22} height={22} aria-hidden="true" />
+                {flag}
                 <span className='none-max-360' aria-hidden="true">{label}</span>
                 <ChevronDown width={20} height={20} viewBox="0 0 24 24" aria-hidden="true" />
             </button>
@@ -45,7 +62,7 @@ export default function LanguageSwitcher({ modalTitle }: Props) {
                 ariaLabel={modalTitle}
                 className={`${styles.center} ${styles.w_360px}`}
             >
-                <LanguageModal title={modalTitle} />
+                {wasOpened && <LanguageModal title={modalTitle} />}
             </Modal>
         </div>
     );

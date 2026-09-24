@@ -1,7 +1,7 @@
 // Шкалы ниже можно переопределить при подключении, не трогая этот файл:
 //   @use "utilities" with ($pd-sizes: (0, 5, 10, 20), $gap-sizes: (4, 8));
 $transitions: (2: 0.2s, 3: 0.3s, 4: 0.4s, 5: 0.5s) !default;
-$pd-sizes: 0, 5, 10, 20 !default;
+$pd-sizes: 0, 5, 10, 15, 20 !default;
 $pb-sizes: 0, 12 !default;
 $pt-sizes: 0 !default;
 $pr-sizes: 0 !default;
@@ -24,7 +24,7 @@ $gap-sizes: 2, 3, 5, 7, 8, 10, 12, 14, 15 !default;
 $font-sizes: 12, 14, 16, 18, 22, 24, 36 !default;
 $font-weight: 400, 500, 700 !default;
 $letter-spacing: 0, 6, 8, 12, 14 !default; // сотые доли em
-$opacity-value: 90, 100 !default;
+$opacity-value: 50, 90, 100 !default;
 $z-index: 1, 10, 20, 30 !default;
 $height-sizes: 0, 4, 20, 36, 46, 60 !default;
 $width-sizes: 0, 36, 40, 46 !default;
