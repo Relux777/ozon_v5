@@ -21,6 +21,8 @@ import MegaphoneSVG from '@/assets/svg/menu/megaphone.svg';
 import MobileSVG from '@/assets/svg/menu/mobile-alt.svg';
 import ArrowUpRightSVG from '@/assets/svg/menu/arrow-up-right.svg';
 import ChevronRightSVG from '@/assets/svg/menu/chevron-right.svg';
+import CookieSVG from '@/assets/svg/support/cookie.svg';
+import BriefcaseSVG from '@/assets/svg/support/briefcase.svg';
 
 // Меню — хаб сайта: разделы (карточки с иконками), приложение Ozon Job (магазины), официальные ресурсы Ozon
 // и документы сайта (компактный список). Тексты — MenuPage.* в messages/*.json, адреса и иконки — здесь.
@@ -51,10 +53,13 @@ const OFFICIAL = [
 ] as const;
 
 // Документы сайта. «Реклама и вознаграждение» — не отдельной карточкой, а строкой списка: раскрытие
-// рекламы по закону должно оставаться доступным (см. §11 CLAUDE.md), но выделять его незачем
+// рекламы по закону должно оставаться доступным (см. §11 CLAUDE.md), но выделять его незачем.
+// «Cookie» — там же кнопка «Изменить выбор cookie» (отзыв согласия на аналитику)
 const DOCS = [
     { key: 'about', href: '/menu/about', icon: InfoCircleSVG },
+    { key: 'cooperation', href: '/menu/cooperation', icon: BriefcaseSVG },
     { key: 'privacy', href: '/menu/privacy', icon: LockSVG },
+    { key: 'cookies', href: '/menu/cookies', icon: CookieSVG },
     { key: 'terms', href: '/menu/terms', icon: FileDetailSVG },
     { key: 'ads', href: '/menu/ads', icon: MegaphoneSVG },
 ] as const;

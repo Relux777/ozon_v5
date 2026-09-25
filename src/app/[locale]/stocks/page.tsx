@@ -20,13 +20,14 @@ import WalletSVG from '@/assets/svg/stocks/wallet.svg';
 import HomeHeartSVG from '@/assets/svg/stocks/home-heart.svg';
 import StoreSVG from '@/assets/svg/stocks/store.svg';
 import BankSVG from '@/assets/svg/stocks/bank.svg';
+import MegaphoneSVG from '@/assets/svg/menu/megaphone.svg';
 import CopySVG from '@/assets/svg/sklad/copy.svg';
 import ArrowUpRightSVG from '@/assets/svg/menu/arrow-up-right.svg';
 import ChevronDownSVG from '@/assets/svg/chevron-down.svg';
 
-// «Акции» — приглашения Ozon Банка («Приведи друга»): карточки с фильтром «Для себя / Для бизнеса» (радио + :has(),
-// без JS), как это работает, вопросы (FAQPage), блок кода Ozon Job и раскрытие рекламы.
-// Ссылки и категории — config/referrals.ts, тексты — StocksPage.* (пока только ru, см. STOCKS_LOCALES), иконки и цвета — здесь.
+// «Акции»: приглашения Ozon Банка («Приведи друга») — сетка с фильтром «Для себя / Для бизнеса» (радио + :has(), без JS);
+// «Заработок» — код Ozon Job и Ozon Blogger; как это работает; вопросы (FAQPage) с раскрытием рекламы рядом.
+// Ссылки и категории — config/referrals.ts, тексты — StocksPage.* (все 7 языков, см. STOCKS_LOCALES), иконки и цвета — здесь.
 
 type Props = {
     params: Promise<{ locale: string }>;
@@ -34,6 +35,7 @@ type Props = {
 
 type Svg = typeof CreditCardSVG;
 type Titled = { title: string; text: string };
+type Offer = (typeof REFERRALS)[number];
 
 // Иконка и цвет (--accent для .icon-badge и подложки «Вы получите») каждой программы
 const OFFER_STYLE: Record<ReferralId, { icon: Svg; accent: string }> = {
@@ -44,17 +46,23 @@ const OFFER_STYLE: Record<ReferralId, { icon: Svg; accent: string }> = {
     pension: { icon: HomeHeartSVG, accent: '#e64980' },
     bizReg: { icon: StoreSVG, accent: '#1c7ed6' },
     bizAccount: { icon: BankSVG, accent: '#f76707' },
+    blogger: { icon: MegaphoneSVG, accent: '#e64980' },
 };
 
 // Кнопки фильтра; id радио используются в style.scss (.offers:has(#offer-filter-…:checked))
 const FILTERS = ['all', 'personal', 'business'] as const;
 
-// Ширина карточек на десктопе: первые 3 — по трети ряда, остальные — по половине. 7 программ = 3 + 2 + 2,
+// Продукты банка — в сетке с фильтром; программы заработка — отдельной секцией рядом с кодом Ozon Job
+const BANK_OFFERS = REFERRALS.filter((offer) => offer.category !== 'earn');
+const EARN_OFFERS = REFERRALS.filter((offer) => offer.category === 'earn');
+
+// Ширина карточек банка на десктопе: первые 3 — по трети ряда, остальные — по половине. 7 программ = 3 + 2 + 2,
 // без одинокой карточки в последнем ряду — и при «Все», и при каждом фильтре (для себя 3 + 2, для бизнеса 2).
-// Добавите программу — пересчитайте, чтобы ряды снова заполнялись
+// Добавите программу банка — пересчитайте, чтобы ряды снова заполнялись
 const NARROW_COUNT = 3;
 
 const HELP_URL = 'https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral';
+const BLOGGER_TERMS_URL = 'https://docs.ozon.ru/legal/partners/bloggers/';
 
 const accent = (color: string) => ({ '--accent': color }) as CSSProperties;
 
@@ -69,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: t('title'),
         description: t('description'),
         siteName: tMeta('siteName'),
-        // пока переведено только на русский: остальные языки — noindex и без hreflang
+        // языки, на которых страница переведена (остальные — noindex и без hreflang)
         locales: STOCKS_LOCALES,
     });
 }
@@ -84,21 +92,113 @@ export default async function StocksPage({ params }: Props) {
     const how = t.raw('how') as Titled[];
     const faq = t.raw('faq') as Titled[];
     const counts = {
-        all: REFERRALS.length,
-        personal: REFERRALS.filter((offer) => offer.category === 'personal').length,
-        business: REFERRALS.filter((offer) => offer.category === 'business').length,
+        all: BANK_OFFERS.length,
+        personal: BANK_OFFERS.filter((offer) => offer.category === 'personal').length,
+        business: BANK_OFFERS.filter((offer) => offer.category === 'business').length,
     };
 
-    // оглавление плавающей кнопки: каждая программа + «Как это работает» и «Вопросы»
+    // оглавление плавающей кнопки: каждая программа банка, «Заработок» (с под-ссылками), «Как это работает», «Вопросы»
     const navItems = [
-        ...REFERRALS.map(({ id, category }) => ({
+        ...BANK_OFFERS.map(({ id, category }) => ({
             kicker: t(`filters.${category}`),
             title: t(`offers.${id}.name`),
             href: `#offer-${id}`,
         })),
+        {
+            kicker: t('earnEyebrow'),
+            title: t('earnTitle'),
+            href: '#earn',
+            links: [
+                { label: 'Ozon Job', href: '#earn-job' },
+                ...EARN_OFFERS.map(({ id }) => ({ label: t(`offers.${id}.name`), href: `#offer-${id}` })),
+            ],
+        },
         { kicker: t('howEyebrow'), title: t('howTitle'), href: '#how' },
         { kicker: t('faqEyebrow'), title: t('faqTitle'), href: '#faq' },
     ];
+
+    // Карточка программы: шапка, «Вы получите», плюсы, шаги (<details>), кнопки, рекламодатель.
+    // Heading: в сетке банка карточки идут сразу под h1 (h2), в секции «Заработок» — под её h2 (h3)
+    const renderOffer = ({ id, category, advertiser, url, erid }: Offer, width: string, Heading: 'h2' | 'h3') => {
+        const { icon: Icon, accent: color } = OFFER_STYLE[id];
+        const name = t(`offers.${id}.name`);
+        const perks = t.raw(`offers.${id}.perks`) as string[];
+        const steps = t.raw(`offers.${id}.steps`) as string[];
+
+        return (
+            <li className={`scroll-anchor ${width} mb-20`} data-cat={category} id={`offer-${id}`} key={id}>
+                <article
+                    className='offer-card grid gap-12 h-full pd-20 br-20 bg-3-100 border-1px-2-10 shadow-3'
+                    style={accent(color)}
+                    aria-labelledby={`offer-${id}-name`}
+                >
+                    <header className='flex nowrap align-center gap-12'>
+                        <span className='icon-badge grid place-center w-46 h-46 br-round shrink-0' aria-hidden='true'>
+                            <Icon width={24} height={24} viewBox='0 0 24 24' />
+                        </span>
+                        <div className='grid gap-2 flex-1'>
+                            <p className='md-0 font-12 color-2-80'>{t(`offers.${id}.kicker`)}</p>
+                            <Heading className='offer-title color-2-90' id={`offer-${id}-name`}>{name}</Heading>
+                        </div>
+                        {/* пометка «Реклама» — на виду, у заголовка, а не только мелким шрифтом внизу */}
+                        <span className='shrink-0 inline-flex align-center px-10 h-20 br-36 bg-2-7 font-12 color-2-80'>{t('ad')}</span>
+                    </header>
+
+                    <p className='offer-benefit md-0 grid gap-2 pd-15 br-20'>
+                        <span className='font-12 color-2-80'>{t('youGet')}</span>
+                        <b className='font-18 color-2-90 text-balance'>{t(`offers.${id}.benefit`)}</b>
+                    </p>
+
+                    <ul className='checks-li grid gap-8 content-start font-14'>
+                        {perks.map((perk) => (
+                            <li className='p-relative pl-30' key={perk}>{perk}</li>
+                        ))}
+                    </ul>
+
+                    {/* шаги — в <details>: карточки короче, а текст всё равно в HTML для поисковиков */}
+                    <details className='offer-steps br-20 bg-2-3'>
+                        <summary className='flex nowrap align-center justify-between gap-10 pd-10 px-16 font-14 font-w-500 color-2-90 cursor-pointer'>
+                            {t('stepsTitle')}
+                            <ChevronDownSVG className='offer-steps-icon shrink-0 color-5-100' width={18} height={18} aria-hidden='true' />
+                        </summary>
+                        <div className='grid gap-10 px-16 pb-12'>
+                            <ol className='mini-steps grid gap-10 font-14'>
+                                {steps.map((step) => (
+                                    <li className='p-relative' key={step}>{step}</li>
+                                ))}
+                            </ol>
+                            <p className='md-0 font-12 color-2-80'>{t(`offers.${id}.note`)}</p>
+                        </div>
+                    </details>
+
+                    <div className='flex nowrap gap-8'>
+                        <a
+                            href={url}
+                            className='offer-cta hover-none flex-1 flex nowrap align-center justify-center gap-5 h-46 px-16 br-36 font-w-500'
+                            target='_blank'
+                            rel='sponsored nofollow noopener noreferrer'
+                            aria-label={t('openLabel', { name })}
+                        >
+                            {t('open')}
+                            <ArrowUpRightSVG width={18} height={18} viewBox='0 0 24 24' aria-hidden='true' />
+                        </a>
+                        <CopyLink
+                            url={url}
+                            copyLabel={t('copy')}
+                            copiedLabel={t('copied')}
+                            icon={<CopySVG width={18} height={18} viewBox='0 0 24 24' aria-hidden='true' />}
+                            className='offer-copy hover-none flex nowrap align-center justify-center gap-5 h-46 px-16 br-36 font-14 font-w-500 space-nowrap'
+                        />
+                    </div>
+
+                    <p className='md-0 font-12 color-2-80'>
+                        {t('advertiserLabel', { name: t(`advertiser.${advertiser}`) })}
+                        {erid && ` · erid: ${erid}`}
+                    </p>
+                </article>
+            </li>
+        );
+    };
 
     return (
         <main>
@@ -119,11 +219,18 @@ export default async function StocksPage({ params }: Props) {
                     <h1 className='mb-7 color-2-90 text-balance'>{t('heading')}</h1>
                     <p className='max-w-60-ch mb-15'>{t('lead')}</p>
                     <ul className='flex gap-8 mb-20'>
-                        {[t('factCount', { count: counts.all }), t('factOnline'), t('factChecked', { date: checkedDate })].map((fact) => (
-                            <li className='inline-flex nowrap align-center h-36 px-16 br-36 bg-5-10 color-5-100 font-14 font-w-500' key={fact}>
-                                {fact}
-                            </li>
-                        ))}
+                        <li className='inline-flex nowrap align-center h-36 px-16 br-36 bg-5-10 color-5-100 font-14 font-w-500'>
+                            {t('factCount', { count: counts.all })}
+                        </li>
+                        {/* чип-ссылка на секцию заработка: без него её легко не заметить под семью карточками */}
+                        <li>
+                            <a href='#earn' className='offer-copy hover-none inline-flex nowrap align-center h-36 px-16 br-36 font-14 font-w-500'>
+                                {t('factEarn')} ↓
+                            </a>
+                        </li>
+                        <li className='inline-flex nowrap align-center h-36 px-16 br-36 bg-5-10 color-5-100 font-14 font-w-500'>
+                            {t('factChecked', { date: checkedDate })}
+                        </li>
                     </ul>
 
                     {/* фильтр — радио + :has() в style.scss (.offers), работает без JS; все карточки всегда в HTML */}
@@ -150,86 +257,38 @@ export default async function StocksPage({ params }: Props) {
                         </div>
 
                         <ul className='flex row-flush'>
-                            {REFERRALS.map(({ id, category, advertiser, url }, index) => {
-                                const { icon: Icon, accent: color } = OFFER_STYLE[id];
-                                const name = t(`offers.${id}.name`);
-                                const perks = t.raw(`offers.${id}.perks`) as string[];
-                                const steps = t.raw(`offers.${id}.steps`) as string[];
-                                const width = index < NARROW_COUNT ? 'f-w-4' : 'f-w-6';
-
-                                return (
-                                    <li className={`scroll-anchor ${width} f-h-6 mb-20`} data-cat={category} id={`offer-${id}`} key={id}>
-                                        <article
-                                            className='offer-card grid gap-12 h-full pd-20 br-20 bg-3-100 border-1px-2-10 shadow-3'
-                                            style={accent(color)}
-                                            aria-labelledby={`offer-${id}-name`}
-                                        >
-                                            <header className='flex nowrap align-center gap-12'>
-                                                <span className='icon-badge grid place-center w-46 h-46 br-round shrink-0' aria-hidden='true'>
-                                                    <Icon width={24} height={24} viewBox='0 0 24 24' />
-                                                </span>
-                                                <div className='grid gap-2 flex-1'>
-                                                    <p className='md-0 font-12 color-2-80'>{t(`offers.${id}.kicker`)}</p>
-                                                    <h2 className='offer-title color-2-90' id={`offer-${id}-name`}>{name}</h2>
-                                                </div>
-                                                {/* пометка «Реклама» — на виду, у заголовка, а не только мелким шрифтом внизу */}
-                                                <span className='shrink-0 inline-flex align-center px-10 h-20 br-36 bg-2-7 font-12 color-2-80'>{t('ad')}</span>
-                                            </header>
-
-                                            <p className='offer-benefit md-0 grid gap-2 pd-15 br-20'>
-                                                <span className='font-12 color-2-80'>{t('youGet')}</span>
-                                                <b className='font-18 color-2-90 text-balance'>{t(`offers.${id}.benefit`)}</b>
-                                            </p>
-
-                                            <ul className='checks-li grid gap-8 content-start font-14'>
-                                                {perks.map((perk) => (
-                                                    <li className='p-relative pl-30' key={perk}>{perk}</li>
-                                                ))}
-                                            </ul>
-
-                                            {/* шаги — в <details>: карточки короче, а текст всё равно в HTML для поисковиков */}
-                                            <details className='offer-steps br-20 bg-2-3'>
-                                                <summary className='flex nowrap align-center justify-between gap-10 pd-10 px-16 font-14 font-w-500 color-2-90 cursor-pointer'>
-                                                    {t('stepsTitle')}
-                                                    <ChevronDownSVG className='offer-steps-icon shrink-0 color-5-100' width={18} height={18} aria-hidden='true' />
-                                                </summary>
-                                                <div className='grid gap-10 px-16 pb-12'>
-                                                    <ol className='mini-steps grid gap-10 font-14'>
-                                                        {steps.map((step) => (
-                                                            <li className='p-relative' key={step}>{step}</li>
-                                                        ))}
-                                                    </ol>
-                                                    <p className='md-0 font-12 color-2-80'>{t(`offers.${id}.note`)}</p>
-                                                </div>
-                                            </details>
-
-                                            <div className='flex nowrap gap-8'>
-                                                <a
-                                                    href={url}
-                                                    className='offer-cta hover-none flex-1 flex nowrap align-center justify-center gap-5 h-46 px-16 br-36 font-w-500'
-                                                    target='_blank'
-                                                    rel='sponsored nofollow noopener noreferrer'
-                                                    aria-label={t('openLabel', { name })}
-                                                >
-                                                    {t('open')}
-                                                    <ArrowUpRightSVG width={18} height={18} viewBox='0 0 24 24' aria-hidden='true' />
-                                                </a>
-                                                <CopyLink
-                                                    url={url}
-                                                    copyLabel={t('copy')}
-                                                    copiedLabel={t('copied')}
-                                                    icon={<CopySVG width={18} height={18} viewBox='0 0 24 24' aria-hidden='true' />}
-                                                    className='offer-copy hover-none flex nowrap align-center justify-center gap-5 h-46 px-16 br-36 font-14 font-w-500 space-nowrap'
-                                                />
-                                            </div>
-
-                                            <p className='md-0 font-12 color-2-80'>{t('advertiserLabel', { name: t(`advertiser.${advertiser}`) })}</p>
-                                        </article>
-                                    </li>
-                                );
-                            })}
+                            {BANK_OFFERS.map((offer, index) => renderOffer(offer, `${index < NARROW_COUNT ? 'f-w-4' : 'f-w-6'} f-h-6`, 'h2'))}
                         </ul>
                     </div>
+                </div>
+            </section>
+
+            {/* ── Заработок: код Ozon Job + Ozon Blogger ─────────────────────────────────────────────── */}
+            <section className='py-20 scroll-anchor' id='earn'>
+                <div className='container'>
+                    <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('earnEyebrow')}</p>
+                    <h2 className='mb-7 color-2-90 text-balance'>{t('earnTitle')}</h2>
+                    <p className='max-w-60-ch mb-20'>{t('earnLead')}</p>
+                    <ul className='flex row-flush'>
+                        <li className='scroll-anchor f-w-6 mb-20' id='earn-job'>
+                            <article className='city-stat-accent grid gap-12 content-start h-full br-20 border-1px-2-10 pd-20' aria-labelledby='stocks-job-title'>
+                                <p className='md-0 font-12 text-uppercase letter-s-8'>{t('jobKicker')}</p>
+                                <h3 className='offer-title' id='stocks-job-title'>{t('jobTitle')}</h3>
+                                <p className='md-0 font-14'>{t('jobText')}</p>
+                                <p className='md-0 font-12 text-uppercase letter-s-8'>{t('jobCodeLabel')}</p>
+                                <CopyCode code={PROMO.code} copyLabel={t('jobCopy')} copiedLabel={t('copied')} />
+                                <div className='flex gap-8 m-justify-center'>
+                                    <Link href='/#promo' className='promo-btn hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500'>
+                                        {t('jobLink')}
+                                    </Link>
+                                    <Link href='/sklad' className='promo-btn-outline hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500'>
+                                        {t('skladLink')}
+                                    </Link>
+                                </div>
+                            </article>
+                        </li>
+                        {EARN_OFFERS.map((offer) => renderOffer(offer, 'f-w-6', 'h3'))}
+                    </ul>
                 </div>
             </section>
 
@@ -257,7 +316,7 @@ export default async function StocksPage({ params }: Props) {
                 </div>
             </section>
 
-            {/* ── Вопросы + код Ozon Job ──────────────────────────────────────────────────────────────── */}
+            {/* ── Вопросы + раскрытие рекламы и дата сверки ──────────────────────────────────────────── */}
             <section className='py-20 scroll-anchor' id='faq'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('faqEyebrow')}</p>
@@ -267,39 +326,27 @@ export default async function StocksPage({ params }: Props) {
                             <FaqAccordion items={faq} />
                         </div>
                         <div className='f-w-4 mb-20'>
-                            <aside className='city-stat-accent grid gap-12 content-start br-20 border-1px-2-10 pd-20' aria-labelledby='stocks-job-title'>
-                                <p className='md-0 font-12 text-uppercase letter-s-8'>{t('jobKicker')}</p>
-                                <h2 className='offer-title' id='stocks-job-title'>{t('jobTitle')}</h2>
-                                <p className='md-0 font-14'>{t('jobText')}</p>
-                                <p className='md-0 font-12 text-uppercase letter-s-8'>{t('jobCodeLabel')}</p>
-                                <CopyCode code={PROMO.code} copyLabel={t('jobCopy')} copiedLabel={t('copied')} />
-                                {/* колонка узкая — кнопки друг под другом во всю ширину, а не вразнобой по строкам */}
-                                <div className='grid gap-8'>
-                                    <Link href='/#promo' className='promo-btn hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500'>
-                                        {t('jobLink')}
-                                    </Link>
-                                    <Link href='/sklad' className='promo-btn-outline hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500'>
-                                        {t('skladLink')}
-                                    </Link>
-                                </div>
+                            <aside className='grid gap-10 content-start br-20 bg-2-3 pd-20 font-12' aria-labelledby='stocks-about-title'>
+                                <h3 className='offer-title color-2-90' id='stocks-about-title'>{t('aboutTitle')}</h3>
+                                <p className='md-0'>{t('checked', { date: checkedDate })}</p>
+                                <p className='md-0'>{t('disclosure')}</p>
+                                <ul className='grid gap-7'>
+                                    <li>
+                                        <Link href='/menu/ads' className='color-5-100'>{t('adsLink')}</Link>
+                                    </li>
+                                    <li>
+                                        <a href={HELP_URL} className='color-5-100' target='_blank' rel='nofollow noopener noreferrer'>
+                                            {t('helpLink')} ↗
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href={BLOGGER_TERMS_URL} className='color-5-100' target='_blank' rel='nofollow noopener noreferrer'>
+                                            {t('bloggerLink')} ↗
+                                        </a>
+                                    </li>
+                                </ul>
                             </aside>
                         </div>
-                    </div>
-                </div>
-            </section>
-
-            {/* ── Раскрытие рекламы и дата сверки ────────────────────────────────────────────────────── */}
-            <section className='py-20'>
-                <div className='container'>
-                    <div className='grid gap-10 br-20 bg-2-3 pd-20 font-12'>
-                        <p className='md-0'>{t('checked', { date: checkedDate })}</p>
-                        <p className='md-0'>{t('disclosure')}</p>
-                        <p className='md-0 flex gap-15'>
-                            <Link href='/menu/ads' className='color-5-100'>{t('adsLink')}</Link>
-                            <a href={HELP_URL} className='color-5-100' target='_blank' rel='nofollow noopener noreferrer'>
-                                {t('helpLink')} ↗
-                            </a>
-                        </p>
                     </div>
                 </div>
             </section>

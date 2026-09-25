@@ -20,10 +20,17 @@ const OFFICIAL_APP_PAGE = 'https://job.ozon.ru/app';
 /** Ссылка для страниц городов; пусто — используется официальная страница выше. Сюда можно вписать свою реферальную ссылку */
 const APP_URL = '';
 
+/**
+ * Идентификатор рекламы (erid) — выдаёт оператор рекламных данных (ОРД) при маркировке (ст. 18.1 ФЗ «О рекламе»).
+ * Пусто — не выводится; с ним — показывается в пометке рекламы рядом с кодом. То же поле у CARD и в config/referrals.ts
+ */
+const CODE_ERID = '';
+
 export const PROMO = {
     code: CODE,
     userBonus: USER_BONUS,
     appUrl: APP_URL || OFFICIAL_APP_PAGE,
+    erid: CODE_ERID,
 } as const;
 
 /**
@@ -58,4 +65,6 @@ export const APP_STORES = [
 // Сверено 2026-09-23: https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral
 export const CARD = {
     url: 'https://ozon.ru/fintech/promo/ref/Q8Z2WF91J',
+    /** идентификатор рекламы из ОРД — см. CODE_ERID выше */
+    erid: '',
 } as const;

@@ -6,10 +6,13 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { SITE_CONFIG } from '@/config/site';
+import { YANDEX_METRIKA_ID } from '@/config/legal';
 
 import HeaderComponent from "@/components/Header";
 import NavBarComponent from "@/components/NavBar";
 import BackgroundDecor from "@/components/BackgroundDecor";
+import CookieBanner from '@/components/CookieBanner';
+import YandexMetrika from '@/components/YandexMetrika';
 
 import { Geist, Noto_Sans_Armenian, Noto_Sans_Georgian } from "next/font/google";
 import "@/assets/scss/ReluxCode.scss";
@@ -85,6 +88,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function RootLayout({ children, params }: Props) {
     const locale = await getLocaleFromParams(params);
     const messages = await getMessages();
+    const tCookies = await getTranslations({ locale, namespace: 'Cookies' });
 
     // В клиентский бандл уходят только ключи, которые реально читают клиентские компоненты
     const clientMessages = {
@@ -106,6 +110,17 @@ export default async function RootLayout({ children, params }: Props) {
                       <div id="modal-root"></div>
                       <NavBarComponent />
                       <BackgroundDecor />
+                      {/* уведомление о cookie (152-ФЗ) и аналитика только с согласия — см. config/legal.ts */}
+                      <CookieBanner
+                        labels={{
+                          title: tCookies('title'),
+                          text: tCookies('text'),
+                          more: tCookies('more'),
+                          accept: tCookies('accept'),
+                          decline: tCookies('decline'),
+                        }}
+                      />
+                      {YANDEX_METRIKA_ID && <YandexMetrika id={YANDEX_METRIKA_ID} />}
                   </ThemeProvider>
                 </NextIntlClientProvider>
             </body>

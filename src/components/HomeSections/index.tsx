@@ -265,7 +265,10 @@ export default async function HomeSections({ locale, afterStats }: Props) {
 
                         <p className='promo-condition font-14'>{t('promo.condition')}</p>
                         <p className='promo-warn br-20 font-14'>{t('promo.warn')}</p>
-                        <p className='promo-note font-12'>{t('promo.note')}</p>
+                        <p className='promo-note font-12'>
+                            {t('promo.note')}
+                            {PROMO.erid && ` erid: ${PROMO.erid}`}
+                        </p>
                     </div>
                 </div>
             </section>
@@ -559,7 +562,10 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                         </ol>
 
                         <p className='promo-warn br-20 font-14'>{t('card.warn')}</p>
-                        <p className='promo-note font-12'>{t('card.note')}</p>
+                        <p className='promo-note font-12'>
+                            {t('card.note')}
+                            {CARD.erid && ` erid: ${CARD.erid}`}
+                        </p>
                     </div>
                 </div>
             </section>

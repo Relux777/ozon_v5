@@ -730,9 +730,11 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
 // чип-ссылка на источник: лёгкая синяя заливка со «стеклом» (blur-3 в разметке), при наведении —
 // заливается фирменным синим сплошь, текст белеет и чип чуть приподнимается (как .promo-store/.time-tag).
-// .offer-copy — та же светло-синяя кнопка: «Копировать» рядом с «Оформить» в карточках /stocks
+// .offer-copy — та же светло-синяя кнопка: «Копировать» рядом с «Оформить» в карточках /stocks,
+// .cookie-btn — обе кнопки уведомления о cookie и «Изменить выбор cookie»
 .source-chip,
-.offer-copy {
+.offer-copy,
+.cookie-btn {
     background: rgb(var(--bg-5) / 10%);
     color: rgb(var(--bg-5));
     transition: background 0.2s, color 0.2s, translate 0.2s, box-shadow 0.2s;
@@ -1012,6 +1014,219 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 }
 
 .offer-steps-icon { transition: rotate 0.2s; }
+
+// ── /menu/level: рейтинг Ozon Job ─────────────────────────────────────────────────────────────
+// Раскладка — утилитами в разметке; здесь сетка шкалы и цвета таблиц баллов.
+
+// шкала из пяти шагов (уровни, бананы): на широком экране — в ряд, как шкала уровней в приложении; уже — столбиком
+.scale-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+
+    @media (width < 990px) { grid-template-columns: minmax(0, 1fr); }
+}
+
+// начисления — зелёные, списания — красные: и число, и полоска берут цвет из --accent (.accent-text/.accent-fill).
+// В тёмной теме оттенки светлее — тёмно-зелёный и тёмно-красный на тёмном фоне не читаются
+.rating-plus { --accent: #0b7a4b; }
+.rating-minus { --accent: #c92a2a; }
+
+[data-theme='dark'] {
+    .rating-plus { --accent: #3ddc84; }
+    .rating-minus { --accent: #ff6b6b; }
+}
+
+// Выпадающие списки калькулятора. Везде: своя стрелка (.calc-select-icon поверх, поворачивается при открытии),
+// подсветка при наведении и фокусе. Где браузер умеет стилизовать сам список (appearance: base-select — Chrome/Edge 135+):
+// список — карточка в стиле сайта, плавно выезжает (@starting-style), у выбранного пункта галочка.
+// Safari/Firefox показывают системный список — работает так же, только без анимации.
+.calc-select {
+    appearance: none;
+    border: 0;
+    padding-right: 44px; // место под стрелку
+    color: rgb(var(--bg-2) / 90%);
+    transition: background 0.2s, box-shadow 0.2s;
+
+    @include mixins.hover { background: rgb(var(--bg-2) / 10%); }
+
+    &:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgb(var(--bg-5) / 35%);
+    }
+}
+
+.calc-select-icon {
+    top: 50%;
+    right: 16px;
+    translate: 0 -50%;
+    color: rgb(var(--bg-5));
+    pointer-events: none;
+    transition: rotate 0.25s;
+}
+
+// :open — отдельным правилом: браузер, который его не знает, отбросит только это правило
+.calc-select-wrap:has(.calc-select:open) .calc-select-icon { rotate: 180deg; }
+
+@supports (appearance: base-select) {
+    .calc-select,
+    .calc-select::picker(select) { appearance: base-select; }
+
+    // у base-select поле — inline-flex с отступом 4px и без выравнивания: текст «висел» выше центра
+    .calc-select {
+        display: flex;
+        align-items: center;
+        padding-block: 0;
+    }
+
+    // стандартная стрелка не нужна — есть .calc-select-icon
+    .calc-select::picker-icon { display: none; }
+
+    .calc-select::picker(select) {
+        margin-block: 6px;
+        padding: 6px;
+        border: 1px solid rgb(var(--bg-2) / 10%);
+        border-radius: 20px;
+        background: rgb(var(--bg-3));
+        box-shadow: 0 24px 48px -24px rgb(0 0 0 / 45%);
+    }
+
+    .calc-select option {
+        gap: 10px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        transition: background 0.15s, color 0.15s;
+
+        @include mixins.hover { background: rgb(var(--bg-5) / 10%); }
+
+        &:focus-visible {
+            outline: none;
+            background: rgb(var(--bg-5) / 10%);
+        }
+
+        &:checked {
+            background: rgb(var(--bg-5) / 8%);
+            color: rgb(var(--bg-5));
+            font-weight: 500;
+        }
+
+        // галочка выбранного пункта — справа, а не перед текстом
+        &::checkmark {
+            order: 1;
+            margin-left: auto;
+        }
+    }
+
+    // появление списка: сверху вниз с лёгким масштабом; закрытие — обратно (display/overlay — allow-discrete)
+    @media (prefers-reduced-motion: no-preference) {
+        .calc-select::picker(select) {
+            opacity: 0;
+            translate: 0 -8px;
+            scale: 0.98;
+            transform-origin: top center;
+            transition: opacity 0.2s, translate 0.2s ease, scale 0.2s ease, display 0.2s allow-discrete, overlay 0.2s allow-discrete;
+        }
+
+        .calc-select:open::picker(select) {
+            opacity: 1;
+            translate: 0;
+            scale: 1;
+        }
+
+        @starting-style {
+            .calc-select:open::picker(select) {
+                opacity: 0;
+                translate: 0 -8px;
+                scale: 0.98;
+            }
+        }
+    }
+}
+
+// итог калькулятора «подпрыгивает» при каждом пересчёте (элемент пересоздаётся по key={total} в RatingCalculator)
+@keyframes calc-pop {
+    from {
+        opacity: 0.4;
+        scale: 0.92;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .calc-value {
+        transform-origin: left center;
+        animation: calc-pop 0.3s ease-out;
+    }
+}
+
+// ── Уведомление о cookie, /menu/support, /menu/cooperation, документы ─────────────────────────
+// Раскладка — утилитами в разметке; здесь положение баннера, анимации и то, чего нет в ReluxCode.
+// Кнопки баннера «Принять»/«Отклонить» — .cookie-btn вместе с .source-chip: одинаковые по виду, отказ не прячем.
+
+// Баннер — над нижним меню (NavBar), по центру, не шире 560px. Отступ снизу = отступ меню + высота пункта
+// (nav.module.scss) + 12px зазор — те же числа, что у .float-btn: меняются вместе с меню
+.cookie-banner {
+    left: 50%;
+    bottom: 98px; // 20px + 66px + 12px
+    width: min(560px, calc(100% - 20px));
+    translate: -50% 0;
+
+    @media (width < 440px) { bottom: 88px; } // 10px + 66px + 12px
+    @media (width < 390px) { bottom: 78px; } // 10px + 56px + 12px
+    @media (width < 340px) { bottom: 72px; } // 10px + 50px + 12px
+
+    // появление — снизу вверх (@starting-style), скрытие — .cookie-banner-closing
+    @media (prefers-reduced-motion: no-preference) {
+        transition: opacity 0.25s, translate 0.25s;
+
+        @starting-style {
+            opacity: 0;
+            translate: -50% 16px;
+        }
+    }
+}
+
+.cookie-banner-closing {
+    opacity: 0;
+    translate: -50% 16px;
+    pointer-events: none;
+}
+
+// колонка справа (оглавление документа, контакты на /menu/support): на широком экране едет вместе со страницей
+@media (width >= 990px) {
+    .sticky-aside {
+        position: sticky;
+        top: calc(var(--header-h, 60px) + 12px);
+    }
+}
+
+// 6 тем вопросов в начале /menu/support — ряды всегда полные: 6 в ряд на широком экране, 3 × 2, на телефоне 2 × 3
+.support-topics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @media (width >= 1200px) { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    @media (width < 620px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+// почта в строке контакта не должна раздвигать узкую колонку
+.contact-value {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+// документы /menu/{about,privacy,cookies,terms,ads} (LegalDoc): отступы между абзацами задаёт grid раздела
+.legal {
+    p { margin: 0; }
+
+    code {
+        font-size: 14px;
+        overflow-wrap: anywhere;
+    }
+}
+
+.legal-list {
+    padding-left: 20px;
+    list-style: disc;
+
+    li::marker { color: rgb(var(--bg-5)); }
+}
 
 // краткая справка в модалке быстрой навигации (страница города) — в стиле синего блока-акции
 .city-summary {
