@@ -6,13 +6,14 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { SITE_CONFIG } from '@/config/site';
-import { YANDEX_METRIKA_ID } from '@/config/legal';
+import { GOOGLE_ANALYTICS_ID, YANDEX_METRIKA_ID } from '@/config/legal';
 
 import HeaderComponent from "@/components/Header";
 import NavBarComponent from "@/components/NavBar";
 import BackgroundDecor from "@/components/BackgroundDecor";
 import CookieBanner from '@/components/CookieBanner';
 import YandexMetrika from '@/components/YandexMetrika';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 
 import { Geist, Noto_Sans_Armenian, Noto_Sans_Georgian } from "next/font/google";
 import "@/assets/scss/ReluxCode.scss";
@@ -121,6 +122,7 @@ export default async function RootLayout({ children, params }: Props) {
                         }}
                       />
                       {YANDEX_METRIKA_ID && <YandexMetrika id={YANDEX_METRIKA_ID} />}
+                      {GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={GOOGLE_ANALYTICS_ID} />}
                   </ThemeProvider>
                 </NextIntlClientProvider>
             </body>

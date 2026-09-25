@@ -34,14 +34,16 @@ export function openCookieSettings() {
     window.dispatchEvent(new Event(CONSENT_OPEN_EVENT));
 }
 
-// Отзыв согласия: удаляем cookie Яндекс Метрики (_ym_*) — и на хосте, и на родительском домене,
-// куда их ставит счётчик. Сам скрипт после этого перестаёт работать только с перезагрузкой страницы
+// Отзыв согласия: удаляем cookie Яндекс Метрики (_ym_*) и Google Analytics (_ga*, _gid, _gat*) — и на хосте,
+// и на родительском домене, куда их ставят счётчики. Сами скрипты перестают работать только с перезагрузкой страницы
+const ANALYTICS_COOKIE = /^(_ym|_ga|_gid|_gat)/;
+
 function removeAnalyticsCookies() {
     const host = window.location.hostname;
     const domains = ['', host, `.${host}`, `.${host.split('.').slice(-2).join('.')}`];
     for (const pair of document.cookie.split('; ')) {
         const name = pair.split('=')[0];
-        if (!name.startsWith('_ym')) continue;
+        if (!ANALYTICS_COOKIE.test(name)) continue;
         for (const domain of domains) {
             // biome-ignore lint/suspicious/noDocumentCookie: см. writeConsent
             document.cookie = `${name}=; Max-Age=0; Path=/${domain ? `; Domain=${domain}` : ''}`;

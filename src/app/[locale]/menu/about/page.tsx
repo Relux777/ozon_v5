@@ -57,7 +57,7 @@ export default async function AboutPage({ params }: Props) {
                     <a href={`mailto:${CONTACTS.email}`} className='color-5-100'>{CONTACTS.email}</a>, телефон —{' '}
                     <a href={`tel:${CONTACTS.phone.tel}`} className='color-5-100'>{CONTACTS.phone.label}</a>, Telegram —{' '}
                     <a href={CONTACTS.telegram.url} className='color-5-100' target='_blank' rel='noopener noreferrer'>@{CONTACTS.telegram.username}</a>
-                    , ежедневно с {CONTACTS.hours.from} до {CONTACTS.hours.to}. По вопросам аккаунта Ozon Job, выплат и рейтинга
+                    , ежедневно с {CONTACTS.hours.from} до {CONTACTS.hours.to} по московскому времени. По вопросам аккаунта Ozon Job, выплат и рейтинга
                     мы помочь не можем — пишите в поддержку в приложении.
                 </p>
             ),

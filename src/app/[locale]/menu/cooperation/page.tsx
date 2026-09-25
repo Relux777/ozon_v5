@@ -39,6 +39,9 @@ const FEATURE_STYLE: { icon: Svg; accent: string }[] = [
     { icon: TargetSVG, accent: '#005bff' },
 ];
 
+// Технологии — чипами в карточке «Что делаем» (названия не переводятся)
+const STACK = ['Next.js', 'React', 'TypeScript', 'HTML', 'SCSS'];
+
 const accent = (color: string) => ({ '--accent': color }) as CSSProperties;
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -62,6 +65,9 @@ export default async function CooperationPage({ params }: Props) {
 
     const features = t.raw('features') as Titled[];
     const steps = t.raw('steps') as Titled[];
+    const doItems = t.raw('doItems') as string[];
+    const dontItems = t.raw('dontItems') as string[];
+    const terms = t.raw('terms') as Titled[];
     const mailto = `mailto:${CONTACTS.email}?subject=${encodeURIComponent(t('mailSubject'))}`;
 
     return (
@@ -147,6 +153,54 @@ export default async function CooperationPage({ params }: Props) {
                                 </li>
                             );
                         })}
+                    </ul>
+                </div>
+            </section>
+
+            {/* ── Условия: что делаем (фронтенд), что не входит, срок, стоимость, передача ──────────────── */}
+            <section className='py-20 scroll-anchor' id='terms'>
+                <div className='container'>
+                    <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('termsEyebrow')}</p>
+                    <h2 className='mb-7 color-2-90 text-balance'>{t('termsTitle')}</h2>
+                    <p className='max-w-60-ch mb-20'>{t('termsLead')}</p>
+                    <div className='flex row-flush'>
+                        <div className='f-w-6 mb-15'>
+                            <article className='grid gap-12 content-start h-full pd-20 br-20 bg-3-100 border-1px-2-10 shadow-3' aria-labelledby='coop-do-title'>
+                                <h3 className='offer-title color-2-90' id='coop-do-title'>{t('doTitle')}</h3>
+                                <ul className='flex gap-8'>
+                                    {STACK.map((tech) => (
+                                        <li className='inline-flex nowrap align-center h-36 px-16 br-36 bg-5-10 color-5-100 font-14 font-w-500' key={tech}>
+                                            {tech}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <ul className='checks-li grid gap-8 font-14'>
+                                    {doItems.map((item) => (
+                                        <li className='p-relative pl-30' key={item}>{item}</li>
+                                    ))}
+                                </ul>
+                            </article>
+                        </div>
+                        <div className='f-w-6 mb-15'>
+                            <article className='grid gap-12 content-start h-full pd-20 br-20 bg-2-3 border-1px-2-10' aria-labelledby='coop-dont-title'>
+                                <h3 className='offer-title color-2-90' id='coop-dont-title'>{t('dontTitle')}</h3>
+                                <ul className='legal-list grid gap-8 font-14'>
+                                    {dontItems.map((item) => (
+                                        <li key={item}>{item}</li>
+                                    ))}
+                                </ul>
+                            </article>
+                        </div>
+                    </div>
+                    <ul className='flex row-flush'>
+                        {terms.map((term) => (
+                            <li className='f-w-4 f-h-6 mb-15' key={term.title}>
+                                <div className='grid gap-5 content-start h-full pd-20 br-20 bg-3-100 border-1px-2-10 shadow-3'>
+                                    <h3 className='font-16 color-2-90'>{term.title}</h3>
+                                    <p className='md-0 font-14 color-2-80'>{term.text}</p>
+                                </div>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </section>

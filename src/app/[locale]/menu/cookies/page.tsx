@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { getLocaleFromParams } from '@/i18n/params';
-import { CONTACTS, OWNER, YANDEX_METRIKA_ID } from '@/config/legal';
+import { CONTACTS, GOOGLE_ANALYTICS_ID, OWNER, YANDEX_METRIKA_ID } from '@/config/legal';
 import LegalDoc from '@/components/LegalDoc';
 import CookieSettings from '@/components/CookieSettings';
 
@@ -29,6 +29,13 @@ const COOKIES: Row[] = [
     { name: 'theme (хранилище браузера)', owner: 'Сайт', purpose: 'Запоминает светлую или тёмную тему. Это не cookie, а запись в браузере — на сервер не отправляется', term: 'Пока вы не очистите данные сайта' },
     { name: '_ym_uid, _ym_d', owner: 'ООО «ЯНДЕКС» (Яндекс Метрика)', purpose: 'Отличают новые визиты от повторных, хранят дату первого визита', term: '1 год', analytics: true },
     { name: '_ym_isad и другие _ym_*', owner: 'ООО «ЯНДЕКС» (Яндекс Метрика)', purpose: 'Служебные данные статистики: блокировщик рекламы, текущий визит', term: 'От окончания визита до 2 дней', analytics: true },
+    // Google Analytics — строки появляются, только если задан GOOGLE_ANALYTICS_ID
+    ...(GOOGLE_ANALYTICS_ID
+        ? [
+              { name: '_ga', owner: 'Google LLC, США (Google Analytics)', purpose: 'Отличает новых посетителей от повторных', term: '2 года', analytics: true },
+              { name: '_ga_*', owner: 'Google LLC, США (Google Analytics)', purpose: 'Хранит состояние текущего визита', term: '2 года', analytics: true },
+          ]
+        : []),
 ];
 
 export default async function CookiesPage({ params }: Props) {
@@ -78,10 +85,10 @@ export default async function CookiesPage({ params }: Props) {
                             </li>
                         ))}
                     </ul>
-                    {!YANDEX_METRIKA_ID && (
+                    {!YANDEX_METRIKA_ID && !GOOGLE_ANALYTICS_ID && (
                         <p className='font-14 color-2-80'>
-                            Сейчас счётчик Яндекс Метрики на сайте не подключён — cookie _ym_* не ставятся ни при каком выборе.
-                            Если мы его подключим, он будет работать только у тех, кто нажал «Принять».
+                            Сейчас счётчики аналитики на сайте не подключены — cookie _ym_* не ставятся ни при каком выборе.
+                            Если мы их подключим, они будут работать только у тех, кто нажал «Принять».
                         </p>
                     )}
                     <p>
@@ -99,7 +106,7 @@ export default async function CookiesPage({ params }: Props) {
                     <p>
                         Нажимая «Принять» в уведомлении о cookie, я свободно, своей волей и в своём интересе даю согласие{' '}
                         {OWNER.fullNameGenitive} (оператор; {CONTACTS.email}) на обработку моих персональных данных с помощью
-                        сервиса Яндекс Метрика на следующих условиях.
+                        сервиса Яндекс Метрика{GOOGLE_ANALYTICS_ID && ' и сервиса Google Analytics'} на следующих условиях.
                     </p>
                     <ul className='legal-list grid gap-5'>
                         <li>
@@ -114,6 +121,13 @@ export default async function CookiesPage({ params }: Props) {
                             ООО «ЯНДЕКС», которое обрабатывает данные по поручению оператора для подсчёта статистики.
                             Распространение данных не осуществляется.
                         </li>
+                        {GOOGLE_ANALYTICS_ID && (
+                            <li>
+                                <b>Трансграничная передача:</b> данные Google Analytics получает и обрабатывает по поручению оператора
+                                Google LLC (США) на своих серверах за пределами России. Если вы не согласны на передачу данных за рубеж,
+                                нажмите «Отклонить» — сайт полностью работает и без аналитики.
+                            </li>
+                        )}
                         <li><b>Способ:</b> автоматизированная обработка, без принятия решений, которые влекут для меня юридические последствия.</li>
                         <li><b>Срок:</b> 1 год с момента согласия или до его отзыва.</li>
                         <li>

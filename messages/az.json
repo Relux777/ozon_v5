@@ -695,7 +695,7 @@
   },
   "Cookies": {
     "title": "Saytda cookie",
-    "text": "Zəruri cookie dili və seçiminizi yadda saxlayır. Analitika cookie-lərini (Yandex Metrica) yalnız «Qəbul et» düyməsini bassanız işə salırıq.",
+    "text": "Zəruri cookie dili və seçiminizi yadda saxlayır. Analitika cookie-lərini yalnız «Qəbul et» düyməsini bassanız işə salırıq.",
     "more": "Ətraflı",
     "accept": "Qəbul et",
     "decline": "İmtina et",
@@ -713,7 +713,7 @@
     "phone": "Telefon",
     "telegram": "Telegram",
     "hoursLabel": "Nə vaxt cavab veririk",
-    "hours": "Hər gün {from}-dan {to}-dək"
+    "hours": "Hər gün {from}-dan {to}-dək (Moskva vaxtı)"
   },
   "SupportPage": {
     "title": "Ozon Job haqqında sual-cavab: qeydiyyat, növbələr, ödənişlər, reytinq",
@@ -912,14 +912,14 @@
     "privacyNote": "Müraciətləri necə emal etdiyimiz — <link>şəxsi məlumatların emalı siyasətində</link>."
   },
   "CooperationPage": {
-    "title": "Əməkdaşlıq: açar təhvil reklam saytı sifariş edin",
-    "description": "Şirkətiniz üçün eyni reklam saytı sifariş edin: bir neçə dil, şəhərlər və sorğular üzrə SEO, sürətli mobil versiya, səliqəli hüquqi hissə. Poçt, telefon, Telegram — hər gün {from}-dan {to}-dək.",
+    "title": "Əməkdaşlıq: reklam saytı sifariş edin",
+    "description": "Şirkətiniz üçün reklam saytının frontendini sifariş edin — bunun kimi: Next.js və React, bir neçə dil, şəhərlər və sorğular üzrə SEO, sürətli mobil versiya. Poçt, telefon, Telegram — hər gün {from}-dan {to}-dək (Moskva vaxtı).",
     "eyebrow": "Əməkdaşlıq",
     "heading": "Şirkətiniz üçün eyni sayt sifariş edin",
-    "lead": "Açar təhvil reklam saytları hazırlayırıq — bunun kimi: bir neçə dildə, telefonlarda sürətli, şəhərlər və sorğular üzrə SEO və səliqəli hüquqi hissə ilə. İşəgötürənlər, kadr agentlikləri, tərəfdaşlıq və referal layihələri üçün uyğundur.",
+    "lead": "Reklam saytlarının frontendini hazırlayırıq — bunun kimi: bir neçə dildə, telefonlarda sürətli, şəhərlər və sorğular üzrə SEO və səliqəli hüquqi hissə ilə. İşəgötürənlər, kadr agentlikləri, tərəfdaşlıq və referal layihələri üçün uyğundur.",
     "factLanguages": "Bir saytda 7 dil",
     "factPages": "Axtarış üçün 500+ səhifə",
-    "factHours": "{from}-dan {to}-dək əlaqədəyik",
+    "factHours": "{from}-dan {to}-dək əlaqədəyik (Moskva vaxtı)",
     "ctaMail": "Layihəni müzakirə et",
     "ctaTelegram": "Telegram-da yaz",
     "contactsTitle": "Əlaqə",
@@ -952,7 +952,7 @@
         "text": "Korporativ rənglər, ikonlar, animasiyalar və aydın struktur — ilk ekrandan fəaliyyət düyməsinə qədər."
       },
       {
-        "title": "Aksiyalar və müraciətlər",
+        "title": "Aksiyalar və konversiya",
         "text": "Kalkulyatorlar, promokodlar, referal keçidlər və əlaqə düymələri, Yandex Metrica-nın qoşulması — ziyarətçinin müştəri və ya əməkdaş olması üçün hər şey."
       }
     ],
@@ -974,12 +974,56 @@
       },
       {
         "title": "İstifadəyə vermə",
-        "text": "Saytı domeninizdə dərc edirik, girişləri təhvil veririk və yeniləmələrdə kömək edirik."
+        "text": "Mənbə kodunu təhvil veririk və saytı domeninizdə və hostinqinizdə dərc etməyə kömək edirik."
       }
     ],
     "adsTitle": "Bu saytda reklam və tərəfdaşlıq",
     "adsText": "Tərəfdaşlıq və reklam təkliflərinə fərdi baxırıq. Saytda reklam yalnız «Reklam» qeydi, reklamverən məlumatları və erid identifikatoru ilə yerləşdirilir — «Reklam haqqında» qanuna əsasən. Ozon adından çıxış edən və ya zəmanətli gəlir vəd edən elanları yerləşdirmirik.",
-    "adsLink": "Saytda reklam necə qurulub"
+    "adsLink": "Saytda reklam necə qurulub",
+    "termsEyebrow": "Şərtlər",
+    "termsTitle": "Nə edirik və hansı şərtlərlə",
+    "termsLead": "Biz frontend hazırlayırıq — ziyarətçinin brauzerdə gördüyü və basdığı hər şeyi. Server hissəsini və verilənlər bazalarını hazırlamırıq.",
+    "doTitle": "Nə edirik",
+    "doItems": [
+      "Dizayn əsasında və ya sıfırdan səhifə və interfeys — telefon və kompüterlərə uyğunlaşdırılmış",
+      "Next.js və React əsasında sayt: statik səhifələr, sürətli yüklənmə, qaranlıq mövzu",
+      "Bir neçə dil, SEO işarələməsi, sayt xəritəsi və axtarış üçün meta-teqlər",
+      "Animasiyalar, kalkulyatorlar, filtrlər, kod və keçidlərin kopyalanması — brauzerdə işləyən hər şey",
+      "Cookie bildirişi və açarlarınızla Yandex Metrica və ya Google Analytics-in qoşulması"
+    ],
+    "dontTitle": "Nələr daxil deyil",
+    "dontItems": [
+      "Server hissəsi (backend), verilənlər bazaları, şəxsi kabinetlər və avtorizasiya",
+      "Ödənişlərin qəbulu, CRM inteqrasiyası, müraciətlərin serverdə emalı və saxlanması",
+      "Sənədlərin hüquqi yoxlanışı: hazır şablonlar veririk, son versiyanı hüquqşünasınız razılaşdırır",
+      "Domen, hostinq və ödənişli xidmətlərin alınması — onlar sizin adınıza rəsmiləşdirilir və sizin tərəfinizdən ödənilir"
+    ],
+    "terms": [
+      {
+        "title": "Müddət",
+        "text": "Layihədən asılıdır: səhifələrin, dillərin və interaktiv blokların sayı. Dəqiq müddəti vəzifəni müzakirə etdikdən sonra, iş başlamazdan əvvəl bildiririk."
+      },
+      {
+        "title": "Qiymət",
+        "text": "Fərdi hesablayırıq və başlanğıcdan əvvəl sabitləşdiririk. Razılaşdırılandan artıq tapşırıqlar — ayrıca razılaşma ilə."
+      },
+      {
+        "title": "Sizdən nə lazımdır",
+        "text": "Vəzifə və nümunələr, loqo və korporativ rənglər, mətnlər və şəkillər (və ya onları haradan götürəcəyimizi razılaşdırarıq), domen və hostinqə giriş."
+      },
+      {
+        "title": "Düzəlişlər",
+        "text": "Aralıq versiyaları göstəririk və razılaşdırılmış tapşırıq çərçivəsində düzəlişlər edirik."
+      },
+      {
+        "title": "Təhvil",
+        "text": "Ödənişdən sonra mənbə kodunu təhvil veririk və saytı hostinqinizdə dərc etməyə kömək edirik."
+      },
+      {
+        "title": "Rəsmiləşdirmə",
+        "text": "Razılaşmaları yazılı şəkildə — yazışmada və ya müqavilə ilə qeyd edirik. Detalları iş başlamazdan əvvəl müzakirə edirik."
+      }
+    ]
   },
   "HomePage": {
     "pageNavLabel": "Səhifə üzrə sürətli keçid",

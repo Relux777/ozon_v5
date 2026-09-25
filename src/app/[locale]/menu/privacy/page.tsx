@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { getLocaleFromParams } from '@/i18n/params';
 import { SITE_CONFIG } from '@/config/site';
-import { CONTACTS, HOSTING, OWNER } from '@/config/legal';
+import { CONTACTS, GOOGLE_ANALYTICS_ID, HOSTING, OWNER } from '@/config/legal';
 import LegalDoc from '@/components/LegalDoc';
 
 // Политика обработки персональных данных (ч. 2 ст. 18.1 152-ФЗ — опубликовать в свободном доступе).
@@ -67,7 +67,7 @@ export default async function PrivacyPage({ params }: Props) {
                             <b className='color-2-90'>2. Cookie</b>
                             <p>
                                 Необходимые cookie помнят выбранный язык и ваш выбор в уведомлении о cookie — они не позволяют узнать,
-                                кто вы, и работают без согласия. Cookie аналитики (Яндекс Метрика) и связанные с ними данные
+                                кто вы, и работают без согласия. Cookie аналитики (Яндекс Метрика{GOOGLE_ANALYTICS_ID && ', Google Analytics'}) и связанные с ними данные
                                 обрабатываются только с вашего согласия — после кнопки «Принять». Состав cookie, сроки и текст
                                 согласия — на странице <Link href='/menu/cookies' className='color-5-100'>«Cookie и согласие на аналитику»</Link>.
                             </p>
@@ -114,6 +114,9 @@ export default async function PrivacyPage({ params }: Props) {
                             хостинг-провайдер сайта{HOSTING.name ? ` — ${HOSTING.name}` : ''} — хранит файлы сайта и журналы сервера (раздел 2, п. 1);
                         </li>
                         <li>ООО «ЯНДЕКС» (сервис Яндекс Метрика) — по поручению оператора и только если вы нажали «Принять»;</li>
+                        {GOOGLE_ANALYTICS_ID && (
+                            <li>Google LLC, США (сервис Google Analytics) — по поручению оператора и только если вы нажали «Принять»;</li>
+                        )}
                         <li>почта Mail (ООО «ВК») и операторы связи — когда вы пишете на почту или звоните;</li>
                         <li>
                             Telegram — если вы сами выбрали его для связи. Это иностранный сервис: если не хотите, чтобы ваши
@@ -136,6 +139,8 @@ export default async function PrivacyPage({ params }: Props) {
                             (HOSTING.inRussia
                                 ? ' Серверы хостинг-провайдера тоже находятся в России.'
                                 : ' Серверы хостинг-провайдера находятся за рубежом: это трансграничная передача, о которой оператор уведомляет Роскомнадзор.')}
+                        {GOOGLE_ANALYTICS_ID &&
+                            ' Данные Google Analytics хранятся на серверах Google LLC за пределами России — это трансграничная передача: она происходит только после вашего согласия («Принять»), оператор уведомляет о ней Роскомнадзор.'}
                     </p>
                 </>
             ),
