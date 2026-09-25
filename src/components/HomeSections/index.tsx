@@ -328,10 +328,10 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                             {/* фото держится на месте, пока читаются блоки справа */}
                             <div className='pay-photo-wrap'>
                                 <Image
-                                    className='pay-photo br-36 w-full cover'
+                                    className='pay-photo block mg-0-auto br-36 w-full cover'
                                     src={PayPhoto}
                                     alt={t('imageAlt.pay')}
-                                    sizes='(max-width: 990px) 100vw, 420px'
+                                    sizes='(max-width: 460px) 100vw, 420px'
                                 />
                             </div>
                         </div>
@@ -356,8 +356,8 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                                                     </span>
                                                 </li>
                                             )}
-                                            <li className={`grid gap-8 content-start br-20 pd-15 font-14${isResult ? ' formula-result' : ' bg-2-3'}`}>
-                                                <span className='icon-badge grid place-center w-46 h-46 br-round' aria-hidden='true'>
+                                            <li className={`grid gap-8 content-start br-20 pd-15 font-14 text_center${isResult ? ' formula-result' : ' bg-2-3'}`}>
+                                                <span className='icon-badge grid place-center w-46 h-46 br-round mg-0-auto' aria-hidden='true'>
                                                     <Icon width={24} height={24} viewBox='0 0 24 24' />
                                                 </span>
                                                 <b className='color-2-90 font-16'>{item.title}</b>
@@ -521,7 +521,7 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                                     ))}
                                 </ul>
 
-                                <div className='flex align-center gap-10 mb-15'>
+                                <div className='flex align-center gap-10 mb-15 m-justify-center'>
                                     <CopyLink url={CARD.url} copyLabel={t('card.copy')} copiedLabel={t('card.copied')} className='promo-btn hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500' />
                                     <a
                                         href={CARD.url}
@@ -577,10 +577,10 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                         <div className='f-w-4 mb-20'>
                             <div className='pay-photo-wrap'>
                                 <Image
-                                    className='pay-photo br-36 w-full cover'
+                                    className='pay-photo block mg-0-auto br-36 w-full cover'
                                     src={TipsPhoto}
                                     alt={t('imageAlt.tips')}
-                                    sizes='(max-width: 990px) 100vw, 420px'
+                                    sizes='(max-width: 460px) 100vw, 420px'
                                 />
                             </div>
                         </div>

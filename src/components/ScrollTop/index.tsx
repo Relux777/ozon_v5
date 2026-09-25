@@ -22,7 +22,7 @@ export default function ScrollTop() {
     return (
         <button
             type="button"
-            className={`float-btn p-fixed z-20 grid place-center w-46 h-46 br-round bg-1-7 shadow-1 blur-7 active_scale_09 r-20 b-20${visible ? ' float-btn-visible' : ''}`}
+            className={`float-btn p-fixed z-20 grid place-center w-46 h-46 br-round bg-1-7 shadow-1 blur-7 active_scale_09 r-10 b-20${visible ? ' float-btn-visible' : ''}`}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             aria-label={t('scrollTop')}
             tabIndex={visible ? 0 : -1}

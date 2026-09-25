@@ -282,8 +282,10 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     }
 }
 
-// .hover-none (в разметке) отменяет стандартное затемнение a/button до hover — снимает opacity:1 отсюда
-.promo-copy {
+// .hover-none (в разметке) отменяет стандартное затемнение a/button до hover — снимает opacity:1 отсюда.
+// .offer-cta — та же сплошная синяя кнопка: «Оформить» в карточках /stocks
+.promo-copy,
+.offer-cta {
     min-height: 40px;
     background: rgb(var(--bg-5));
     color: #fff;
@@ -518,12 +520,10 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     }
 }
 
-// на телефоне портретное фото обрезаем, чтобы не занимало весь экран
+// на телефоне/планшете фото целиком (без обрезки по 4:3 — картинки квадратные, кадр терял верх и низ),
+// но не шире 420px, чтобы на планшете не растягивалось на весь экран; по центру — block mg-0-auto в разметке
 @media (width < 990px) {
-    .pay-photo {
-        aspect-ratio: 4 / 3;
-        object-position: center 30%;
-    }
+    .pay-photo { max-width: 420px; }
 }
 
 // правая колонка #pay — грид с одной неявной колонкой (auto): без min-width:0 браузер меряет
@@ -688,12 +688,15 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 // переключатель «через Ozon Job / в штат» над документами первого дня: радио + :has(), без JS.
 // Раскладка/цвет в обычном состоянии — утилитами в разметке (bg-2-7 и т.п.), здесь — только состояния,
 // для которых нет утилит (акцент выбранного варианта и переключение панели документов).
-.doc-mode-input:checked + .doc-mode-label {
+// .offer-filter-* — такой же переключатель «Все / Для себя / Для бизнеса» на /stocks
+.doc-mode-input:checked + .doc-mode-label,
+.offer-filter-input:checked + .offer-filter-label {
     background: rgb(var(--bg-5));
     color: #fff;
 }
 
-.doc-mode-input:focus-visible + .doc-mode-label {
+.doc-mode-input:focus-visible + .doc-mode-label,
+.offer-filter-input:focus-visible + .offer-filter-label {
     outline: 2px solid rgb(var(--bg-5));
     outline-offset: 2px;
 }
@@ -726,8 +729,10 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 }
 
 // чип-ссылка на источник: лёгкая синяя заливка со «стеклом» (blur-3 в разметке), при наведении —
-// заливается фирменным синим сплошь, текст белеет и чип чуть приподнимается (как .promo-store/.time-tag)
-.source-chip {
+// заливается фирменным синим сплошь, текст белеет и чип чуть приподнимается (как .promo-store/.time-tag).
+// .offer-copy — та же светло-синяя кнопка: «Копировать» рядом с «Оформить» в карточках /stocks
+.source-chip,
+.offer-copy {
     background: rgb(var(--bg-5) / 10%);
     color: rgb(var(--bg-5));
     transition: background 0.2s, color 0.2s, translate 0.2s, box-shadow 0.2s;
@@ -822,6 +827,13 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
         translate: 0;
         pointer-events: auto;
     }
+
+    // Узкий экран: нижнее меню (NavBar) занимает почти всю ширину, и кнопка справа снизу наезжала на него —
+    // поднимаем её над меню. Высота меню = отступ снизу + высота пункта (nav.module.scss) + 12px зазор
+    @media (width < 620px) { bottom: 98px; } // 20px + 66px + 12px
+    @media (width < 440px) { bottom: 88px; } // 10px + 66px + 12px
+    @media (width < 390px) { bottom: 78px; } // 10px + 56px + 12px
+    @media (width < 340px) { bottom: 72px; } // 10px + 50px + 12px
 }
 
 .scroll-top-icon { rotate: 180deg; }
@@ -863,7 +875,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     color: rgb(255 255 255 / 88%);
     box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
 
-    h3 { color: #fff; }
+    h2, h3 { color: #fff; }
     .icon-badge { color: #fff; background: rgb(255 255 255 / 18%); }
     .city-stat-value { color: #fff; }
 
@@ -934,6 +946,72 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 }
 
 .city-more-icon { transition: rotate 0.2s; }
+
+// ── /menu ─────────────────────────────────────────────────────────────────────────────────────
+// подзаголовки блоков меню: h2 по смыслу, но меньше обычного заголовка секции (main h2 — clamp 23–32px ниже;
+// утилиту font-22 он перебивает, поэтому отдельный класс)
+.menu-title {
+    font-size: 22px;
+    line-height: 1.2;
+}
+
+// карточка раздела: на широком экране — плитка (иконка сверху), на телефоне — компактная строка
+// «иконка слева, заголовок и описание справа», чтобы 8 разделов не растягивались в длинную ленту
+@media (width <= 620px) {
+    .menu-card {
+        grid-template-columns: 46px minmax(0, 1fr);
+        column-gap: 14px;
+        row-gap: 2px;
+        align-items: center;
+
+        > .icon-badge { grid-row: span 2; }
+    }
+}
+
+// ── /stocks: приглашения Ozon Банка ────────────────────────────────────────────────────────────
+// Раскладка — утилитами в разметке; здесь фильтр, размер заголовка карточки и состояния.
+// Кнопки: «Оформить» — .offer-cta (с .promo-copy), «Копировать» — .offer-copy (с .source-chip), фильтр — с .doc-mode-*.
+
+// фильтр «Все / Для себя / Для бизнеса»: радио + :has(), без JS. Карточка, на которую ведёт якорь из оглавления
+// (#offer-…), видна при любом фильтре — иначе переход к скрытой карточке ничего бы не показал
+.offers {
+    &:has(#offer-filter-personal:checked) [data-cat='business']:not(:target),
+    &:has(#offer-filter-business:checked) [data-cat='personal']:not(:target) { display: none; }
+}
+
+// заголовок карточки — h2 по смыслу, но размером с подзаголовок (main h2 перебивает утилиту font-18)
+.offer-title {
+    font-size: 18px;
+    line-height: 1.25;
+}
+
+// строки карточки: шапка, «Вы получите», плюсы (забирают свободное место), шаги, кнопки, рекламодатель —
+// так кнопки у карточек одного ряда стоят на одной высоте, даже когда плюсов разное число
+.offer-card {
+    grid-template-rows: auto auto 1fr auto auto auto;
+    transition: translate 0.25s, box-shadow 0.25s;
+
+    @include mixins.hover {
+        translate: 0 -4px;
+        box-shadow: 0 22px 40px -26px color-mix(in srgb, var(--accent, rgb(var(--bg-5))) 60%, transparent);
+    }
+}
+
+// «Вы получите» — подложка цветом программы (--accent на карточке), текст обычный: так читается при любом цвете
+.offer-benefit { background: color-mix(in srgb, var(--accent, rgb(var(--bg-5))) 10%, transparent); }
+
+// «Что нужно сделать»: нативный <details> (без JS), свой значок вместо треугольника
+.offer-steps {
+    > summary {
+        list-style: none;
+
+        &::-webkit-details-marker { display: none; }
+    }
+
+    &[open] .offer-steps-icon { rotate: 180deg; }
+}
+
+.offer-steps-icon { transition: rotate 0.2s; }
 
 // краткая справка в модалке быстрой навигации (страница города) — в стиле синего блока-акции
 .city-summary {

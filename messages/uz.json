@@ -210,41 +210,279 @@
   },
   "MenuPage": {
     "title": "Menyu",
-    "description": "Loyiha haqida, maxfiylik siyosati, foydalanuvchi shartnomasi, reklama, reyting darajalari hamda savol-javoblar.",
+    "description": "Sayt bo'limlari, Ozon Job ilovasi, Ozonning rasmiy manbalari va sayt hujjatlari — hammasi bir joyda.",
     "heading": "Menyu",
-    "lead": "Loyiha haqida va foydali havolalar — siyosat, shartnoma, reklama, reyting darajalari va savol-javoblar.",
-    "items": [
-      {
-        "title": "Loyiha haqida",
-        "text": "Biz kimmiz va sayt nega mustaqil",
-        "href": "/menu/about"
+    "lead": "Barcha foydali narsalar bir joyda: sayt bo'limlari, Ozon Job ilovasi, Ozonning rasmiy sahifalari va hujjatlar.",
+    "quickTitle": "Sayt bo'limlari",
+    "quick": {
+      "sklad": {
+        "title": "Shaharlar bo'yicha omborlar",
+        "text": "Shahringizdagi manzillar, daromad va shartlar"
       },
-      {
-        "title": "Maxfiylik siyosati",
-        "text": "Saytga tashrif chog'ida qanday ma'lumotlar saqlanadi",
-        "href": "/menu/privacy"
+      "steps": {
+        "title": "Qanday boshlash",
+        "text": "Birinchi smenagacha to'rt qadam"
       },
-      {
-        "title": "Foydalanuvchi shartnomasi",
-        "text": "Saytdan foydalanish shartlari",
-        "href": "/menu/terms"
+      "promo": {
+        "title": "Taklif kodi bo'yicha bonus",
+        "text": "Kodni qanday kiritish va nima bajarish kerak"
       },
-      {
-        "title": "Reklama va mukofot",
-        "text": "Referal havolalardan qanday daromad topamiz",
-        "href": "/menu/ads"
+      "pay": {
+        "title": "To'lovlar",
+        "text": "To'lov qanday hisoblanadi va pul qachon keladi"
       },
-      {
+      "firstDay": {
+        "title": "Hujjatlar va birinchi kun",
+        "text": "Birinchi chiqishga nima olish kerak"
+      },
+      "level": {
         "title": "Reyting darajalari",
-        "text": "Reyting to'lovlar va slotlarga qanday ta'sir qiladi",
-        "href": "/menu/level"
+        "text": "Daraja to'lov muddatlariga qanday ta'sir qiladi"
+      },
+      "support": {
+        "title": "Savol-javoblar",
+        "text": "Ozon Job orqali qo'shimcha ish bo'yicha ko'p beriladigan savollar"
+      },
+      "card": {
+        "title": "Ozon Karta",
+        "text": "Keshbek va Ozon Bank kartasiga to'lovlar"
+      }
+    },
+    "appTitle": "Ozon Job ilovasi",
+    "appText": "Smenalarga yozilish, to'lovlar va taklif kodi — hammasi ilovada. Uni o'z ilovalar do'koningizdan yuklab oling.",
+    "officialTitle": "Ozonning rasmiy manbalari",
+    "officialText": "Shartlar, tariflar va summalarni Ozon belgilaydi — birlamchi manbalar bilan solishtiring.",
+    "official": {
+      "job": {
+        "title": "Ozon Job",
+        "text": "Omborlarda qo'shimcha ish uchun ilova sayti"
+      },
+      "help": {
+        "title": "Ozon Job ma'lumotnomasi",
+        "text": "Qoidalar, to'lovlar, tariflar va reyting"
+      },
+      "career": {
+        "title": "Ozonning shtatga vakansiyalari",
+        "text": "Mehnat shartnomasi bo'yicha ish"
+      }
+    },
+    "docsTitle": "Sayt haqida va hujjatlar",
+    "docs": {
+      "about": {
+        "title": "Loyiha haqida",
+        "text": "Biz kimmiz va sayt nega mustaqil"
+      },
+      "privacy": {
+        "title": "Maxfiylik siyosati",
+        "text": "Saytga tashrif chog'ida qanday ma'lumotlar saqlanadi"
+      },
+      "terms": {
+        "title": "Foydalanuvchi shartnomasi",
+        "text": "Saytdan foydalanish shartlari"
+      },
+      "ads": {
+        "title": "Reklama va mukofot",
+        "text": "Referal havolalardan qanday daromad topamiz"
+      }
+    },
+    "note": "Mustaqil axborot sayti — Ozon emas va uning vakili emas. Ozon — «Интернет Решения» MChJ tovar belgisi."
+  },
+  "StocksPage": {
+    "title": "Акции Ozon Банка по приглашению: карта, Premium, бизнес",
+    "description": "Приглашения Ozon Банка в одном месте: Ozon Карта, кредитная карта, Ozon Premium, зарплатная карта, пенсия, регистрация бизнеса и счёт для ИП — условия и сроки.",
+    "eyebrow": "Акции · Ozon Банк",
+    "heading": "Акции Ozon Банка по приглашению",
+    "lead": "Собрали приглашения Ozon Банка в одном месте: что вы получите, что нужно сделать и за какой срок. Выберите предложение — ссылка откроет страницу банка с условиями.",
+    "pageNavLabel": "Быстрый переход по странице",
+    "factCount": "{count, plural, one {# предложение} few {# предложения} many {# предложений} other {# предложения}}",
+    "factOnline": "Оформление онлайн",
+    "factChecked": "Условия сверены {date}",
+    "filterLabel": "Какие предложения показать",
+    "filters": {
+      "all": "Все",
+      "personal": "Для себя",
+      "business": "Для бизнеса"
+    },
+    "ad": "Реклама",
+    "advertiser": {
+      "bank": "ООО «ОЗОН Банк»",
+      "ozon": "ООО «Интернет Решения»"
+    },
+    "advertiserLabel": "Рекламодатель: {name}",
+    "youGet": "Вы получите",
+    "stepsTitle": "Что нужно сделать",
+    "open": "Оформить",
+    "openLabel": "{name}: оформить по приглашению — откроется страница Ozon Банка",
+    "copy": "Копировать",
+    "copied": "Скопировано ✓",
+    "offers": {
+      "debit": {
+        "name": "Ozon Карта",
+        "kicker": "Дебетовая карта",
+        "benefit": "Бесплатная карта с кешбэком до 25%",
+        "perks": [
+          "Кешбэк до 25% рублями или товары за 1 ₽ на Ozon",
+          "Переводы в другие банки без комиссии — до 30 млн ₽",
+          "Выпуск и обслуживание карты — 0 ₽"
+        ],
+        "steps": [
+          "Закажите карту в течение 72 часов после перехода по ссылке",
+          "Получите и активируйте карту",
+          "Оплатите ей 5 покупок вне Ozon за 45 дней — оплата по QR-коду и через СБП не считается"
+        ],
+        "note": "Не успели за 72 часа — откройте ссылку ещё раз, отсчёт начнётся заново."
+      },
+      "credit": {
+        "name": "Кредитная карта",
+        "kicker": "Ozon Банк",
+        "benefit": "Скидки до 30% на Ozon по «зелёной цене»",
+        "perks": [
+          "Заявка онлайн за пару минут, без справок",
+          "Платить можно виртуальной картой через Mir Pay — пластик заказывать необязательно"
+        ],
+        "steps": [
+          "Заполните заявку в течение 72 часов после перехода по ссылке",
+          "Если банк одобрит карту — подпишите кредитный договор",
+          "Оплатите картой покупки вне Ozon на 1 000 ₽ в течение 90 дней"
+        ],
+        "note": "Решение о выдаче принимает банк. Условия кредита и его полную стоимость (ПСК) проверьте на странице банка до подписания договора."
+      },
+      "premium": {
+        "name": "Ozon Premium",
+        "kicker": "Подписка",
+        "benefit": "Месяц подписки в подарок",
+        "perks": [
+          "5 категорий кешбэка по Ozon Карте вместо 4",
+          "Уведомления об операциях — 0 ₽ вместо 99 ₽ в месяц",
+          "Кино, сериалы и ТВ — без доплаты"
+        ],
+        "steps": [
+          "Оформите подписку Ozon Premium по ссылке",
+          "Оплатите первый месяц",
+          "Следующий месяц — бесплатно"
+        ],
+        "note": "Подписка продлевается автоматически — следите за датой следующего списания."
+      },
+      "salary": {
+        "name": "Зарплатная карта",
+        "kicker": "Зарплатный проект",
+        "benefit": "Зарплата на карту с кешбэком до 25%",
+        "perks": [
+          "Кешбэк до 25% рублями или товары за 1 ₽ на Ozon",
+          "Переводы в другие банки без комиссии — до 30 млн ₽",
+          "Снятие наличных без комиссии — до 1 млн ₽ в банкоматах партнёров"
+        ],
+        "steps": [
+          "Повысьте уровень счёта до Расширенного или Максимального",
+          "Закажите, получите и активируйте карту в течение 10 дней",
+          "Отправьте реквизиты работодателю и получите на них зарплату",
+          "Оплатите картой одну покупку вне Ozon — на это 90 дней"
+        ],
+        "note": "Не подойдёт, если зарплата уже приходит на карту Ozon Банка."
+      },
+      "pension": {
+        "name": "Пенсия на Ozon Банк",
+        "kicker": "Для пенсионеров",
+        "benefit": "ЖКХ и связь — без комиссии",
+        "perks": [
+          "Нет комиссии за оплату ЖКХ и мобильной связи",
+          "Бесплатное обслуживание и уведомления об операциях",
+          "Вклады и накопительные счета защищены государством"
+        ],
+        "steps": [
+          "Повысьте уровень счёта до Расширенного или Максимального — на это 14 дней",
+          "Подайте заявление о переводе пенсии на Госуслугах или в МФЦ — понадобятся паспорт и СНИЛС",
+          "Получите первую пенсию, активируйте карту и оплатите одну покупку вне Ozon"
+        ],
+        "note": "Социальный фонд обычно рассматривает заявление до 10 дней. На покупку — 90 дней с перехода по ссылке."
+      },
+      "bizReg": {
+        "name": "Регистрация бизнеса",
+        "kicker": "Для ИП и ООО",
+        "benefit": "Регистрация ИП или ООО — бесплатно",
+        "perks": [
+          "Банк подготовит документы и сам подаст их в ФНС",
+          "Без госпошлины — экономия до 4 000 ₽",
+          "Всё онлайн, не выходя из дома"
+        ],
+        "steps": [
+          "Отправьте заявку на регистрацию в течение 10 дней после перехода по ссылке",
+          "Зарегистрируйте ИП или ООО",
+          "Совершите операцию на 1 000 ₽ по счёту для бизнеса в Ozon Банке"
+        ],
+        "note": "Подойдёт тем, кто только открывает бизнес."
+      },
+      "bizAccount": {
+        "name": "Счёт для бизнеса",
+        "kicker": "Для ИП и ООО",
+        "benefit": "Открытие и обслуживание — 0 ₽",
+        "perks": [
+          "Онлайн-бухгалтерия бесплатно — для ИП без сотрудников",
+          "Заявка онлайн: если бизнес уже есть, счёт откроют быстро"
+        ],
+        "steps": [
+          "Оставьте заявку на счёт в течение 72 часов после перехода по ссылке",
+          "Совершите со счёта операции на 1 000 ₽ и больше за 30 дней"
+        ],
+        "note": "Не подойдёт, если счёт для бизнеса в Ozon Банке уже есть или вы подавали заявку в последние 14 дней."
+      }
+    },
+    "howEyebrow": "Как это работает",
+    "howTitle": "Три шага до выгоды",
+    "stepLabel": "Шаг {n} из {total}",
+    "how": [
+      {
+        "title": "Выберите предложение",
+        "text": "Нажмите «Оформить» в карточке — откроется страница приглашения Ozon Банка с условиями для вас."
       },
       {
-        "title": "Savol-javoblar",
-        "text": "Ozon Job orqali ishlash haqida tez-tez so'raladigan savollar",
-        "href": "/menu/support"
+        "title": "Оформите продукт вовремя",
+        "text": "На заявку обычно даётся 72 часа или 10 дней — срок указан в карточке в разделе «Что нужно сделать»."
+      },
+      {
+        "title": "Выполните условия",
+        "text": "Например, оплатите покупки картой вне Ozon. Привилегии и бонусы начисляет банк — по своим правилам и в свои сроки."
       }
-    ]
+    ],
+    "faqEyebrow": "Вопросы",
+    "faqTitle": "Частые вопросы об акциях",
+    "faq": [
+      {
+        "title": "Что такое приглашение и зачем переходить по ссылке?",
+        "text": "Это ссылка из программы Ozon Банка «Приведи друга». По ней вы оформляете продукт на условиях для приглашённых — банк показывает их на странице приглашения."
+      },
+      {
+        "title": "Сколько времени есть после перехода по ссылке?",
+        "text": "Зависит от продукта: дебетовую карту нужно заказать за 72 часа, заявку на кредитную карту и счёт для бизнеса — подать за 72 часа, заявку на регистрацию бизнеса — за 10 дней. Не успели заказать дебетовую карту — откройте ссылку ещё раз, отсчёт начнётся заново."
+      },
+      {
+        "title": "Какие покупки засчитываются?",
+        "text": "Покупки картой Ozon Банка за пределами Ozon. Оплата по QR-коду и через СБП не учитывается. Покупка засчитывается через 3–5 дней — когда банк обработает операцию."
+      },
+      {
+        "title": "Подойдёт ли приглашение, если я уже клиент Ozon Банка?",
+        "text": "Зависит от продукта. Например, приглашение на зарплатную карту не засчитается, если зарплата уже приходит в Ozon Банк, а на счёт для бизнеса — если счёт уже открыт или заявка была в последние 14 дней. Точные условия — на странице приглашения."
+      },
+      {
+        "title": "Это платно?",
+        "text": "Нет. Переход по ссылке бесплатный, сайту вы ничего не платите. Тарифы и условия продуктов устанавливает банк."
+      },
+      {
+        "title": "Вы — Ozon Банк?",
+        "text": "Нет. Это независимый информационный сайт: мы собрали приглашения и пересказали условия из справки банка. Решение о выдаче карты или открытии счёта принимает только Ozon Банк."
+      }
+    ],
+    "jobKicker": "Реклама · Ozon Job",
+    "jobTitle": "Подработка на складах через Ozon Job",
+    "jobText": "Введите код приглашения при регистрации в приложении Ozon Job. Бонус начисляется, когда вы выполните задания на сумму, зависящую от склада. Участвовать могут те, кто раньше не работал в Ozon.",
+    "jobCodeLabel": "Код приглашения",
+    "jobCopy": "Скопировать",
+    "jobLink": "Как получить бонус",
+    "skladLink": "Склады по городам",
+    "checked": "Условия сверены {date} по справке Ozon Банка и страницам приглашений. Банк может изменить их в любой момент — перед оформлением проверьте условия на странице банка.",
+    "disclosure": "Реклама. Мы — независимый информационный сайт, не Ozon и не Ozon Банк. Ссылки на этой странице — персональные приглашения из программы «Приведи друга»: если вы оформите продукт по ним и выполните условия, банк может выплатить нам вознаграждение — на ваши условия это не влияет. Банковские услуги оказывает ООО «ОЗОН Банк», лицензия Банка России № 3542 от 12.04.2023; подписку Ozon Premium — ООО «Интернет Решения». Решение о выдаче карты или открытии счёта принимает банк.",
+    "adsLink": "Как сайт зарабатывает на ссылках",
+    "helpLink": "Правила «Приведи друга» в справке Ozon Банка"
   },
   "HomePage": {
     "pageNavLabel": "Sahifa bo'ylab tezkor o'tish",

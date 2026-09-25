@@ -22,7 +22,9 @@ export default function NavBarComponent() {
     const t = useTranslations('NavBar');
 
     return (
-        <div className={`p-fixed w-full z-10 ${styles.nav}`}>
+        // обёртка во всю ширину экрана не ловит клики (p-events-none) — иначе полоса внизу перекрывала контент;
+        // кликабельна только сама плашка меню (p-events-all на ul)
+        <div className={`p-fixed w-full z-10 p-events-none ${styles.nav}`}>
             <nav className="flex justify-center align-center gap-5 p-events-none">
                 <ul className={`flex nowrap overflow-hidden p-relative br-36 shadow-1 blur-7 p-events-all bg-1-7 ${styles.ul} ${styles.home}`}>
                     {NavBarLink.map((link) => {

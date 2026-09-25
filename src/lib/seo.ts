@@ -18,9 +18,10 @@ const OG_LOCALES: Record<AppLocale, string> = {
     kk: 'kk_KZ',
 };
 
-export function getHreflangLinks(href: Href): Record<string, string> {
+/** locales — языки, на которых страница уже переведена (по умолчанию все); остальные в hreflang не попадают */
+export function getHreflangLinks(href: Href, locales: readonly AppLocale[] = routing.locales): Record<string, string> {
     const languages: Record<string, string> = Object.fromEntries(
-        routing.locales.map((locale) => [locale, `${BASE_URL}${getPathname({ locale, href })}`])
+        locales.map((locale) => [locale, `${BASE_URL}${getPathname({ locale, href })}`])
     );
     languages['x-default'] = languages[routing.defaultLocale];
 
@@ -36,6 +37,11 @@ type PageMetadataInput = {
     /** true — title уже содержит бренд, шаблон из layout не применяется */
     absoluteTitle?: boolean;
     noindex?: boolean;
+    /**
+     * Языки, на которых страница уже переведена. На остальных — noindex (там временный русский текст,
+     * дубль русской страницы), и в hreflang/og:locale:alternate они не попадают. По умолчанию — все языки.
+     */
+    locales?: readonly AppLocale[];
 };
 
 // Next.js не сливает вложенные объекты metadata: openGraph страницы полностью заменяет
@@ -48,15 +54,17 @@ export function buildPageMetadata({
     siteName,
     absoluteTitle = false,
     noindex = false,
+    locales = routing.locales,
 }: PageMetadataInput): Metadata {
-    const languages = getHreflangLinks(href);
-    const url = languages[locale];
+    const languages = getHreflangLinks(href, locales);
+    const url = `${BASE_URL}${getPathname({ locale, href })}`;
+    const hidden = noindex || !locales.includes(locale);
 
     return {
         title: absoluteTitle ? { absolute: title } : title,
         description,
         alternates: { canonical: url, languages },
-        ...(noindex && { robots: { index: false, follow: false } }),
+        ...(hidden && { robots: { index: false, follow: false } }),
         openGraph: {
             type: 'website',
             url,
@@ -64,7 +72,7 @@ export function buildPageMetadata({
             title,
             description,
             locale: OG_LOCALES[locale],
-            alternateLocale: routing.locales.filter((l) => l !== locale).map((l) => OG_LOCALES[l]),
+            alternateLocale: locales.filter((l) => l !== locale).map((l) => OG_LOCALES[l]),
             // превью ссылки в Telegram/WhatsApp/VK/соцсетях; без картинки summary_large_image был пустым.
             // JPEG до 300 КБ — иначе WhatsApp не показывает превью
             images: [{ ...OG_IMAGE, alt: siteName }],
