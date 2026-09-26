@@ -5,7 +5,7 @@ import { getLocaleFromParams } from '@/i18n/params';
 import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import { SITE_CONFIG } from '@/config/site';
+import { SEARCH_VERIFICATION, SITE_CONFIG } from '@/config/site';
 import { GOOGLE_ANALYTICS_ID, YANDEX_METRIKA_ID } from '@/config/legal';
 
 import HeaderComponent from "@/components/Header";
@@ -81,6 +81,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         formatDetection: { telephone: false },
         // крупные превью картинок и сниппет без ограничения длины (Google, Яндекс)
         robots: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+        // мета-теги подтверждения Яндекс Вебмастера и Google Search Console (config/site.ts); пустые не выводятся
+        verification: {
+            ...(SEARCH_VERIFICATION.google && { google: SEARCH_VERIFICATION.google }),
+            ...(SEARCH_VERIFICATION.yandex && { yandex: SEARCH_VERIFICATION.yandex }),
+        },
         // иконки — файлами в src/app (favicon.ico, icon.svg, apple-icon.png): Next сам добавит <link>;
         // явный icons здесь дублировал <link rel="icon" href="/favicon.ico">
     };
