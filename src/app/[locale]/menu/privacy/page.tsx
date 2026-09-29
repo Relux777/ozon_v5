@@ -1,194 +1,104 @@
 import type { Metadata } from 'next';
-import { Link } from '@/i18n/navigation';
+import { getTranslations } from 'next-intl/server';
 import { getLocaleFromParams } from '@/i18n/params';
-import { SITE_CONFIG } from '@/config/site';
-import { CONTACTS, GOOGLE_ANALYTICS_ID, HOSTING, OWNER } from '@/config/legal';
+import { GOOGLE_ANALYTICS_ID } from '@/config/legal';
 import LegalDoc from '@/components/LegalDoc';
+import { legalValues } from '@/components/LegalDoc/rich';
 
 // Политика обработки персональных данных (ч. 2 ст. 18.1 152-ФЗ — опубликовать в свободном доступе).
-// Текст на русском — юридически значимая версия. Оператор, контакты и хостинг — config/legal.ts.
+// Тексты — LegalDocs.privacy (все 9 языков, юридически значима русская версия). Оператор, контакты и хостинг — config/legal.ts.
 // Не юридическая консультация: перед запуском форм, аналитики или рассылок — согласовать с юристом.
 
 type Props = {
     params: Promise<{ locale: string }>;
 };
 
-const TITLE = 'Политика обработки персональных данных';
+// Порядок абзацев и пунктов — ключи в LegalDocs.privacy
+const GENERAL = ['intro', 'operator', 'independent'] as const;
+const CASES = ['tech', 'cookies', 'requests'] as const;
+const RIGHTS = ['know', 'fix', 'withdraw', 'complain'] as const;
 
-export const metadata: Metadata = {
-    title: TITLE,
-    robots: { index: false, follow: false },
-};
-
-const host = new URL(SITE_CONFIG.url).host;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const locale = await getLocaleFromParams(params);
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.privacy' });
+    return { title: t('title'), robots: { index: false, follow: false } };
+}
 
 export default async function PrivacyPage({ params }: Props) {
     const locale = await getLocaleFromParams(params);
-    const email = <a href={`mailto:${CONTACTS.email}`} className='color-5-100'>{CONTACTS.email}</a>;
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.privacy' });
+    const values = legalValues(locale);
+    // кому передаём: Google — только если подключён счётчик
+    type TransferKey = 'hosting' | 'yandex' | 'google' | 'mail' | 'telegram' | 'gov';
+    const transfer: TransferKey[] = ['hosting', 'yandex', ...(GOOGLE_ANALYTICS_ID ? (['google'] as const) : []), 'mail', 'telegram', 'gov'];
+
+    const simple = (id: 'actions' | 'security' | 'changes') => ({
+        id,
+        title: t(`${id}.title`),
+        content: <p>{t(`${id}.text`)}</p>,
+    });
 
     const sections = [
         {
             id: 'general',
-            title: 'Общие положения',
-            content: (
-                <>
-                    <p>
-                        Политика описывает, какие персональные данные посетителей обрабатываются на сайте {host} (далее — сайт),
-                        зачем, на каком основании и как долго, а также права посетителей. Она издана во исполнение ч. 2 ст. 18.1
-                        Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных» и опубликована в свободном доступе.
-                    </p>
-                    <p>
-                        Оператор персональных данных — <b>{OWNER.fullName}</b> (физическое лицо), владелец сайта. Связь с оператором:
-                        {' '}{email}, телефон {CONTACTS.phone.label}.
-                    </p>
-                    <p>
-                        Сайт — независимый информационный ресурс, не Ozon и не Ozon Банк. Данные, которые вы указываете в приложении
-                        Ozon Job, на сайтах Ozon и Ozon Банка, обрабатывают они сами по своим политикам — у сайта к ним доступа нет.
-                    </p>
-                </>
-            ),
+            title: t('general.title'),
+            content: GENERAL.map((key) => <p key={key}>{t.rich(`general.p.${key}`, values)}</p>),
         },
         {
             id: 'data',
-            title: 'Какие данные, зачем и на каком основании',
+            title: t('data.title'),
             content: (
                 <>
-                    <p>На сайте нет регистрации, личного кабинета, форм и рассылок. Данные обрабатываются только в трёх случаях.</p>
+                    <p>{t('data.intro')}</p>
                     <div className='grid gap-10'>
-                        <div className='grid gap-5 pd-15 br-20 bg-2-3'>
-                            <b className='color-2-90'>1. Технические данные при посещении</b>
-                            <p>
-                                IP-адрес, сведения о браузере и устройстве, адрес открытой страницы, дата и время запроса — их получает
-                                любой веб-сервер. Цель: показать страницы и защитить сайт от сбоев и атак. Основание: законный интерес
-                                оператора (п. 7 ч. 1 ст. 6 152-ФЗ). Срок: не дольше 30 дней — журналы сервера удаляются автоматически.
-                            </p>
-                        </div>
-                        <div className='grid gap-5 pd-15 br-20 bg-2-3'>
-                            <b className='color-2-90'>2. Cookie</b>
-                            <p>
-                                Необходимые cookie помнят выбранный язык и ваш выбор в уведомлении о cookie — они не позволяют узнать,
-                                кто вы, и работают без согласия. Cookie аналитики (Яндекс Метрика{GOOGLE_ANALYTICS_ID && ', Google Analytics'}) и связанные с ними данные
-                                обрабатываются только с вашего согласия — после кнопки «Принять». Состав cookie, сроки и текст
-                                согласия — на странице <Link href='/menu/cookies' className='color-5-100'>«Cookie и согласие на аналитику»</Link>.
-                            </p>
-                        </div>
-                        <div className='grid gap-5 pd-15 br-20 bg-2-3'>
-                            <b className='color-2-90'>3. Ваши обращения</b>
-                            <p>
-                                Если вы пишете на почту, в Telegram или звоните: имя, адрес почты, номер телефона или имя пользователя
-                                в Telegram, текст сообщения и то, что вы сообщите сами. Цель: ответить на вопрос, обсудить и выполнить
-                                заказ. Основание: подготовка и исполнение договора по вашей инициативе (п. 5 ч. 1 ст. 6 152-ФЗ), для
-                                остальных вопросов — законный интерес ответить тому, кто написал (п. 7 ч. 1 ст. 6). Срок: до конца
-                                переписки и ещё 1 год; если заключён договор — пока он действует и 5 лет после (срок хранения
-                                документов для налогов).
-                            </p>
-                        </div>
+                        {CASES.map((key) => (
+                            <div className='grid gap-5 pd-15 br-20 bg-2-3' key={key}>
+                                <b className='color-2-90'>{t(`data.cases.${key}.title`)}</b>
+                                <p>{t.rich(`data.cases.${key}.text`, values)}</p>
+                            </div>
+                        ))}
                     </div>
-                    <p>
-                        Мы не обрабатываем специальные категории данных (здоровье, убеждения и т. п.) и биометрию, не принимаем
-                        решений только на основе автоматизированной обработки и не используем данные для рекламных рассылок.
-                        Не присылайте паспортные данные, данные карт и коды из СМС — для ответа на вопрос они не нужны.
-                    </p>
+                    <p>{t('data.outro')}</p>
                 </>
             ),
         },
-        {
-            id: 'actions',
-            title: 'Как обрабатываются данные',
-            content: (
-                <p>
-                    Сбор, запись, систематизация, накопление, хранение, уточнение, извлечение, использование, передача
-                    (предоставление, доступ) — только лицам из раздела 4, блокирование, удаление и уничтожение. Способ —
-                    смешанный: автоматизированно и вручную. Распространение (публикация) персональных данных не осуществляется.
-                </p>
-            ),
-        },
+        simple('actions'),
         {
             id: 'transfer',
-            title: 'Кому передаются данные',
+            title: t('transfer.title'),
             content: (
                 <>
-                    <p>Мы не продаём данные и не передаём их для рекламы. Доступ к данным есть только у оператора и у сервисов, без которых сайт и связь не работают:</p>
+                    <p>{t('transfer.intro')}</p>
                     <ul className='legal-list grid gap-5'>
-                        <li>
-                            хостинг-провайдер сайта{HOSTING.name ? ` — ${HOSTING.name}` : ''} — хранит файлы сайта и журналы сервера (раздел 2, п. 1);
-                        </li>
-                        <li>ООО «ЯНДЕКС» (сервис Яндекс Метрика) — по поручению оператора и только если вы нажали «Принять»;</li>
-                        {GOOGLE_ANALYTICS_ID && (
-                            <li>Google LLC, США (сервис Google Analytics) — по поручению оператора и только если вы нажали «Принять»;</li>
-                        )}
-                        <li>почта Mail (ООО «ВК») и операторы связи — когда вы пишете на почту или звоните;</li>
-                        <li>
-                            Telegram — если вы сами выбрали его для связи. Это иностранный сервис: если не хотите, чтобы ваши
-                            сообщения проходили через него, пишите на почту или звоните;
-                        </li>
-                        <li>государственные органы — только в случаях, прямо предусмотренных законом.</li>
+                        {transfer.map((key) => (
+                            <li key={key}>{t.rich(`transfer.${key}`, values)}</li>
+                        ))}
                     </ul>
                 </>
             ),
         },
         {
             id: 'storage',
-            title: 'Где хранятся данные',
-            content: (
-                <>
-                    <p>
-                        Данные, которые оператор собирает сам, записываются и хранятся в России: переписка — в почте Mail, статистика
-                        посещений — в Яндекс Метрике (ч. 5 ст. 18 152-ФЗ).
-                        {HOSTING.name &&
-                            (HOSTING.inRussia
-                                ? ' Серверы хостинг-провайдера тоже находятся в России.'
-                                : ' Серверы хостинг-провайдера находятся за рубежом: это трансграничная передача, о которой оператор уведомляет Роскомнадзор.')}
-                        {GOOGLE_ANALYTICS_ID &&
-                            ' Данные Google Analytics хранятся на серверах Google LLC за пределами России — это трансграничная передача: она происходит только после вашего согласия («Принять»), оператор уведомляет о ней Роскомнадзор.'}
-                    </p>
-                </>
-            ),
+            title: t('storage.title'),
+            content: <p>{t.rich('storage.text', values)}</p>,
         },
-        {
-            id: 'security',
-            title: 'Как данные защищены',
-            content: (
-                <p>
-                    Сайт работает по защищённому протоколу HTTPS. Доступ к почте, хостингу и счётчику есть только у оператора.
-                    Мы собираем минимум данных: на сайте нет форм и регистрации, поэтому базы с данными посетителей у сайта нет —
-                    только технические журналы сервера.
-                </p>
-            ),
-        },
+        simple('security'),
         {
             id: 'rights',
-            title: 'Ваши права',
+            title: t('rights.title'),
             content: (
                 <>
                     <ul className='legal-list grid gap-5'>
-                        <li>узнать, обрабатываются ли ваши данные, какие и зачем (ст. 14 152-ФЗ);</li>
-                        <li>потребовать уточнить, заблокировать или удалить данные, если они неполные, устарели, неточны или обрабатываются незаконно;</li>
-                        <li>
-                            отозвать согласие на аналитику — кнопкой «Изменить выбор cookie» на странице{' '}
-                            <Link href='/menu/cookies' className='color-5-100'>«Cookie и согласие на аналитику»</Link> или письмом;
-                        </li>
-                        <li>обжаловать действия оператора в Роскомнадзоре или в суде.</li>
+                        {RIGHTS.map((key) => (
+                            <li key={key}>{t.rich(`rights.items.${key}`, values)}</li>
+                        ))}
                     </ul>
-                    <p>
-                        Запрос напишите на {email} с темой «Персональные данные»: как к вам обращаться и какие данные касаются
-                        запроса (например, адрес почты, с которого вы писали). Ответим в течение 10 рабочих дней; срок может быть
-                        продлён ещё на 5 рабочих дней — тогда сообщим причину.
-                    </p>
+                    <p>{t.rich('rights.request', values)}</p>
                 </>
             ),
         },
-        {
-            id: 'changes',
-            title: 'Изменение политики',
-            content: (
-                <p>
-                    Политика может меняться — например, если на сайте появится форма или новый сервис. Новая редакция действует
-                    с момента публикации на этой странице; дата редакции указана вверху.
-                </p>
-            ),
-        },
+        simple('changes'),
     ];
 
-    return <LegalDoc locale={locale} href='/menu/privacy' title={TITLE} sections={sections} />;
+    return <LegalDoc locale={locale} href='/menu/privacy' sections={sections} />;
 }

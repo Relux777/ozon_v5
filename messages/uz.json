@@ -44,16 +44,16 @@
     "listLabel": "Shaharlar ro'yxati"
   },
   "SkladPage": {
-    "title": "Ozon omborlari shaharlar bo'yicha: manzil, daromad, DMS va ovqat",
+    "title": "Ozon omborlari shaharlarda: manzil, daromad, DMS va ovqat",
     "description": "Ozon ombor operatori bo'lib ishlash mumkin bo'lgan shaharlar: ombor manzillari, daromad, DMS, ovqat va omborgacha transport. Shahringizni tanlang.",
     "heading": "Shahringizni tanlang",
     "lead": "Shahringizni toping va ombor operatori uchun ombor manzillari, daromad va bonuslarni bilib oling."
   },
   "CityPage": {
-    "titleWithData": "Ozon omborida qo'shimcha ish, {city} sh.: Ozon Job, manzillar, to'lovlar",
-    "titleNoData": "Ozon omborida qo'shimcha ish, {city} sh.: Ozon Job orqali smenaga qanday chiqish",
-    "descriptionWithData": "Ozon omborlari, {city} sh.: to'liq manzillar va Ozon Job ilovasi orqali qo'shimcha ish — 4 soatdan 12 soatgacha slotlar, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band qilish.",
-    "descriptionNoData": "Ozon omborlarida qo'shimcha ish, {city} sh., Ozon Job ilovasi orqali: 4 soatdan 12 soatgacha slotlar, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band qilish.",
+    "titleWithData": "Ozon omborida qo'shimcha ish, {city} sh.: Ozon Job, manzil",
+    "titleNoData": "Ozon omborida qo'shimcha ish, {city} sh.: Ozon Job orqali",
+    "descriptionWithData": "Ozon omborlari, {city} sh.: to'liq manzillar, Ozon Job orqali qo'shimcha ish — 4–12 soatlik slot, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band.",
+    "descriptionNoData": "Ozon omborlarida qo'shimcha ish, {city} sh., Ozon Job ilovasi orqali: 4–12 soatlik slotlar, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band qilish.",
     "heading": "Ozon omborlari, {city} sh.: Ozon Job orqali qo'shimcha ish",
     "heroKicker": "Ozon Job · {city} sh.",
     "heroAddresses": "Ombor manzillari",
@@ -297,7 +297,7 @@
   },
   "LevelPage": {
     "title": "Ozon Job reytingi: darajalar, ballar va bananlar",
-    "description": "Ozon Jobda reyting ballari qanday qo'shiladi va ayiriladi, 0 dan «Бриллиант»gacha darajalar nima beradi, banan nima uchun beriladi va qanday qilib bloklanmaslik. Jadvallar va ballar kalkulyatori.",
+    "description": "Ozon Jobda reyting ballari qanday qo'shiladi va ayiriladi, 0 dan «Бриллиант»gacha darajalar nima beradi, banan nima uchun, qanday bloklanmaslik. Kalkulyator.",
     "eyebrow": "Ozon Job · Reyting",
     "heading": "Ozon Job reytingi: darajalar, ballar va bananlar",
     "lead": "Ballar nima uchun qo'shilishi va ayirilishini, har bir daraja — 0 dan «Бриллиант»gacha — nima berishini va qanday qilib bloklanmaslikni tushuntiramiz. Raqamlar — Ozon Job ilovasi va ijrochilar uchun ma'lumotnomadan.",
@@ -471,8 +471,8 @@
     "backLink": "← Menyuga qaytish"
   },
   "StocksPage": {
-    "title": "Ozon aksiyalari taklif bo'yicha: Ozon Bank, Premium, Ozon Blogger",
-    "description": "Ozon Bank takliflari va Ozon bilan daromad bir joyda: Ozon Karta, kredit karta, Premium, ish haqi kartasi, pensiya, biznes hisobi, Ozon Blogger va Ozon Job kodi.",
+    "title": "Ozon taklif aksiyalari: Ozon Bank va Ozon Blogger",
+    "description": "Ozon Bank takliflari va Ozon bilan daromad bir joyda: Ozon Karta, kredit karta, Premium, ish haqi kartasi, pensiya, biznes hisobi, Ozon Blogger, Ozon Job kodi.",
     "eyebrow": "Aksiyalar · Ozon Bank va Ozon",
     "heading": "Ozon aksiyalari taklif bo'yicha",
     "lead": "Ozon Bank takliflari va Ozon bilan pul ishlash usullarini bir joyga to'pladik: nima olasiz, nima qilish kerak va qancha muddatda. Kartochkadagi havola shartlar yozilgan rasmiy sahifani ochadi.",
@@ -705,8 +705,248 @@
     "statusNone": "Siz hali tanlov qilmadingiz"
   },
   "Legal": {
-    "updated": "Tahrir: {date}",
-    "ruOnly": "Hujjat rus tilida e'lon qilingan — yuridik kuchga rus tilidagi matn ega."
+    "updated": "Tahrir: {date}"
+  },
+  "LegalDocs": {
+    "toc": "Mundarija",
+    "docs": "Sayt hujjatlari",
+    "cooperation": "Hamkorlik va kontaktlar",
+    "back": "← Menyuga qaytish",
+    "translated": "Bu qulaylik uchun qilingan tarjima. Farq bo'lsa, <ru>hujjatning rus tilidagi versiyasi</ru> amal qiladi.",
+    "about": {
+      "title": "Loyiha haqida",
+      "what": {
+        "title": "Bu qanday sayt",
+        "text": "«Ozon Ish» — Ozon Job ilovasi orqali Ozon omborlarida qo'shimcha ish qidirayotganlar uchun mustaqil axborot sayti. Biz Ozon emasmiz va uning rasmiy vakili ham emasmiz: Ozon — ООО «Интернет Решения» (MChJ “Internet Resheniya”) tovar belgisi. Rasmiy shartlarni doimo Ozon Job ilovasida, <job>job.ozon.ru</job> saytida, <help>Ozon Job ma'lumotnomasida</help> va <career>career.ozon.ru</career> saytida ko'ring."
+      },
+      "sources": {
+        "title": "Ma'lumotlar qayerdan olinadi",
+        "text": "Shaharlar bo'yicha omborlar manzillari, shartlar, to'lovlar, reyting va aksiyalarni biz ochiq Ozon Job ma'lumotnomasidan, career.ozon.ru sahifalaridan, Ozon Bank ma'lumotnomasi va sahifalaridan yig'amiz va o'z so'zlarimiz bilan bayon qilamiz. Solishtirish sanalari har bir bo'lim yonida ko'rsatilgan. Xato topdingizmi — bizga yozing, tuzatamiz."
+      },
+      "owner": {
+        "title": "Saytni kim yuritadi",
+        "text": "Sayt egasi — {owner} (jismoniy shaxs). Pochta — <mail>{email}</mail>, telefon — <call>{phone}</call>, Telegram — <tg>@{telegram}</tg>, har kuni Moskva vaqti bilan {from} dan {to} gacha. Ozon Job akkaunti, to'lovlar va reyting bo'yicha savollarda yordam bera olmaymiz — ilovadagi qo'llab-quvvatlash xizmatiga yozing."
+      },
+      "money": {
+        "title": "Sayt qanday daromad topadi",
+        "text": "«Reklama» belgisi qo'yilgan referal havolalar va taklif kodi orqali: agar siz ular orqali ro'yxatdan o'tsangiz va shartlarni bajarsangiz, Ozon yoki Ozon Bank bizga mukofot to'lashi mumkin. Batafsil — <ads>«Reklama va mukofot»</ads> sahifasida."
+      },
+      "cooperation": {
+        "title": "Hamkorlik",
+        "text": "Kompaniyalar bizdan xuddi shunday reklama saytini buyurtma qilishi mumkin — bir necha tilda, SEO va puxta yuridik qism bilan. Batafsil — <cooperation>«Hamkorlik»</cooperation> sahifasida."
+      }
+    },
+    "privacy": {
+      "title": "Shaxsiy ma'lumotlarga ishlov berish siyosati",
+      "general": {
+        "title": "Umumiy qoidalar",
+        "p": {
+          "intro": "Siyosat {host} saytida (bundan buyon — sayt) tashrif buyuruvchilarning qanday shaxsiy ma'lumotlariga ishlov berilishini, nima uchun, qanday asosda va qancha muddat ishlov berilishini, shuningdek tashrif buyuruvchilarning huquqlarini tavsiflaydi. U 27.07.2006 yildagi 152-FZ-son «Shaxsiy ma'lumotlar to'g'risida»gi Federal qonunning 18.1-moddasi 2-qismini ijro etish uchun chiqarilgan va erkin foydalanish uchun e'lon qilingan.",
+          "operator": "Shaxsiy ma'lumotlar operatori — <b>{owner}</b> (jismoniy shaxs), sayt egasi. Operator bilan aloqa: <mail>{email}</mail>, telefon {phone}.",
+          "independent": "Sayt — mustaqil axborot resursi, u Ozon ham, Ozon Bank ham emas. Siz Ozon Job ilovasida, Ozon va Ozon Bank saytlarida ko'rsatgan ma'lumotlarga ularning o'zlari o'z siyosatlariga ko'ra ishlov beradi — saytning ularga kirish imkoni yo'q."
+        }
+      },
+      "data": {
+        "title": "Qanday ma'lumotlar, nima uchun va qanday asosda",
+        "intro": "Saytda ro'yxatdan o'tish, shaxsiy kabinet, shakllar va xat tarqatmalari yo'q. Ma'lumotlarga faqat uch holatda ishlov beriladi.",
+        "cases": {
+          "tech": {
+            "title": "1. Tashrif paytidagi texnik ma'lumotlar",
+            "text": "IP-manzil, brauzer va qurilma haqidagi ma'lumotlar, ochilgan sahifa manzili, so'rov sanasi va vaqti — ularni har qanday veb-server oladi. Maqsad: sahifalarni ko'rsatish va saytni nosozliklar va hujumlardan himoya qilish. Asos: operatorning qonuniy manfaati (152-FZ 6-moddasi 1-qismi 7-bandi). Muddat: 30 kundan oshmaydi — server jurnallari avtomatik ravishda o'chiriladi."
+          },
+          "cookies": {
+            "title": "2. Cookie",
+            "text": "Zarur cookie fayllari tanlangan tilni va cookie haqidagi bildirishnomadagi tanlovingizni eslab qoladi — ular sizning kimligingizni aniqlashga imkon bermaydi va roziliksiz ishlaydi. Analitika cookie fayllari (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) va ular bilan bog'liq ma'lumotlarga faqat sizning roziligingiz bilan — «Qabul qilish» tugmasidan keyin ishlov beriladi. Cookie tarkibi, muddatlari va rozilik matni — <cookies>«Cookie va analitikaga rozilik»</cookies> sahifasida."
+          },
+          "requests": {
+            "title": "3. Murojaatlaringiz",
+            "text": "Agar siz pochtaga, Telegramga yozsangiz yoki qo'ng'iroq qilsangiz: ism, pochta manzili, telefon raqami yoki Telegramdagi foydalanuvchi nomi, xabar matni va o'zingiz ma'lum qilgan boshqa narsalar. Maqsad: savolga javob berish, buyurtmani muhokama qilish va bajarish. Asos: sizning tashabbusingiz bilan shartnomani tayyorlash va bajarish (152-FZ 6-moddasi 1-qismi 5-bandi), boshqa savollar uchun — yozgan kishiga javob berishdagi qonuniy manfaat (6-moddasi 1-qismi 7-bandi). Muddat: yozishma tugaguniga qadar va yana 1 yil; agar shartnoma tuzilgan bo'lsa — u amal qilgan davrda va undan keyin 5 yil (soliq maqsadlarida hujjatlarni saqlash muddati)."
+          }
+        },
+        "outro": "Biz maxsus toifadagi ma'lumotlarga (sog'liq, e'tiqodlar va h.k.) va biometrik ma'lumotlarga ishlov bermaymiz, faqat avtomatlashtirilgan ishlov berish asosida qarorlar qabul qilmaymiz va ma'lumotlardan reklama tarqatmalari uchun foydalanmaymiz. Pasport ma'lumotlari, karta ma'lumotlari va SMS kodlarini yubormang — savolga javob berish uchun ular kerak emas."
+      },
+      "actions": {
+        "title": "Ma'lumotlarga qanday ishlov beriladi",
+        "text": "Yig'ish, yozib olish, tizimlashtirish, to'plash, saqlash, aniqlashtirish, ajratib olish, foydalanish, uzatish (taqdim etish, kirish imkonini berish) — faqat 4-bo'limda ko'rsatilgan shaxslarga, bloklash, o'chirish va yo'q qilish. Usul — aralash: avtomatlashtirilgan va qo'lda. Shaxsiy ma'lumotlarni tarqatish (e'lon qilish) amalga oshirilmaydi."
+      },
+      "transfer": {
+        "title": "Ma'lumotlar kimga uzatiladi",
+        "intro": "Biz ma'lumotlarni sotmaymiz va ularni reklama uchun uzatmaymiz. Ma'lumotlarga faqat operator va ularsiz sayt hamda aloqa ishlamaydigan xizmatlar kira oladi:",
+        "hosting": "saytning xosting-provayderi{hasHosting, select, yes { — {hosting}} other {}} — sayt fayllari va server jurnallarini saqlaydi (2-bo'lim, 1-band);",
+        "yandex": "ООО «ЯНДЕКС» (Yandex Metrica xizmati) — operatorning topshirig'i bo'yicha va faqat siz «Qabul qilish»ni bosgan bo'lsangiz;",
+        "google": "Google LLC, AQSh (Google Analytics xizmati) — operatorning topshirig'i bo'yicha va faqat siz «Qabul qilish»ni bosgan bo'lsangiz;",
+        "mail": "Mail pochta xizmati (ООО «ВК») va aloqa operatorlari — siz pochtaga yozganingizda yoki qo'ng'iroq qilganingizda;",
+        "telegram": "Telegram — agar uni aloqa uchun o'zingiz tanlagan bo'lsangiz. Bu xorijiy xizmat: agar xabarlaringiz u orqali o'tishini istamasangiz, pochtaga yozing yoki qo'ng'iroq qiling;",
+        "gov": "davlat organlari — faqat qonunda bevosita nazarda tutilgan hollarda."
+      },
+      "storage": {
+        "title": "Ma'lumotlar qayerda saqlanadi",
+        "text": "Operator o'zi yig'adigan ma'lumotlar Rossiyada yozib olinadi va saqlanadi: yozishmalar — Mail pochtasida, tashriflar statistikasi — Yandex Metricada (152-FZ 18-moddasi 5-qismi).{hostingPlace, select, russia { Xosting-provayder serverlari ham Rossiyada joylashgan.} abroad { Xosting-provayder serverlari xorijda joylashgan: bu transchegaraviy uzatish bo'lib, operator bu haqda Roskomnadzorni xabardor qiladi.} other {}}{ga, select, yes { Google Analytics ma'lumotlari Rossiyadan tashqaridagi Google LLC serverlarida saqlanadi — bu transchegaraviy uzatish: u faqat sizning roziligingizdan («Qabul qilish») keyin amalga oshadi, operator bu haqda Roskomnadzorni xabardor qiladi.} other {}}"
+      },
+      "security": {
+        "title": "Ma'lumotlar qanday himoyalangan",
+        "text": "Sayt himoyalangan HTTPS protokoli orqali ishlaydi. Pochta, xosting va hisoblagichga faqat operator kira oladi. Biz minimal ma'lumot yig'amiz: saytda shakllar va ro'yxatdan o'tish yo'q, shuning uchun saytda tashrif buyuruvchilar ma'lumotlari bazasi yo'q — faqat serverning texnik jurnallari bor."
+      },
+      "rights": {
+        "title": "Sizning huquqlaringiz",
+        "items": {
+          "know": "ma'lumotlaringizga ishlov berilayotgani, qaysi ma'lumotlarga va nima uchun ishlov berilayotganini bilish (152-FZ 14-moddasi);",
+          "fix": "agar ma'lumotlar to'liq bo'lmasa, eskirgan, noaniq bo'lsa yoki ularga noqonuniy ishlov berilayotgan bo'lsa, ularni aniqlashtirish, bloklash yoki o'chirishni talab qilish;",
+          "withdraw": "analitikaga roziligingizni qaytarib olish — <cookies>«Cookie va analitikaga rozilik»</cookies> sahifasidagi «Cookie tanlovini o'zgartirish» tugmasi orqali yoki xat yuborib;",
+          "complain": "operator harakatlari ustidan Roskomnadzorga (Rossiyaning shaxsiy ma'lumotlar sohasidagi vakolatli organi) yoki sudga shikoyat qilish."
+        },
+        "request": "So'rovni <mail>{email}</mail> manziliga «Shaxsiy ma'lumotlar» mavzusi bilan yozing: sizga qanday murojaat qilish kerakligini va so'rov qaysi ma'lumotlarga tegishli ekanini (masalan, siz yozgan pochta manzilini) ko'rsating. 10 ish kuni ichida javob beramiz; muddat yana 5 ish kuniga uzaytirilishi mumkin — bunda sababini ma'lum qilamiz."
+      },
+      "changes": {
+        "title": "Siyosatning o'zgarishi",
+        "text": "Siyosat o'zgarishi mumkin — masalan, saytda shakl yoki yangi xizmat paydo bo'lsa. Yangi tahrir shu sahifada e'lon qilingan paytdan boshlab amal qiladi; tahrir sanasi yuqorida ko'rsatilgan."
+      }
+    },
+    "cookies": {
+      "title": "Cookie va analitikaga rozilik",
+      "what": {
+        "title": "Cookie nima va siz qanday tanlaysiz",
+        "p": [
+          "Cookie — sayt brauzerda saqlaydigan kichik fayllar. Birinchi tashrifda ekran pastida ikkita teng ahamiyatli tugmali bildirishnoma paydo bo'ladi: «Qabul qilish» analitika cookie fayllariga ruxsat beradi, «Rad etish» esa faqat zarurlarini qoldiradi. Siz tanlamaguningizcha analitika yuklanmaydi; sayt har qanday tanlovda to'liq ishlaydi.",
+          "Fikringizni o'zgartirdingizmi — pastdagi tugmani bosing: bildirishnoma yana ochiladi."
+        ]
+      },
+      "list": {
+        "title": "Sayt qanday cookie fayllaridan foydalanadi",
+        "necessary": "Zarur",
+        "analytics": "Analitika — faqat «Qabul qilish»dan keyin",
+        "meta": "{owner} · saqlash muddati: {term}",
+        "owners": {
+          "site": "Sayt",
+          "yandex": "ООО «ЯНДЕКС» (Yandex Metrica)",
+          "google": "Google LLC, AQSh (Google Analytics)"
+        },
+        "rows": {
+          "locale": {
+            "purpose": "Saytning tanlangan tilini eslab qoladi",
+            "term": "1 yil"
+          },
+          "consent": {
+            "purpose": "Cookie haqidagi bildirishnomadagi tanlovingizni saqlaydi: «Qabul qilish» yoki «Rad etish»",
+            "term": "1 yil"
+          },
+          "theme": {
+            "name": "theme (brauzer xotirasi)",
+            "purpose": "Yorug' yoki qorong'i mavzuni eslab qoladi. Bu cookie emas, balki brauzerdagi yozuv — serverga yuborilmaydi",
+            "term": "Sayt ma'lumotlarini tozalamaguningizcha"
+          },
+          "ym": {
+            "purpose": "Yangi tashriflarni takroriylaridan ajratadi, birinchi tashrif sanasini saqlaydi",
+            "term": "1 yil"
+          },
+          "ymOther": {
+            "name": "_ym_isad va boshqa _ym_*",
+            "purpose": "Statistikaning xizmat ma'lumotlari: reklama bloklovchisi, joriy tashrif",
+            "term": "Tashrif tugashidan 2 kungacha"
+          },
+          "ga": {
+            "purpose": "Yangi tashrif buyuruvchilarni takroriylaridan ajratadi",
+            "term": "2 yil"
+          },
+          "gaState": {
+            "purpose": "Joriy tashrif holatini saqlaydi",
+            "term": "2 yil"
+          }
+        },
+        "noCounters": "Hozir saytda analitika hisoblagichlari ulanmagan — _ym_* cookie fayllari hech qanday tanlovda o'rnatilmaydi. Agar ularni ulasak, ular faqat «Qabul qilish»ni bosganlarda ishlaydi.",
+        "delete": "Cookie fayllarini brauzer sozlamalarida o'chirish mumkin («Maxfiylik» yoki «Sayt ma'lumotlari» bo'limi). Shunda keyingi tashrifda bildirishnoma yana paydo bo'ladi."
+      },
+      "consent": {
+        "title": "Analitika uchun shaxsiy ma'lumotlarga ishlov berishga rozilik",
+        "intro": "Cookie haqidagi bildirishnomada «Qabul qilish»ni bosish orqali men erkin, o'z xohishim bilan va o'z manfaatimni ko'zlab operatorga — {owner} ({email}) — shaxsiy ma'lumotlarimga Yandex Metrica xizmati{ga, select, yes { va Google Analytics xizmati} other {}} yordamida quyidagi shartlarda ishlov berishga rozilik beraman.",
+        "data": "<b>Ma'lumotlar:</b> cookie identifikatorlari, IP-manzil, brauzer, qurilma va operatsion tizim haqidagi ma'lumotlar, ko'rilgan sahifalar manzillari va o'tish manbai, tashrif sanasi va vaqti, saytdagi harakatlar (o'tishlar, aylantirish, bosishlar).",
+        "purpose": "<b>Maqsad:</b> tashriflar statistikasi va saytni yaxshilash.",
+        "actions": "<b>Harakatlar:</b> yig'ish, yozib olish, tizimlashtirish, to'plash, saqlash, aniqlashtirish, ajratib olish, foydalanish, shaxssizlashtirish, bloklash, o'chirish, yo'q qilish, shuningdek statistikani hisoblash uchun ma'lumotlarga operatorning topshirig'i bo'yicha ishlov beradigan ООО «ЯНДЕКС»ga uzatish (taqdim etish). Ma'lumotlar tarqatilmaydi.",
+        "crossBorder": "<b>Transchegaraviy uzatish:</b> Google Analytics ma'lumotlarini operatorning topshirig'i bo'yicha Google LLC (AQSh) oladi va Rossiyadan tashqaridagi o'z serverlarida ularga ishlov beradi. Agar ma'lumotlarning xorijga uzatilishiga rozi bo'lmasangiz, «Rad etish»ni bosing — sayt analitikasiz ham to'liq ishlaydi.",
+        "method": "<b>Usul:</b> avtomatlashtirilgan ishlov berish, men uchun huquqiy oqibatlarga olib keladigan qarorlar qabul qilinmaydi.",
+        "term": "<b>Muddat:</b> rozilik berilgan paytdan boshlab 1 yil yoki u qaytarib olinguniga qadar.",
+        "withdraw": "<b>Qaytarib olish:</b> istalgan vaqtda — ushbu sahifadagi «Cookie tanlovini o'zgartirish» tugmasi orqali («Rad etish»ni tanlang) yoki {email} manziliga xat yuborib. Qaytarib olish undan oldingi ishlov berishning qonuniyligiga ta'sir qilmaydi.",
+        "privacy": "Operator boshqa ma'lumotlarga qanday ishlov berishi — <privacy>shaxsiy ma'lumotlarga ishlov berish siyosatida</privacy>."
+      }
+    },
+    "terms": {
+      "title": "Foydalanuvchi shartnomasi",
+      "general": {
+        "title": "Umumiy qoidalar",
+        "text": "Shartnoma {host} saytidan (bundan buyon — sayt) foydalanish shartlarini belgilaydi. Sayt egasi — {owner} (jismoniy shaxs, bundan buyon — ega). Saytdan foydalanib, siz ushbu shartlarni qabul qilasiz; agar ular bilan rozi bo'lmasangiz, saytdan foydalanmang. Saytga kirish uchun ro'yxatdan o'tish va to'lov talab qilinmaydi."
+      },
+      "status": {
+        "title": "Bu qanday sayt",
+        "text": "Sayt — Ozon Job ilovasi orqali Ozon omborlarida qo'shimcha ish haqidagi mustaqil axborot resursi. U Ozon va Ozon Bankka tegishli emas, ularning vakili, ish beruvchisi yoki kadrlar agentligi hisoblanmaydi va ishga joylashtirish xizmatlarini ko'rsatmaydi. Hamkorlik to'g'risidagi qarorlarni, shartlarni, to'lovlarni va akkauntlar ishini faqat Ozon belgilaydi — amaldagi shartlarni Ozon Job ilovasida va docs.ozon.ru ma'lumotnomasida ko'ring."
+      },
+      "info": {
+        "title": "Saytdagi ma'lumotlar",
+        "text": "Omborlar, daromadlar, to'lovlar, reyting va aksiyalar haqidagi ma'lumotlar Ozon va Ozon Bankning ochiq manbalaridan olingan; yonida solishtirish sanalari ko'rsatilgan. Shartlar ogohlantirishsiz o'zgarishi mumkin. Ma'lumotlar ma'lumotnoma xarakteriga ega va oferta, daromad yoki ishga joylashtirish va'dasi hisoblanmaydi, bank mahsulotlari haqidagi ma'lumotlar esa moliyaviy yoki investitsion tavsiya emas. Qaror qabul qilishdan oldin shartlarni birlamchi manbada tekshiring."
+      },
+      "ads": {
+        "title": "Reklama va referal havolalar",
+        "text": "Saytdagi havolalarning bir qismi va taklif kodi — «Reklama» belgisi va reklama beruvchi ko'rsatilgan reklama. Agar siz ular orqali ro'yxatdan o'tsangiz va shartlarni bajarsangiz, ega mukofot olishi mumkin; bu sizning shartlaringizga ta'sir qilmaydi. Batafsil — <ads>«Reklama va mukofot»</ads> sahifasida."
+      },
+      "links": {
+        "title": "Boshqa saytlarga havolalar",
+        "text": "Saytda Ozon, Ozon Bank va boshqa xizmatlarning ilovalari va saytlariga havolalar bor. Ega ularni boshqarmaydi va ularning mazmuni, shartlari hamda ma'lumotlaringizga ishlov berishi uchun javob bermaydi — ularning har birining o'z qoidalari bor."
+      },
+      "ip": {
+        "title": "Tovar belgilari va sayt materiallari",
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium va boshqa belgilar — ularning huquq egalarining tovar belgilari (Ozon — ООО «Интернет Решения»); saytda ular faqat tegishli xizmatlarni nomlash uchun tilga olinadi. Saytning matnlari, dizayni, illyustratsiyalari va kodi egaga tegishli; ulardan saytga faol havola bilan iqtibos keltirish mumkin. Ikonkalar — Boxicons (CC BY 4.0 litsenziyasi)."
+      },
+      "liability": {
+        "title": "Javobgarlik",
+        "text": "Sayt «qanday bo'lsa, shundayligicha» taqdim etiladi. Ega ma'lumotlarni dolzarb saqlashga harakat qiladi, lekin ularning to'liqligi va aniqligini kafolatlamaydi hamda ular asosida qabul qilingan qarorlar, Ozon, Ozon Bank va boshqa xizmatlarning harakatlari, shuningdek sayt ishidagi uzilishlar uchun javob bermaydi — Rossiya Federatsiyasi qonunchiligi yo'l qo'ygan doirada."
+      },
+      "data": {
+        "title": "Shaxsiy ma'lumotlar",
+        "text": "Qanday ma'lumotlarga va qanday ishlov berilishi — <privacy>shaxsiy ma'lumotlarga ishlov berish siyosatida</privacy> va <cookies>«Cookie va analitikaga rozilik»</cookies> sahifasida."
+      },
+      "law": {
+        "title": "O'zgarishlar, qo'llaniladigan huquq va kontaktlar",
+        "text": "Shartnomaning yangi tahriri shu sahifada e'lon qilingan paytdan boshlab amal qiladi. Shartnomaga Rossiya Federatsiyasi qonunchiligi qo'llaniladi; nizolar avval yozishma orqali, so'ngra — Rossiya Federatsiyasi qonunchiligi qoidalariga ko'ra sudda hal qilinadi. Savollar va da'volar — <mail>{email}</mail>."
+      }
+    },
+    "ads": {
+      "title": "Reklama va mukofot",
+      "kinds": {
+        "title": "Saytda nima reklama hisoblanadi",
+        "intro": "Saytdagi reklama — bu referal havolalar va taklif kodi. Ularning barchasi «Reklama» belgisi bilan belgilangan:",
+        "items": {
+          "job": "<b>Ozon Job taklif kodi.</b> Agar siz ilovani o'rnatsangiz, bizning kodni kiritsangiz va aksiya shartlarini bajarsangiz, Ozon bizga mukofot to'lashi mumkin. Reklama beruvchi — ООО «Интернет Решения», ИНН 7704217370.",
+          "bank": "<b>Ozon Bank takliflari</b> — Ozon Karta, kredit va ish haqi kartalari, pensiyani o'tkazish, biznesni ro'yxatdan o'tkazish va biznes uchun hisob (<stocks>«Aksiyalar»</stocks> bo'limi). Reklama beruvchi — ООО «ОЗОН Банк», Rossiya banki litsenziyasi № 3542, 12.04.2023. Ozon Premium obunasini ООО «Интернет Решения» taqdim etadi.",
+          "blogger": "<b>Ozon Blogger dasturiga taklif</b> — MAX va VKontakte kanallari mualliflari uchun Ozon hamkorlik dasturi. Reklama beruvchi — ООО «Интернет Решения»."
+        }
+      },
+      "reward": {
+        "title": "Mukofot",
+        "text": "Agar siz bizning havola yoki kod orqali mahsulotni rasmiylashtirsangiz va shartlarni bajarsangiz, tashkilotchi bizga mukofot to'lashi mumkin. Bu sizning bonusingiz va shartlaringizga ta'sir qilmaydi. O'z mukofotimiz miqdorini e'lon qilmaymiz: u individual bo'lib, tashkilotchi tomonidan belgilanadi. Aksiyalar shartlarini faqat tashkilotchi — Ozon yoki Ozon Bank belgilaydi va o'zgartirishi mumkin."
+      },
+      "distributor": {
+        "title": "Reklamani kim joylashtiradi",
+        "text": "Saytdagi reklamani uning egasi — {owner} (jismoniy shaxs) joylashtiradi. Har bir reklamada «Reklama» belgisi va reklama beruvchi ko'rsatilgan; agar e'lon uchun reklama identifikatori (erid) olingan bo'lsa, u belgi yonida ko'rsatiladi."
+      },
+      "partners": {
+        "title": "Hamkorlardan reklama",
+        "text": "Reklama va hamkorlik takliflarini individual ko'rib chiqamiz — kontaktlar <cooperation>«Hamkorlik»</cooperation> sahifasida. Biz reklamani faqat Rossiyaning «Reklama to'g'risida»gi qonuniga muvofiq markirovka bilan joylashtiramiz va o'zini Ozon deb ko'rsatadigan yoki kafolatlangan daromad va'da qiladigan e'lonlarni joylashtirmaymiz."
+      }
+    }
+  },
+  "Sources": {
+    "referral": "Do'stingizni taklif qiling",
+    "registration": "Ro'yxatdan o'tish",
+    "registrationForeigners": "Xorijiy fuqarolarni ro'yxatdan o'tkazish",
+    "basicRules": "Hamkorlik shartlari",
+    "paymentSchedule": "To'lovlar jadvali",
+    "rewards": "To'lovlarni hisoblash",
+    "tariffs": "Tariflar",
+    "documents": "Birinchi chiqish uchun hujjatlar",
+    "onboarding": "Birinchi chiqish",
+    "rating": "Darajalar va ballar",
+    "ban": "Cheklovlar va bloklash",
+    "bankReferral": "Do'stni olib kel (Ozon Bank)",
+    "ruHint": "Ozon ma'lumotnomasi sahifalari rus tilida."
   },
   "Contacts": {
     "email": "Pochta",
@@ -716,8 +956,8 @@
     "hours": "Har kuni {from} dan {to} gacha (Moskva vaqti)"
   },
   "SupportPage": {
-    "title": "Ozon Job bo'yicha savol-javoblar: ro'yxatdan o'tish, smenalar, to'lovlar, reyting",
-    "description": "Ozon Job orqali qo'shimcha ish haqida ko'p beriladigan savollarga javoblar: ro'yxatdan o'tish va hujjatlar, smenaga yozilish va bekor qilish, to'lovlar va soliqlar, jarimalar va reyting, taklif kodi bo'yicha bonus. Ozon Job ma'lumotnomasi asosida.",
+    "title": "Ozon Job savollari: smenalar, to'lovlar, reyting",
+    "description": "Ozon Job orqali qo'shimcha ish haqida savollarga javoblar: ro'yxatdan o'tish, smenaga yozilish va bekor qilish, to'lov va soliqlar, reyting, taklif kodi bonusi.",
     "eyebrow": "Savol-javoblar",
     "heading": "Ozon Job orqali qo'shimcha ish haqida savol-javoblar",
     "lead": "Ko'p beriladigan savollarga javoblarni to'pladik — ro'yxatdan o'tishdan to'lovlar, reyting va bonuslargacha. Faktlar — ijrochilar uchun Ozon Job ma'lumotnomasidan. Javob topmasangiz — qayerga yozishni aytamiz.",
@@ -913,7 +1153,7 @@
   },
   "CooperationPage": {
     "title": "Hamkorlik: reklama saytini buyurtma qiling",
-    "description": "Kompaniyangiz uchun reklama saytining frontendini buyurtma qiling — xuddi shu kabi: Next.js va React, bir nechta til, shaharlar va so'rovlar bo'yicha SEO, tez mobil versiya. Pochta, telefon, Telegram — har kuni {from} dan {to} gacha (Moskva vaqti).",
+    "description": "Shunday reklama sayti frontendini buyurting: Next.js va React, bir necha til, shaharlar uchun SEO, tez mobil versiya. Aloqa har kuni {from}–{to} (Moskva vaqti).",
     "eyebrow": "Hamkorlik",
     "heading": "Kompaniyangiz uchun xuddi shunday sayt buyurtma qiling",
     "lead": "Reklama saytlarining frontendini yaratamiz — xuddi shu kabi: bir nechta tilda, telefonlarda tez, shaharlar va so'rovlar bo'yicha SEO va puxta yuridik qism bilan. Ish beruvchilar, kadrlar agentliklari, hamkorlik va referal loyihalari uchun mos.",
@@ -1028,7 +1268,7 @@
   "HomePage": {
     "pageNavLabel": "Sahifa bo'ylab tezkor o'tish",
     "title": "Ozonda ish: ombor operatori, to'lov har kuni",
-    "description": "Ozon ombor operatori vakansiyalari: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir marta. RF Mehnat kodeksi, GPX yoki o'zini o'zi band qilgan. Noldan o'qitamiz.",
+    "description": "Ozon ombor operatori: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir. RF Mehnat kodeksi, GPX yoki o'zini o'zi band. Noldan o'qitish.",
     "heading": "Ozon ombor operatori vakansiyasi: har kuni to'lovli ish",
     "lead": "Shahringizdagi omborni tanlang, haqiqiy manzillar va shartlarni bilib oling. Ozon Job ilovasida taklif kodi bo'yicha ro'yxatdan o'ting — {amount, number} ₽* bonus aksiya shartlari bajarilgandan keyin hisoblanadi.",
     "heroCity": "Shaharni tanlash",

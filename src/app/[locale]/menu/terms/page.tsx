@@ -1,133 +1,34 @@
 import type { Metadata } from 'next';
-import { Link } from '@/i18n/navigation';
+import { getTranslations } from 'next-intl/server';
 import { getLocaleFromParams } from '@/i18n/params';
-import { SITE_CONFIG } from '@/config/site';
-import { CONTACTS, OWNER } from '@/config/legal';
 import LegalDoc from '@/components/LegalDoc';
+import { legalValues } from '@/components/LegalDoc/rich';
 
-// Пользовательское соглашение информационного сайта без аккаунтов и форм. Текст на русском — юридически значимая
-// версия; владелец и контакты — config/legal.ts. Не юридическая консультация — согласовать с юристом.
+// Пользовательское соглашение информационного сайта без аккаунтов и форм. Тексты — LegalDocs.terms (все 9 языков,
+// юридически значима русская версия); владелец и контакты — config/legal.ts. Не юридическая консультация — согласовать с юристом.
 
 type Props = {
     params: Promise<{ locale: string }>;
 };
 
-const TITLE = 'Пользовательское соглашение';
+const SECTIONS = ['general', 'status', 'info', 'ads', 'links', 'ip', 'liability', 'data', 'law'] as const;
 
-export const metadata: Metadata = {
-    title: TITLE,
-    robots: { index: false, follow: false },
-};
-
-const host = new URL(SITE_CONFIG.url).host;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const locale = await getLocaleFromParams(params);
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.terms' });
+    return { title: t('title'), robots: { index: false, follow: false } };
+}
 
 export default async function TermsPage({ params }: Props) {
     const locale = await getLocaleFromParams(params);
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.terms' });
+    const values = legalValues(locale);
 
-    const sections = [
-        {
-            id: 'general',
-            title: 'Общие положения',
-            content: (
-                <p>
-                    Соглашение определяет условия использования сайта {host} (далее — сайт). Владелец сайта — {OWNER.fullName}
-                    {' '}(физическое лицо, далее — владелец). Пользуясь сайтом, вы принимаете эти условия; если вы с ними не
-                    согласны, не пользуйтесь сайтом. Регистрация и оплата для доступа к сайту не нужны.
-                </p>
-            ),
-        },
-        {
-            id: 'status',
-            title: 'Что это за сайт',
-            content: (
-                <p>
-                    Сайт — независимый информационный ресурс о подработке на складах Ozon через приложение Ozon Job. Он не
-                    принадлежит Ozon и Ozon Банку, не является их представителем, работодателем или кадровым агентством и не
-                    оказывает услуг по трудоустройству. Решения о сотрудничестве, условия, выплаты и работу аккаунтов
-                    определяет только Ozon — актуальные условия смотрите в приложении Ozon Job и в справке docs.ozon.ru.
-                </p>
-            ),
-        },
-        {
-            id: 'info',
-            title: 'Информация на сайте',
-            content: (
-                <p>
-                    Сведения о складах, доходах, выплатах, рейтинге и акциях взяты из открытых источников Ozon и Ozon Банка;
-                    рядом указаны даты сверки. Условия могут измениться без предупреждения. Информация носит справочный характер
-                    и не является офертой, обещанием дохода или трудоустройства, а сведения о банковских продуктах — финансовой
-                    или инвестиционной рекомендацией. Перед решением проверяйте условия у первоисточника.
-                </p>
-            ),
-        },
-        {
-            id: 'ads',
-            title: 'Реклама и реферальные ссылки',
-            content: (
-                <p>
-                    Часть ссылок и код приглашения на сайте — реклама с пометкой «Реклама» и указанием рекламодателя. Если вы
-                    оформитесь по ним и выполните условия, владелец может получить вознаграждение; на ваши условия это не влияет.
-                    Подробнее — на странице <Link href='/menu/ads' className='color-5-100'>«Реклама и вознаграждение»</Link>.
-                </p>
-            ),
-        },
-        {
-            id: 'links',
-            title: 'Ссылки на другие сайты',
-            content: (
-                <p>
-                    Сайт ссылается на приложения и сайты Ozon, Ozon Банка и других сервисов. Владелец не управляет ими и не
-                    отвечает за их содержание, условия и обработку ваших данных — у каждого из них свои правила.
-                </p>
-            ),
-        },
-        {
-            id: 'ip',
-            title: 'Товарные знаки и материалы сайта',
-            content: (
-                <p>
-                    Ozon, Ozon Job, Ozon Банк, Ozon Premium и другие обозначения — товарные знаки их правообладателей (Ozon —
-                    ООО «Интернет Решения»); на сайте они упоминаются только чтобы назвать соответствующие сервисы. Тексты,
-                    дизайн, иллюстрации и код сайта принадлежат владельцу; цитировать их можно с активной ссылкой на сайт.
-                    Иконки — Boxicons (лицензия CC BY 4.0).
-                </p>
-            ),
-        },
-        {
-            id: 'liability',
-            title: 'Ответственность',
-            content: (
-                <p>
-                    Сайт предоставляется «как есть». Владелец старается поддерживать данные актуальными, но не гарантирует их
-                    полноту и точность и не отвечает за решения, принятые на их основе, за действия Ozon, Ozon Банка и других
-                    сервисов, а также за перерывы в работе сайта — в пределах, допускаемых законодательством РФ.
-                </p>
-            ),
-        },
-        {
-            id: 'data',
-            title: 'Персональные данные',
-            content: (
-                <p>
-                    Какие данные обрабатываются и как — в{' '}
-                    <Link href='/menu/privacy' className='color-5-100'>политике обработки персональных данных</Link> и на странице{' '}
-                    <Link href='/menu/cookies' className='color-5-100'>«Cookie и согласие на аналитику»</Link>.
-                </p>
-            ),
-        },
-        {
-            id: 'law',
-            title: 'Изменения, применимое право и контакты',
-            content: (
-                <p>
-                    Новая редакция соглашения действует с момента публикации на этой странице. К соглашению применяется
-                    законодательство Российской Федерации; споры сначала решаются перепиской, затем — в суде по правилам
-                    законодательства РФ. Вопросы и претензии —{' '}
-                    <a href={`mailto:${CONTACTS.email}`} className='color-5-100'>{CONTACTS.email}</a>.
-                </p>
-            ),
-        },
-    ];
+    const sections = SECTIONS.map((id) => ({
+        id,
+        title: t(`${id}.title`),
+        content: <p>{t.rich(`${id}.text`, values)}</p>,
+    }));
 
-    return <LegalDoc locale={locale} href='/menu/terms' title={TITLE} sections={sections} />;
+    return <LegalDoc locale={locale} href='/menu/terms' sections={sections} />;
 }

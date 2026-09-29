@@ -1,148 +1,125 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
 import { getLocaleFromParams } from '@/i18n/params';
-import { CONTACTS, GOOGLE_ANALYTICS_ID, OWNER, YANDEX_METRIKA_ID } from '@/config/legal';
+import { GOOGLE_ANALYTICS_ID, OWNER, YANDEX_METRIKA_ID } from '@/config/legal';
 import LegalDoc from '@/components/LegalDoc';
+import { legalValues } from '@/components/LegalDoc/rich';
 import CookieSettings from '@/components/CookieSettings';
 
 // Cookie и согласие на аналитику: какие cookie ставит сайт, и отдельно — текст согласия на обработку данных
 // Яндекс Метрикой (с 01.09.2025 согласие оформляется отдельно от других документов, ч. 1 ст. 9 152-ФЗ).
-// Кнопка «Изменить выбор cookie» — отзыв согласия. Текст на русском — юридически значимая версия.
+// Кнопка «Изменить выбор cookie» — отзыв согласия. Тексты — LegalDocs.cookies (все 9 языков, юридически значима русская версия).
 
 type Props = {
     params: Promise<{ locale: string }>;
 };
 
-const TITLE = 'Cookie и согласие на аналитику';
+type RowKey = 'locale' | 'consent' | 'theme' | 'ym' | 'ymOther' | 'ga' | 'gaState';
+type Row = { key: RowKey; name?: string; owner: 'site' | 'yandex' | 'google'; analytics?: boolean };
 
-export const metadata: Metadata = {
-    title: TITLE,
-    robots: { index: false, follow: false },
-};
-
-type Row = { name: string; owner: string; purpose: string; term: string; analytics?: boolean };
-
+// Имена cookie не переводятся; у строк без name имя берётся из словаря (rows.<key>.name)
 const COOKIES: Row[] = [
-    { name: 'NEXT_LOCALE', owner: 'Сайт', purpose: 'Запоминает выбранный язык сайта', term: '1 год' },
-    { name: 'cookie_consent', owner: 'Сайт', purpose: 'Хранит ваш выбор в уведомлении о cookie: «Принять» или «Отклонить»', term: '1 год' },
-    { name: 'theme (хранилище браузера)', owner: 'Сайт', purpose: 'Запоминает светлую или тёмную тему. Это не cookie, а запись в браузере — на сервер не отправляется', term: 'Пока вы не очистите данные сайта' },
-    { name: '_ym_uid, _ym_d', owner: 'ООО «ЯНДЕКС» (Яндекс Метрика)', purpose: 'Отличают новые визиты от повторных, хранят дату первого визита', term: '1 год', analytics: true },
-    { name: '_ym_isad и другие _ym_*', owner: 'ООО «ЯНДЕКС» (Яндекс Метрика)', purpose: 'Служебные данные статистики: блокировщик рекламы, текущий визит', term: 'От окончания визита до 2 дней', analytics: true },
+    { key: 'locale', name: 'NEXT_LOCALE', owner: 'site' },
+    { key: 'consent', name: 'cookie_consent', owner: 'site' },
+    { key: 'theme', owner: 'site' },
+    { key: 'ym', name: '_ym_uid, _ym_d', owner: 'yandex', analytics: true },
+    { key: 'ymOther', owner: 'yandex', analytics: true },
     // Google Analytics — строки появляются, только если задан GOOGLE_ANALYTICS_ID
     ...(GOOGLE_ANALYTICS_ID
-        ? [
-              { name: '_ga', owner: 'Google LLC, США (Google Analytics)', purpose: 'Отличает новых посетителей от повторных', term: '2 года', analytics: true },
-              { name: '_ga_*', owner: 'Google LLC, США (Google Analytics)', purpose: 'Хранит состояние текущего визита', term: '2 года', analytics: true },
-          ]
+        ? ([
+              { key: 'ga', name: '_ga', owner: 'google', analytics: true },
+              { key: 'gaState', name: '_ga_*', owner: 'google', analytics: true },
+          ] as const)
         : []),
 ];
 
+// Пункты согласия по порядку; трансграничная передача — только с Google Analytics
+type ConsentKey = 'data' | 'purpose' | 'actions' | 'crossBorder' | 'method' | 'term' | 'withdraw';
+const CONSENT: ConsentKey[] = ['data', 'purpose', 'actions', ...(GOOGLE_ANALYTICS_ID ? (['crossBorder'] as const) : []), 'method', 'term', 'withdraw'];
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const locale = await getLocaleFromParams(params);
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.cookies' });
+    return { title: t('title'), robots: { index: false, follow: false } };
+}
+
 export default async function CookiesPage({ params }: Props) {
     const locale = await getLocaleFromParams(params);
-    const t = await getTranslations({ locale, namespace: 'Cookies' });
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.cookies' });
+    const tCookies = await getTranslations({ locale, namespace: 'Cookies' });
+    const values = legalValues(locale);
+    const what = t.raw('what.p') as string[];
+    // в русском тексте согласия имя — в дательном падеже («даю согласие Плотникову…»)
+    const consentOwner = locale === 'ru' ? OWNER.fullNameGenitive : values.owner;
 
     const settings = (
         <CookieSettings
-            labels={{ button: t('settings'), all: t('statusAll'), necessary: t('statusNecessary'), none: t('statusNone') }}
+            labels={{
+                button: tCookies('settings'),
+                all: tCookies('statusAll'),
+                necessary: tCookies('statusNecessary'),
+                none: tCookies('statusNone'),
+            }}
         />
     );
 
     const sections = [
         {
             id: 'what',
-            title: 'Что такое cookie и как вы выбираете',
+            title: t('what.title'),
             content: (
                 <>
-                    <p>
-                        Cookie — небольшие файлы, которые сайт сохраняет в браузере. При первом визите внизу экрана появляется
-                        уведомление с двумя равнозначными кнопками: «Принять» разрешает cookie аналитики, «Отклонить» оставляет
-                        только необходимые. Пока вы не выбрали, аналитика не загружается; сайт полностью работает при любом выборе.
-                    </p>
-                    <p>Передумали — нажмите кнопку ниже: уведомление откроется снова.</p>
+                    {what.map((text) => (
+                        <p key={text}>{text}</p>
+                    ))}
                     {settings}
                 </>
             ),
         },
         {
             id: 'list',
-            title: 'Какие cookie использует сайт',
+            title: t('list.title'),
             content: (
                 <>
                     <ul className='grid gap-10'>
                         {COOKIES.map((row) => (
-                            <li className='grid gap-5 pd-15 br-20 bg-2-3' key={row.name}>
+                            <li className='grid gap-5 pd-15 br-20 bg-2-3' key={row.key}>
                                 <div className='flex align-center justify-between gap-8'>
-                                    <code className='color-2-90 font-w-500'>{row.name}</code>
+                                    <code className='color-2-90 font-w-500'>
+                                        {row.name ?? t(`list.rows.${row.key as 'theme' | 'ymOther'}.name`)}
+                                    </code>
                                     <span className={`inline-flex nowrap align-center h-20 px-10 br-36 font-12 ${row.analytics ? 'bg-5-10 color-5-100' : 'bg-2-7 color-2-80'}`}>
-                                        {row.analytics ? 'Аналитика — только после «Принять»' : 'Необходимые'}
+                                        {row.analytics ? t('list.analytics') : t('list.necessary')}
                                     </span>
                                 </div>
-                                <p>{row.purpose}</p>
+                                <p>{t(`list.rows.${row.key}.purpose`)}</p>
                                 <p className='font-12 color-2-80'>
-                                    {row.owner} · срок хранения: {row.term}
+                                    {t('list.meta', { owner: t(`list.owners.${row.owner}`), term: t(`list.rows.${row.key}.term`) })}
                                 </p>
                             </li>
                         ))}
                     </ul>
-                    {!YANDEX_METRIKA_ID && !GOOGLE_ANALYTICS_ID && (
-                        <p className='font-14 color-2-80'>
-                            Сейчас счётчики аналитики на сайте не подключены — cookie _ym_* не ставятся ни при каком выборе.
-                            Если мы их подключим, они будут работать только у тех, кто нажал «Принять».
-                        </p>
-                    )}
-                    <p>
-                        Удалить cookie можно в настройках браузера (раздел «Конфиденциальность» или «Данные сайтов»). Тогда при
-                        следующем визите уведомление появится снова.
-                    </p>
+                    {!YANDEX_METRIKA_ID && !GOOGLE_ANALYTICS_ID && <p className='font-14 color-2-80'>{t('list.noCounters')}</p>}
+                    <p>{t('list.delete')}</p>
                 </>
             ),
         },
         {
             id: 'consent',
-            title: 'Согласие на обработку персональных данных для аналитики',
+            title: t('consent.title'),
             content: (
                 <>
-                    <p>
-                        Нажимая «Принять» в уведомлении о cookie, я свободно, своей волей и в своём интересе даю согласие{' '}
-                        {OWNER.fullNameGenitive} (оператор; {CONTACTS.email}) на обработку моих персональных данных с помощью
-                        сервиса Яндекс Метрика{GOOGLE_ANALYTICS_ID && ' и сервиса Google Analytics'} на следующих условиях.
-                    </p>
+                    <p>{t.rich('consent.intro', { ...values, owner: consentOwner })}</p>
                     <ul className='legal-list grid gap-5'>
-                        <li>
-                            <b>Данные:</b> идентификаторы cookie, IP-адрес, сведения о браузере, устройстве и операционной системе,
-                            адреса просмотренных страниц и источник перехода, дата и время посещения, действия на сайте (переходы,
-                            прокрутка, клики).
-                        </li>
-                        <li><b>Цель:</b> статистика посещаемости и улучшение сайта.</li>
-                        <li>
-                            <b>Действия:</b> сбор, запись, систематизация, накопление, хранение, уточнение, извлечение,
-                            использование, обезличивание, блокирование, удаление, уничтожение, а также передача (предоставление)
-                            ООО «ЯНДЕКС», которое обрабатывает данные по поручению оператора для подсчёта статистики.
-                            Распространение данных не осуществляется.
-                        </li>
-                        {GOOGLE_ANALYTICS_ID && (
-                            <li>
-                                <b>Трансграничная передача:</b> данные Google Analytics получает и обрабатывает по поручению оператора
-                                Google LLC (США) на своих серверах за пределами России. Если вы не согласны на передачу данных за рубеж,
-                                нажмите «Отклонить» — сайт полностью работает и без аналитики.
-                            </li>
-                        )}
-                        <li><b>Способ:</b> автоматизированная обработка, без принятия решений, которые влекут для меня юридические последствия.</li>
-                        <li><b>Срок:</b> 1 год с момента согласия или до его отзыва.</li>
-                        <li>
-                            <b>Отзыв:</b> в любой момент — кнопкой «Изменить выбор cookie» на этой странице (выбрать «Отклонить») или
-                            письмом на {CONTACTS.email}. Отзыв не влияет на законность обработки до него.
-                        </li>
+                        {CONSENT.map((key) => (
+                            <li key={key}>{t.rich(`consent.${key}`, values)}</li>
+                        ))}
                     </ul>
-                    <p>
-                        Как оператор обрабатывает остальные данные — в{' '}
-                        <Link href='/menu/privacy' className='color-5-100'>политике обработки персональных данных</Link>.
-                    </p>
+                    <p>{t.rich('consent.privacy', values)}</p>
                 </>
             ),
         },
     ];
 
-    return <LegalDoc locale={locale} href='/menu/cookies' title={TITLE} sections={sections} />;
+    return <LegalDoc locale={locale} href='/menu/cookies' sections={sections} />;
 }

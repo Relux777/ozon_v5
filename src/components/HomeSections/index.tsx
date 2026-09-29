@@ -56,20 +56,20 @@ const PAY_OPS = ['×', '='] as const;
 // Какая карточка сроков получает метку «быстрее всего» (порядок как в HomePage.pay.times)
 const FAST_TIME = 2;
 
-// Источники (справка Ozon Job, docs.ozon.ru) — по разделам главной страницы; названия не переводим
-// (ссылки одинаковые для всех языков)
+// Источники (справка Ozon Job, docs.ozon.ru) — по разделам главной страницы; подписи — Sources.* (все 9 языков),
+// сами страницы справки только на русском (hrefLang='ru' у ссылок и пометка Sources.ruHint на других языках)
 const SOURCES = [
-    ['Приведите друга', `${DOCS_URL}/benefits/refferal/`],
-    ['Регистрация', `${DOCS_URL}/personal-account/registration/`],
-    ['Регистрация иностранных граждан', `${DOCS_URL}/personal-account/registration-foreigners/`],
-    ['Условия сотрудничества', `${DOCS_URL}/conditions/basic-rules/`],
-    ['График выплат', `${DOCS_URL}/payments/payout/payment-schedule/`],
-    ['Расчёт выплат', `${DOCS_URL}/payments/payout/rewards/`],
-    ['Тарифы', `${DOCS_URL}/payments/tariffs/`],
-    ['Документы для первого выхода', `${DOCS_URL}/shifts/documents/`],
-    ['Первый выход', `${DOCS_URL}/shifts/onboarding/`],
-    ['Уровни и баллы', `${DOCS_URL}/rating/rating/`],
-    ['Приведи друга (Ozon Банк)', 'https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral'],
+    ['referral', `${DOCS_URL}/benefits/refferal/`],
+    ['registration', `${DOCS_URL}/personal-account/registration/`],
+    ['registrationForeigners', `${DOCS_URL}/personal-account/registration-foreigners/`],
+    ['basicRules', `${DOCS_URL}/conditions/basic-rules/`],
+    ['paymentSchedule', `${DOCS_URL}/payments/payout/payment-schedule/`],
+    ['rewards', `${DOCS_URL}/payments/payout/rewards/`],
+    ['tariffs', `${DOCS_URL}/payments/tariffs/`],
+    ['documents', `${DOCS_URL}/shifts/documents/`],
+    ['onboarding', `${DOCS_URL}/shifts/onboarding/`],
+    ['rating', `${DOCS_URL}/rating/rating/`],
+    ['bankReferral', 'https://help-bank.ozon.ru/individuals/bonuses-and-promotions/referral'],
 ] as const;
 
 type Titled = { title: string; text: string };
@@ -127,6 +127,7 @@ type Props = {
 
 export default async function HomeSections({ locale, afterStats }: Props) {
     const t = await getTranslations({ locale, namespace: 'HomePage' });
+    const tSources = await getTranslations({ locale, namespace: 'Sources' });
     const stats = t.raw('stats') as { value: string; label: string }[];
     const steps = t.raw('steps') as { title: string; text: string; needs: string[] }[];
     const promoTerms = t.raw('promo.terms') as string[];
@@ -597,17 +598,19 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('sourcesEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('sourcesTitle')}</h2>
-                    {/* названия источников не переводятся — на других языках помечаем их как русский текст */}
-                    <ul className='sources-scroll flex nowrap align-center gap-7 h-60' lang={locale === 'ru' ? undefined : 'ru'}>
-                        {SOURCES.map(([title, href]) => (
+                    <ul className='sources-scroll flex nowrap align-center gap-7 h-60'>
+                        {SOURCES.map(([key, href]) => (
                             <li className='shrink-0' key={href}>
-                                <a href={href} className='source-chip inline-flex nowrap align-center gap-4 px-10 h-36 br-36 blur-3 touch-no-blur font-12 font-w-500' target='_blank' rel='nofollow noopener noreferrer'>
-                                    {title} ↗
+                                <a href={href} hrefLang='ru' className='source-chip inline-flex nowrap align-center gap-4 px-10 h-36 br-36 blur-3 touch-no-blur font-12 font-w-500' target='_blank' rel='nofollow noopener noreferrer'>
+                                    {tSources(key)} ↗
                                 </a>
                             </li>
                         ))}
                     </ul>
-                    <p className='font-12 mt-15'>{t('sourcesNote', { date: dataDate })}</p>
+                    <p className='font-12 mt-15'>
+                        {t('sourcesNote', { date: dataDate })}
+                        {locale !== 'ru' && <span className='block'>{tSources('ruHint')}</span>}
+                    </p>
                 </div>
             </section>
         </>

@@ -50,9 +50,9 @@
     "lead": "Şəhərinizi tapın və anbar operatoru üçün anbar ünvanlarını, gəliri və bonusları öyrənin."
   },
   "CityPage": {
-    "titleWithData": "Ozon anbarında əlavə iş, {city} ş.: Ozon Job, ünvanlar, ödənişlər",
-    "titleNoData": "Ozon anbarında əlavə iş, {city} ş.: Ozon Job ilə növbəyə necə çıxmaq",
-    "descriptionWithData": "Ozon anbarları, {city} ş.: tam ünvanlar və Ozon Job tətbiqi ilə əlavə iş — 4–12 saatlıq slotlar, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğulluq.",
+    "titleWithData": "Ozon anbarında əlavə iş, {city} ş.: Ozon Job, ünvanlar",
+    "titleNoData": "Ozon anbarında əlavə iş, {city} ş.: Ozon Job ilə növbə",
+    "descriptionWithData": "Ozon anbarları, {city} ş.: tam ünvanlar və Ozon Job ilə əlavə iş — 4–12 saatlıq slot, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğul.",
     "descriptionNoData": "Ozon anbarlarında əlavə iş, {city} ş., Ozon Job tətbiqi ilə: 4–12 saatlıq slotlar, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğulluq.",
     "heading": "Ozon anbarları, {city} ş.: Ozon Job ilə əlavə iş",
     "heroKicker": "Ozon Job · {city} ş.",
@@ -297,7 +297,7 @@
   },
   "LevelPage": {
     "title": "Ozon Job reytinqi: səviyyələr, ballar və bananlar",
-    "description": "Ozon Job-da reytinq balları necə hesablanır və silinir, 0-dan «Бриллиант»a qədər səviyyələr nə verir, banan nəyə görə verilir və necə bloklanmamaq olar. Cədvəllər və bal kalkulyatoru.",
+    "description": "Ozon Job-da reytinq balları necə hesablanır və silinir, 0-dan «Бриллиант»a qədər səviyyələr nə verir, banan nəyə görə verilir, necə bloklanmamaq. Kalkulyator.",
     "eyebrow": "Ozon Job · Reytinq",
     "heading": "Ozon Job reytinqi: səviyyələr, ballar və bananlar",
     "lead": "Balların nəyə görə hesablandığını və silindiyini, hər səviyyənin — 0-dan «Бриллиант»a qədər — nə verdiyini və necə bloklanmamağı izah edirik. Rəqəmlər — Ozon Job tətbiqindən və icraçılar üçün arayışdan.",
@@ -471,7 +471,7 @@
     "backLink": "← Menyuya qayıt"
   },
   "StocksPage": {
-    "title": "Dəvətlə Ozon kampaniyaları: Ozon Bank, Premium, Ozon Blogger",
+    "title": "Ozon dəvət kampaniyaları: Ozon Bank, Ozon Blogger",
     "description": "Ozon Bankın dəvətləri və Ozon ilə qazanc bir yerdə: Ozon Kart, kredit kartı, Premium, maaş kartı, pensiya, biznes hesabı, Ozon Blogger və Ozon Job kodu.",
     "eyebrow": "Kampaniyalar · Ozon Bank və Ozon",
     "heading": "Dəvətlə Ozon kampaniyaları",
@@ -705,8 +705,248 @@
     "statusNone": "Hələ seçim etməmisiniz"
   },
   "Legal": {
-    "updated": "Redaksiya: {date}",
-    "ruOnly": "Sənəd rus dilində dərc olunub — hüquqi qüvvəyə rus dilindəki mətn malikdir."
+    "updated": "Redaksiya: {date}"
+  },
+  "LegalDocs": {
+    "toc": "Mündəricat",
+    "docs": "Saytın sənədləri",
+    "cooperation": "Əməkdaşlıq və əlaqə",
+    "back": "← Menyuya qayıt",
+    "translated": "Bu, rahatlıq üçün tərcümədir. Uyğunsuzluq olduqda <ru>sənədin rus dilindəki versiyası</ru> qüvvədədir.",
+    "about": {
+      "title": "Layihə haqqında",
+      "what": {
+        "title": "Bu hansı saytdır",
+        "text": "«Ozon İş» — Ozon Job tətbiqi vasitəsilə Ozon anbarlarında əlavə iş axtaranlar üçün müstəqil məlumat saytıdır. Biz Ozon deyilik və onun rəsmi nümayəndəsi də deyilik: Ozon — ООО «Интернет Решения» (MMC “Internet Resheniya”) şirkətinin əmtəə nişanıdır. Rəsmi şərtlərə həmişə Ozon Job tətbiqində, <job>job.ozon.ru</job> saytında, <help>Ozon Job arayışında</help> və <career>career.ozon.ru</career> saytında baxın."
+      },
+      "sources": {
+        "title": "Məlumatlar haradan götürülür",
+        "text": "Şəhərlər üzrə anbar ünvanlarını, şərtləri, ödənişləri, reytinqi və kampaniyaları biz açıq Ozon Job arayışından, career.ozon.ru səhifələrindən, Ozon Bankın arayışından və səhifələrindən toplayır və öz sözlərimizlə nəql edirik. Yoxlama tarixləri hər bölmənin yanında göstərilib. Səhv tapmısınız — bizə yazın, düzəldək."
+      },
+      "owner": {
+        "title": "Saytı kim idarə edir",
+        "text": "Saytın sahibi — {owner} (fiziki şəxs). Poçt — <mail>{email}</mail>, telefon — <call>{phone}</call>, Telegram — <tg>@{telegram}</tg>, hər gün Moskva vaxtı ilə {from}-dan {to}-dək. Ozon Job hesabı, ödənişlər və reytinq ilə bağlı suallarda kömək edə bilmirik — tətbiqdəki dəstək xidmətinə yazın."
+      },
+      "money": {
+        "title": "Sayt necə qazanır",
+        "text": "«Reklam» işarəsi olan referal linklər və dəvət kodu hesabına: onlar vasitəsilə qeydiyyatdan keçsəniz və şərtləri yerinə yetirsəniz, Ozon və ya Ozon Bank bizə mükafat ödəyə bilər. Ətraflı — <ads>«Reklam və mükafat»</ads> səhifəsində."
+      },
+      "cooperation": {
+        "title": "Əməkdaşlıq",
+        "text": "Şirkətlər bizdən eyni reklam saytını sifariş edə bilər — bir neçə dildə, SEO ilə və diqqətlə hazırlanmış hüquqi hissə ilə. Ətraflı — <cooperation>«Əməkdaşlıq»</cooperation> səhifəsində."
+      }
+    },
+    "privacy": {
+      "title": "Şəxsi məlumatların emalı siyasəti",
+      "general": {
+        "title": "Ümumi müddəalar",
+        "p": {
+          "intro": "Siyasət {host} saytında (bundan sonra — sayt) ziyarətçilərin hansı şəxsi məlumatlarının, nə üçün, hansı əsasla və nə qədər müddətə emal olunduğunu, həmçinin ziyarətçilərin hüquqlarını təsvir edir. O, 27.07.2006-cı il tarixli 152-FZ nömrəli «Şəxsi məlumatlar haqqında» Federal Qanunun 18.1-ci maddəsinin 2-ci hissəsinin icrası üçün qəbul edilib və sərbəst istifadə üçün dərc olunub.",
+          "operator": "Şəxsi məlumatların operatoru — <b>{owner}</b> (fiziki şəxs), saytın sahibi. Operatorla əlaqə: <mail>{email}</mail>, telefon {phone}.",
+          "independent": "Sayt müstəqil məlumat resursudur, nə Ozon, nə də Ozon Bankdır. Ozon Job tətbiqində, Ozon və Ozon Bank saytlarında göstərdiyiniz məlumatları onlar özləri öz siyasətlərinə uyğun emal edirlər — saytın onlara çıxışı yoxdur."
+        }
+      },
+      "data": {
+        "title": "Hansı məlumatlar, nə üçün və hansı əsasla",
+        "intro": "Saytda qeydiyyat, şəxsi kabinet, formalar və poçt göndərişləri yoxdur. Məlumatlar yalnız üç halda emal olunur.",
+        "cases": {
+          "tech": {
+            "title": "1. Ziyarət zamanı texniki məlumatlar",
+            "text": "IP-ünvan, brauzer və cihaz haqqında məlumatlar, açılan səhifənin ünvanı, sorğunun tarixi və vaxtı — bunları istənilən veb-server alır. Məqsəd: səhifələri göstərmək və saytı nasazlıqlardan və hücumlardan qorumaq. Əsas: operatorun qanuni marağı (152-FZ-nin 6-cı maddəsinin 1-ci hissəsinin 7-ci bəndi). Müddət: 30 gündən çox deyil — server jurnalları avtomatik silinir."
+          },
+          "cookies": {
+            "title": "2. Cookie",
+            "text": "Zəruri cookie-lər seçilmiş dili və cookie bildirişindəki seçiminizi yadda saxlayır — onlar kim olduğunuzu müəyyən etməyə imkan vermir və razılıq olmadan işləyir. Analitika cookie-ləri (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) və onlarla bağlı məlumatlar yalnız sizin razılığınızla — «Qəbul et» düyməsindən sonra emal olunur. Cookie-lərin tərkibi, müddətləri və razılıq mətni — <cookies>«Cookie və analitikaya razılıq»</cookies> səhifəsində."
+          },
+          "requests": {
+            "title": "3. Müraciətləriniz",
+            "text": "Poçta, Telegram-a yazsanız və ya zəng etsəniz: ad, poçt ünvanı, telefon nömrəsi və ya Telegram-dakı istifadəçi adı, mesajın mətni və özünüzün bildirdiyiniz digər məlumatlar. Məqsəd: suala cavab vermək, sifarişi müzakirə etmək və yerinə yetirmək. Əsas: sizin təşəbbüsünüzlə müqavilənin hazırlanması və icrası (152-FZ-nin 6-cı maddəsinin 1-ci hissəsinin 5-ci bəndi), digər suallar üzrə — yazan şəxsə cavab vermək üzrə qanuni maraq (6-cı maddənin 1-ci hissəsinin 7-ci bəndi). Müddət: yazışma bitənədək və daha 1 il; müqavilə bağlanıbsa — o qüvvədə olduğu müddətdə və ondan sonra 5 il (vergi məqsədləri üçün sənədlərin saxlanma müddəti)."
+          }
+        },
+        "outro": "Biz xüsusi kateqoriyalı məlumatları (sağlamlıq, əqidə və s.) və biometrik məlumatları emal etmirik, yalnız avtomatlaşdırılmış emal əsasında qərarlar qəbul etmirik və məlumatlardan reklam göndərişləri üçün istifadə etmirik. Pasport məlumatlarını, kart məlumatlarını və SMS kodlarını göndərməyin — suala cavab vermək üçün onlar lazım deyil."
+      },
+      "actions": {
+        "title": "Məlumatlar necə emal olunur",
+        "text": "Toplama, qeydə alma, sistemləşdirmə, yığma, saxlama, dəqiqləşdirmə, çıxarma, istifadə, ötürmə (təqdim etmə, çıxış vermə) — yalnız 4-cü bölmədə göstərilən şəxslərə, bloklama, silmə və məhv etmə. Üsul — qarışıq: avtomatlaşdırılmış və əl ilə. Şəxsi məlumatların yayılması (dərc edilməsi) həyata keçirilmir."
+      },
+      "transfer": {
+        "title": "Məlumatlar kimə ötürülür",
+        "intro": "Biz məlumatları satmırıq və reklam üçün ötürmürük. Məlumatlara yalnız operatorun və onlarsız saytın və əlaqənin işləmədiyi xidmətlərin çıxışı var:",
+        "hosting": "saytın hostinq provayderi{hasHosting, select, yes { — {hosting}} other {}} — saytın fayllarını və server jurnallarını saxlayır (2-ci bölmə, 1-ci bənd);",
+        "yandex": "ООО «ЯНДЕКС» (Yandex Metrica xidməti) — operatorun tapşırığı ilə və yalnız siz «Qəbul et» düyməsini basmısınızsa;",
+        "google": "Google LLC, ABŞ (Google Analytics xidməti) — operatorun tapşırığı ilə və yalnız siz «Qəbul et» düyməsini basmısınızsa;",
+        "mail": "Mail poçt xidməti (ООО «ВК») və rabitə operatorları — siz poçta yazanda və ya zəng edəndə;",
+        "telegram": "Telegram — əgər onu əlaqə üçün özünüz seçmisinizsə. Bu, xarici xidmətdir: mesajlarınızın onun vasitəsilə keçməsini istəmirsinizsə, poçta yazın və ya zəng edin;",
+        "gov": "dövlət orqanları — yalnız qanunla birbaşa nəzərdə tutulmuş hallarda."
+      },
+      "storage": {
+        "title": "Məlumatlar harada saxlanılır",
+        "text": "Operatorun özünün topladığı məlumatlar Rusiyada qeydə alınır və saxlanılır: yazışmalar — Mail poçtunda, ziyarət statistikası — Yandex Metrica-da (152-FZ-nin 18-ci maddəsinin 5-ci hissəsi).{hostingPlace, select, russia { Hostinq provayderinin serverləri də Rusiyada yerləşir.} abroad { Hostinq provayderinin serverləri xaricdə yerləşir: bu, transsərhəd ötürmədir və operator bu barədə Roskomnadzoru xəbərdar edir.} other {}}{ga, select, yes { Google Analytics məlumatları Rusiyadan kənarda Google LLC-nin serverlərində saxlanılır — bu, transsərhəd ötürmədir: o, yalnız sizin razılığınızdan («Qəbul et») sonra baş verir, operator bu barədə Roskomnadzoru xəbərdar edir.} other {}}"
+      },
+      "security": {
+        "title": "Məlumatlar necə qorunur",
+        "text": "Sayt qorunan HTTPS protokolu ilə işləyir. Poçta, hostinqə və sayğaca yalnız operatorun çıxışı var. Biz minimum məlumat toplayırıq: saytda formalar və qeydiyyat yoxdur, buna görə saytın ziyarətçi məlumatları bazası yoxdur — yalnız serverin texniki jurnalları var."
+      },
+      "rights": {
+        "title": "Sizin hüquqlarınız",
+        "items": {
+          "know": "məlumatlarınızın emal olunub-olunmadığını, hansı məlumatların və nə üçün emal edildiyini öyrənmək (152-FZ-nin 14-cü maddəsi);",
+          "fix": "məlumatlar natamam, köhnəlmiş, qeyri-dəqiqdirsə və ya qanunsuz emal olunursa, onların dəqiqləşdirilməsini, bloklanmasını və ya silinməsini tələb etmək;",
+          "withdraw": "analitikaya razılığı geri götürmək — <cookies>«Cookie və analitikaya razılıq»</cookies> səhifəsindəki «Cookie seçimini dəyiş» düyməsi ilə və ya məktubla;",
+          "complain": "operatorun hərəkətlərindən Roskomnadzora (Rusiyanın şəxsi məlumatlar sahəsində səlahiyyətli orqanı) və ya məhkəməyə şikayət etmək."
+        },
+        "request": "Sorğunu «Şəxsi məlumatlar» mövzusu ilə <mail>{email}</mail> ünvanına yazın: sizə necə müraciət etməli olduğumuzu və sorğunun hansı məlumatlara aid olduğunu (məsələn, yazdığınız poçt ünvanını) göstərin. 10 iş günü ərzində cavab verəcəyik; müddət daha 5 iş günü uzadıla bilər — bu halda səbəbini bildirəcəyik."
+      },
+      "changes": {
+        "title": "Siyasətin dəyişdirilməsi",
+        "text": "Siyasət dəyişə bilər — məsələn, saytda forma və ya yeni xidmət yaranarsa. Yeni redaksiya bu səhifədə dərc olunduğu andan qüvvəyə minir; redaksiyanın tarixi yuxarıda göstərilib."
+      }
+    },
+    "cookies": {
+      "title": "Cookie və analitikaya razılıq",
+      "what": {
+        "title": "Cookie nədir və siz necə seçirsiniz",
+        "p": [
+          "Cookie — saytın brauzerdə saxladığı kiçik fayllardır. İlk ziyarətdə ekranın aşağısında iki bərabərhüquqlu düyməsi olan bildiriş görünür: «Qəbul et» analitika cookie-lərinə icazə verir, «İmtina et» isə yalnız zəruriləri saxlayır. Siz seçim edənədək analitika yüklənmir; sayt istənilən seçimdə tam işləyir.",
+          "Fikrinizi dəyişdiniz — aşağıdakı düyməni basın: bildiriş yenidən açılacaq."
+        ]
+      },
+      "list": {
+        "title": "Sayt hansı cookie-lərdən istifadə edir",
+        "necessary": "Zəruri",
+        "analytics": "Analitika — yalnız «Qəbul et»dən sonra",
+        "meta": "{owner} · saxlanma müddəti: {term}",
+        "owners": {
+          "site": "Sayt",
+          "yandex": "ООО «ЯНДЕКС» (Yandex Metrica)",
+          "google": "Google LLC, ABŞ (Google Analytics)"
+        },
+        "rows": {
+          "locale": {
+            "purpose": "Saytın seçilmiş dilini yadda saxlayır",
+            "term": "1 il"
+          },
+          "consent": {
+            "purpose": "Cookie bildirişindəki seçiminizi saxlayır: «Qəbul et» və ya «İmtina et»",
+            "term": "1 il"
+          },
+          "theme": {
+            "name": "theme (brauzer yaddaşı)",
+            "purpose": "İşıqlı və ya qaranlıq temanı yadda saxlayır. Bu, cookie deyil, brauzerdəki qeyddir — serverə göndərilmir",
+            "term": "Sayt məlumatlarını təmizləyənədək"
+          },
+          "ym": {
+            "purpose": "Yeni ziyarətləri təkrarlardan ayırır, ilk ziyarətin tarixini saxlayır",
+            "term": "1 il"
+          },
+          "ymOther": {
+            "name": "_ym_isad və digər _ym_*",
+            "purpose": "Statistikanın xidməti məlumatları: reklam bloklayıcısı, cari ziyarət",
+            "term": "Ziyarətin sonundan 2 günədək"
+          },
+          "ga": {
+            "purpose": "Yeni ziyarətçiləri təkrar gələnlərdən ayırır",
+            "term": "2 il"
+          },
+          "gaState": {
+            "purpose": "Cari ziyarətin vəziyyətini saxlayır",
+            "term": "2 il"
+          }
+        },
+        "noCounters": "Hazırda saytda analitika sayğacları qoşulmayıb — _ym_* cookie-ləri heç bir seçimdə qoyulmur. Onları qoşsaq, yalnız «Qəbul et» düyməsini basanlarda işləyəcəklər.",
+        "delete": "Cookie-ləri brauzer ayarlarında silmək olar («Məxfilik» və ya «Sayt məlumatları» bölməsi). Onda növbəti ziyarətdə bildiriş yenidən görünəcək."
+      },
+      "consent": {
+        "title": "Analitika üçün şəxsi məlumatların emalına razılıq",
+        "intro": "Cookie bildirişində «Qəbul et» düyməsini basmaqla mən sərbəst, öz iradəmlə və öz marağımda operatora — {owner} ({email}) — şəxsi məlumatlarımın Yandex Metrica xidməti{ga, select, yes { və Google Analytics xidməti} other {}} vasitəsilə aşağıdakı şərtlərlə emalına razılıq verirəm.",
+        "data": "<b>Məlumatlar:</b> cookie identifikatorları, IP-ünvan, brauzer, cihaz və əməliyyat sistemi haqqında məlumatlar, baxılan səhifələrin ünvanları və keçid mənbəyi, ziyarətin tarixi və vaxtı, saytdakı hərəkətlər (keçidlər, sürüşdürmə, kliklər).",
+        "purpose": "<b>Məqsəd:</b> ziyarət statistikası və saytın təkmilləşdirilməsi.",
+        "actions": "<b>Hərəkətlər:</b> toplama, qeydə alma, sistemləşdirmə, yığma, saxlama, dəqiqləşdirmə, çıxarma, istifadə, anonimləşdirmə, bloklama, silmə, məhv etmə, həmçinin statistikanın hesablanması üçün məlumatları operatorun tapşırığı ilə emal edən ООО «ЯНДЕКС»-ə ötürmə (təqdim etmə). Məlumatların yayılması həyata keçirilmir.",
+        "crossBorder": "<b>Transsərhəd ötürmə:</b> Google Analytics məlumatlarını operatorun tapşırığı ilə Google LLC (ABŞ) alır və Rusiyadan kənarda öz serverlərində emal edir. Məlumatların xaricə ötürülməsinə razı deyilsinizsə, «İmtina et» düyməsini basın — sayt analitikasız da tam işləyir.",
+        "method": "<b>Üsul:</b> avtomatlaşdırılmış emal, mənim üçün hüquqi nəticələr doğuran qərarlar qəbul edilmədən.",
+        "term": "<b>Müddət:</b> razılıq verildiyi andan 1 il və ya geri götürülənədək.",
+        "withdraw": "<b>Geri götürmə:</b> istənilən vaxt — bu səhifədəki «Cookie seçimini dəyiş» düyməsi ilə («İmtina et» seçin) və ya {email} ünvanına məktubla. Geri götürmə ondan əvvəlki emalın qanuniliyinə təsir etmir.",
+        "privacy": "Operatorun digər məlumatları necə emal etdiyi — <privacy>şəxsi məlumatların emalı siyasətində</privacy>."
+      }
+    },
+    "terms": {
+      "title": "İstifadəçi sazişi",
+      "general": {
+        "title": "Ümumi müddəalar",
+        "text": "Saziş {host} saytından (bundan sonra — sayt) istifadə şərtlərini müəyyən edir. Saytın sahibi — {owner} (fiziki şəxs, bundan sonra — sahib). Saytdan istifadə etməklə siz bu şərtləri qəbul edirsiniz; onlarla razı deyilsinizsə, saytdan istifadə etməyin. Sayta giriş üçün qeydiyyat və ödəniş tələb olunmur."
+      },
+      "status": {
+        "title": "Bu hansı saytdır",
+        "text": "Sayt Ozon Job tətbiqi vasitəsilə Ozon anbarlarında əlavə iş haqqında müstəqil məlumat resursudur. O, Ozon və Ozon Banka məxsus deyil, onların nümayəndəsi, işəgötürəni və ya kadr agentliyi deyil və işə düzəltmə xidmətləri göstərmir. Əməkdaşlıq barədə qərarları, şərtləri, ödənişləri və hesabların işini yalnız Ozon müəyyən edir — aktual şərtlərə Ozon Job tətbiqində və docs.ozon.ru arayışında baxın."
+      },
+      "info": {
+        "title": "Saytdakı məlumatlar",
+        "text": "Anbarlar, gəlirlər, ödənişlər, reytinq və kampaniyalar haqqında məlumatlar Ozon və Ozon Bankın açıq mənbələrindən götürülüb; yanında yoxlama tarixləri göstərilib. Şərtlər xəbərdarlıq edilmədən dəyişə bilər. Məlumat arayış xarakterlidir və oferta, gəlir və ya işə düzəltmə vədi deyil, bank məhsulları haqqında məlumatlar isə maliyyə və ya investisiya tövsiyəsi deyil. Qərar verməzdən əvvəl şərtləri ilkin mənbədə yoxlayın."
+      },
+      "ads": {
+        "title": "Reklam və referal linklər",
+        "text": "Saytdakı linklərin bir hissəsi və dəvət kodu «Reklam» işarəsi və reklamverən göstərilməklə reklamdır. Onlar vasitəsilə qeydiyyatdan keçsəniz və şərtləri yerinə yetirsəniz, sahib mükafat ala bilər; bu, sizin şərtlərinizə təsir etmir. Ətraflı — <ads>«Reklam və mükafat»</ads> səhifəsində."
+      },
+      "links": {
+        "title": "Digər saytlara linklər",
+        "text": "Sayt Ozon, Ozon Bank və digər xidmətlərin tətbiqlərinə və saytlarına istinad edir. Sahib onları idarə etmir və onların məzmununa, şərtlərinə və məlumatlarınızın emalına görə məsuliyyət daşımır — onların hər birinin öz qaydaları var."
+      },
+      "ip": {
+        "title": "Əmtəə nişanları və saytın materialları",
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium və digər işarələr onların hüquq sahiblərinin əmtəə nişanlarıdır (Ozon — ООО «Интернет Решения»); saytda onlar yalnız müvafiq xidmətləri adlandırmaq üçün çəkilir. Saytın mətnləri, dizaynı, illüstrasiyaları və kodu sahibə məxsusdur; onlardan sayta aktiv linklə sitat gətirmək olar. İkonlar — Boxicons (CC BY 4.0 lisenziyası)."
+      },
+      "liability": {
+        "title": "Məsuliyyət",
+        "text": "Sayt «olduğu kimi» təqdim olunur. Sahib məlumatları aktual saxlamağa çalışır, lakin onların tamlığına və dəqiqliyinə zəmanət vermir və onlar əsasında qəbul edilmiş qərarlara, Ozon, Ozon Bank və digər xidmətlərin hərəkətlərinə, həmçinin saytın işindəki fasilələrə görə məsuliyyət daşımır — Rusiya Federasiyası qanunvericiliyinin icazə verdiyi həddə."
+      },
+      "data": {
+        "title": "Şəxsi məlumatlar",
+        "text": "Hansı məlumatların və necə emal olunduğu — <privacy>şəxsi məlumatların emalı siyasətində</privacy> və <cookies>«Cookie və analitikaya razılıq»</cookies> səhifəsində."
+      },
+      "law": {
+        "title": "Dəyişikliklər, tətbiq olunan hüquq və əlaqə",
+        "text": "Sazişin yeni redaksiyası bu səhifədə dərc olunduğu andan qüvvəyə minir. Sazişə Rusiya Federasiyasının qanunvericiliyi tətbiq olunur; mübahisələr əvvəlcə yazışma yolu ilə, sonra isə Rusiya Federasiyası qanunvericiliyinin qaydalarına uyğun olaraq məhkəmədə həll edilir. Suallar və iddialar — <mail>{email}</mail>."
+      }
+    },
+    "ads": {
+      "title": "Reklam və mükafat",
+      "kinds": {
+        "title": "Saytda nə reklamdır",
+        "intro": "Saytdakı reklam — referal linklər və dəvət kodudur. Onların hamısı «Reklam» işarəsi ilə qeyd olunub:",
+        "items": {
+          "job": "<b>Ozon Job dəvət kodu.</b> Tətbiqi quraşdırsanız, bizim kodu daxil etsəniz və kampaniyanın şərtlərini yerinə yetirsəniz, Ozon bizə mükafat ödəyə bilər. Reklamverən — ООО «Интернет Решения», ИНН 7704217370.",
+          "bank": "<b>Ozon Bank dəvətləri</b> — Ozon Kart, kredit və maaş kartları, pensiyanın köçürülməsi, biznesin qeydiyyatı və biznes üçün hesab (<stocks>«Kampaniyalar»</stocks> bölməsi). Reklamverən — ООО «ОЗОН Банк», Rusiya Bankının lisenziyası № 3542, 12.04.2023. Ozon Premium abunəsini ООО «Интернет Решения» təqdim edir.",
+          "blogger": "<b>Ozon Blogger-ə dəvət</b> — MAX və VKontakte-dəki kanal müəllifləri üçün Ozon-un tərəfdaşlıq proqramı. Reklamverən — ООО «Интернет Решения»."
+        }
+      },
+      "reward": {
+        "title": "Mükafat",
+        "text": "Bizim link və ya kodla məhsul rəsmiləşdirsəniz və şərtləri yerinə yetirsəniz, təşkilatçı bizə mükafat ödəyə bilər. Bu, sizin bonusunuza və şərtlərinizə təsir etmir. Öz mükafatımızın məbləğini dərc etmirik: o, fərdidir və təşkilatçı tərəfindən müəyyən edilir. Kampaniyaların şərtlərini yalnız təşkilatçı — Ozon və ya Ozon Bank müəyyən edir və dəyişə bilər."
+      },
+      "distributor": {
+        "title": "Reklamı kim yerləşdirir",
+        "text": "Saytda reklamı onun sahibi — {owner} (fiziki şəxs) yerləşdirir. Hər reklamda «Reklam» işarəsi və reklamverən göstərilib; elan üçün reklam identifikatoru (erid) alınıbsa, o, işarənin yanında göstərilir."
+      },
+      "partners": {
+        "title": "Tərəfdaşlardan reklam",
+        "text": "Reklam və tərəfdaşlıq təkliflərinə fərdi qaydada baxırıq — əlaqə məlumatları <cooperation>«Əməkdaşlıq»</cooperation> səhifəsindədir. Biz reklamı yalnız Rusiyanın «Reklam haqqında» Qanununa uyğun markalanma ilə yerləşdiririk və özünü Ozon kimi təqdim edən və ya zəmanətli gəlir vəd edən elanları yerləşdirmirik."
+      }
+    }
+  },
+  "Sources": {
+    "referral": "Dostunu dəvət et",
+    "registration": "Qeydiyyat",
+    "registrationForeigners": "Xarici vətəndaşların qeydiyyatı",
+    "basicRules": "Əməkdaşlıq şərtləri",
+    "paymentSchedule": "Ödəniş qrafiki",
+    "rewards": "Ödənişlərin hesablanması",
+    "tariffs": "Tariflər",
+    "documents": "İlk çıxış üçün sənədlər",
+    "onboarding": "İlk çıxış",
+    "rating": "Səviyyələr və ballar",
+    "ban": "Məhdudiyyətlər və bloklama",
+    "bankReferral": "Dostunu gətir (Ozon Bank)",
+    "ruHint": "Ozon arayışının səhifələri rus dilindədir."
   },
   "Contacts": {
     "email": "Poçt",
@@ -716,8 +956,8 @@
     "hours": "Hər gün {from}-dan {to}-dək (Moskva vaxtı)"
   },
   "SupportPage": {
-    "title": "Ozon Job haqqında sual-cavab: qeydiyyat, növbələr, ödənişlər, reytinq",
-    "description": "Ozon Job ilə əlavə iş haqqında tez-tez verilən suallara cavablar: qeydiyyat və sənədlər, növbəyə yazılma və ləğv, ödənişlər və vergilər, cərimələr və reytinq, dəvət kodu ilə bonus. Ozon Job məlumat mərkəzinə əsasən.",
+    "title": "Ozon Job sualları: növbələr, ödənişlər, reytinq",
+    "description": "Ozon Job ilə əlavə iş haqqında tez-tez verilən suallara cavablar: qeydiyyat, növbəyə yazılma və ləğv, ödənişlər və vergilər, reytinq, dəvət kodu ilə bonus.",
     "eyebrow": "Sual-cavab",
     "heading": "Ozon Job ilə əlavə iş haqqında sual-cavab",
     "lead": "Tez-tez verilən suallara cavabları topladıq — qeydiyyatdan ödənişlərə, reytinqə və bonuslara qədər. Faktlar icraçılar üçün Ozon Job məlumat mərkəzindəndir. Cavab tapmasanız, hara yazmağı deyəcəyik.",
@@ -913,7 +1153,7 @@
   },
   "CooperationPage": {
     "title": "Əməkdaşlıq: reklam saytı sifariş edin",
-    "description": "Şirkətiniz üçün reklam saytının frontendini sifariş edin — bunun kimi: Next.js və React, bir neçə dil, şəhərlər və sorğular üzrə SEO, sürətli mobil versiya. Poçt, telefon, Telegram — hər gün {from}-dan {to}-dək (Moskva vaxtı).",
+    "description": "Belə reklam saytının frontendini sifariş edin: Next.js və React, çoxdilli, şəhərlər üzrə SEO, sürətli mobil versiya. Hər gün {from}–{to} əlaqə (Moskva vaxtı).",
     "eyebrow": "Əməkdaşlıq",
     "heading": "Şirkətiniz üçün eyni sayt sifariş edin",
     "lead": "Reklam saytlarının frontendini hazırlayırıq — bunun kimi: bir neçə dildə, telefonlarda sürətli, şəhərlər və sorğular üzrə SEO və səliqəli hüquqi hissə ilə. İşəgötürənlər, kadr agentlikləri, tərəfdaşlıq və referal layihələri üçün uyğundur.",
@@ -1028,7 +1268,7 @@
   "HomePage": {
     "pageNavLabel": "Səhifə üzrə sürətli keçid",
     "title": "Ozon-da iş: anbar operatoru, hər gün ödəniş",
-    "description": "Ozon anbar operatoru vakansiyaları: sərbəst qrafik, gündüz və gecə növbələri, ödəniş hər gün və ya həftədə bir dəfə. RF Əmək Məcəlləsi, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
+    "description": "Ozon anbar operatoru: sərbəst qrafik, gündüz və gecə növbələri, gündəlik və ya həftəlik ödəniş. Ştat, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
     "heading": "Ozon anbar operatoru vakansiyası: gündəlik ödənişli iş",
     "lead": "Şəhərinizdə anbar seçin, real ünvanları və şərtləri öyrənin. Ozon Job tətbiqində dəvət kodu ilə qeydiyyatdan keçin — {amount, number} ₽* bonus aksiyanın şərtləri yerinə yetirildikdən sonra hesablanır.",
     "heroCity": "Şəhəri seçin",

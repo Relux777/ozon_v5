@@ -52,11 +52,11 @@ type Titled = { title: string; text: string };
 
 const DOCS_URL = 'https://docs.ozon.ru/job-ff-help';
 
-// Названия разделов справки не переводим (ссылки одинаковые для всех языков)
+// Разделы справки: подписи — Sources.* (все 9 языков), сами страницы справки только на русском
 const SOURCES = [
-    ['Уровни и баллы', `${DOCS_URL}/rating/rating/`],
-    ['Ограничения и блокировка', `${DOCS_URL}/rating/ban/`],
-    ['График выплат', `${DOCS_URL}/payments/payout/payment-schedule/`],
+    ['rating', `${DOCS_URL}/rating/rating/`],
+    ['ban', `${DOCS_URL}/rating/ban/`],
+    ['paymentSchedule', `${DOCS_URL}/payments/payout/payment-schedule/`],
 ] as const;
 
 // Иконка и цвет советов — по порядку LevelPage.tips
@@ -98,6 +98,7 @@ export default async function LevelPage({ params }: Props) {
     const t = await getTranslations({ locale, namespace: 'LevelPage' });
     const tNav = await getTranslations({ locale, namespace: 'NavBar' });
     const tMenu = await getTranslations({ locale, namespace: 'MenuPage' });
+    const tSources = await getTranslations({ locale, namespace: 'Sources' });
     const format = await getFormatter({ locale });
 
     const checkedDate = format.dateTime(new Date(RATING_CHECKED_AT), { dateStyle: 'long' });
@@ -460,17 +461,19 @@ export default async function LevelPage({ params }: Props) {
             <section className='py-20'>
                 <div className='container'>
                     <h2 className='menu-title mb-15 color-2-90'>{t('sourcesTitle')}</h2>
-                    {/* названия разделов справки не переводятся — на других языках помечаем их как русский текст */}
-                    <ul className='flex gap-7 mb-15' lang={locale === 'ru' ? undefined : 'ru'}>
-                        {SOURCES.map(([title, href]) => (
+                    <ul className='flex gap-7 mb-15'>
+                        {SOURCES.map(([key, href]) => (
                             <li key={href}>
-                                <a href={href} className='source-chip inline-flex nowrap align-center px-10 h-36 br-36 blur-3 touch-no-blur font-12 font-w-500' target='_blank' rel='nofollow noopener noreferrer'>
-                                    {title} ↗
+                                <a href={href} hrefLang='ru' className='source-chip inline-flex nowrap align-center px-10 h-36 br-36 blur-3 touch-no-blur font-12 font-w-500' target='_blank' rel='nofollow noopener noreferrer'>
+                                    {tSources(key)} ↗
                                 </a>
                             </li>
                         ))}
                     </ul>
-                    <p className='font-12 max-w-60-ch mb-15'>{t('sourcesNote', { date: checkedDate })}</p>
+                    <p className='font-12 max-w-60-ch mb-15'>
+                        {t('sourcesNote', { date: checkedDate })}
+                        {locale !== 'ru' && <span className='block'>{tSources('ruHint')}</span>}
+                    </p>
                     <p className='font-14'>
                         <Link href='/menu' className='color-5-100'>{t('backLink')}</Link>
                     </p>

@@ -105,7 +105,7 @@ export default async function RootLayout({ children, params }: Props) {
     };
 
     return (
-        <html lang={locale} className={fontVariables} suppressHydrationWarning>
+        <html lang={locale} className={fontVariables} data-scroll-behavior="smooth" suppressHydrationWarning>
             <body>
                 <NextIntlClientProvider locale={locale} messages={clientMessages}>
                     <ThemeProvider

@@ -43,7 +43,7 @@ export default function NavBarComponent() {
                                     aria-current={isActive ? 'page' : undefined}
                                 >
                                     <Icon className={styles.nav_icon} width={24} height={24} aria-hidden="true" />
-                                    <span className="block">{t(link.labelKey)}</span>
+                                    <span className="block truncate font-12">{t(link.labelKey)}</span>
                                 </Link>
                             </li>
                         );
