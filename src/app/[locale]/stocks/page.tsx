@@ -27,7 +27,7 @@ import ChevronDownSVG from '@/assets/svg/chevron-down.svg';
 
 // «Акции»: приглашения Ozon Банка («Приведи друга») — сетка с фильтром «Для себя / Для бизнеса» (радио + :has(), без JS);
 // «Заработок» — код Ozon Job и Ozon Blogger; как это работает; вопросы (FAQPage) с раскрытием рекламы рядом.
-// Ссылки и категории — config/referrals.ts, тексты — StocksPage.* (все 7 языков, см. STOCKS_LOCALES), иконки и цвета — здесь.
+// Ссылки и категории — config/referrals.ts, тексты — StocksPage.* (все 9 языков, см. STOCKS_LOCALES), иконки и цвета — здесь.
 
 type Props = {
     params: Promise<{ locale: string }>;

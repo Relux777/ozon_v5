@@ -11,11 +11,13 @@ type Href = Parameters<typeof getPathname>[0]['href'];
 const OG_LOCALES: Record<AppLocale, string> = {
     ru: 'ru_RU',
     uz: 'uz_UZ',
+    tg: 'tg_TJ',
     hy: 'hy_AM',
     az: 'az_AZ',
     ka: 'ka_GE',
     ky: 'ky_KG',
     kk: 'kk_KZ',
+    en: 'en_US',
 };
 
 /** locales — языки, на которых страница уже переведена (по умолчанию все); остальные в hreflang не попадают */

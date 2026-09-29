@@ -20,7 +20,7 @@ import TelegramSVG from '@/assets/svg/support/telegram.svg';
 import MegaphoneSVG from '@/assets/svg/menu/megaphone.svg';
 
 // «Сотрудничество»: компании заказывают такой же рекламный сайт; реклама и партнёрство на этом сайте; контакты.
-// Тексты — CooperationPage.* (все 7 языков), контакты — config/legal.ts (общий блок ContactList)
+// Тексты — CooperationPage.* (все 9 языков), контакты — config/legal.ts (общий блок ContactList)
 
 type Props = {
     params: Promise<{ locale: string }>;
