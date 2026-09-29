@@ -35,7 +35,7 @@ export default async function HeaderComponent() {
                         {/* Link из next-intl сохраняет текущую локаль */}
                         <Link href="/" className={`flex align-center gap-5 hover-80 ${styles.logo}`}>
                             <LogoIcon style={{ width: '30px', height: '30px' }} aria-hidden="true" />
-                            <span className='font-22'>{headerT('title')}</span>
+                            <span className='font-22 space-nowrap'>{headerT('title')}</span>
                         </Link>
                     </li>
                 </ul>

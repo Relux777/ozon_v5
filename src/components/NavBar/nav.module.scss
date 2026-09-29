@@ -39,7 +39,7 @@
         &.home {
             --count: 4;
             // 78px: подписи длиннее 70px на hy, az, ka, en («Պահեստներ», «Kampaniyalar», «Warehouses») вылезали на соседей
-            --item-width: 78px;
+            --item-width: 74px;
             --item-height: 66px;
 
             // подпись не шире пункта: длинная обрежется многоточием (.truncate), а не наедет на соседнюю
