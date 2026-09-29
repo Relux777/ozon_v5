@@ -38,8 +38,12 @@
 
         &.home {
             --count: 4;
-            --item-width: 70px;
+            // 78px: подписи длиннее 70px на hy, az, ka, en («Պահեստներ», «Kampaniyalar», «Warehouses») вылезали на соседей
+            --item-width: 78px;
             --item-height: 66px;
+
+            // подпись не шире пункта: длинная обрежется многоточием (.truncate), а не наедет на соседнюю
+            .link span { max-inline-size: 100%; }
 
             @media (width < 390px) {
                 --item-width: 56px;

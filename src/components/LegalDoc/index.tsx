@@ -9,29 +9,32 @@ type Section = { id: string; title: string; content: ReactNode };
 type Props = {
     locale: AppLocale;
     href: DocHref;
-    title: string;
     lead?: ReactNode;
     sections: Section[];
 };
 
-// Документы сайта: ссылка и подпись в списке «Другие документы». Тексты документов — на русском (юридически
-// значимая версия); на других языках над документом — пометка Legal.ruOnly
-const DOCS = [
-    { href: '/menu/about', title: 'О проекте' },
-    { href: '/menu/privacy', title: 'Политика обработки персональных данных' },
-    { href: '/menu/cookies', title: 'Cookie и согласие на аналитику' },
-    { href: '/menu/terms', title: 'Пользовательское соглашение' },
-    { href: '/menu/ads', title: 'Реклама и вознаграждение' },
+// Документы сайта: ссылка и ключ текста в LegalDocs (там же заголовок). Юридически значима русская версия;
+// на других языках над документом — пометка LegalDocs.translated со ссылкой на русский текст
+export const LEGAL_DOCS = [
+    { href: '/menu/about', key: 'about' },
+    { href: '/menu/privacy', key: 'privacy' },
+    { href: '/menu/cookies', key: 'cookies' },
+    { href: '/menu/terms', key: 'terms' },
+    { href: '/menu/ads', key: 'ads' },
 ] as const;
 
-type DocHref = (typeof DOCS)[number]['href'];
+type DocHref = (typeof LEGAL_DOCS)[number]['href'];
+export type LegalDocKey = (typeof LEGAL_DOCS)[number]['key'];
 
 // Общий вид документа: заголовок и дата редакции, текст разделами в карточке, справа — оглавление
 // (якоря разделов) и другие документы. На телефоне колонка справа уходит под текст
-export default async function LegalDoc({ locale, href, title, lead, sections }: Props) {
+export default async function LegalDoc({ locale, href, lead, sections }: Props) {
     const format = await getFormatter({ locale });
     const tLegal = await getTranslations({ locale, namespace: 'Legal' });
+    const tDocs = await getTranslations({ locale, namespace: 'LegalDocs' });
     const tMenu = await getTranslations({ locale, namespace: 'MenuPage' });
+    const docTitle = (key: LegalDocKey) => tDocs(`${key}.title`);
+    const currentKey = LEGAL_DOCS.find((doc) => doc.href === href)?.key ?? 'about';
     const updated = format.dateTime(new Date(LEGAL_UPDATED_AT), { dateStyle: 'long' });
 
     return (
@@ -40,14 +43,20 @@ export default async function LegalDoc({ locale, href, title, lead, sections }: 
             <section>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{tMenu('docsTitle')}</p>
-                    <h1 className='mb-7 color-2-90 text-balance'>{title}</h1>
+                    <h1 className='mb-7 color-2-90 text-balance'>{docTitle(currentKey)}</h1>
                     <p className='font-14 color-2-80 mb-15'>{tLegal('updated', { date: updated })}</p>
                     {locale !== 'ru' && (
-                        <p lang={locale} className='max-w-60-ch mb-15 pd-15 br-20 bg-5-10 color-5-100 font-14'>{tLegal('ruOnly')}</p>
+                        <p className='max-w-60-ch mb-15 pd-15 br-20 bg-5-10 color-5-100 font-14'>
+                            {tDocs.rich('translated', {
+                                ru: (chunks) => (
+                                    <Link href={href} locale='ru' hrefLang='ru' className='color-5-100 font-w-700'>{chunks}</Link>
+                                ),
+                            })}
+                        </p>
                     )}
                     {lead && <div className='max-w-60-ch mb-20'>{lead}</div>}
 
-                    <div className='flex row-flush' lang='ru'>
+                    <div className='flex row-flush'>
                         <div className='f-w-8 mb-20'>
                             <article className='legal grid gap-15 pd-20 br-20 bg-3-100 border-1px-2-10 shadow-3'>
                                 {sections.map((section, i) => (
@@ -65,7 +74,7 @@ export default async function LegalDoc({ locale, href, title, lead, sections }: 
                             {/* колонка тянется на высоту ряда (flex), внутри неё оглавление «едет» за прокруткой */}
                             <aside className='sticky-aside grid gap-15 content-start'>
                                 <nav className='grid gap-8 pd-20 br-20 bg-2-3 font-14' aria-labelledby='legal-toc-title'>
-                                    <b className='color-2-90' id='legal-toc-title'>Содержание</b>
+                                    <b className='color-2-90' id='legal-toc-title'>{tDocs('toc')}</b>
                                     <ol className='grid gap-5'>
                                         {sections.map((section, i) => (
                                             <li key={section.id}>
@@ -77,23 +86,23 @@ export default async function LegalDoc({ locale, href, title, lead, sections }: 
                                     </ol>
                                 </nav>
                                 <nav className='grid gap-8 pd-20 br-20 bg-2-3 font-14' aria-labelledby='legal-docs-title'>
-                                    <b className='color-2-90' id='legal-docs-title'>Документы сайта</b>
+                                    <b className='color-2-90' id='legal-docs-title'>{tDocs('docs')}</b>
                                     <ul className='grid gap-5'>
-                                        {DOCS.map((doc) => (
+                                        {LEGAL_DOCS.map((doc) => (
                                             <li key={doc.href}>
                                                 {doc.href === href ? (
-                                                    <span className='color-2-90 font-w-500' aria-current='page'>{doc.title}</span>
+                                                    <span className='color-2-90 font-w-500' aria-current='page'>{docTitle(doc.key)}</span>
                                                 ) : (
-                                                    <Link href={doc.href} className='color-5-100'>{doc.title}</Link>
+                                                    <Link href={doc.href} className='color-5-100'>{docTitle(doc.key)}</Link>
                                                 )}
                                             </li>
                                         ))}
                                         <li>
-                                            <Link href='/menu/cooperation' className='color-5-100'>Сотрудничество и контакты</Link>
+                                            <Link href='/menu/cooperation' className='color-5-100'>{tDocs('cooperation')}</Link>
                                         </li>
                                     </ul>
                                 </nav>
-                                <Link href='/menu' className='color-5-100 font-14'>← Назад в меню</Link>
+                                <Link href='/menu' className='color-5-100 font-14'>{tDocs('back')}</Link>
                             </aside>
                         </div>
                     </div>

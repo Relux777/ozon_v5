@@ -44,16 +44,16 @@
     "listLabel": "List of cities"
   },
   "SkladPage": {
-    "title": "Ozon warehouses by city: addresses, income, health insurance and meals",
+    "title": "Ozon warehouses by city: addresses, income, insurance, meals",
     "description": "Cities where you can work as an Ozon warehouse operator: warehouse addresses, income, health insurance, meals and transport to the warehouse. Choose your city.",
     "heading": "Choose your city",
     "lead": "Find your city and see warehouse addresses, income and bonuses for warehouse operators."
   },
   "CityPage": {
-    "titleWithData": "Part-time work at Ozon warehouses in {city}: Ozon Job, addresses, payouts",
-    "titleNoData": "Part-time work at Ozon warehouses in {city}: how to start shifts via Ozon Job",
-    "descriptionWithData": "Ozon warehouses in {city}: full addresses and part-time work through the Ozon Job app — slots from 4 to 12 hours, payouts to your card from 3 hours, civil-law contract or self-employment.",
-    "descriptionNoData": "Part-time work at Ozon warehouses in {city} through the Ozon Job app: slots from 4 to 12 hours, payouts to your card from 3 hours, civil-law contract or self-employment.",
+    "titleWithData": "Ozon warehouse jobs in {city}: Ozon Job, addresses, pay",
+    "titleNoData": "Ozon warehouse jobs in {city}: start shifts via Ozon Job",
+    "descriptionWithData": "Ozon warehouses in {city}: full addresses and Ozon Job part-time work — 4–12 h slots, card payouts from 3 hours, civil-law contract or self-employment.",
+    "descriptionNoData": "Part-time work at Ozon warehouses in {city} via the Ozon Job app: 4–12 hour slots, card payouts from 3 hours, civil-law contract or self-employment.",
     "heading": "Ozon warehouses in {city}: part-time work via Ozon Job",
     "heroKicker": "Ozon Job · {city}",
     "heroAddresses": "Warehouse addresses",
@@ -297,7 +297,7 @@
   },
   "LevelPage": {
     "title": "Ozon Job rating: levels, points and bananas",
-    "description": "How Ozon Job awards and deducts rating points, what levels from 0 to “Diamond” give you, what bananas are for and how to avoid a ban. Tables and a points calculator.",
+    "description": "How Ozon Job awards and deducts rating points, what levels from 0 to “Diamond” give you, what bananas are for and how to avoid a ban. Points calculator.",
     "eyebrow": "Ozon Job · Rating",
     "heading": "Ozon Job rating: levels, points and bananas",
     "lead": "We explain what earns and loses points, what each level gives — from 0 to “Diamond” — and how to avoid a ban. Figures come from the Ozon Job app and the help centre for contractors.",
@@ -471,8 +471,8 @@
     "backLink": "← Back to menu"
   },
   "StocksPage": {
-    "title": "Ozon invitation offers: Ozon Bank, Premium, Ozon Blogger",
-    "description": "Ozon Bank invitations and ways to earn with Ozon in one place: Ozon Card, credit card, Premium, salary card, pension, business account, Ozon Blogger and the Ozon Job code.",
+    "title": "Ozon invitation offers: Ozon Bank, Ozon Blogger",
+    "description": "Ozon Bank invitations and earning with Ozon in one place: Ozon Card, credit card, Premium, salary card, pension, business account, Ozon Blogger, Ozon Job code.",
     "eyebrow": "Offers · Ozon Bank and Ozon",
     "heading": "Ozon invitation offers",
     "lead": "We've gathered Ozon Bank invitations and ways to earn with Ozon in one place: what you get, what you need to do and by when. The link in each card opens the official page with the conditions.",
@@ -705,8 +705,248 @@
     "statusNone": "You have not made a choice yet"
   },
   "Legal": {
-    "updated": "Version of {date}",
-    "ruOnly": "This document is published in Russian — the Russian version is legally binding."
+    "updated": "Version of {date}"
+  },
+  "LegalDocs": {
+    "toc": "Contents",
+    "docs": "Site documents",
+    "cooperation": "Cooperation and contacts",
+    "back": "← Back to menu",
+    "translated": "This translation is provided for convenience. In case of any discrepancy, the <ru>Russian version of the document</ru> prevails.",
+    "about": {
+      "title": "About the project",
+      "what": {
+        "title": "What this site is",
+        "text": "“Ozon Work” is an independent information site for people looking for part-time work at Ozon warehouses through the Ozon Job app. We are not Ozon and not its official representative: Ozon is a trademark of Internet Solutions LLC (ООО «Интернет Решения»). Always check the official terms in the Ozon Job app, on <job>job.ozon.ru</job>, in the <help>Ozon Job help centre</help> and on <career>career.ozon.ru</career>."
+      },
+      "sources": {
+        "title": "Where the data comes from",
+        "text": "We collect warehouse addresses by city, terms, payouts, ratings and promotions from the public Ozon Job help centre, the career.ozon.ru pages, and the Ozon Bank help centre and pages, and retell them in our own words. The date each section was checked is shown next to it. Found a mistake? Write to us and we will fix it."
+      },
+      "owner": {
+        "title": "Who runs the site",
+        "text": "The site owner is {owner} (an individual). Email: <mail>{email}</mail>, phone: <call>{phone}</call>, Telegram: <tg>@{telegram}</tg>, daily from {from} to {to} Moscow time. We cannot help with questions about your Ozon Job account, payouts or rating — please contact support in the app."
+      },
+      "money": {
+        "title": "How the site earns money",
+        "text": "Through referral links and an invitation code marked “Advertisement”: if you sign up through them and meet the conditions, Ozon or Ozon Bank may pay us a reward. Learn more on the <ads>“Advertising and rewards”</ads> page."
+      },
+      "cooperation": {
+        "title": "Cooperation",
+        "text": "Companies can order a similar promotional site from us — in several languages, with SEO and a carefully prepared legal section. Learn more on the <cooperation>“Cooperation”</cooperation> page."
+      }
+    },
+    "privacy": {
+      "title": "Personal data processing policy",
+      "general": {
+        "title": "General provisions",
+        "p": {
+          "intro": "This policy describes which personal data of visitors is processed on the site {host} (the “site”), why, on what legal basis and for how long, as well as the rights of visitors. It is issued pursuant to Part 2 of Article 18.1 of Federal Law No. 152-ФЗ “On Personal Data” of 27.07.2006 and is published in open access.",
+          "operator": "The personal data operator is <b>{owner}</b> (an individual), the owner of the site. Contact the operator at <mail>{email}</mail>, phone {phone}.",
+          "independent": "The site is an independent information resource; it is neither Ozon nor Ozon Bank. Data you provide in the Ozon Job app and on the Ozon and Ozon Bank websites is processed by those companies themselves under their own policies — the site has no access to it."
+        }
+      },
+      "data": {
+        "title": "What data, why and on what basis",
+        "intro": "The site has no registration, personal account, forms or mailing lists. Data is processed in three cases only.",
+        "cases": {
+          "tech": {
+            "title": "1. Technical data when you visit",
+            "text": "IP address, information about your browser and device, the address of the page opened, and the date and time of the request — any web server receives this. Purpose: to display pages and protect the site from failures and attacks. Legal basis: the operator’s legitimate interest (Clause 7 of Part 1 of Article 6 of 152-ФЗ). Retention: no longer than 30 days — server logs are deleted automatically."
+          },
+          "cookies": {
+            "title": "2. Cookies",
+            "text": "Necessary cookies remember the language you chose and your choice in the cookie notice — they do not make it possible to identify you and work without consent. Analytics cookies (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) and related data are processed only with your consent — after you click “Accept”. The list of cookies, their retention periods and the consent text are on the <cookies>“Cookies and consent to analytics”</cookies> page."
+          },
+          "requests": {
+            "title": "3. Your enquiries",
+            "text": "If you write by email or Telegram or call us: your name, email address, phone number or Telegram username, the text of your message and anything else you tell us yourself. Purpose: to answer your question and to discuss and fulfil an order. Legal basis: preparing and performing a contract at your initiative (Clause 5 of Part 1 of Article 6 of 152-ФЗ); for other questions, the legitimate interest in replying to the person who wrote (Clause 7 of Part 1 of Article 6). Retention: until the end of the correspondence plus 1 year; if a contract is concluded, for as long as it is in force and 5 years afterwards (the retention period for tax documents)."
+          }
+        },
+        "outro": "We do not process special categories of data (health, beliefs, etc.) or biometric data, do not make decisions based solely on automated processing, and do not use data for advertising mailings. Do not send us passport details, card details or SMS codes — they are not needed to answer your question."
+      },
+      "actions": {
+        "title": "How the data is processed",
+        "text": "Collection, recording, systematisation, accumulation, storage, clarification, retrieval, use, transfer (provision, access) — only to the parties listed in section 4, blocking, deletion and destruction. Method: mixed, both automated and manual. Personal data is not disseminated (published)."
+      },
+      "transfer": {
+        "title": "Who the data is shared with",
+        "intro": "We do not sell data and do not share it for advertising. Only the operator and the services without which the site and communication cannot work have access to the data:",
+        "hosting": "the site’s hosting provider{hasHosting, select, yes { — {hosting}} other {}} — stores the site files and server logs (section 2, item 1);",
+        "yandex": "ООО «ЯНДЕКС» (YANDEX LLC, Yandex Metrica service) — on the operator’s instructions and only if you clicked “Accept”;",
+        "google": "Google LLC, USA (Google Analytics service) — on the operator’s instructions and only if you clicked “Accept”;",
+        "mail": "Mail email service (ООО «ВК», VK LLC) and telecom operators — when you write by email or call;",
+        "telegram": "Telegram — if you chose it for communication yourself. It is a foreign service: if you do not want your messages to pass through it, write by email or call;",
+        "gov": "government authorities — only in cases expressly provided for by law."
+      },
+      "storage": {
+        "title": "Where the data is stored",
+        "text": "Data that the operator collects itself is recorded and stored in Russia: correspondence in Mail, visit statistics in Yandex Metrica (Part 5 of Article 18 of 152-ФЗ).{hostingPlace, select, russia { The hosting provider’s servers are also located in Russia.} abroad { The hosting provider’s servers are located abroad: this is a cross-border transfer, which the operator notifies Roskomnadzor (the Russian data protection authority) about.} other {}}{ga, select, yes { Google Analytics data is stored on Google LLC servers outside Russia — this is a cross-border transfer: it takes place only after your consent (“Accept”), and the operator notifies Roskomnadzor (the Russian data protection authority) about it.} other {}}"
+      },
+      "security": {
+        "title": "How the data is protected",
+        "text": "The site works over the secure HTTPS protocol. Only the operator has access to the email, hosting and analytics counter. We collect a minimum of data: the site has no forms or registration, so it has no database of visitor data — only technical server logs."
+      },
+      "rights": {
+        "title": "Your rights",
+        "items": {
+          "know": "to find out whether your data is processed, which data and why (Article 14 of 152-ФЗ);",
+          "fix": "to demand that data be clarified, blocked or deleted if it is incomplete, outdated, inaccurate or processed unlawfully;",
+          "withdraw": "to withdraw consent to analytics — with the “Change cookie choice” button on the <cookies>“Cookies and consent to analytics”</cookies> page or by email;",
+          "complain": "to appeal against the operator’s actions to Roskomnadzor (the Russian data protection authority) or in court."
+        },
+        "request": "Send your request to <mail>{email}</mail> with the subject “Personal data”: tell us how to address you and which data the request concerns (for example, the email address you wrote from). We will reply within 10 working days; this period may be extended by another 5 working days, in which case we will tell you why."
+      },
+      "changes": {
+        "title": "Changes to the policy",
+        "text": "The policy may change — for example, if a form or a new service appears on the site. A new version takes effect when it is published on this page; the version date is shown at the top."
+      }
+    },
+    "cookies": {
+      "title": "Cookies and consent to analytics",
+      "what": {
+        "title": "What cookies are and how you choose",
+        "p": [
+          "Cookies are small files that a site saves in your browser. On your first visit, a notice with two equal buttons appears at the bottom of the screen: “Accept” allows analytics cookies, “Decline” keeps only the necessary ones. Until you choose, analytics is not loaded; the site works fully whatever you choose.",
+          "Changed your mind? Click the button below and the notice will open again."
+        ]
+      },
+      "list": {
+        "title": "Which cookies the site uses",
+        "necessary": "Necessary",
+        "analytics": "Analytics — only after “Accept”",
+        "meta": "{owner} · retention period: {term}",
+        "owners": {
+          "site": "Site",
+          "yandex": "ООО «ЯНДЕКС» (Yandex Metrica)",
+          "google": "Google LLC, USA (Google Analytics)"
+        },
+        "rows": {
+          "locale": {
+            "purpose": "Remembers the site language you chose",
+            "term": "1 year"
+          },
+          "consent": {
+            "purpose": "Stores your choice in the cookie notice: “Accept” or “Decline”",
+            "term": "1 year"
+          },
+          "theme": {
+            "name": "theme (browser storage)",
+            "purpose": "Remembers the light or dark theme. This is not a cookie but an entry in your browser — it is not sent to the server",
+            "term": "Until you clear the site data"
+          },
+          "ym": {
+            "purpose": "Distinguish new visits from repeat ones and store the date of the first visit",
+            "term": "1 year"
+          },
+          "ymOther": {
+            "name": "_ym_isad and other _ym_*",
+            "purpose": "Technical statistics data: ad blocker, current visit",
+            "term": "From the end of the visit up to 2 days"
+          },
+          "ga": {
+            "purpose": "Distinguishes new visitors from returning ones",
+            "term": "2 years"
+          },
+          "gaState": {
+            "purpose": "Stores the state of the current visit",
+            "term": "2 years"
+          }
+        },
+        "noCounters": "Analytics counters are not currently connected on the site — _ym_* cookies are not set whatever you choose. If we connect them, they will work only for those who clicked “Accept”.",
+        "delete": "You can delete cookies in your browser settings (the “Privacy” or “Site data” section). The notice will then appear again on your next visit."
+      },
+      "consent": {
+        "title": "Consent to the processing of personal data for analytics",
+        "intro": "By clicking “Accept” in the cookie notice, I freely, of my own will and in my own interest give consent to {owner} (the operator; {email}) to process my personal data using the Yandex Metrica service{ga, select, yes { and the Google Analytics service} other {}} on the following terms.",
+        "data": "<b>Data:</b> cookie identifiers, IP address, information about the browser, device and operating system, addresses of pages viewed and the referral source, date and time of the visit, actions on the site (navigation, scrolling, clicks).",
+        "purpose": "<b>Purpose:</b> visit statistics and improving the site.",
+        "actions": "<b>Actions:</b> collection, recording, systematisation, accumulation, storage, clarification, retrieval, use, depersonalisation, blocking, deletion, destruction, as well as transfer (provision) to ООО «ЯНДЕКС» (YANDEX LLC), which processes the data on the operator’s instructions to compile statistics. The data is not disseminated.",
+        "crossBorder": "<b>Cross-border transfer:</b> Google Analytics data is received and processed on the operator’s instructions by Google LLC (USA) on its servers outside Russia. If you do not consent to the transfer of data abroad, click “Decline” — the site works fully without analytics.",
+        "method": "<b>Method:</b> automated processing, without making decisions that have legal consequences for me.",
+        "term": "<b>Term:</b> 1 year from the moment of consent or until it is withdrawn.",
+        "withdraw": "<b>Withdrawal:</b> at any time — with the “Change cookie choice” button on this page (choose “Decline”) or by email to {email}. Withdrawal does not affect the lawfulness of processing carried out before it.",
+        "privacy": "How the operator processes other data is described in the <privacy>personal data processing policy</privacy>."
+      }
+    },
+    "terms": {
+      "title": "Terms of use",
+      "general": {
+        "title": "General provisions",
+        "text": "These terms set out the conditions for using the site {host} (the “site”). The site owner is {owner} (an individual, the “owner”). By using the site, you accept these terms; if you do not agree with them, do not use the site. No registration or payment is required to access the site."
+      },
+      "status": {
+        "title": "What this site is",
+        "text": "The site is an independent information resource about part-time work at Ozon warehouses through the Ozon Job app. It does not belong to Ozon or Ozon Bank, is not their representative, employer or recruitment agency, and does not provide employment services. Only Ozon decides on cooperation, terms, payouts and how accounts work — check the current terms in the Ozon Job app and in the docs.ozon.ru help centre."
+      },
+      "info": {
+        "title": "Information on the site",
+        "text": "Information about warehouses, income, payouts, ratings and promotions is taken from public sources of Ozon and Ozon Bank; the dates it was checked are shown next to it. Terms may change without notice. The information is for reference only and is not an offer or a promise of income or employment, and information about banking products is not financial or investment advice. Check the terms with the original source before making a decision."
+      },
+      "ads": {
+        "title": "Advertising and referral links",
+        "text": "Some links and the invitation code on the site are advertising, marked “Advertisement” with the advertiser named. If you sign up through them and meet the conditions, the owner may receive a reward; this does not affect your terms. Learn more on the <ads>“Advertising and rewards”</ads> page."
+      },
+      "links": {
+        "title": "Links to other sites",
+        "text": "The site links to apps and websites of Ozon, Ozon Bank and other services. The owner does not control them and is not responsible for their content, terms or processing of your data — each of them has its own rules."
+      },
+      "ip": {
+        "title": "Trademarks and site materials",
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium and other designations are trademarks of their respective owners (Ozon — Internet Solutions LLC, ООО «Интернет Решения»); they are mentioned on the site only to name the corresponding services. The texts, design, illustrations and code of the site belong to the owner; they may be quoted with an active link to the site. Icons — Boxicons (CC BY 4.0 licence)."
+      },
+      "liability": {
+        "title": "Liability",
+        "text": "The site is provided “as is”. The owner tries to keep the data up to date but does not guarantee its completeness or accuracy and is not liable for decisions made on its basis, for the actions of Ozon, Ozon Bank and other services, or for interruptions in the operation of the site — to the extent permitted by the laws of the Russian Federation."
+      },
+      "data": {
+        "title": "Personal data",
+        "text": "Which data is processed and how is described in the <privacy>personal data processing policy</privacy> and on the <cookies>“Cookies and consent to analytics”</cookies> page."
+      },
+      "law": {
+        "title": "Changes, governing law and contacts",
+        "text": "A new version of these terms takes effect when it is published on this page. These terms are governed by the laws of the Russian Federation; disputes are first settled by correspondence and then in court in accordance with the laws of the Russian Federation. Questions and claims: <mail>{email}</mail>."
+      }
+    },
+    "ads": {
+      "title": "Advertising and rewards",
+      "kinds": {
+        "title": "What is advertising on the site",
+        "intro": "Advertising on the site consists of referral links and an invitation code. All of them are marked “Advertisement”:",
+        "items": {
+          "job": "<b>Ozon Job invitation code.</b> If you install the app, enter our code and meet the promotion conditions, Ozon may pay us a reward. Advertiser: Internet Solutions LLC (ООО «Интернет Решения»), INN 7704217370.",
+          "bank": "<b>Ozon Bank invitations</b> — Ozon Card, credit and salary cards, pension transfer, business registration and a business account (the <stocks>“Offers”</stocks> section). Advertiser: ООО «ОЗОН Банк» (OZON Bank LLC), Bank of Russia licence No. 3542 of 12.04.2023. The Ozon Premium subscription is provided by Internet Solutions LLC (ООО «Интернет Решения»).",
+          "blogger": "<b>Invitation to Ozon Blogger</b> — Ozon’s affiliate programme for channel authors on MAX and VKontakte. Advertiser: Internet Solutions LLC (ООО «Интернет Решения»)."
+        }
+      },
+      "reward": {
+        "title": "Reward",
+        "text": "If you sign up for a product through our link or code and meet the conditions, the organiser may pay us a reward. This does not affect your bonus or terms. We do not publish the amount of our own reward: it is individual and set by the organiser. The terms of promotions are set, and may be changed, only by the organiser — Ozon or Ozon Bank."
+      },
+      "distributor": {
+        "title": "Who places the advertising",
+        "text": "Advertising on the site is placed by its owner, {owner} (an individual). Each advertisement is marked “Advertisement” and names the advertiser; if an advertising identifier (erid) has been obtained for an ad, it is shown next to the label."
+      },
+      "partners": {
+        "title": "Advertising from partners",
+        "text": "We consider advertising and partnership proposals individually — contacts are on the <cooperation>“Cooperation”</cooperation> page. We place advertising only with labelling under the Federal Law “On Advertising” and do not place ads that pretend to be Ozon or promise a guaranteed income."
+      }
+    }
+  },
+  "Sources": {
+    "referral": "Bring a friend",
+    "registration": "Registration",
+    "registrationForeigners": "Registration of foreign citizens",
+    "basicRules": "Terms of cooperation",
+    "paymentSchedule": "Payout schedule",
+    "rewards": "How payouts are calculated",
+    "tariffs": "Rates",
+    "documents": "Documents for your first shift",
+    "onboarding": "Your first shift",
+    "rating": "Levels and points",
+    "ban": "Restrictions and blocking",
+    "bankReferral": "Bring a friend (Ozon Bank)",
+    "ruHint": "Ozon help centre pages are in Russian."
   },
   "Contacts": {
     "email": "Email",
@@ -716,8 +956,8 @@
     "hours": "Daily from {from} to {to} (Moscow time)"
   },
   "SupportPage": {
-    "title": "Ozon Job questions and answers: registration, shifts, payouts, rating",
-    "description": "Answers to frequent questions about part-time work via Ozon Job: registration and documents, booking and cancelling shifts, payouts and taxes, penalties and rating, the invitation code bonus. Based on the Ozon Job help centre.",
+    "title": "Ozon Job: questions on shifts, payouts, rating",
+    "description": "Answers to frequent questions about part-time work via Ozon Job: registration, booking and cancelling shifts, payouts and taxes, rating, invitation code bonus.",
     "eyebrow": "Questions and answers",
     "heading": "Questions and answers about part-time work via Ozon Job",
     "lead": "We've gathered answers to frequent questions — from registration to payouts, rating and bonuses. Facts come from the Ozon Job help centre for contractors. Didn't find an answer? We'll tell you where to write.",
@@ -913,7 +1153,7 @@
   },
   "CooperationPage": {
     "title": "Cooperation: order a promotional website",
-    "description": "Order the frontend of a promotional website for your company — like this one: Next.js and React, several languages, SEO for cities and queries, a fast mobile version. Email, phone, Telegram — daily from {from} to {to} Moscow time.",
+    "description": "Order the frontend of a promo site like this one: Next.js and React, multiple languages, city SEO, fast mobile version. Contact daily {from}–{to} Moscow time.",
     "eyebrow": "Cooperation",
     "heading": "Order a site like this for your company",
     "lead": "We build frontends for promotional websites — like this one: multilingual, fast on phones, with SEO for cities and queries and a careful legal part. Suitable for employers, recruitment agencies, affiliate and referral projects.",
@@ -1028,7 +1268,7 @@
   "HomePage": {
     "pageNavLabel": "Jump to a section",
     "title": "Work at Ozon: warehouse operator with daily payouts",
-    "description": "Ozon warehouse operator jobs: flexible schedule, day and night shifts, payouts daily or weekly. Employment contract, civil-law contract or self-employment. Training from scratch.",
+    "description": "Ozon warehouse operator jobs: flexible hours, day and night shifts, daily or weekly payouts. Staff, civil-law contract or self-employed. Training from scratch.",
     "heading": "Ozon warehouse operator job: work with daily payouts",
     "lead": "Find a warehouse in your city and see real addresses and conditions. Sign up in the Ozon Job app with an invitation code — a bonus of {amount, number} ₽* is credited after you meet the promotion conditions.",
     "heroCity": "Choose a city",

@@ -9,6 +9,8 @@ export const LEGAL_UPDATED_AT = '2026-09-25';
 export const OWNER = {
     /** полное имя — в документах (политика, согласие, соглашение) */
     fullName: 'Плотников Ренат Рустамович',
+    /** латиницей — в документах на языках с латинским алфавитом (uz, az, en) */
+    fullNameLatin: 'Plotnikov Renat Rustamovich',
     /** в родительном падеже — для текста согласия («даю согласие …») */
     fullNameGenitive: 'Плотникову Ренату Рустамовичу',
 } as const;

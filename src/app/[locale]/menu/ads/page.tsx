@@ -1,88 +1,52 @@
 import type { Metadata } from 'next';
-import { Link } from '@/i18n/navigation';
+import { getTranslations } from 'next-intl/server';
 import { getLocaleFromParams } from '@/i18n/params';
-import { OWNER } from '@/config/legal';
 import LegalDoc from '@/components/LegalDoc';
+import { legalValues } from '@/components/LegalDoc/rich';
 
 // Раскрытие рекламы в одном месте: что на сайте реклама, кто рекламодатель, кто её распространяет и как
-// маркируется (ФЗ «О рекламе», ст. 18.1). Пометки «Реклама» стоят и у самих ссылок (#promo/#card на главной, /stocks)
+// маркируется (ФЗ «О рекламе», ст. 18.1). Пометки «Реклама» стоят и у самих ссылок (#promo/#card на главной, /stocks).
+// Тексты — LegalDocs.ads (все 9 языков)
 
 type Props = {
     params: Promise<{ locale: string }>;
 };
 
-const TITLE = 'Реклама и вознаграждение';
+const KINDS = ['job', 'bank', 'blogger'] as const;
+const SECTIONS = ['reward', 'distributor', 'partners'] as const;
 
-export const metadata: Metadata = {
-    title: TITLE,
-    robots: { index: false, follow: false },
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+    const locale = await getLocaleFromParams(params);
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.ads' });
+    return { title: t('title'), robots: { index: false, follow: false } };
+}
 
 export default async function AdsPage({ params }: Props) {
     const locale = await getLocaleFromParams(params);
+    const t = await getTranslations({ locale, namespace: 'LegalDocs.ads' });
+    const values = legalValues(locale);
 
     const sections = [
         {
             id: 'kinds',
-            title: 'Что на сайте — реклама',
+            title: t('kinds.title'),
             content: (
                 <>
-                    <p>Реклама на сайте — это реферальные ссылки и код приглашения. Все они отмечены пометкой «Реклама»:</p>
+                    <p>{t('kinds.intro')}</p>
                     <ul className='legal-list grid gap-5'>
-                        <li>
-                            <b>Код приглашения Ozon Job.</b> Если вы установите приложение, введёте наш код и выполните условия
-                            акции, Ozon может выплатить нам вознаграждение. Рекламодатель — ООО «Интернет Решения», ИНН 7704217370.
-                        </li>
-                        <li>
-                            <b>Приглашения Ozon Банка</b> — Ozon Карта, кредитная и зарплатная карты, перевод пенсии, регистрация
-                            бизнеса и счёт для бизнеса (раздел <Link href='/stocks' className='color-5-100'>«Акции»</Link>).
-                            Рекламодатель — ООО «ОЗОН Банк», лицензия Банка России № 3542 от 12.04.2023. Подписку Ozon Premium
-                            оказывает ООО «Интернет Решения».
-                        </li>
-                        <li>
-                            <b>Приглашение в Ozon Blogger</b> — партнёрскую программу Ozon для авторов каналов в MAX и ВКонтакте.
-                            Рекламодатель — ООО «Интернет Решения».
-                        </li>
+                        {KINDS.map((key) => (
+                            <li key={key}>{t.rich(`kinds.items.${key}`, values)}</li>
+                        ))}
                     </ul>
                 </>
             ),
         },
-        {
-            id: 'reward',
-            title: 'Вознаграждение',
-            content: (
-                <p>
-                    Если вы оформите продукт по нашей ссылке или коду и выполните условия, организатор может выплатить нам
-                    вознаграждение. На ваш бонус и условия это не влияет. Размер собственного вознаграждения мы не публикуем:
-                    он индивидуальный и задаётся организатором. Условия акций устанавливает и может изменить только организатор —
-                    Ozon или Ozon Банк.
-                </p>
-            ),
-        },
-        {
-            id: 'distributor',
-            title: 'Кто размещает рекламу',
-            content: (
-                <p>
-                    Рекламу на сайте размещает его владелец — {OWNER.fullName} (физическое лицо). У каждой рекламы указаны
-                    пометка «Реклама» и рекламодатель; если для объявления получен идентификатор рекламы (erid), он указан
-                    рядом с пометкой.
-                </p>
-            ),
-        },
-        {
-            id: 'partners',
-            title: 'Реклама от партнёров',
-            content: (
-                <p>
-                    Предложения о рекламе и партнёрстве рассматриваем индивидуально — контакты на странице{' '}
-                    <Link href='/menu/cooperation' className='color-5-100'>«Сотрудничество»</Link>. Мы размещаем рекламу только
-                    с маркировкой по закону «О рекламе» и не размещаем объявления, которые выдают себя за Ozon или обещают
-                    гарантированный доход.
-                </p>
-            ),
-        },
+        ...SECTIONS.map((id) => ({
+            id,
+            title: t(`${id}.title`),
+            content: <p>{t.rich(`${id}.text`, values)}</p>,
+        })),
     ];
 
-    return <LegalDoc locale={locale} href='/menu/ads' title={TITLE} sections={sections} />;
+    return <LegalDoc locale={locale} href='/menu/ads' sections={sections} />;
 }
