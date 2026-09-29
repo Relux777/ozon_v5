@@ -1,0 +1,1448 @@
+{
+  "ManifestGlobal": {
+    "SiteName": "Ozon Work",
+    "SiteDescription": "Warehouse operator jobs — Ozon Work, daily payouts"
+  },
+  "Metadata": {
+    "siteName": "Ozon Work"
+  },
+  "A11y": {
+    "themeToggle": "Change theme",
+    "chooseLanguage": "Choose language",
+    "close": "Close",
+    "breadcrumbs": "Breadcrumbs",
+    "scrollTop": "Back to top"
+  },
+  "LanguageModal": {
+    "title": "Choose a language"
+  },
+  "Header": {
+    "title": "Ozon Work"
+  },
+  "NavBar": {
+    "home": "Home",
+    "promotions": "Offers",
+    "warehouses": "Warehouses",
+    "menu": "Menu"
+  },
+  "NotFoundPage": {
+    "title": "Page not found",
+    "description": "The link may be outdated or the address may contain a typo.",
+    "home": "Go to home page"
+  },
+  "ErrorPage": {
+    "title": "Something went wrong",
+    "retry": "Try again"
+  },
+  "SkladSearch": {
+    "label": "City search",
+    "placeholder": "Enter a city name",
+    "found": "Cities found: {count}",
+    "empty": "City not found. Try changing your search.",
+    "count": "{count, plural, one {# warehouse} other {# warehouses}}",
+    "noData": "Addresses pending",
+    "listLabel": "List of cities"
+  },
+  "SkladPage": {
+    "title": "Ozon warehouses by city: addresses, income, health insurance and meals",
+    "description": "Cities where you can work as an Ozon warehouse operator: warehouse addresses, income, health insurance, meals and transport to the warehouse. Choose your city.",
+    "heading": "Choose your city",
+    "lead": "Find your city and see warehouse addresses, income and bonuses for warehouse operators."
+  },
+  "CityPage": {
+    "titleWithData": "Part-time work at Ozon warehouses in {city}: Ozon Job, addresses, payouts",
+    "titleNoData": "Part-time work at Ozon warehouses in {city}: how to start shifts via Ozon Job",
+    "descriptionWithData": "Ozon warehouses in {city}: full addresses and part-time work through the Ozon Job app — slots from 4 to 12 hours, payouts to your card from 3 hours, civil-law contract or self-employment.",
+    "descriptionNoData": "Part-time work at Ozon warehouses in {city} through the Ozon Job app: slots from 4 to 12 hours, payouts to your card from 3 hours, civil-law contract or self-employment.",
+    "heading": "Ozon warehouses in {city}: part-time work via Ozon Job",
+    "heroKicker": "Ozon Job · {city}",
+    "heroAddresses": "Warehouse addresses",
+    "heroBonus": "Invitation code bonus",
+    "leadWithData": "Choose the warehouse, day and shift length right in the Ozon Job app — money reaches your card 3–12 hours after the slot. Below are full warehouse addresses in {city}, conditions and how to get started.",
+    "leadNoData": "Work shifts at Ozon warehouses through the Ozon Job app: you choose the day and slot length, payouts from 3 hours. We don't have warehouse addresses for {city} yet — the app will show nearby warehouses after you sign up.",
+    "incomeRange": "{from, number} to {to, number} ₽/month",
+    "incomeUpTo": "up to {to, number} ₽/month",
+    "incomeFrom": "from {from, number} ₽/month",
+    "why": {
+      "eyebrow": "Warehouses · {city}",
+      "title": "Ozon warehouses in {city}: addresses and conditions",
+      "lead": "Addresses and conditions come from Ozon's staff vacancies page (career.ozon.ru). Ozon Job offers more warehouses: over 500 across Russia, including mini-warehouses — the app will show the list for your city.",
+      "countLabel": "{count, plural, one {Ozon warehouse} other {Ozon warehouses}} in and around {city}",
+      "countShare": "{count} of {total} warehouses in our database",
+      "incomeTitle": "How much you can earn",
+      "staffTitle": "On staff",
+      "averageValue": "up to {value, number} ₽/month",
+      "fromValue": "from {value, number} ₽/month",
+      "averageLabel": "average across the city's warehouses on a full schedule — according to career.ozon.ru",
+      "incomeLabel": "on a full schedule — according to career.ozon.ru",
+      "averageNote": "Average across our whole database — up to {national, number} ₽/month.",
+      "above": "{percent}% above average",
+      "below": "{percent}% below average",
+      "equal": "About average",
+      "jobTitle": "Via Ozon Job",
+      "jobText": "You are paid for each slot: number of operations × warehouse rate. Your monthly total depends on how many slots you take — this is not a staff salary.",
+      "jobSlots": "{count, plural, one {# slot} other {# slots}} per month",
+      "jobScenarios": [
+        "1–2 shifts a week",
+        "2–3 shifts a week",
+        "5 shifts a week"
+      ],
+      "jobNote": "The app shows the expected payout per hour and per 12-hour slot for each warehouse — based on the average income of the “Diamond” level.",
+      "toAddresses": "See addresses"
+    },
+    "perksTitle": "What the warehouses offer",
+    "perksLead": "How many of the city's warehouses offer each benefit — according to staff vacancies. The mark at the bottom of the card shows whether it applies to part-time work via Ozon Job.",
+    "perks": {
+      "transport": "Transport to the warehouse from your city",
+      "training": "Job training",
+      "meal": "Meals",
+      "dms": "Health insurance"
+    },
+    "perksNote": {
+      "transport": "Company transport to the warehouse and back",
+      "training": "A mentor and training from day one",
+      "meal": "Set lunches or meal allowance",
+      "dms": "Voluntary health insurance"
+    },
+    "perksJob": {
+      "transport": "Also available in Ozon Job",
+      "training": "In Ozon Job the first slot is a training one",
+      "meal": "For Ozon Job — check at the warehouse",
+      "dms": "Staff only"
+    },
+    "perksShort": {
+      "transport": "Transport",
+      "training": "Training",
+      "meal": "Meals",
+      "dms": "Insurance"
+    },
+    "perksCount": "at {count} of {total, plural, one {# warehouse} other {# warehouses}}",
+    "perksNone": "not specified in our database",
+    "warehousesTitle": "Warehouse addresses in {city}",
+    "warehousesEmpty": "Warehouse addresses in this city are still pending. See current vacancies on Ozon's official page.",
+    "addresses": {
+      "lead": "Full address — based on Ozon data, with region and district added; income and conditions come from staff vacancies. The exact warehouse address will appear in the app after you book a slot.",
+      "number": "Warehouse {n}",
+      "copy": "Copy",
+      "copied": "Address copied ✓",
+      "map": "On the map",
+      "mapLabel": "Find “{address}” on Yandex Maps",
+      "more": "Show all addresses ({count})",
+      "less": "Collapse"
+    },
+    "related": {
+      "title": "Nearby cities and districts",
+      "lead": "Warehouses of {city} are also listed on these pages — pick a place closer to home."
+    },
+    "offer": {
+      "eyebrow": "Ozon Job",
+      "title": "What part-time work via Ozon Job offers",
+      "lead": "App conditions are based on job.ozon.ru and the help centre for contractors. They differ from staff work: a civil-law contract, self-employment or sole proprietorship and payment for each slot.",
+      "items": {
+        "payments": {
+          "title": "Payouts from 3 hours after the slot",
+          "text": "To an Ozon Bank card — after 3 hours (“Newcomer” and “Diamond” levels) or after 12 hours. “Diamond” can withdraw money manually once an hour. To other banks' cards — on Tuesdays."
+        },
+        "schedule": {
+          "title": "You choose the day and length",
+          "text": "Day and night slots of 4, 6, 8 or 12 hours — availability depends on the warehouse. Easy to combine with study or another job."
+        },
+        "transport": {
+          "title": "Transport to the warehouse and back",
+          "text": "Ozon Job lists transport among its conditions; the warehouses in {city} that have it are marked in the addresses above."
+        },
+        "start": {
+          "title": "Starter support — up to 6,500 ₽",
+          "text": "A promotion for new contractors: the first, training day is paid under it rather than as a regular slot."
+        },
+        "contract": {
+          "title": "Civil-law contract, self-employment or sole proprietorship",
+          "text": "Registration and the offer agreement are right in the app — no need to visit an office. Under a civil-law contract Ozon withholds the tax."
+        },
+        "tasks": {
+          "title": "You choose what to do",
+          "text": "Receiving deliveries, placement, picking, sorting or packing — you choose the process when booking a slot."
+        },
+        "transparent": {
+          "title": "You see the amount in advance",
+          "text": "The warehouse card shows the expected payout per hour and per 12-hour slot, and a detailed breakdown appears in the app the next day."
+        },
+        "bonus": {
+          "title": "Invitation code bonus",
+          "text": "Newcomers get 1,000 to 5,000 ₽: the amount depends on the warehouse of the first booking (per Ozon Job lists for September 2026). The condition is, for example, earning 30,000 ₽ within 30 days of the first shift."
+        }
+      },
+      "note": "Conditions are set by Ozon and may change — check them in the app before booking a slot."
+    },
+    "duty": {
+      "title": "What you will do",
+      "items": {
+        "scan": {
+          "title": "Receiving and scanning",
+          "text": "Receive and process goods at your station using a data collection terminal (handheld scanner)."
+        },
+        "check": {
+          "title": "Quality control",
+          "text": "Spot damaged and defective goods so they don't reach the customer."
+        },
+        "pack": {
+          "title": "Packing and sorting",
+          "text": "Prepare orders for shipping — specific tasks depend on the station and warehouse."
+        },
+        "you": {
+          "title": "What you need",
+          "text": "A passport, taxpayer number (INN) and SNILS to register in the app; bring your passport to the first shift. No experience needed — you'll be trained."
+        }
+      }
+    },
+    "nav": {
+      "summaryKicker": "In brief · {city}",
+      "summaryAverage": "On staff — on average up to {value, number} ₽/month",
+      "summaryJob": "Via Ozon Job — paid per slot, payouts from 3 hours",
+      "summaryNoData": "Warehouse addresses in this city are still pending",
+      "summaryDate": "Addresses and staff conditions — per career.ozon.ru as of {date}",
+      "data": "Our data",
+      "extrasTitle": "Useful links",
+      "official": "Ozon staff vacancies in {city}"
+    },
+    "disclaimer": "Addresses and staff conditions come from Ozon's pages (data as of {date}). Ozon Job conditions are based on job.ozon.ru and the help centre for contractors. Everything may change — check in the app.",
+    "allCities": "All cities"
+  },
+  "MenuPage": {
+    "title": "Menu",
+    "description": "Site sections, the Ozon Job app, official Ozon resources and site documents — all in one place.",
+    "heading": "Menu",
+    "lead": "Everything useful in one place: site sections, the Ozon Job app, official Ozon pages and documents.",
+    "quickTitle": "Site sections",
+    "quick": {
+      "sklad": {
+        "title": "Warehouses by city",
+        "text": "Addresses, income and conditions in your city"
+      },
+      "steps": {
+        "title": "How to start",
+        "text": "Four steps to your first shift"
+      },
+      "promo": {
+        "title": "Invitation code bonus",
+        "text": "How to enter the code and what you need to do"
+      },
+      "pay": {
+        "title": "Payouts",
+        "text": "How the payout is calculated and when the money arrives"
+      },
+      "firstDay": {
+        "title": "Documents and the first day",
+        "text": "What to bring to your first shift"
+      },
+      "level": {
+        "title": "Rating levels",
+        "text": "Points, levels and bananas: how to avoid a ban"
+      },
+      "support": {
+        "title": "Questions and answers",
+        "text": "Frequent questions about part-time work via Ozon Job"
+      },
+      "card": {
+        "title": "Ozon Card",
+        "text": "Cashback and payouts to an Ozon Bank card"
+      }
+    },
+    "appTitle": "The Ozon Job app",
+    "appText": "Booking shifts, payouts and the invitation code — all in the app. Download it from your app store.",
+    "officialTitle": "Official Ozon resources",
+    "officialText": "Conditions, rates and amounts are set by Ozon — check the original sources.",
+    "official": {
+      "job": {
+        "title": "Ozon Job",
+        "text": "Website of the app for part-time warehouse work"
+      },
+      "help": {
+        "title": "Ozon Job help centre",
+        "text": "Rules, payouts, rates and rating"
+      },
+      "career": {
+        "title": "Ozon staff vacancies",
+        "text": "Work under an employment contract"
+      }
+    },
+    "docsTitle": "About the site and documents",
+    "docs": {
+      "about": {
+        "title": "About the project",
+        "text": "Who we are and why the site is independent"
+      },
+      "privacy": {
+        "title": "Personal data processing policy",
+        "text": "What data is processed, why, and your rights"
+      },
+      "terms": {
+        "title": "Terms of use",
+        "text": "Conditions for using the site"
+      },
+      "ads": {
+        "title": "Advertising and rewards",
+        "text": "How we earn from referral links"
+      },
+      "cookies": {
+        "title": "Cookies",
+        "text": "Which cookies the site sets and how to change your choice"
+      },
+      "cooperation": {
+        "title": "Cooperation",
+        "text": "Order a site like this, advertising and contacts"
+      }
+    },
+    "note": "An independent information site — not Ozon and not its representative. Ozon is a trademark of Internet Solutions LLC."
+  },
+  "LevelPage": {
+    "title": "Ozon Job rating: levels, points and bananas",
+    "description": "How Ozon Job awards and deducts rating points, what levels from 0 to “Diamond” give you, what bananas are for and how to avoid a ban. Tables and a points calculator.",
+    "eyebrow": "Ozon Job · Rating",
+    "heading": "Ozon Job rating: levels, points and bananas",
+    "lead": "We explain what earns and loses points, what each level gives — from 0 to “Diamond” — and how to avoid a ban. Figures come from the Ozon Job app and the help centre for contractors.",
+    "facts": [
+      "Points for the last 30 days count",
+      "5 levels + “Newcomer”",
+      "Ban from 5 bananas"
+    ],
+    "pageNavLabel": "Jump to a section",
+    "pointsForms": {
+      "one": "point",
+      "few": "points",
+      "many": "points",
+      "other": "points"
+    },
+    "levelsEyebrow": "Levels",
+    "levelsTitle": "What each level gives",
+    "levelsLead": "Your level depends on your points over the last 30 days and updates within an hour after a shift. The higher it is, the earlier slot booking opens and the faster money reaches your Ozon Bank card.",
+    "levels": {
+      "level0": "Level 0",
+      "level1": "Level 1",
+      "level2": "Level 2",
+      "level3": "Level 3",
+      "diamond": "Diamond"
+    },
+    "upTo": "up to {points} points",
+    "over": "over {points} points",
+    "booking": "Book slots {n} {unit, select, hours {{n, plural, one {hour} other {hours}}} other {{n, plural, one {day} other {days}}}} ahead",
+    "payout": "Payout after {hours, plural, one {# hour} other {# hours}}",
+    "diamondExtra": "You can withdraw money manually once an hour",
+    "newbieTitle": "First — “Newcomer”",
+    "newbieText": "On your first day at the warehouse your level is “Newcomer”: the rating is still forming, payouts arrive after 3 hours and banana restrictions don't apply. Your real level appears after {hours} hours on site — or earlier if your results are very good or very poor.",
+    "levelsNote": "The app shows thresholds and booking windows for the contractor's last warehouse — they may differ at yours. Check your level in the app: Home → Profile → Rating. The level cannot be disputed.",
+    "pointsEyebrow": "Points",
+    "pointsTitle": "How points are awarded and deducted",
+    "pointsLead": "Only points from the last 30 days count in the rating — older ones expire. Only warehouse tasks count.",
+    "exampleTitle": "Example",
+    "exampleText": "Today is 30 March — points from 1 to 30 March count. The 50 points for a shift on 1 March no longer count on the 31st. Deductions work the same way: after 30 days they stop pulling your level down.",
+    "accrualsTitle": "Awards",
+    "accrualsLead": "For productivity and for how far in advance you booked.",
+    "productivityTitle": "Productivity",
+    "productivityNote": "Measured against the most productive contractors at your level: 100% means you work like the best.",
+    "productivityRow": "Productivity {pct}%",
+    "earlyTitle": "Early booking",
+    "earlyNote": "A percentage is added to productivity points — the earlier you booked, the more.",
+    "earlyLess": "Booked less than {n} {unit, select, hours {{n, plural, one {hour} other {hours}}} other {{n, plural, one {day} other {days}}}} ahead",
+    "earlyMore": "Booked more than {n} {unit, select, hours {{n, plural, one {hour} other {hours}}} other {{n, plural, one {day} other {days}}}} ahead",
+    "penaltiesTitle": "Deductions",
+    "penaltiesLead": "For low productivity, no-shows, lateness, leaving early and cancelling a booking.",
+    "lowTitle": "Productivity and no-shows",
+    "low": {
+      "lt20": "Productivity below 20%",
+      "lt5": "Productivity below 5%",
+      "noShow": "No-show: booked but didn't come"
+    },
+    "bananaChip": "+ banana",
+    "lateTitle": "Lateness and leaving early",
+    "lateText": "Deducted in proportion to the time missed. Lateness counts from the start of the booking to the first scan, leaving early — from the last scan to the end of the booking.",
+    "cancelTitle": "Cancelling a booking",
+    "cancelNote": "The earlier you cancel, the less is deducted.",
+    "cancelRow": "Cancelled less than {n} {unit, select, hours {{n, plural, one {hour} other {hours}}} other {{n, plural, one {day} other {days}}}} ahead",
+    "cancelStarted": "Cancelled after the booking started",
+    "calcEyebrow": "Calculator",
+    "calcTitle": "How many points you'll get for a slot",
+    "calcLead": "Choose your productivity and how far in advance you booked — we'll calculate using the awards table.",
+    "calcProductivity": "Productivity",
+    "calcEarly": "When you booked",
+    "calcLt20": "below 20%",
+    "calcLt5": "below 5%",
+    "calcLess": "less than {n} {unit, select, hours {{n, plural, one {hour} other {hours}}} other {{n, plural, one {day} other {days}}}} ahead",
+    "calcMore": "more than {n} {unit, select, hours {{n, plural, one {hour} other {hours}}} other {{n, plural, one {day} other {days}}}} ahead",
+    "calcResult": "Per slot",
+    "calcFormula": "{base} for productivity + {bonus}% for early booking",
+    "calcNoBonus": "The early booking bonus is added only to awards — not to deductions.",
+    "calcHint": "Intermediate values (for example, 85%) aren't listed in the app's table — use the nearest row below.",
+    "bansEyebrow": "Violations",
+    "bansTitle": "Bananas: what they're for and when you get banned",
+    "bansLead": "In Ozon Job, critical violations are called “bananas”. Each one earns a banana, and a ban starts from the fifth.",
+    "bananas": {
+      "warning": "Warning",
+      "cancel": "All bookings cancelled",
+      "ban2": "2-day ban",
+      "ban7": "7-day ban",
+      "ban30": "30-day ban"
+    },
+    "bananaCount": "{count} 🍌",
+    "reasonsTitle": "What earns a banana",
+    "reasons": [
+      "Not showing up for a booking",
+      "Productivity below 20% of the process average",
+      "Being late to an Ozon fresh mini-warehouse (dark store)"
+    ],
+    "removeTitle": "How to remove a banana",
+    "removeText": "Work slots without violations: every {slots} bookings in a row without violations remove one banana. See the history in the app: Home → Profile → Rating → More about bananas.",
+    "bansFactsTitle": "Good to know",
+    "bansFacts": [
+      "Bananas are not reset after a ban ends.",
+      "Bananas are kept when you change your cooperation type.",
+      "Restrictions don't apply to “Newcomers”.",
+      "Frequent cancellations and no-shows can lead to a permanent block — it cannot be disputed."
+    ],
+    "tipsEyebrow": "Tips",
+    "tipsTitle": "How to keep a high level",
+    "tips": [
+      {
+        "title": "Book early",
+        "text": "Booking more than 14 days ahead adds 50% to productivity points: 100 points become 150."
+      },
+      {
+        "title": "Cancel as early as possible",
+        "text": "Cancelling 48–72 hours before the start costs 20 points, less than an hour before — 150, after the booking starts — 175."
+      },
+      {
+        "title": "Better to cancel than not show up",
+        "text": "A no-show costs 200 points and a banana. Even a late cancellation is cheaper and has no banana."
+      },
+      {
+        "title": "Make your first scan right away",
+        "text": "Lateness counts until the first scan, leaving early — after the last one. Start scanning immediately and work until the booking ends."
+      },
+      {
+        "title": "Keep the pace",
+        "text": "100% productivity gives 100 points, 150% — 200. Below 20% is already a deduction."
+      },
+      {
+        "title": "A bad day will be forgotten",
+        "text": "Points and deductions older than 30 days don't count in the rating — you can recover a dropped level within a month."
+      }
+    ],
+    "faqEyebrow": "Questions",
+    "faqTitle": "Frequent questions about the rating",
+    "faq": [
+      {
+        "title": "What are bananas in Ozon Job?",
+        "text": "That's what the app calls critical violations: not showing up for a slot, productivity below 20% of the process average and being late to an Ozon fresh mini-warehouse. Each violation earns one banana."
+      },
+      {
+        "title": "How many bananas until a ban?",
+        "text": "1–3 bananas — a warning, 4 — all bookings are cancelled, 5 — a 2-day ban, 6 — 7 days, 7 or more — 30 days. Bananas are not reset after a ban."
+      },
+      {
+        "title": "How do I remove a banana?",
+        "text": "Work slots without violations: every 3 bookings in a row without violations remove one banana."
+      },
+      {
+        "title": "How do I raise my level in Ozon Job?",
+        "text": "Earn points: productivity (up to 200 points per slot), early booking (up to +50% on top), no no-shows or late cancellations. Only the last 30 days count, and the level updates within an hour after a shift."
+      },
+      {
+        "title": "How many points are deducted for cancelling a booking?",
+        "text": "From 20 points when cancelling less than 72 hours ahead to 150 — less than an hour ahead; after the booking starts — 175. A no-show costs 200 points and a banana, so if you can't make it, it's better to cancel."
+      },
+      {
+        "title": "When does a newcomer get a level?",
+        "text": "At first the level is “Newcomer”: the rating is forming, banana restrictions don't apply and payouts arrive after 3 hours. The level appears after 55 hours on site — or earlier if results are very good or very poor."
+      },
+      {
+        "title": "What does the “Diamond” level give?",
+        "text": "Booking slots a year ahead, payouts to an Ozon Bank card after 3 hours and manual withdrawals once an hour. According to the scale in the app, it requires more than 599 points over 30 days."
+      }
+    ],
+    "ctaKicker": "Advertisement · Ozon Job",
+    "ctaTitle": "Not working via Ozon Job yet?",
+    "ctaText": "Enter the invitation code when registering in the app. The bonus is credited when you complete tasks worth an amount that depends on the warehouse; only those who haven't worked at Ozon before can take part.",
+    "ctaCodeLabel": "Invitation code",
+    "ctaCopy": "Copy",
+    "ctaCopied": "Copied ✓",
+    "ctaLink": "How to get the bonus",
+    "sourcesTitle": "Sources",
+    "sourcesNote": "Figures come from the Ozon Job app (the “Rating”, “How we calculate the rating” and “Violations” sections) and the help centre for contractors (checked {date}). Ozon may change the rules — current values are always in the app. An independent information site — not Ozon and not its representative.",
+    "backLink": "← Back to menu"
+  },
+  "StocksPage": {
+    "title": "Ozon invitation offers: Ozon Bank, Premium, Ozon Blogger",
+    "description": "Ozon Bank invitations and ways to earn with Ozon in one place: Ozon Card, credit card, Premium, salary card, pension, business account, Ozon Blogger and the Ozon Job code.",
+    "eyebrow": "Offers · Ozon Bank and Ozon",
+    "heading": "Ozon invitation offers",
+    "lead": "We've gathered Ozon Bank invitations and ways to earn with Ozon in one place: what you get, what you need to do and by when. The link in each card opens the official page with the conditions.",
+    "pageNavLabel": "Jump to a section",
+    "factCount": "{count, plural, one {# Ozon Bank offer} other {# Ozon Bank offers}}",
+    "factEarn": "Earning: Ozon Job and Ozon Blogger",
+    "factChecked": "Conditions checked {date}",
+    "filterLabel": "Which offers to show",
+    "filters": {
+      "all": "All",
+      "personal": "For yourself",
+      "business": "For business",
+      "earn": "Earning"
+    },
+    "ad": "Advertisement",
+    "advertiser": {
+      "bank": "OZON Bank LLC",
+      "ozon": "Internet Solutions LLC"
+    },
+    "advertiserLabel": "Advertiser: {name}",
+    "youGet": "You get",
+    "stepsTitle": "What you need to do",
+    "open": "Apply",
+    "openLabel": "{name}: apply by invitation — the official page will open",
+    "copy": "Copy",
+    "copied": "Copied ✓",
+    "offers": {
+      "debit": {
+        "name": "Ozon Card",
+        "kicker": "Debit card",
+        "benefit": "A free card with up to 25% cashback",
+        "perks": [
+          "Up to 25% cashback in rubles or items for 1 ₽ on Ozon",
+          "Fee-free transfers to other banks — up to 30 million ₽",
+          "Card issue and service — 0 ₽"
+        ],
+        "steps": [
+          "Order the card within 72 hours of following the link",
+          "Receive and activate the card",
+          "Make 5 purchases outside Ozon with it within 45 days — QR code and SBP payments don't count"
+        ],
+        "note": "Missed the 72 hours? Open the link again and the countdown restarts."
+      },
+      "credit": {
+        "name": "Credit card",
+        "kicker": "Ozon Bank",
+        "benefit": "Up to 30% off on Ozon at the “green price”",
+        "perks": [
+          "Apply online in a couple of minutes, no certificates needed",
+          "Pay with a virtual card via Mir Pay — ordering a plastic card is optional"
+        ],
+        "steps": [
+          "Fill in the application within 72 hours of following the link",
+          "If the bank approves the card, sign the credit agreement",
+          "Make purchases outside Ozon worth 1,000 ₽ with the card within 90 days"
+        ],
+        "note": "The bank decides whether to issue the card. Check the loan terms and its full cost (APR) on the bank's page before signing the agreement."
+      },
+      "premium": {
+        "name": "Ozon Premium",
+        "kicker": "Subscription",
+        "benefit": "A free month of subscription",
+        "perks": [
+          "5 cashback categories on the Ozon Card instead of 4",
+          "Transaction notifications — 0 ₽ instead of 99 ₽ a month",
+          "Films, series and TV at no extra cost"
+        ],
+        "steps": [
+          "Subscribe to Ozon Premium via the link",
+          "Pay for the first month",
+          "The next month is free"
+        ],
+        "note": "The subscription renews automatically — keep an eye on the next charge date."
+      },
+      "salary": {
+        "name": "Salary card",
+        "kicker": "Payroll project",
+        "benefit": "Salary on a card with up to 25% cashback",
+        "perks": [
+          "Up to 25% cashback in rubles or items for 1 ₽ on Ozon",
+          "Fee-free transfers to other banks — up to 30 million ₽",
+          "Fee-free cash withdrawals — up to 1 million ₽ at partner ATMs"
+        ],
+        "steps": [
+          "Upgrade your account level to Extended or Maximum",
+          "Order, receive and activate the card within 10 days",
+          "Send the details to your employer and receive your salary on them",
+          "Make one purchase outside Ozon with the card — you have 90 days"
+        ],
+        "note": "Not eligible if your salary already goes to an Ozon Bank card."
+      },
+      "pension": {
+        "name": "Pension to Ozon Bank",
+        "kicker": "For pensioners",
+        "benefit": "Utilities and phone bills — no fees",
+        "perks": [
+          "No fees for utility and mobile payments",
+          "Free service and transaction notifications",
+          "Deposits and savings accounts are state-insured"
+        ],
+        "steps": [
+          "Upgrade your account level to Extended or Maximum — you have 14 days",
+          "Apply to transfer your pension via Gosuslugi or an MFC — you'll need a passport and SNILS",
+          "Receive your first pension, activate the card and make one purchase outside Ozon"
+        ],
+        "note": "The Social Fund usually reviews the application within 10 days. You have 90 days from following the link to make the purchase."
+      },
+      "bizReg": {
+        "name": "Business registration",
+        "kicker": "For sole proprietors and LLCs",
+        "benefit": "Registering a sole proprietorship or LLC — free",
+        "perks": [
+          "The bank prepares the documents and submits them to the tax service",
+          "No state fee — save up to 4,000 ₽",
+          "Everything online, without leaving home"
+        ],
+        "steps": [
+          "Submit a registration request within 10 days of following the link",
+          "Register a sole proprietorship or LLC",
+          "Make a 1,000 ₽ transaction on your Ozon Bank business account"
+        ],
+        "note": "Suitable for those just starting a business."
+      },
+      "bizAccount": {
+        "name": "Business account",
+        "kicker": "For sole proprietors and LLCs",
+        "benefit": "Opening and service — 0 ₽",
+        "perks": [
+          "Free online accounting — for sole proprietors without employees",
+          "Apply online: if you already have a business, the account opens quickly"
+        ],
+        "steps": [
+          "Apply for an account within 72 hours of following the link",
+          "Make transactions worth 1,000 ₽ or more from the account within 30 days"
+        ],
+        "note": "Not eligible if you already have an Ozon Bank business account or applied within the last 14 days."
+      },
+      "blogger": {
+        "name": "Ozon Blogger",
+        "kicker": "For bloggers",
+        "benefit": "1,000 Ozon welcome points",
+        "perks": [
+          "Income from orders via your links — payouts twice a month",
+          "Ready-made ad labelling — no need to get an erid",
+          "A MAX channel or a VKontakte community works — from 1 subscriber"
+        ],
+        "steps": [
+          "Sign up via the link — you'll need bank details and self-employed status (an Ozon Profit account)",
+          "Connect a MAX or VKontakte channel and pass verification",
+          "Choose products in the catalogue and publish your first post with a ready-made link"
+        ],
+        "note": "For Russian citizens aged 18+ with self-employed status. Not available to Ozon sellers and employees."
+      }
+    },
+    "earnEyebrow": "Earning",
+    "earnTitle": "Earn with Ozon",
+    "earnLead": "Two programmes where Ozon itself pays: part-time warehouse work via the Ozon Job app and the Ozon Blogger affiliate programme for bloggers.",
+    "howEyebrow": "How it works",
+    "howTitle": "Three steps to the benefit",
+    "stepLabel": "Step {n} of {total}",
+    "how": [
+      {
+        "title": "Choose an offer",
+        "text": "Click “Apply” in the card — the Ozon Bank invitation page with your conditions will open."
+      },
+      {
+        "title": "Apply in time",
+        "text": "You usually have 72 hours or 10 days to apply — the deadline is in the card under “What you need to do”."
+      },
+      {
+        "title": "Meet the conditions",
+        "text": "For example, make purchases with the card outside Ozon. Perks and bonuses are credited by the bank — under its own rules and timelines."
+      }
+    ],
+    "faqEyebrow": "Questions",
+    "faqTitle": "Frequent questions about the offers",
+    "faq": [
+      {
+        "title": "What is an invitation and why follow the link?",
+        "text": "It's a link from Ozon Bank's “Bring a friend” programme. With it, you get a product on the terms for invited customers — the bank shows them on the invitation page."
+      },
+      {
+        "title": "How much time do I have after following the link?",
+        "text": "It depends on the product: order a debit card within 72 hours, apply for a credit card or business account within 72 hours, submit a business registration request within 10 days. Missed the debit card deadline? Open the link again and the countdown restarts."
+      },
+      {
+        "title": "Which purchases count?",
+        "text": "Purchases with an Ozon Bank card outside Ozon. QR code and SBP payments don't count. A purchase counts after 3–5 days, once the bank processes the transaction."
+      },
+      {
+        "title": "Does the invitation work if I'm already an Ozon Bank customer?",
+        "text": "It depends on the product. For example, the salary card invitation won't count if your salary already goes to Ozon Bank, and the business account one — if you already have an account or applied within the last 14 days. Exact conditions are on the invitation page."
+      },
+      {
+        "title": "Do I need to be self-employed?",
+        "text": "Not for Ozon Bank products. For Ozon Blogger — yes: rewards are paid only to self-employed Russian citizens via Ozon Profit, twice a month. You can work part-time via Ozon Job under a civil-law contract, as self-employed or as a sole proprietor."
+      },
+      {
+        "title": "Is it paid?",
+        "text": "No. Following the link is free, and you pay nothing to the site. Product rates and conditions are set by Ozon and Ozon Bank."
+      },
+      {
+        "title": "Are you Ozon or Ozon Bank?",
+        "text": "No. This is an independent information site: we've gathered invitations and summarised the conditions from Ozon and Ozon Bank help pages. Only they decide on issuing a card, opening an account or joining a programme."
+      }
+    ],
+    "jobKicker": "Advertisement · Ozon Job",
+    "jobTitle": "Part-time warehouse work via Ozon Job",
+    "jobText": "Enter the invitation code when registering in the Ozon Job app. The bonus is credited when you complete tasks worth an amount that depends on the warehouse. Only those who haven't worked at Ozon before can take part.",
+    "jobCodeLabel": "Invitation code",
+    "jobCopy": "Copy",
+    "jobLink": "How to get the bonus",
+    "skladLink": "Warehouses by city",
+    "aboutTitle": "Advertising and conditions",
+    "checked": "Conditions checked {date} against the Ozon Bank help centre, Ozon Blogger pages and the invitations themselves. They may change at any time — check the conditions on the official page before applying.",
+    "disclosure": "Advertisement. We are an independent information site, not Ozon or Ozon Bank. The links on this page are personal invitations from Ozon Bank's “Bring a friend” and Ozon Blogger programmes: if you get a product or sign up through them and meet the conditions, we may receive a reward — this doesn't affect your terms. Banking services are provided by OZON Bank LLC, Bank of Russia licence No. 3542 of 12.04.2023; the Ozon Premium subscription and the Ozon Blogger programme — by Internet Solutions LLC. The bank decides whether to issue a card or open an account.",
+    "adsLink": "How the site earns from links",
+    "helpLink": "“Bring a friend” rules in the Ozon Bank help centre",
+    "bloggerLink": "Ozon Blogger terms"
+  },
+  "Cookies": {
+    "title": "Cookies on this site",
+    "text": "Necessary cookies remember your language and your choice. Analytics cookies are enabled only if you click “Accept”.",
+    "more": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline",
+    "settings": "Change cookie choice",
+    "statusAll": "Current setting: analytics allowed",
+    "statusNecessary": "Current setting: necessary cookies only",
+    "statusNone": "You have not made a choice yet"
+  },
+  "Legal": {
+    "updated": "Version of {date}",
+    "ruOnly": "This document is published in Russian — the Russian version is legally binding."
+  },
+  "Contacts": {
+    "email": "Email",
+    "phone": "Phone",
+    "telegram": "Telegram",
+    "hoursLabel": "When we reply",
+    "hours": "Daily from {from} to {to} (Moscow time)"
+  },
+  "SupportPage": {
+    "title": "Ozon Job questions and answers: registration, shifts, payouts, rating",
+    "description": "Answers to frequent questions about part-time work via Ozon Job: registration and documents, booking and cancelling shifts, payouts and taxes, penalties and rating, the invitation code bonus. Based on the Ozon Job help centre.",
+    "eyebrow": "Questions and answers",
+    "heading": "Questions and answers about part-time work via Ozon Job",
+    "lead": "We've gathered answers to frequent questions — from registration to payouts, rating and bonuses. Facts come from the Ozon Job help centre for contractors. Didn't find an answer? We'll tell you where to write.",
+    "count": "{count, plural, one {# question} other {# questions}}",
+    "checked": "Checked {date}",
+    "contactsChip": "Contact us",
+    "topicsLabel": "Question topics",
+    "pageNavLabel": "Question topics",
+    "topics": {
+      "account": {
+        "title": "Registration and documents",
+        "lead": "Who can work, what you need to register and how to manage your account.",
+        "more": "Documents and the first day",
+        "items": [
+          {
+            "title": "How do I register in Ozon Job?",
+            "text": "Download the app, tap “Join” and sign in with your phone number. Choose a warehouse and citizenship, confirm your details via Gosuslugi or Ozon Bank, enter your INN and SNILS, choose a cooperation type and fill in your bank details. Once your profile is checked, you can book your first slot."
+          },
+          {
+            "title": "Can foreign citizens work?",
+            "text": "You can register, including with a patent: you'll need a document confirming your grounds for staying in Russia and an account in your own name. But according to the Ozon Job help centre, foreign citizens can currently book only bicycle delivery, not warehouse slots. The patent must be renewed and paid on time — otherwise the contract is terminated."
+          },
+          {
+            "title": "Do I need a medical record book?",
+            "text": "No, Ozon warehouses don't require one. If you already have one, bring it to your first shift."
+          },
+          {
+            "title": "How do I change my personal details or phone number?",
+            "text": "Your details come from Gosuslugi or Ozon Bank at registration — correct them there, then write to Ozon Job support. After registration you can't change your phone number: you can terminate the contract and register again with a new number."
+          },
+          {
+            "title": "Can I change my cooperation type?",
+            "text": "Yes, Russian citizens can do this up to 10 times in total: Profile → “About me” → “Cooperation type”. First wait for payouts for completed slots: after changing the type you won't be able to receive them."
+          },
+          {
+            "title": "How do I terminate the contract?",
+            "text": "In your profile: “About me” → “Terminate contract”. You can do this if you have no outstanding penalties, all slots are completed and payouts have arrived. Payout history and documents stay in the app, and you can resume cooperation no more than 5 times."
+          }
+        ]
+      },
+      "shifts": {
+        "title": "Shifts and the first day",
+        "lead": "How to book, cancel a booking and what to expect at the warehouse.",
+        "more": "First steps: from registration to your shift",
+        "items": [
+          {
+            "title": "What shifts are there?",
+            "text": "Day and night slots of 4, 6, 8 or 12 hours. Availability depends on the warehouse: some have only 12-hour slots. If the warehouse you want isn't listed, all its slots are taken or your profile has a different region."
+          },
+          {
+            "title": "Can I reschedule or cancel a booking?",
+            "text": "You can't change a booking — only cancel it (“Bookings” → booking → “Cancel”) and book a new slot. Cancel 48 hours ahead or earlier: late cancellation lowers your rating, and according to the help centre, cancelling less than an hour before the start or not showing up leads to a 2-day block. A slot that has started can't be cancelled."
+          },
+          {
+            "title": "Why was my booking cancelled?",
+            "text": "Ozon may cancel a booking itself: if you booked training right after registering and your profile hasn't been checked yet — 4 hours before the start; if a newcomer (under 55 hours on site) booked more than 7 days ahead; if a mandatory online course with a deadline isn't completed 3 hours before the slot. Check the app before leaving home."
+          },
+          {
+            "title": "What should I bring and wear?",
+            "text": "A passport, INN and SNILS — you can show them electronically. At a regular warehouse you get a protective kit: its cost is withheld from payouts, and 1,500 ₽ is returned after a certain number of operations under the offer. Ozon fresh mini-warehouses don't provide a kit — you need flat closed-toe shoes with a firm heel, trousers and a T-shirt. Phones, food and personal belongings are not allowed in the goods storage area."
+          },
+          {
+            "title": "What happens if I'm late?",
+            "text": "The warehouse may not let you start the slot that day, and lateness lowers your rating. If the bus to the warehouse is late, dispatchers usually warn the warehouse — you'll be let in. Arrive 30 minutes before the start: you need to pass the checkpoint and change."
+          },
+          {
+            "title": "What are trips?",
+            "text": "Booking slots in another city with a hostel stay — for Russian citizens over 18 with a suitable rating level. Accommodation isn't free: its cost is withheld from payouts per day, plus 6 ₽ for the booking; you pay for travel yourself. You can cancel a trip no later than 24 hours ahead."
+          },
+          {
+            "title": "Can I combine it with a main job or move to staff?",
+            "text": "You can combine them: slots under a civil-law contract don't interfere with your main job. Ozon offers experienced contractors who are Russian citizens a move to staff with a fixed schedule at one warehouse: apply in the app (Profile → “About me” → “Cooperation type” → “Staff employee”)."
+          }
+        ]
+      },
+      "money": {
+        "title": "Payouts and taxes",
+        "lead": "When and how much you're paid, where the money goes and who pays the tax.",
+        "more": "How the payout is calculated and when the money arrives",
+        "items": [
+          {
+            "title": "Why is the payout lower than expected?",
+            "text": "The expected payout is a guide based on average productivity, not a guarantee. The result depends on the number of operations and the rate; tax, penalties and deductions — for example, for the protective kit — are subtracted. A detailed breakdown appears in the app the day after the slot."
+          },
+          {
+            "title": "The payout didn't arrive — what should I do?",
+            "text": "Open “Payouts” → “Account history”: the app shows the reason for a failed transaction. Common ones are a wrong BIC or account number, different details at the bank and in Ozon Job, a closed or frozen account, or penalties exceeding earnings. If the payout is under additional review, it will arrive within 14 days."
+          },
+          {
+            "title": "Can I receive money on another bank's card?",
+            "text": "Yes: “Payouts” → “Bank details” → “Change bank details”. The account number must start with 40817 or 40914; money arrives once a week, on Tuesdays. After changing details, payouts are paused for 3 hours for verification. Self-employed people, sole proprietors and foreign citizens can only specify their own account."
+          },
+          {
+            "title": "Who pays the tax if I'm self-employed?",
+            "text": "From 1 October 2026, Ozon Job withholds and pays the tax for all self-employed contractors (for new ones — from 26 August 2026). If you paid yourself via “My Tax” or an automatic bank payment, turn it off so the tax isn't charged twice. The amount is shown in “Payouts” → “Automatic tax payment”."
+          },
+          {
+            "title": "How do I get a 2-NDFL certificate?",
+            "text": "If you work under a civil-law contract: “Payouts” → “2-NDFL certificates” → “Generate certificate”, choose the year. It takes 3 working days; for the current year it includes only full past months. Ozon Job doesn't issue other certificates."
+          },
+          {
+            "title": "Is sick leave paid?",
+            "text": "Under a civil-law contract — yes, if last year's contributions are at least the cost of an insurance year (minimum wage × regional coefficient × 2.9% × 12). Ozon Job pays the first 3 days, the Social Fund pays the rest. Write to the support chat and attach the sick note, a Social Fund statement and an application."
+          }
+        ]
+      },
+      "rating": {
+        "title": "Rating, penalties and blocks",
+        "lead": "What affects your level, what money is withheld for and what gets you blocked.",
+        "more": "Levels, points and the rating calculator",
+        "items": [
+          {
+            "title": "How does the rating work?",
+            "text": "Your level depends on points over the last 30 days. Points are awarded for productivity and early booking and deducted for low productivity, lateness, late cancellations and no-shows. The higher the level, the earlier booking opens and the faster payouts arrive."
+          },
+          {
+            "title": "What gets you blocked?",
+            "text": "The main reason is “bananas” for no-shows and violations: at the 4th banana all bookings are cancelled, at the 5th — a 2-day ban, the 6th — 7 days, from the 7th — 30 days. One banana is removed for 3 slots in a row without violations. Self-employed contractors who cancel receipts lose access for a year."
+          },
+          {
+            "title": "What penalties and deductions are there?",
+            "text": "The cost of trip accommodation and the protective kit is withheld, as well as penalties and claims — for breaking rules and safety requirements, losing or damaging goods. For first violations of some rules you get a warning first. For self-employed people and sole proprietors, debt is withheld in parts — no more than 50% of the payout per slot. Everything is shown in “Payouts” → “Deductions and errors”."
+          },
+          {
+            "title": "How do I appeal a penalty?",
+            "text": "Within 3 days of the debt appearing, write a free-form objection to support explaining why you disagree. If the penalty is cancelled, it will appear in “Payouts” → “Deductions and errors” → “Archive” with the status “Cancelled”."
+          }
+        ]
+      },
+      "bonus": {
+        "title": "Bonuses and promotions",
+        "lead": "The invitation code, “Starter support” and other payouts.",
+        "more": "The invitation code and how to enter it",
+        "items": [
+          {
+            "title": "How do I get the invitation code bonus?",
+            "text": "Enter the code in the app — on the home screen, on the promotion page or in Profile → “Bring a friend” — and meet the conditions. Operations count at the warehouse you chose for your first booking. The amount depends on the warehouse: per Ozon Job lists for September 2026 — 1,000 to 5,000 ₽; the condition is, for example, earning 30,000 ₽ within 30 days of the first shift."
+          },
+          {
+            "title": "Who can take part in “Bring a friend”?",
+            "text": "The invited person must not have worked at Ozon before. The inviter must have completed tasks on at least one slot — they'll find their code in Profile → “Bring a friend”. The code changes when the contract is re-signed."
+          },
+          {
+            "title": "What is “Starter support”?",
+            "text": "A promotion for newcomers: the first, training day is paid under it rather than as a regular slot — up to 6,500 ₽ according to job.ozon.ru. Complete the online courses before your shift: at the warehouse you'll manage more operations and earn more."
+          },
+          {
+            "title": "Are there other bonuses?",
+            "text": "Yes: warehouse promotions in the app, points at Ozon fresh mini-warehouses — up to 150 per slot (1 point = 1 ₽ for goods from the fresh showcase, valid for a month), partner discounts and contests. The conditions of each promotion are in the app."
+          }
+        ]
+      },
+      "site": {
+        "title": "About the site",
+        "lead": "Who we are and how we can help.",
+        "more": "About the project",
+        "items": [
+          {
+            "title": "Is this Ozon's official site?",
+            "text": "No. This is an independent information site: we are not Ozon, not an employer and not Ozon's representative. Working conditions, payouts and account decisions are determined only by Ozon — check with the Ozon Job app and the docs.ozon.ru help centre."
+          },
+          {
+            "title": "How does the site earn money?",
+            "text": "From referral links and the invitation code marked “Advertisement”: if you sign up through them and meet the conditions, Ozon or Ozon Bank may pay us a reward. This doesn't affect your bonus or conditions."
+          },
+          {
+            "title": "Can you help with a payout, rating or account?",
+            "text": "No: we have no access to Ozon accounts or data. For any account questions, write to the support chat in the Ozon Job app. If someone in chats or social networks asks for an SMS code or card details “for a payout”, they are scammers."
+          },
+          {
+            "title": "Found an error or outdated data?",
+            "text": "Write to us by email or Telegram — contacts are on this page. Check dates are shown in every section of the site, and Ozon's conditions change: we try to update the data in time."
+          },
+          {
+            "title": "What data does the site collect?",
+            "text": "There are no forms or registration on the site. The site remembers your language and your cookie choice, and we enable analytics only with your consent. More details are in the personal data processing policy and on the cookie page."
+          }
+        ]
+      }
+    },
+    "sourceNote": "Answers are based on the Ozon Job help centre for contractors (checked {date}). Conditions are set by Ozon and may change — check them in the app.",
+    "helpLink": "Ozon Job help centre",
+    "ozonTitle": "A question about your account?",
+    "ozonText": "Payouts, bookings, penalties and account data are handled only by Ozon Job support: in the app open “Messages” and choose a topic. We are an independent site and can't see your account.",
+    "ozonLink": "Ozon Job help centre",
+    "safety": "Never share your SMS code, password or card details — not with us, and not with “Ozon employees” in chats and social networks.",
+    "contactsKicker": "Contact us",
+    "contactsTitle": "Questions about the site and cooperation",
+    "contactsText": "Found an error or outdated data? Want to order a promotional site like this for your company? Write or call.",
+    "mailSubject": "Question from the Ozon Work site",
+    "cooperationLink": "More about cooperation",
+    "privacyNote": "How we handle requests is described in the <link>personal data processing policy</link>."
+  },
+  "CooperationPage": {
+    "title": "Cooperation: order a promotional website",
+    "description": "Order the frontend of a promotional website for your company — like this one: Next.js and React, several languages, SEO for cities and queries, a fast mobile version. Email, phone, Telegram — daily from {from} to {to} Moscow time.",
+    "eyebrow": "Cooperation",
+    "heading": "Order a site like this for your company",
+    "lead": "We build frontends for promotional websites — like this one: multilingual, fast on phones, with SEO for cities and queries and a careful legal part. Suitable for employers, recruitment agencies, affiliate and referral projects.",
+    "factLanguages": "9 languages on one site",
+    "factPages": "500+ pages for search",
+    "factHours": "Available from {from} to {to} (Moscow time)",
+    "ctaMail": "Discuss a project",
+    "ctaTelegram": "Message on Telegram",
+    "contactsTitle": "Contacts",
+    "contactsLead": "Tell us about the task: what company, who the site is for, which languages and the deadline. We'll reply and suggest a solution.",
+    "contactName": "Contact person — Renat Plotnikov",
+    "mailSubject": "Website order",
+    "privacyNote": "By writing to us you share your contact details — how we process them is described in the <link>personal data processing policy</link>.",
+    "featuresEyebrow": "What's included",
+    "featuresTitle": "What your company gets",
+    "featuresLead": "Everything on this site can be made for your brand, vacancies and cities.",
+    "features": [
+      {
+        "title": "A multilingual site",
+        "text": "Separate URLs and translations for each language, a language switcher and hreflang markup — every audience finds the site in search in its own language."
+      },
+      {
+        "title": "SEO for cities and queries",
+        "text": "A page for each city or service, meta tags, a sitemap, markup for search engines — traffic from Yandex and Google without constantly paying for ads."
+      },
+      {
+        "title": "Fast on any phone",
+        "text": "Light images, minimal scripts, a dark theme and thumb-friendly navigation — the site stays fast even on budget smartphones."
+      },
+      {
+        "title": "The legal part",
+        "text": "An “Advertisement” label and advertiser details, a cookie notice with “Accept” and “Decline” buttons, a policy and terms — drafts your lawyer will review faster than writing from scratch."
+      },
+      {
+        "title": "Design for your brand",
+        "text": "Brand colours, icons, animations and a clear structure — from the first screen to the call-to-action button."
+      },
+      {
+        "title": "Promotions and conversion",
+        "text": "Calculators, promo codes, referral links and contact buttons, Yandex Metrica setup — everything to turn a visitor into a client or employee."
+      }
+    ],
+    "stepsEyebrow": "How we work",
+    "stepsTitle": "From request to launch",
+    "stepLabel": "Step {n} of {total}",
+    "steps": [
+      {
+        "title": "Request",
+        "text": "Write or call: what company, who the site is for and when you need it."
+      },
+      {
+        "title": "Discussion",
+        "text": "We clarify the task, structure and languages and give you the cost and timeline."
+      },
+      {
+        "title": "Design and development",
+        "text": "We show interim versions and make changes as we go."
+      },
+      {
+        "title": "Launch",
+        "text": "We hand over the source code and help publish the site on your domain and hosting."
+      }
+    ],
+    "adsTitle": "Advertising and partnership on this site",
+    "adsText": "We consider partnership and advertising proposals individually. Ads on the site are placed only with an “Advertisement” label, advertiser details and an erid identifier — as required by the Russian law on advertising. We don't place ads that pretend to be Ozon or promise guaranteed income.",
+    "adsLink": "How advertising works on this site",
+    "termsEyebrow": "Terms",
+    "termsTitle": "What we do and on what terms",
+    "termsLead": "We build the frontend — everything a visitor sees and clicks in the browser. We don't develop the server side or databases.",
+    "doTitle": "What we do",
+    "doItems": [
+      "Layout and interface from your design or from scratch — responsive for phones and computers",
+      "A Next.js and React site: static pages, fast loading, a dark theme",
+      "Several languages, SEO markup, a sitemap and meta tags for search",
+      "Animations, calculators, filters, copying codes and links — everything that runs in the browser",
+      "A cookie notice and Yandex Metrica or Google Analytics setup with your keys"
+    ],
+    "dontTitle": "What's not included",
+    "dontItems": [
+      "Server side (backend), databases, user accounts and authentication",
+      "Payment processing, CRM integrations, processing and storing requests on a server",
+      "Legal review of documents: we provide drafts, your lawyer approves the final version",
+      "Buying a domain, hosting and paid services — they are registered to you and paid by you"
+    ],
+    "terms": [
+      {
+        "title": "Timeline",
+        "text": "Depends on the project: how many pages, languages and interactive blocks. We give an exact timeline after discussing the task, before work begins."
+      },
+      {
+        "title": "Cost",
+        "text": "Calculated individually and fixed before the start. Work beyond the agreed scope is a separate arrangement."
+      },
+      {
+        "title": "What we need from you",
+        "text": "The task and examples, a logo and brand colours, texts and photos (or we'll agree where to get them), access to the domain and hosting."
+      },
+      {
+        "title": "Revisions",
+        "text": "We show interim versions and make changes within the agreed brief."
+      },
+      {
+        "title": "Handover",
+        "text": "After payment we hand over the source code and help publish the site on your hosting."
+      },
+      {
+        "title": "Paperwork",
+        "text": "We record agreements in writing — in correspondence or a contract. Details are discussed before work begins."
+      }
+    ]
+  },
+  "HomePage": {
+    "pageNavLabel": "Jump to a section",
+    "title": "Work at Ozon: warehouse operator with daily payouts",
+    "description": "Ozon warehouse operator jobs: flexible schedule, day and night shifts, payouts daily or weekly. Employment contract, civil-law contract or self-employment. Training from scratch.",
+    "heading": "Ozon warehouse operator job: work with daily payouts",
+    "lead": "Find a warehouse in your city and see real addresses and conditions. Sign up in the Ozon Job app with an invitation code — a bonus of {amount, number} ₽* is credited after you meet the promotion conditions.",
+    "heroCity": "Choose a city",
+    "heroBonus": "Get {amount, number} ₽",
+    "features": [
+      "Money to an Ozon Bank card from 3 hours after a shift, to other banks' cards — once a week",
+      "Work under a civil-law contract, as self-employed or a sole proprietor; staff positions on request",
+      "Paid training on the first day, no experience needed",
+      "You choose your shift: day or night, 4 to 12 hours",
+      "From age 16 for Russian citizens: no night shifts, parental consent required"
+    ],
+    "stats": [
+      {
+        "value": "50,000+",
+        "label": "staff employees"
+      },
+      {
+        "value": "55+",
+        "label": "fulfilment centres"
+      },
+      {
+        "value": "65 million",
+        "label": "active customers"
+      },
+      {
+        "value": "600,000",
+        "label": "active sellers"
+      },
+      {
+        "value": "5 million m²",
+        "label": "logistics space"
+      },
+      {
+        "value": "up to 20,000 ₽",
+        "label": "bonus for a friend"
+      }
+    ],
+    "statsEyebrow": "Ozon in numbers*",
+    "statsTitle": "Why work at Ozon",
+    "statsNote": "* Figures are taken from Ozon's public sources and rounded; they are current at the time of publication and may change. The bonus for a friend depends on the warehouse and the promotion conditions. This site is independent and is not Ozon's official site.",
+    "stepsEyebrow": "First steps",
+    "stepsTitle": "How to get to your first shift",
+    "stepLabel": "Step {n} of {total}",
+    "stepsNeedsLabel": "What you'll need",
+    "stepsNote": "** Based on the Ozon Job help centre (docs.ozon.ru, checked {date}). Payout times depend on your rating level and your card's bank.",
+    "steps": [
+      {
+        "title": "Registration",
+        "text": "In the Ozon Job app: sign in via Gosuslugi or Ozon Bank. Choose a warehouse — the region is set automatically.",
+        "needs": [
+          "Gosuslugi or Ozon Bank",
+          "INN and SNILS"
+        ]
+      },
+      {
+        "title": "Cooperation type and bank details",
+        "text": "Choose a civil-law contract, self-employment or sole proprietorship and enter your account details. Your profile goes for review — the result will arrive in the app.",
+        "needs": [
+          "Civil-law · self-employed · sole proprietor",
+          "Ozon Bank card — faster payouts**"
+        ]
+      },
+      {
+        "title": "Booking a slot",
+        "text": "After the review, book a 4–12 hour slot and accept the offer agreement. Bring your documents.",
+        "needs": [
+          "4–12 hour slot",
+          "Passport, SNILS, INN"
+        ]
+      },
+      {
+        "title": "Training and the first shift",
+        "text": "The first day is on-site training at the warehouse, and it's paid. Then you get a data collection terminal — and start working.",
+        "needs": [
+          "Paid first day",
+          "Payout from 3 hours**"
+        ]
+      }
+    ],
+    "promo": {
+      "ad": "Advertisement",
+      "kicker": "Ozon Job referral programme",
+      "title": "Sign up with an invitation code — a bonus after meeting the conditions",
+      "text": "The invitation code is entered in the app. The reward isn't for installing — it's credited when you complete tasks worth the required amount at the chosen warehouse; the amount is stated in the promotion and depends on the warehouse.",
+      "termsLabel": "Conditions",
+      "terms": [
+        "Haven't worked at Ozon before",
+        "The code is entered in the app"
+      ],
+      "bonus": "Enter the code and get <sum>{amount, number} ₽</sum>*",
+      "condition": "* The bonus is credited after meeting the promotion conditions: tasks worth an amount that depends on the warehouse.",
+      "codeLabel": "Your invitation code",
+      "copy": "Copy",
+      "copied": "Copied ✓",
+      "codeHint": "Where to enter it: on the home screen, on the promotion page or in Profile → Bring a friend",
+      "storesLabel": "Download Ozon Job from an app store",
+      "stepsLabel": "How to get the bonus",
+      "steps": [
+        {
+          "title": "Download Ozon Job",
+          "text": "Open the app and tap “Join”."
+        },
+        {
+          "title": "Register",
+          "text": "Via Gosuslugi or Ozon Bank, enter your INN and SNILS, choose a warehouse."
+        },
+        {
+          "title": "Enter the code",
+          "text": "On the home screen, on the promotion page or in Profile → Bring a friend."
+        },
+        {
+          "title": "Meet the conditions",
+          "text": "Book a slot and complete tasks worth the amount stated in the promotion."
+        }
+      ],
+      "warn": "Important: only those who haven't worked at Ozon before can take part. If you've already worked with Ozon, the promotion isn't available. Conditions and amounts are set by Ozon and may change.",
+      "note": "Advertisement. We are an independent information site, not Ozon. If you register with our code, we may receive a reward from Ozon. Advertiser: Internet Solutions LLC, INN 7704217370."
+    },
+    "friend": {
+      "eyebrow": "Bring a friend",
+      "title": "How the invitation code works",
+      "lead": "Steps and rules according to the Ozon Job help centre: for those who were invited and for those who invite.",
+      "invited": {
+        "kicker": "You were invited",
+        "title": "How to apply the code",
+        "steps": [
+          {
+            "title": "Register in Ozon Job",
+            "text": "Via Gosuslugi or Ozon Bank. Only someone who hasn't worked at Ozon before can be invited."
+          },
+          {
+            "title": "Apply the code",
+            "text": "On the home screen, on the promotion page or in Profile → Bring a friend: enter the code and tap “Apply”."
+          },
+          {
+            "title": "Book slots",
+            "text": "Book and complete operations at the warehouse."
+          },
+          {
+            "title": "Track your progress",
+            "text": "How much is left to reach the required amount is shown on the promotion page."
+          }
+        ]
+      },
+      "inviter": {
+        "kicker": "You invite",
+        "title": "How to get the reward",
+        "steps": [
+          {
+            "title": "Work a slot",
+            "text": "You can invite once you've completed tasks on at least one slot."
+          },
+          {
+            "title": "Open the promotion",
+            "text": "In your account, tap the “Bring a friend” promotion."
+          },
+          {
+            "title": "Send the code",
+            "text": "Share your invitation code — your friend enters it in the Ozon Job app."
+          },
+          {
+            "title": "Get the reward",
+            "text": "When your friend completes operations worth the required amount. It arrives after tax — see Payouts → Transactions."
+          }
+        ]
+      },
+      "rulesTitle": "Good to know",
+      "rules": [
+        {
+          "title": "The amount depends on the warehouse",
+          "text": "Your friend must complete operations worth a certain amount. Operations count at the warehouse they chose for their first booking."
+        },
+        {
+          "title": "The warehouse left the promotion",
+          "text": "Progress is kept — tasks will continue to count."
+        },
+        {
+          "title": "Your friend didn't reach the amount",
+          "text": "If the amount isn't reached and the contract is terminated, there will be no reward."
+        },
+        {
+          "title": "New contract — new code",
+          "text": "The code changes when the contract is re-signed. No reward is credited for friends invited with the old code."
+        }
+      ],
+      "note": "The reward amount and conditions depend on the warehouse and the promotion — see them in the app. Ozon's help centre describes the reward for the inviter.",
+      "noteLink": "Conditions and the list of participating warehouses →"
+    },
+    "pay": {
+      "eyebrow": "Money",
+      "title": "How payouts are calculated and when they arrive",
+      "lead": "Based on the Ozon Job help centre. Timing depends on your rating level and your card's bank.",
+      "formulaLabel": "How the payout for a slot is calculated",
+      "formula": [
+        {
+          "title": "Scans",
+          "text": "Each operation on the data collection terminal is one “scan”"
+        },
+        {
+          "title": "Rate",
+          "text": "Depends on the size, volume and weight of the item. Rates are dynamic"
+        },
+        {
+          "title": "Reward",
+          "text": "The amount for the slot — before taxes and deductions"
+        }
+      ],
+      "taxTitle": "Taxes and deductions are subtracted from the total.",
+      "taxText": "Under a civil-law contract Ozon withholds and pays the tax; self-employed people and sole proprietors pay it themselves.",
+      "timesTitle": "When the money arrives",
+      "times": [
+        {
+          "big": "3 h",
+          "title": "“Newcomer” and “Diamond”",
+          "text": "Money arrives automatically to an Ozon Bank card 3 hours after the slot ends."
+        },
+        {
+          "big": "12 h",
+          "title": "Other rating levels",
+          "text": "To an Ozon Bank card — 12 hours after the slot ends."
+        },
+        {
+          "big": "1 h",
+          "title": "“Diamond”: manual withdrawal",
+          "text": "Once an hour: Payouts → “Withdraw money”. Arrives within 5 minutes. Requires an Ozon Bank card."
+        },
+        {
+          "big": "Tue",
+          "title": "Other banks' cards",
+          "text": "Once a week, on Tuesdays. If Tuesday is a holiday, the payout arrives on the first working day after it."
+        }
+      ],
+      "fastTag": "fastest",
+      "timesNote": "Ozon Bank pays on holidays too. The countdown starts when the slot ends.",
+      "levelsLink": "All rating levels and how they work →",
+      "tipsAllLink": "All questions and answers →",
+      "tipsEyebrow": "Questions",
+      "tipsTitle": "Frequent questions about part-time work",
+      "tips": [
+        {
+          "title": "When does the money for a shift arrive?",
+          "text": "To an Ozon Bank card — 3 hours after the slot at the “Newcomer” and “Diamond” levels, or 12 hours at other levels; “Diamond” can withdraw money manually once an hour. To other banks' cards — once a week, on Tuesdays."
+        },
+        {
+          "title": "How much can I earn per shift?",
+          "text": "The payout is the number of operations (scans) × a rate that depends on the warehouse and the item's dimensions. The expected amount per hour and per 12-hour slot is shown on the warehouse card in the app, and a detailed breakdown appears the day after the slot."
+        },
+        {
+          "title": "What documents do I need?",
+          "text": "To register — a passport, INN and SNILS: the data is pulled in via Gosuslugi or Ozon Bank. Bring your passport to the first shift; INN and SNILS can be shown electronically."
+        },
+        {
+          "title": "From what age can I work a shift?",
+          "text": "Russian citizens — from 16. If you're under 18, for the first shift you'll need a 086/u medical certificate and parental consent using the template from the offer, and night slots won't be available."
+        },
+        {
+          "title": "How do I sign up: civil-law contract, self-employment or sole proprietorship?",
+          "text": "Under a civil-law contract Ozon pays the taxes for you. For self-employed people Ozon Job also withholds the tax — automatic payment is mandatory for everyone from 1 October 2026; sole proprietors pay tax themselves. Self-employed contractors can take no more than 8 warehouse slots a month, and self-employment isn't available if you've worked in the Ozon group of companies in the last 2 years."
+        },
+        {
+          "title": "Do I need experience, and is the first day paid?",
+          "text": "No experience needed: the first slot is a training one — you'll be shown the warehouse rules and given a data collection terminal (handheld scanner). The first day is paid under the “Starter support” promotion rather than as a regular slot; online courses before your shift will help you earn more."
+        },
+        {
+          "title": "How do I book a shift?",
+          "text": "In the “Warehouses” section choose a warehouse, process, date and slot length — 4, 6, 8 or 12 hours. For the next 3 days the booking is confirmed immediately; for later dates — via a queue: the higher your rating, the better your chance. Cancel in advance: the closer to the start, the more rating points are deducted, and a no-show costs 200 points and a “banana”."
+        }
+      ],
+      "note": "Based on the Ozon Job help centre (docs.ozon.ru, checked {date}). Conditions may change."
+    },
+    "firstDay": {
+      "eyebrow": "First shift",
+      "title": "What to bring and how the first day goes",
+      "lead": "Documents and the first-day routine according to the Ozon Job help centre.",
+      "docsTitle": "Documents for the first shift",
+      "docsModeLabel": "How you sign up",
+      "docsModes": [
+        {
+          "id": "app",
+          "label": "Ozon Job (in the app)",
+          "docs": [
+            {
+              "name": "Passport",
+              "note": ""
+            },
+            {
+              "name": "SNILS and INN",
+              "note": "can be shown electronically"
+            },
+            {
+              "name": "Certificate No. 086U and parental consent",
+              "note": "only if you're under 18 (the consent template is in the offer)"
+            }
+          ]
+        },
+        {
+          "id": "staff",
+          "label": "Staff, official (Labour Code)",
+          "docs": [
+            {
+              "name": "Passport",
+              "note": ""
+            },
+            {
+              "name": "Employment record book",
+              "note": "if you don't have one, the employer will issue it"
+            },
+            {
+              "name": "SNILS",
+              "note": ""
+            },
+            {
+              "name": "Military registration documents",
+              "note": "for those liable for military service"
+            }
+          ]
+        }
+      ],
+      "docsModeNote": "For Ozon Job, bring your passport to the first shift; SNILS and INN can be shown electronically. For a staff position under an employment contract — the standard list under Art. 65 of the Russian Labour Code; the employer will specify the full list.",
+      "progress": "Collected:",
+      "docsNote": "Foreign citizens — a passport and a document confirming grounds for staying in Russia. A medical record book isn't required for warehouses; if you have one, bring it.",
+      "dayTitle": "Before the shift and on the first day",
+      "day": [
+        {
+          "title": "Online courses",
+          "text": "Complete the assigned courses in the app (Home → Mandatory training). If a course has a deadline — no later than 3 hours before the booking, otherwise it will be cancelled."
+        },
+        {
+          "title": "Getting there",
+          "text": "Arrive 30 minutes before the slot: you need to pass the checkpoint and change. You can get to the warehouse yourself or by company transport — if the warehouse has that badge."
+        },
+        {
+          "title": "Pass",
+          "text": "Get a temporary pass at the pass office — they'll tell you how to get to the training department."
+        },
+        {
+          "title": "Training and the scanner",
+          "text": "Warehouse rules and the chosen operations; then you get a data collection terminal. Forgot your documents? Book a slot again and bring them."
+        }
+      ],
+      "note": "Based on the Ozon Job help centre (docs.ozon.ru), checked {date}: “Documents for the first shift”, “First shift”."
+    },
+    "types": {
+      "eyebrow": "Contract type",
+      "title": "Civil-law contract, self-employment, sole proprietorship or staff",
+      "taxLabel": "Taxes",
+      "items": [
+        {
+          "name": "Civil-law contract",
+          "tax": "Ozon withholds and pays the taxes",
+          "note": "A contract with Ozon, without an employment relationship. Service acceptance certificates are generated after each slot."
+        },
+        {
+          "name": "Self-employment",
+          "tax": "Ozon Job withholds the tax (automatic payment)",
+          "note": "Up to 8 warehouse slots a month: if you exceed this 3 months in a row, you'll be offered a civil-law contract. Not available if you've worked in the Ozon group in the last 2 years."
+        },
+        {
+          "name": "Sole proprietor",
+          "tax": "You pay the taxes yourself",
+          "note": "The status must be registered in advance — with the tax service, via Gosuslugi or a bank."
+        },
+        {
+          "name": "Staff (Labour Code)",
+          "tax": "The employer pays the taxes",
+          "note": "Permanent work at one site, a fixed schedule. Russian citizens over 18. Apply in the app."
+        }
+      ],
+      "note": "Only Russian citizens can change the cooperation type, and no more than 10 times in total (per the Ozon Job help centre, checked {date})."
+    },
+    "card": {
+      "ad": "Advertisement",
+      "kicker": "Ozon Bank · Debit card",
+      "title": "Get an Ozon Card via our link — up to 25% cashback",
+      "text": "A free Ozon Bank debit card: opening and service — 0 ₽, no fees for top-ups and transfers. Pay with it outside Ozon and get up to 25% cashback in rubles or items for 1 ₽, and on Ozon itself — up to 30% off.",
+      "perksLabel": "Card benefits",
+      "perks": [
+        "Up to 25% cashback or items for 1 ₽ for purchases outside Ozon",
+        "Up to 30% off purchases on Ozon",
+        "Free: opening, service, top-ups and transfers"
+      ],
+      "copy": "Copy link",
+      "copied": "Copied ✓",
+      "openLink": "Open link",
+      "qrLabel": "Invitation QR code",
+      "stepsLabel": "How to get the cashback",
+      "steps": [
+        {
+          "title": "Follow the link or QR code",
+          "text": "If you don't have an Ozon Bank account yet, you'll register right there via the link."
+        },
+        {
+          "title": "Order the card",
+          "text": "Within 72 hours of following the link. Missed it? No problem — open the same link again."
+        },
+        {
+          "title": "Activate it and make 5 purchases",
+          "text": "Within 45 days — with the card, outside Ozon, not via QR code or SBP."
+        },
+        {
+          "title": "Get the cashback",
+          "text": "Up to 25% in rubles or items for 1 ₽ — on the cashback payout date."
+        }
+      ],
+      "warn": "The link doesn't “expire”: if you didn't order the card within 72 hours, open the same link again and the countdown restarts. Cashback, discounts and service conditions follow the card tariff and may change.",
+      "note": "Advertisement. We are an independent information site, not Ozon or Ozon Bank. The link is a referral link: if you get the card through it, the bank may pay us a reward — this doesn't affect your cashback. The “Ozon Card” service is provided by OZON Bank LLC, Bank of Russia licence No. 3542 of 12.04.2023."
+    },
+    "sourcesEyebrow": "Sources",
+    "sourcesTitle": "Ozon Job help centre",
+    "sourcesNote": "The help centre sections referenced on this page were checked {date}",
+    "imageAlt": {
+      "hero": "Illustration: two warehouse workers in uniform shaking hands",
+      "pay": "Illustration: a manager shakes hands with a warehouse worker holding a scanner, with boxes and coins nearby",
+      "tips": "Illustration: employees discussing charts on a large screen"
+    }
+  }
+}

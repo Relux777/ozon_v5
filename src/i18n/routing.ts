@@ -1,7 +1,7 @@
 import { defineRouting } from 'next-intl/routing';
 
 export const routing = defineRouting({
-    locales: ['ru', 'uz', 'hy', 'az', 'ka', 'ky', 'kk'],
+    locales: ['ru', 'uz', 'tg', 'hy', 'az', 'ka', 'ky', 'kk', 'en'],
     defaultLocale: 'ru',
 
     // у дефолтного языка (ru) URL без префикса: /menu
