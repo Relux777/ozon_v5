@@ -22,7 +22,7 @@ import BriefcaseSVG from '@/assets/svg/support/briefcase.svg';
 import ArrowUpRightSVG from '@/assets/svg/menu/arrow-up-right.svg';
 
 // «Вопросы и ответы»: темы (иконка + аккордеон) слева, справа — куда писать: поддержка Ozon Job (аккаунт, выплаты)
-// и мы (вопросы по сайту, сотрудничество). Тексты — SupportPage.* (все 7 языков), контакты — config/legal.ts.
+// и мы (вопросы по сайту, сотрудничество). Тексты — SupportPage.* (все 9 языков), контакты — config/legal.ts.
 // Вопросы с главной (HomePage.pay.tips) тоже показываются здесь, в своих темах, но в разметку FAQPage не входят:
 // одинаковые вопросы размечают только на одной странице — на главной.
 

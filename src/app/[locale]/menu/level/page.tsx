@@ -42,7 +42,7 @@ import HourglassSVG from '@/assets/svg/level/hourglass.svg';
 
 // Рейтинг Ozon Job: уровни (шкала + что даёт каждый), как начисляют и списывают баллы (таблицы с полосками),
 // калькулятор баллов за слот, бананы и бан, советы, вопросы (FAQPage) с кодом Ozon Job, источники.
-// Цифры — config/rating.ts (из приложения Ozon Job и справки), тексты — LevelPage.* (все 7 языков, см. LEVEL_LOCALES).
+// Цифры — config/rating.ts (из приложения Ozon Job и справки), тексты — LevelPage.* (все 9 языков, см. LEVEL_LOCALES).
 
 type Props = {
     params: Promise<{ locale: string }>;
