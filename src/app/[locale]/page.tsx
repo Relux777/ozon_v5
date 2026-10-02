@@ -7,7 +7,7 @@ import PageNav from '@/components/PageNav';
 import { Link } from '@/i18n/navigation';
 import { getLocaleFromParams } from '@/i18n/params';
 import { buildPageMetadata, faqJsonLd, generateJsonLd } from '@/lib/seo';
-import JsonLd from '@/components/JsonLd';
+import JsonLd from '@/components/ui/json-ld';
 
 // Главная = первый экран (Hero) + общие секции (HomeSections: от «Ozon в цифрах» до «Источников»).
 // Те же секции переиспользует страница города sklad/[city] — правки разметки делать в HomeSections.

@@ -1,4 +1,4 @@
-//app/src/components/Modal/content/LanguageModalList.tsx
+// src/components/LanguageSwitcher/LanguageModalList.tsx
 
 'use client';
 

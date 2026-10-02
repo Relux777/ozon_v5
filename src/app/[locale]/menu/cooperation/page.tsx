@@ -6,7 +6,7 @@ import { Link } from '@/i18n/navigation';
 import { breadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 import { CONTACTS } from '@/config/legal';
 import ContactList from '@/components/ContactList';
-import JsonLd from '@/components/JsonLd';
+import JsonLd from '@/components/ui/json-ld';
 
 // Иконки — Boxicons (Free, CC BY 4.0, https://boxicons.com). viewBox='0 0 24 24' — у иконок не родного размера
 import TranslateSVG from '@/assets/svg/support/translate.svg';

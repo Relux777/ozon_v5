@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation';
 
 import { getLocale, getTranslations } from 'next-intl/server';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import ThemeSwitch from "@/components/ThemeSwitch";
+import ThemeSwitch from "@/components/ui/theme-switch";
 import { getLanguageByCode } from '@/config/languages';
 
 import LogoIcon from '@/assets/svg/logo.svg';

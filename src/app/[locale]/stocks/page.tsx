@@ -6,10 +6,10 @@ import { Link } from '@/i18n/navigation';
 import { breadcrumbJsonLd, buildPageMetadata, faqJsonLd } from '@/lib/seo';
 import { PROMO } from '@/config/promo';
 import { REFERRALS, REFERRALS_CHECKED_AT, STOCKS_LOCALES, type ReferralId } from '@/config/referrals';
-import CopyCode from '@/components/CopyCode';
-import CopyLink from '@/components/CopyLink';
-import FaqAccordion from '@/components/FaqAccordion';
-import JsonLd from '@/components/JsonLd';
+import CopyCode from '@/components/ui/copy-code';
+import CopyLink from '@/components/ui/copy-link';
+import FaqAccordion from '@/components/ui/faq-accordion';
+import JsonLd from '@/components/ui/json-ld';
 import PageNav from '@/components/PageNav';
 
 // Иконки — Boxicons (Free, CC BY 4.0, https://boxicons.com). viewBox='0 0 24 24' — у иконок не родного размера

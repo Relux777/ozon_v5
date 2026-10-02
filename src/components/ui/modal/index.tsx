@@ -1,4 +1,4 @@
-//components/ui/modal/index
+// src/components/ui/modal/index.tsx — инструкция: modal.md рядом
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
@@ -7,18 +7,29 @@ import { useTranslations } from 'next-intl';
 import CloseIcon from '@/assets/svg/x.svg';
 import styles from './modal.module.scss';
 
+export type ModalPosition = 'bottom' | 'center' | 'right';
+export type ModalSize = 360 | 440;
+
 export default function Modal({
   children,
   className = '',
   isOpen,
   onClose,
   ariaLabel,
+  position,
+  size,
 }: {
   children: React.ReactNode;
+  /** дополнительные классы на подложку (свои модификаторы из modal.module.scss или глобальные) */
   className?: string;
   isOpen: boolean;
   onClose: () => void;
+  /** название диалога для скринридеров */
   ariaLabel: string;
+  /** где появляется панель: bottom — лист снизу, center — по центру, right — справа во всю высоту (на телефоне все три — лист снизу) */
+  position?: ModalPosition;
+  /** ширина панели на экранах ≥500px; на телефоне всегда во всю ширину */
+  size?: ModalSize;
 }) {
   const t = useTranslations('A11y');
   const [mounted, setMounted] = useState(false);
@@ -250,6 +261,8 @@ export default function Modal({
   if (!portalRoot) return null;
 
   const modalVisibilityClass = isOpen ? styles.active : '';
+  const positionClass = position ? styles[position] : '';
+  const sizeClass = size ? styles[`w_${size}px`] : '';
 
   return createPortal(
     <div
@@ -257,7 +270,7 @@ export default function Modal({
       role="dialog"
       aria-modal="true"
       aria-label={ariaLabel}
-      className={`${styles.modal} p-fixed flex justify-center z-20 cursor-pointer w-full visibility-hidden blur-7 inset-0 ${className} ${modalVisibilityClass}`}
+      className={`${styles.modal} p-fixed flex justify-center z-20 cursor-pointer w-full visibility-hidden blur-7 inset-0 ${positionClass} ${sizeClass} ${className} ${modalVisibilityClass}`}
       onClick={onClose}
     >
       <div

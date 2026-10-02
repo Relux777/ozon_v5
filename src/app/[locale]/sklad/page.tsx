@@ -4,8 +4,8 @@ import { getLocaleFromParams } from '@/i18n/params';
 import { breadcrumbJsonLd, buildPageMetadata } from '@/lib/seo';
 import { getCityIndex } from '@/lib/sklad';
 import CitySearch from '@/components/CitySearch';
-import ScrollTop from '@/components/ScrollTop';
-import JsonLd from '@/components/JsonLd';
+import ScrollTop from '@/components/ui/scroll-top';
+import JsonLd from '@/components/ui/json-ld';
 
 type Props = {
     params: Promise<{ locale: string }>;

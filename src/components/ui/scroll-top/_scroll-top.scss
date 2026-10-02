@@ -1,0 +1,20 @@
+// Плавающая круглая кнопка (.float-btn) — показ/скрытие по скроллу, и иконка «наверх».
+// Подключено в src/assets/scss/style.scss через @use. Отступ над нижним меню конкретного проекта —
+// в style.scss проекта (у Ozon V5 — подъём над NavBar на узких экранах).
+
+// плавающая круглая кнопка снизу справа (ScrollTop, PageNav) — появляется/исчезает по скроллу.
+// Позиция — утилитами в разметке (r-20 b-20), здесь только сама анимация показа/скрытия.
+.float-btn {
+    opacity: 0;
+    translate: 0 12px;
+    transition: opacity 0.25s, translate 0.25s;
+    pointer-events: none;
+
+    &.float-btn-visible {
+        opacity: 1;
+        translate: 0;
+        pointer-events: auto;
+    }
+}
+
+.scroll-top-icon { rotate: 180deg; }

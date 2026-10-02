@@ -1,4 +1,4 @@
-// app/src/components/Modal/content/LanguageModal.tsx
+// src/components/LanguageSwitcher/LanguageModal.tsx
 import LanguageModalList from './LanguageModalList';
 
 type Props = {

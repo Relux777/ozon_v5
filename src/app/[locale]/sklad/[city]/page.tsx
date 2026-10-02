@@ -18,13 +18,13 @@ import {
     type Perk,
     type Warehouse,
 } from '@/lib/sklad';
-import Breadcrumbs from '@/components/Breadcrumbs';
-import CopyLink from '@/components/CopyLink';
+import Breadcrumbs from '@/components/ui/breadcrumbs';
+import CopyLink from '@/components/ui/copy-link';
 import Hero, { HERO_PRIMARY_BTN, HERO_SECONDARY_BTN } from '@/components/Hero';
 import HomeSections, { getHomeNavItems } from '@/components/HomeSections';
-import JsonLd from '@/components/JsonLd';
+import JsonLd from '@/components/ui/json-ld';
 import PageNav from '@/components/PageNav';
-import type { PageNavExtra, PageNavItem } from '@/components/Modal/content/PageNavModal';
+import type { PageNavExtra, PageNavItem } from '@/components/PageNav/PageNavModal';
 
 // Иконки — Boxicons (Free, CC BY 4.0, https://boxicons.com), как и остальные иконки проекта.
 // viewBox='0 0 24 24' у иконок не родного размера — чтобы они масштабировались, а не обрезались

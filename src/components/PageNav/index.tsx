@@ -3,12 +3,11 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 import MenuRightSVG from '@/assets/svg/menu-right.svg';
-import styles from '@/components/Modal/modal.module.scss';
-import type { PageNavExtra, PageNavItem, PageNavModalProps } from '@/components/Modal/content/PageNavModal';
+import type { PageNavExtra, PageNavItem, PageNavModalProps } from '@/components/PageNav/PageNavModal';
 
-const Modal = dynamic(() => import('@/components/Modal'));
+const Modal = dynamic(() => import('@/components/ui/modal'));
 
-const PageNavModal = dynamic<PageNavModalProps>(() => import('@/components/Modal/content/PageNavModal'));
+const PageNavModal = dynamic<PageNavModalProps>(() => import('@/components/PageNav/PageNavModal'));
 
 type Props = {
     label: string;
@@ -65,7 +64,7 @@ export default function PageNav({ label, items, summary, extrasTitle, extras }: 
             >
                 <MenuRightSVG width={22} height={22} aria-hidden='true' />
             </button>
-            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} ariaLabel={label} className={styles.right}>
+            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)} ariaLabel={label} position='right'>
                 <PageNavModal
                     title={label}
                     items={items}
