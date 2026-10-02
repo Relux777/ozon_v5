@@ -1,4 +1,4 @@
-// src/components/ScrollTop/index.tsx
+// src/components/ui/scroll-top/index.tsx
 'use client';
 
 import { useEffect, useState } from 'react';

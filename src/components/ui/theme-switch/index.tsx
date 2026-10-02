@@ -1,4 +1,4 @@
-// src/components/ThemeSwitch/index.tsx
+// src/components/ui/theme-switch/index.tsx
 'use client';
 
 import { useTheme } from 'next-themes';

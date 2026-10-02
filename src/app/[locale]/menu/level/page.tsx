@@ -20,9 +20,9 @@ import {
     SLOTS_PER_BANANA,
     type Duration,
 } from '@/config/rating';
-import CopyCode from '@/components/CopyCode';
-import FaqAccordion from '@/components/FaqAccordion';
-import JsonLd from '@/components/JsonLd';
+import CopyCode from '@/components/ui/copy-code';
+import FaqAccordion from '@/components/ui/faq-accordion';
+import JsonLd from '@/components/ui/json-ld';
 import PageNav from '@/components/PageNav';
 import RatingCalculator from '@/components/RatingCalculator';
 

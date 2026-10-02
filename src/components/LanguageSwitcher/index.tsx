@@ -6,16 +6,15 @@ import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 
 import ChevronDown from '@/assets/svg/chevron-down.svg';
-import styles from '@/components/Modal/modal.module.scss';
 
-const Modal = dynamic(() => import('@/components/Modal'));
+const Modal = dynamic(() => import('@/components/ui/modal'));
 
 type LanguageModalProps = { title: string };
 const LanguageModal = dynamic<LanguageModalProps>(
-    () => import('@/components/Modal/content/LanguageModal')
+    () => import('@/components/LanguageSwitcher/LanguageModal')
 );
 // тот же модуль — тот же чанк: вызов заранее просто прогревает его к моменту клика
-const preloadLanguageModal = () => import('@/components/Modal/content/LanguageModal');
+const preloadLanguageModal = () => import('@/components/LanguageSwitcher/LanguageModal');
 
 type Props = {
     modalTitle: string;
@@ -60,7 +59,8 @@ export default function LanguageSwitcher({ modalTitle, label, flag }: Props) {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 ariaLabel={modalTitle}
-                className={`${styles.center} ${styles.w_360px}`}
+                position='center'
+                size={360}
             >
                 {wasOpened && <LanguageModal title={modalTitle} />}
             </Modal>

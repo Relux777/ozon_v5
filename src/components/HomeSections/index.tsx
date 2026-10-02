@@ -5,15 +5,15 @@ import { getFormatter, getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { APP_STORES, CARD, PROMO } from '@/config/promo';
 import { HOME_CHECKED_AT } from '@/config/site';
-import CopyCode from '@/components/CopyCode';
-import CopyLink from '@/components/CopyLink';
-import FaqAccordion from '@/components/FaqAccordion';
-import type { PageNavItem } from '@/components/Modal/content/PageNavModal';
+import CopyCode from '@/components/ui/copy-code';
+import CopyLink from '@/components/ui/copy-link';
+import FaqAccordion from '@/components/ui/faq-accordion';
+import type { PageNavItem } from '@/components/PageNav/PageNavModal';
 import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
 
 // Картинки — webp-копии нужного размера (иконки 384 px). Исходные PNG по 3–10 МБ лежат рядом
-// и в код не импортируются (см. §16 CLAUDE.md)
+// и в код не импортируются (см. CLAUDE.md, «SEO и производительность»)
 import AdvantagesPhoto1  from '@/assets/img/advantages/1.webp';
 import AdvantagesPhoto2  from '@/assets/img/advantages/2.webp';
 import AdvantagesPhoto3  from '@/assets/img/advantages/3.webp';

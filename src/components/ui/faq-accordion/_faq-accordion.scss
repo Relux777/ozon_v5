@@ -1,0 +1,46 @@
+// Стили FaqAccordion (глобальные классы .tip*). Подключены в src/assets/scss/style.scss через @use.
+// Цвета — токены ReluxCode (--bg-5 — акцент, --bg-3 — фон карточки задаётся классом bg-3-100 в разметке).
+
+// аккордеон «на что обратить внимание»: кнопка (не <summary>) — раскрытие анимировано через
+// grid-template-rows 0fr→1fr на .tip-body (см. FaqAccordion — только один пункт открыт за раз)
+.tip {
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.tip-summary {
+    padding: 14px 16px;
+
+    // плюс, который при открытии превращается в минус
+    &::after {
+        content: '+';
+        flex-shrink: 0;
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 1;
+        color: rgb(var(--bg-5));
+        transition: rotate 0.25s;
+    }
+}
+
+.tip-body {
+    display: grid;
+    grid-template-rows: 0fr;
+
+    @media (prefers-reduced-motion: no-preference) {
+        transition: grid-template-rows 0.25s ease;
+    }
+}
+
+.tip-body-inner {
+    p {
+        margin: 0;
+        padding: 0 16px 16px;
+    }
+}
+
+.tip-open {
+    background: rgb(var(--bg-5) / 8%);
+
+    .tip-summary::after { rotate: 45deg; }
+    .tip-body { grid-template-rows: 1fr; }
+}

@@ -1,4 +1,4 @@
-// src/components/CopyCode/index.tsx
+// src/components/ui/copy-code/index.tsx
 'use client';
 
 import { useEffect, useRef, useState } from 'react';

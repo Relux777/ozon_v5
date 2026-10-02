@@ -1,0 +1,8 @@
+// Стили Breadcrumbs. Подключено в src/assets/scss/style.scss через @use.
+
+// хлебные крошки: разделитель «/» между пунктами
+.breadcrumbs li + li::before {
+    content: '/';
+    margin-right: 7px;
+    opacity: 0.4;
+}
