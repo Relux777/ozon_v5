@@ -45,14 +45,14 @@ export default function FaqAccordion({ items, defaultOpen = 0, idPrefix }: Props
                     >
                         <button
                             type='button'
-                            className='tip-summary hover-none flex nowrap justify-between align-center gap-10 w-full font-w-500 color-2-90 cursor-pointer'
+                            className='tip-summary hover-none text_left flex nowrap justify-between align-center gap-10 w-full font-w-500 color-2-90 cursor-pointer'
                             aria-expanded={open}
                             onClick={() => setOpenIndex(open ? -1 : i)}
                         >
                             {item.title}
                         </button>
                         <div className='tip-body'>
-                            <div className='tip-body-inner'>
+                            <div className='tip-body-inner overflow-hidden'>
                                 <p className='font-14'>{item.text}</p>
                             </div>
                         </div>

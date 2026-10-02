@@ -182,8 +182,6 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 // шириной, а не шириной окна. Для телефона: колонки .f-w-* сами становятся 100% (см. ReluxCode),
 // кнопки на всю ширину, магазины — сеткой «сколько влезет».
 .promo {
-    display: grid;
-    gap: 20px;
     padding: clamp(18px, 4vw, 40px);
     background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 45%, $promo-blue-light 100%);
     color: rgb(255 255 255 / 90%);
@@ -300,7 +298,6 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     border: 2px solid #3ddc84;
     background: rgb(61 220 132 / 16%);
     color: #fff;
-    white-space: nowrap;
 }
 
 // кнопки магазинов: сколько влезет в ряд (на телефоне — 2–3 в строке)
@@ -311,7 +308,6 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     border: 1px solid rgb(255 255 255 / 30%);
     background: rgb(255 255 255 / 16%);
     color: #fff;
-    text-align: center;
     transition: translate 0.2s, background 0.2s, scale 0.15s;
 
     @include mixins.hover {
@@ -582,7 +578,6 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
 .tip-summary {
     padding: 14px 16px;
-    text-align: left;
 
     // плюс, который при открытии превращается в минус
     &::after {
@@ -606,8 +601,6 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 }
 
 .tip-body-inner {
-    overflow: hidden;
-
     p {
         margin: 0;
         padding: 0 16px 16px;
@@ -633,11 +626,8 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
 // сам чекбокс скрыт визуально, но доступен с клавиатуры и скринридерам
 .doc-input {
-    position: absolute;
-    inset: 0;
     margin: 0;
     opacity: 0;
-    cursor: pointer;
 
     &:checked { counter-increment: done; }
     &:focus-visible + .doc-box { outline: 2px solid rgb(var(--bg-5)); outline-offset: 2px; }
@@ -1059,7 +1049,6 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     right: 16px;
     translate: 0 -50%;
     color: rgb(var(--bg-5));
-    pointer-events: none;
     transition: rotate 0.25s;
 }
 
