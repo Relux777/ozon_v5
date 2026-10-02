@@ -1270,9 +1270,9 @@
     "title": "Ozon-da iş: anbar operatoru, hər gün ödəniş",
     "description": "Ozon anbar operatoru: sərbəst qrafik, gündüz və gecə növbələri, gündəlik və ya həftəlik ödəniş. Ştat, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
     "heading": "Ozon anbar operatoru vakansiyası: gündəlik ödənişli iş",
-    "lead": "Şəhərinizdə anbar seçin, real ünvanları və şərtləri öyrənin. Ozon Job tətbiqində dəvət kodu ilə qeydiyyatdan keçin — {amount, number} ₽* bonus aksiyanın şərtləri yerinə yetirildikdən sonra hesablanır.",
+    "lead": "Şəhərinizdə anbar seçin, real ünvanları və şərtləri öyrənin. Ozon Job tətbiqində dəvət kodu ilə qeydiyyatdan keçin — {amount, number} ₽-dək* bonus aksiyanın şərtləri yerinə yetirildikdən sonra hesablanır.",
     "heroCity": "Şəhəri seçin",
-    "heroBonus": "{amount, number} ₽ əldə et",
+    "heroBonus": "{amount, number} ₽-dək əldə et",
     "features": [
       "Ozon Bank kartına pul — növbədən 3 saat sonra, digər bankların kartlarına — həftədə bir dəfə",
       "Mülki-hüquqi müqavilə, özünüməşğul və ya fərdi sahibkar kimi əməkdaşlıq; ştata — müraciətlə",
@@ -1302,8 +1302,8 @@
         "label": "logistika sahəsi"
       },
       {
-        "value": "20 000 ₽-dək",
-        "label": "dost üçün bonus"
+        "value": "5 000 ₽-dək",
+        "label": "kodla yeni gələnə bonus"
       }
     ],
     "statsEyebrow": "Rəqəmlərlə Ozon*",
@@ -1358,7 +1358,7 @@
         "Əvvəllər Ozonda işləməmisiniz",
         "Kod tətbiqdə daxil edilir"
       ],
-      "bonus": "Kodu daxil edin və <sum>{amount, number} ₽</sum> əldə edin*",
+      "bonus": "Kodu daxil edin və <sum>{amount, number} ₽-dək</sum> əldə edin*",
       "condition": "* Bonus aksiyanın şərtləri yerinə yetirildikdən sonra verilir: anbardan asılı məbləğdə tapşırıqlar.",
       "codeLabel": "Sizin dəvət kodunuz",
       "copy": "Kopyala",

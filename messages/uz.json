@@ -1270,9 +1270,9 @@
     "title": "Ozonda ish: ombor operatori, to'lov har kuni",
     "description": "Ozon ombor operatori: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir. RF Mehnat kodeksi, GPX yoki o'zini o'zi band. Noldan o'qitish.",
     "heading": "Ozon ombor operatori vakansiyasi: har kuni to'lovli ish",
-    "lead": "Shahringizdagi omborni tanlang, haqiqiy manzillar va shartlarni bilib oling. Ozon Job ilovasida taklif kodi bo'yicha ro'yxatdan o'ting — {amount, number} ₽* bonus aksiya shartlari bajarilgandan keyin hisoblanadi.",
+    "lead": "Shahringizdagi omborni tanlang, haqiqiy manzillar va shartlarni bilib oling. Ozon Job ilovasida taklif kodi bo'yicha ro'yxatdan o'ting — {amount, number} ₽ gacha* bonus aksiya shartlari bajarilgandan keyin hisoblanadi.",
     "heroCity": "Shaharni tanlash",
-    "heroBonus": "{amount, number} ₽ olish",
+    "heroBonus": "{amount, number} ₽ gacha olish",
     "features": [
       "Ozon Bank kartasiga pul — smenadan 3 soat keyin, boshqa bank kartalariga — haftasiga bir marta",
       "GPX, o'zini o'zi band qilgan yoki yakka tadbirkor sifatida hamkorlik; shtatga — ariza bo'yicha",
@@ -1302,8 +1302,8 @@
         "label": "logistika maydoni"
       },
       {
-        "value": "20 000 ₽ gacha",
-        "label": "do'st uchun bonus"
+        "value": "5 000 ₽ gacha",
+        "label": "kod bo'yicha yangi xodimga bonus"
       }
     ],
     "statsEyebrow": "Raqamlarda Ozon*",
@@ -1358,7 +1358,7 @@
         "Ilgari Ozonda ishlamagan bo'lishingiz kerak",
         "Kod ilovada kiritiladi"
       ],
-      "bonus": "Kodni kiriting va <sum>{amount, number} ₽</sum> oling*",
+      "bonus": "Kodni kiriting va <sum>{amount, number} ₽ gacha</sum> oling*",
       "condition": "* Bonus aksiya shartlari bajarilgach beriladi: omborga bog'liq summadagi topshiriqlar.",
       "codeLabel": "Sizning taklif kodingiz",
       "copy": "Nusxa olish",
