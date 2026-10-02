@@ -1270,9 +1270,9 @@
     "title": "Work at Ozon: warehouse operator with daily payouts",
     "description": "Ozon warehouse operator jobs: flexible hours, day and night shifts, daily or weekly payouts. Staff, civil-law contract or self-employed. Training from scratch.",
     "heading": "Ozon warehouse operator job: work with daily payouts",
-    "lead": "Find a warehouse in your city and see real addresses and conditions. Sign up in the Ozon Job app with an invitation code — a bonus of {amount, number} ₽* is credited after you meet the promotion conditions.",
+    "lead": "Find a warehouse in your city and see real addresses and conditions. Sign up in the Ozon Job app with an invitation code — a bonus of up to {amount, number} ₽* is credited after you meet the promotion conditions.",
     "heroCity": "Choose a city",
-    "heroBonus": "Get {amount, number} ₽",
+    "heroBonus": "Get up to {amount, number} ₽",
     "features": [
       "Money to an Ozon Bank card from 3 hours after a shift, to other banks' cards — once a week",
       "Work under a civil-law contract, as self-employed or a sole proprietor; staff positions on request",
@@ -1358,7 +1358,7 @@
         "Haven't worked at Ozon before",
         "The code is entered in the app"
       ],
-      "bonus": "Enter the code and get <sum>{amount, number} ₽</sum>*",
+      "bonus": "Enter the code and get <sum>up to {amount, number} ₽</sum>*",
       "condition": "* The bonus is credited after meeting the promotion conditions: tasks worth an amount that depends on the warehouse.",
       "codeLabel": "Your invitation code",
       "copy": "Copy",
