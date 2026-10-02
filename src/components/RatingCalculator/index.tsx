@@ -53,7 +53,7 @@ function Picker({ id, label, options, value, onChange }: PickerProps) {
                         <option value={i} key={option.label}>{option.label}</option>
                     ))}
                 </select>
-                <ChevronDownSVG className='calc-select-icon p-absolute' width={20} height={20} aria-hidden='true' />
+                <ChevronDownSVG className='calc-select-icon p-absolute p-events-none' width={20} height={20} aria-hidden='true' />
             </span>
         </label>
     );

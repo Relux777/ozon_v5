@@ -276,7 +276,7 @@ export default function Modal({
           style={{ touchAction: 'none' }}
           onMouseDown={(e) => handleDragStart(e.clientY, e)}
         >
-          <span className="h-4 w-40 bg-2-50 br-36 mg-auto pointer-events-none"></span>
+          <span className="h-4 w-40 bg-2-50 br-36 mg-auto p-events-none"></span>
         </button>
 
         <button

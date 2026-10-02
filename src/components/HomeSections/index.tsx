@@ -203,7 +203,7 @@ export default async function HomeSections({ locale, afterStats }: Props) {
             </section>
             <section className='py-20 scroll-anchor' id='promo'>
                 <div className='container'>
-                    <div className='promo p-relative isolate overflow-hidden br-32 container-type-inline'>
+                    <div className='promo grid gap-20 p-relative isolate overflow-hidden br-32 container-type-inline'>
                         <div className='promo-top flex align-center'>
                             <div className='f-w-7 grid gap-15 content-start'>
                                 <p className='promo-kicker flex align-center gap-8 text-uppercase letter-s-8 font-12'>
@@ -221,7 +221,7 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                                         <span>
                                             {t.rich('promo.bonus', {
                                                 amount: PROMO.userBonus,
-                                                sum: (chunks) => <b className='promo-sum br-36 px-10 font-w-700'>{chunks}</b>,
+                                                sum: (chunks) => <b className='promo-sum space-nowrap br-36 px-10 font-w-700'>{chunks}</b>,
                                             })}
                                         </span>
                                     </li>
@@ -239,7 +239,7 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                                         {stores.map((store) => (
                                             <li key={store.id}>
                                                 <a
-                                                    className='promo-store hover-none flex align-center justify-center br-36 h-46 px-0 font-14 font-w-500'
+                                                    className='promo-store hover-none flex text_center align-center justify-center br-36 h-46 px-0 font-14 font-w-500'
                                                     href={store.url}
                                                     target='_blank'
                                                     rel='nofollow noopener noreferrer'
@@ -445,7 +445,7 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                                             {mode.docs.map((doc) => (
                                                 <li key={doc.name}>
                                                     <label className='doc p-relative flex nowrap align-start gap-12 br-20 bg-2-3 cursor-pointer'>
-                                                        <input className='doc-input' type='checkbox' />
+                                                        <input className='doc-input p-absolute inset-0 cursor-pointer' type='checkbox' />
                                                         <span className='doc-box p-relative shrink-0 br-round' aria-hidden='true' />
                                                         <span className='grid gap-2 font-14'>
                                                             <b className='doc-name color-2-90'>{doc.name}</b>
@@ -509,7 +509,7 @@ export default async function HomeSections({ locale, afterStats }: Props) {
             </section>
             <section className='py-20 scroll-anchor' id='card'>
                 <div className='container'>
-                    <div className='promo p-relative isolate overflow-hidden br-32 container-type-inline'>
+                    <div className='promo grid gap-20 p-relative isolate overflow-hidden br-32 container-type-inline'>
                         <div className='promo-top flex align-center'>
                             <div className='f-w-7 grid gap-15 content-start'>
                                 <p className='promo-kicker flex align-center gap-8 text-uppercase letter-s-8 font-12'>

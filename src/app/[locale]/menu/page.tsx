@@ -131,7 +131,7 @@ export default async function MenuPage({ params }: Props) {
                                     {stores.map((store) => (
                                         <li key={store.id}>
                                             <a
-                                                className='promo-store hover-none flex align-center justify-center br-36 h-46 font-14 font-w-500'
+                                                className='promo-store hover-none flex text_center align-center justify-center br-36 h-46 font-14 font-w-500'
                                                 href={store.url}
                                                 target='_blank'
                                                 rel='nofollow noopener noreferrer'
