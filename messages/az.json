@@ -1684,5 +1684,58 @@
       "pay": "İllüstrasiya: rəhbər skanerli anbar əməkdaşı ilə əl sıxışır, yanında qutular və sikkələr",
       "tips": "İllüstrasiya: əməkdaşlar böyük ekranda qrafikləri müzakirə edir"
     }
+  },
+  "AppScreens": {
+    "eyebrow": "Ozon Job tətbiqi",
+    "title": "Tətbiq içəridən necə görünür",
+    "lead": "Yeddi ekran — anbar və növbə seçimindən pulun çıxarılmasına qədər. Skrinşotları vərəqləyin və ya böyük görmək üçün istənilən birinə toxunun.",
+    "note": "Skrinşotlar iOS tətbiqində Kazan anbarları nümunəsində çəkilib ({date}). İnterfeys tətbiqin versiyasından asılı olaraq fərqlənə bilər. Skrinşotlardakı məbləğlər və tariflər bu tarix üçün nümunədir: digər anbarlarda və başqa günlərdə onlar fərqlidir və zəmanət verilmir. Ozon — «Интернет Решения» MMC-nin əmtəə nişanıdır; sayt Ozon ilə əlaqəli deyil.",
+    "items": [
+      {
+        "title": "Əsas ekran",
+        "text": "Ən yaxın növbə qeydiyyatı və slot üçün təxmini məbləğ, səviyyəniz, anbara qədər marşrut və seçilmiş anbarlarda boş slotlar.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: ən yaxın növbə qeydiyyatı və icraçının səviyyəsi ilə əsas ekran"
+      },
+      {
+        "title": "Qeydiyyatlarım",
+        "text": "Növbələrinizin təqvimi və siyahısı: anbar, vaxt, iş növü, «Təsdiqlənib» statusu, slot və saat üçün təxmini ödəniş.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: təqvim və təsdiqlənmiş növbə qeydiyyatlarının siyahısı"
+      },
+      {
+        "title": "Yaxın anbarlar",
+        "text": "Regionun anbarları xidmət növü, tarix, vaxt və tarif üzrə filtrlərlə. Kartda — anbarın növü, reytinq, məsafə və qeydlər: avtobuslar, nahar, artırılmış tarif.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: filtrlər və anbar kartları ilə regionun anbarlarının siyahısı"
+      },
+      {
+        "title": "Günlərin seçimi",
+        "text": "Qeydiyyat təqvimi: bir neçə günü birdən qeyd edin və ya hazır qrafik seçin — 2/2, 4/3, 3/3.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: növbələrə qeydiyyat təqvimi və qrafik seçimi"
+      },
+      {
+        "title": "Vaxtın seçimi",
+        "text": "Növbənin müddəti (skrinşotda — 12, 9 və ya 8 saat), uyğun vaxt aralığı və slot üçün məbləğ. Bəzi qeydiyyatlar dərhal təsdiqlənir.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: növbənin müddəti və vaxt aralığının seçimi"
+      },
+      {
+        "title": "İş növləri",
+        "text": "Anbarda tapşırıqlar: yerləşdirmə, yığım, qəbul, qablaşdırma, çeşidləmə. Hər iş növünün öz məbləği var, bəzilərinə artırılmış tarif tətbiq olunur.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: anbarda iş növləri və onların məbləğləri"
+      },
+      {
+        "title": "Ödənişlər",
+        "text": "Balans — nə qədəri emaldadır və nə qədəri karta göndəriləcək, pul çıxarma düyməsi, hesab tarixçəsi və onlayn gəlir: qazanılan məbləğ və tapşırıqların sayı.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: balans və ödənişlər ekranı"
+      }
+    ],
+    "slider": {
+      "region": "Ozon Job tətbiqinin skrinşotları",
+      "viewer": "Skrinşotlara baxış",
+      "prev": "Əvvəlki skrinşot",
+      "next": "Növbəti skrinşot",
+      "close": "Baxışı bağla",
+      "open": "Böyüt",
+      "position": "{n} / {total}",
+      "goTo": "Skrinşotu göstər: {n}"
+    }
   }
 }

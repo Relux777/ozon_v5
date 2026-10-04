@@ -11,6 +11,7 @@
 | `copy-link/` | Кнопка, копирующая текст/ссылку (сам текст не показывает) | да | [copy-link.md](copy-link/copy-link.md) |
 | `scroll-top/` | Плавающая кнопка «наверх» + общий класс `.float-btn` | да | [scroll-top.md](scroll-top/scroll-top.md) |
 | `theme-switch/` | Переключатель светлой/тёмной темы без «мигания» | да | [theme-switch.md](theme-switch/theme-switch.md) |
+| `photo-slider/` | Лента фото со свайпом, пагинацией и окном просмотра (размытый фон, свайпы, закрытие вниз) | да | [photo-slider.md](photo-slider/photo-slider.md) |
 | `breadcrumbs/` | Хлебные крошки (серверный) | нет | [breadcrumbs.md](breadcrumbs/breadcrumbs.md) |
 | `json-ld/` | `<script type="application/ld+json">` с защитой от `</script>` | нет | [json-ld.md](json-ld/json-ld.md) |
 

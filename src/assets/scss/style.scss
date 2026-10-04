@@ -6,6 +6,7 @@
 @use "../../components/ui/scroll-top/scroll-top";
 @use "../../components/ui/theme-switch/theme-switch";
 @use "../../components/ui/breadcrumbs/breadcrumbs";
+@use "../../components/ui/photo-slider/photo-slider";
 
 // Фирменный синий берём из токена --bg-5 (= #005bff, одинаков в светлой и тёмной теме — см. _variables.scss).
 // Эти два — только оттенки градиента синего блока-акции (.promo/.card-visual/«целевой» шаг степпера),

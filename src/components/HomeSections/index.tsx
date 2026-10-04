@@ -582,12 +582,12 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                             </p>
                         </div>
                         <div className='f-w-4 mb-20'>
-                            <div className='pay-photo-wrap'>
+                            <div className='pay-photo-wrap px-40'>
                                 <Image
                                     className='pay-photo block mg-0-auto br-36 w-full cover'
                                     src={TipsPhoto}
                                     alt={t('imageAlt.tips')}
-                                    sizes='(max-width: 460px) 100vw, 420px'
+                                    sizes='(max-width: 460px) 70vw, 420px'
                                 />
                             </div>
                         </div>

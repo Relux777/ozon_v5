@@ -1,10 +1,36 @@
 // Стили ThemeSwitch. Подключено в src/assets/scss/style.scss через @use.
 
 // ThemeSwitch: иконку выбирает CSS по data-theme на <html> (next-themes ставит его до первой отрисовки) —
-// кнопка есть сразу в серверном HTML, без пустой заглушки до гидратации и без сдвига шапки
-.theme-icon-sun { display: none; }
+// кнопка есть сразу в серверном HTML, без пустой заглушки до гидратации и без сдвига шапки.
+// Обе иконки лежат в одной ячейке сетки друг на друге: так их можно анимировать «навстречу» (index.tsx),
+// а здесь — только конечные положения. Скрытая иконка повёрнута и уменьшена — с этого места она «выкручивается».
+.theme-switch > .theme-icon { grid-area: 1 / 1; }
+
+.theme-icon-sun {
+    opacity: 0;
+    rotate: -90deg;
+    scale: 0.4;
+}
 
 [data-theme='dark'] {
-    .theme-icon-sun { display: inline; }
-    .theme-icon-moon { display: none; }
+    .theme-icon-sun {
+        opacity: 1;
+        rotate: 0deg;
+        scale: 1;
+    }
+
+    .theme-icon-moon {
+        opacity: 0;
+        rotate: 90deg;
+        scale: 0.4;
+    }
+}
+
+// смена темы с «раскрытием» кругом от кнопки (View Transitions API): стандартное затухание снимков отключаем —
+// новую тему открывает clip-path из index.tsx. Только пока на <html> висит .theme-reveal — другие
+// View Transitions сайта (если появятся) это не затронет
+.theme-reveal::view-transition-old(root),
+.theme-reveal::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
 }

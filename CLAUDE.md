@@ -62,22 +62,15 @@ src/lib/sklad.ts         данные складов — ТОЛЬКО серве
 src/lib/consent.ts       согласие на cookie
 src/data/sklad/          cities.json (418 [ozonSlug, name]), warehouses.json (53 склада)
 src/app/[locale]/        корневой layout здесь; страницы
-<<<<<<< Updated upstream
 src/components/ui/       ОБЩИЕ компоненты для любых проектов: modal, faq-accordion, copy-code, copy-link,
                          scroll-top, theme-switch, breadcrumbs, json-ld — у каждого инструкция <имя>.md (см. ниже)
 src/components/          компоненты ЭТОГО сайта: Hero, HomeSections, PageNav (+ PageNavModal), LanguageSwitcher
                          (+ LanguageModal), Header, NavBar, CitySearch, CookieBanner, CookieSettings, YandexMetrika,
                          GoogleAnalytics, LegalDoc (+ rich.tsx), ContactList, RatingCalculator, BackgroundDecor…
-=======
-src/components/          Hero, HomeSections, PageNav, Modal, CitySearch, CookieBanner, CookieSettings, YandexMetrika,
-                         GoogleAnalytics, FaqAccordion, CopyCode, CopyLink, LegalDoc (+ rich.tsx), ContactList,
-                         RatingCalculator, ScrollTop, NavBar, Header, LanguageSwitcher, Breadcrumbs, JsonLd…
->>>>>>> Stashed changes
 src/assets/scss/         ReluxCode (_*.scss) + style.scss (проектное)
 instructions.md          гайд по запуску (юр. часть, домен, VPS, Nginx)
 ```
 
-<<<<<<< Updated upstream
 - **`components/ui/`** — переносится в другой проект папкой. Обзор и общие требования — `src/components/ui/README.md`,
   у каждого компонента — `<имя>.md` (что делает, пропсы, пример, что нужно в проекте, что менять). Правила:
   в `ui/` не импортировать `@/config`, `@/lib`, `@/data` и проектные компоненты — тексты и данные только пропсами;
@@ -85,8 +78,6 @@ instructions.md          гайд по запуску (юр. часть, дом�
   (Modal — свой `modal.module.scss`). Подписи для скринридеров — раздел `A11y` в словарях.
   Модалка: `<Modal isOpen onClose ariaLabel position='center|bottom|right' size={360|440}>`, нужен `<div id="modal-root">` в layout.
   Изменили компонент в `ui/` — обновить его `.md`.
-=======
->>>>>>> Stashed changes
 - **Документы** `/menu/{about,privacy,cookies,terms,ads}`: тексты в словарях `LegalDocs.*`, рендер — `components/LegalDoc`
   через `t.rich(key, legalValues(locale))` из `LegalDoc/rich.tsx` (ссылки-теги, ФИО, контакты, хостинг, ID аналитики из
   `config/legal.ts`). Не на ru — сверху пометка `LegalDocs.translated` со ссылкой на русскую версию. На uz/az/en ФИО латиницей
@@ -97,7 +88,6 @@ instructions.md          гайд по запуску (юр. часть, дом�
 - **Страница города** = Hero → `#stats` → блоки города (`afterStats`: данные, удобства, адреса, «что даёт Ozon Job») → остальные секции главной.
   Город без складов — `noindex` и не в sitemap.
 
-<<<<<<< Updated upstream
 ## 5. Стили: ReluxCode + style.scss
 
 ### 5.1 Главное правило — где что писать
@@ -166,19 +156,6 @@ ReluxCode — **общий шаблон для всех проектов вла�
   (`ReluxCode.scss` + `style.scss` + `*.module.scss`).
 - Первая `<section>` в `<main>` растянута почти на весь экран — на страницах со списком держать всё в одной секции.
 - Не писать рядом `backdrop-filter` и `-webkit-backdrop-filter` — минификатор оставит только префиксный (Chrome его игнорирует).
-=======
-## 5. Стили (ReluxCode)
-
-- **ReluxCode — общий шаблон** для этого и других проектов владельца. Его можно переписывать, улучшать и дополнять
-  (новые утилиты, значения в массивах-шкалах `_utilities.scss`), поднимая версию в шапке `ReluxCode.scss`. Изменения должны
-  оставаться универсальными — годными для любого проекта. Неиспользуемые классы не удалять: они нужны в других проектах.
-- Раскладку и отступы — утилитами (`.flex`, `.f-w-*`, `.gap-*`, `.pd-*`, `.br-*`, `.bg-X-Y`, `.color-X-Y`…). Не хватает значения —
-  дополнить шкалу, а не писать сырой CSS.
-- **Всё конкретное для этого сайта** (градиенты, точные смещения, оформление отдельных блоков) — в `style.scss`.
-- `:hover` — только через `@include mixins.hover {…}` (на телефоне залипает). В `*.module.scss` миксины подключать относительным путём.
-- Цвета — каналы: `rgb(var(--bg-5) / 50%)`; `--bg-5` = фирменный синий `#005bff`; тёмная тема — `[data-theme='dark']`.
-- Первая `<section>` в `<main>` растянута почти на весь экран (`style.scss`) — на страницах со списком держать всё в одной секции.
->>>>>>> Stashed changes
 
 **Частые ловушки:**
 - `.flex` и `.inline-flex` в ReluxCode — **`flex-wrap: wrap` по умолчанию**: чипы «✓ текст» и строки «заголовок + иконка» разваливаются
@@ -186,10 +163,6 @@ ReluxCode — **общий шаблон для всех проектов вла�
 - Grid/flex с «широким» потомком раздувает мобильную вёрстку — `min-width: 0` на детях. Проверять переполнение через
   `document.documentElement.scrollWidth > clientWidth`.
 - Любой новый `position: fixed` элемент внизу экрана — `z-20` (NavBar на `z-10`).
-<<<<<<< Updated upstream
-=======
-- Не писать `backdrop-filter` и `-webkit-backdrop-filter` в одном правиле — минификатор оставит только префиксный.
->>>>>>> Stashed changes
 - Равная специфичность «закрытого» и «открытого» состояний модалки ломалась от порядка правил — закрытое писать через `:not(.active)`.
 - Если на `next dev` не видно новых правил в уже подключённом `.module.scss` — проверить на `next build` + `next start`, а не чинить вслепую.
 - `.promo` с `@container`-запросами внутри — обязательно `container-type-inline`.
@@ -255,12 +228,5 @@ ReluxCode — **общий шаблон для всех проектов вла�
 - Страницы городов почти повторяют главную — добавить уникальный контент, сократить общие секции.
 - Хостинг в России, домен (без «ozon»), `NEXT_PUBLIC_SITE_URL` (запасной `ozon-rabota.ru` в `config/site.ts` — лучше падать при сборке
   без переменной), уведомление в РКН, erid, самозанятость — см. `instructions.md`.
-<<<<<<< Updated upstream
 - Подробный разбор рисков — `review/ozon_v5-analysis-2026-09-29.md` (в файлах проекта Claude, не в репозитории).
 - Вычитка переводов носителями (особенно новые tg/en и документы `LegalDocs`); дополнение `warehouses.json`.
-=======
-- Подробный разбор рисков — `review/ozon_v5-analysis-2026-09-29.md` (в файлах проекта).
-- Вычитка переводов носителями (особенно новые tg/en и документы `LegalDocs`); дополнение `warehouses.json`.
-- `CLAUDE.md` в репозитории устарел местами (7 языков, документы только ru) — при случае синхронизировать с этим файлом;
-  `CLAUDE_new.md` в корне репозитория сейчас пустой.
->>>>>>> Stashed changes

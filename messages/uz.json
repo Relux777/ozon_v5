@@ -1684,5 +1684,58 @@
       "pay": "Rasm: rahbar skaner ushlagan ombor xodimi bilan qo'l berib ko'rishmoqda, yonida qutilar va tangalar",
       "tips": "Rasm: xodimlar katta ekrandagi grafiklarni muhokama qilmoqda"
     }
+  },
+  "AppScreens": {
+    "eyebrow": "Ozon Job ilovasi",
+    "title": "Ilova ichidan qanday ko'rinadi",
+    "lead": "Yettita ekran — ombor va smenani tanlashdan pul yechib olishgacha. Skrinshotlarni varaqlang yoki kattaroq ko'rish uchun istalganini bosing.",
+    "note": "Skrinshotlar iOS ilovasida Qozon omborlari misolida olingan ({date}). Interfeys ilova versiyasiga qarab farq qilishi mumkin. Skrinshotlardagi summalar va tariflar — shu sana uchun misol: boshqa omborlarda va boshqa kunlarda ular boshqacha va kafolatlanmaydi. Ozon — «Интернет Решения» MChJ tovar belgisi; sayt Ozon bilan bog'liq emas.",
+    "items": [
+      {
+        "title": "Bosh ekran",
+        "text": "Eng yaqin smena yozuvi va slot uchun taxminiy summa, darajangiz, omborgacha yo'nalish hamda tanlangan omborlardagi bo'sh slotlar.",
+        "alt": "Ozon Job ilovasi skrinshoti: eng yaqin smena yozuvi va ijrochi darajasi ko'rsatilgan bosh ekran"
+      },
+      {
+        "title": "Mening yozuvlarim",
+        "text": "Smenalaringiz taqvimi va ro'yxati: ombor, vaqt, ish turi, «Tasdiqlangan» holati hamda slot va soat uchun taxminiy to'lov.",
+        "alt": "Ozon Job ilovasi skrinshoti: taqvim va tasdiqlangan smena yozuvlari ro'yxati"
+      },
+      {
+        "title": "Yaqin omborlar",
+        "text": "Mintaqadagi omborlar xizmat turi, sana, vaqt va tarif bo'yicha filtrlar bilan. Kartochkada — ombor turi, reyting, masofa va belgilar: avtobuslar, tushlik, oshirilgan tarif.",
+        "alt": "Ozon Job ilovasi skrinshoti: filtrlar va ombor kartochkalari bilan mintaqadagi omborlar ro'yxati"
+      },
+      {
+        "title": "Kunlarni tanlash",
+        "text": "Yozilish taqvimi: bir nechta kunni birdaniga belgilang yoki tayyor jadvalni tanlang — 2/2, 4/3, 3/3.",
+        "alt": "Ozon Job ilovasi skrinshoti: smenaga yozilish taqvimi va jadval tanlash"
+      },
+      {
+        "title": "Vaqtni tanlash",
+        "text": "Smena davomiyligi (skrinshotda — 12, 9 yoki 8 soat), qulay vaqt oralig'i va slot uchun summa. Ayrim yozuvlar darhol tasdiqlanadi.",
+        "alt": "Ozon Job ilovasi skrinshoti: smena davomiyligi va vaqt oralig'ini tanlash"
+      },
+      {
+        "title": "Ish turlari",
+        "text": "Ombordagi topshiriqlar: joylashtirish, terish, qabul qilish, qadoqlash, saralash. Har bir ish turining o'z summasi bor, ba'zilariga oshirilgan tarif amal qiladi.",
+        "alt": "Ozon Job ilovasi skrinshoti: ombordagi ish turlari va ular uchun summalar"
+      },
+      {
+        "title": "To'lovlar",
+        "text": "Balans — qancha summa ishlov berilmoqda va qanchasi kartaga yuboriladi, pul yechish tugmasi, hisob tarixi va onlayn daromad: ishlangan summa va topshiriqlar soni.",
+        "alt": "Ozon Job ilovasi skrinshoti: balans va to'lovlar ekrani"
+      }
+    ],
+    "slider": {
+      "region": "Ozon Job ilovasi skrinshotlari",
+      "viewer": "Skrinshotlarni ko'rish",
+      "prev": "Oldingi skrinshot",
+      "next": "Keyingi skrinshot",
+      "close": "Ko'rishni yopish",
+      "open": "Kattalashtirish",
+      "position": "{n} / {total}",
+      "goTo": "{n}-skrinshotni ko'rsatish"
+    }
   }
 }

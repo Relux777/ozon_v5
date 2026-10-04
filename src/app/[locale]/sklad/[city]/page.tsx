@@ -20,6 +20,7 @@ import {
 } from '@/lib/sklad';
 import Breadcrumbs from '@/components/ui/breadcrumbs';
 import CopyLink from '@/components/ui/copy-link';
+import AppScreens, { APP_SCREENS_ID } from '@/components/AppScreens';
 import Hero, { HERO_PRIMARY_BTN, HERO_SECONDARY_BTN } from '@/components/Hero';
 import HomeSections, { getHomeNavItems } from '@/components/HomeSections';
 import JsonLd from '@/components/ui/json-ld';
@@ -177,6 +178,7 @@ export default async function CityPage({ params }: Props) {
     const tHome = await getTranslations({ locale, namespace: 'HomePage' });
     const tMeta = await getTranslations({ locale, namespace: 'Metadata' });
     const tNav = await getTranslations({ locale, namespace: 'NavBar' });
+    const tApp = await getTranslations({ locale, namespace: 'AppScreens' });
     const format = await getFormatter({ locale });
 
     const income = incomeLabel(t, { from: stats?.min, to: stats?.max });
@@ -217,6 +219,8 @@ export default async function CityPage({ params }: Props) {
             href: '#offers',
             links: [{ label: t('duty.title'), href: '#duties' }],
         },
+        // слайдер со скриншотами приложения (components/AppScreens) — сразу после «Что даёт Ozon Job»
+        { kicker: tApp('eyebrow'), title: tApp('title'), href: `#${APP_SCREENS_ID}` },
     ];
     // порядок как на странице: «Почему стоит работать в Ozon» (#stats) → блоки города → остальные общие секции
     const [statsNav, ...restNav] = await getHomeNavItems(locale);
@@ -588,6 +592,9 @@ export default async function CityPage({ params }: Props) {
                                 </div>
                             </div>
                         </section>
+
+                        {/* ── Скриншоты приложения Ozon Job: слайдер + просмотр крупно ───────────────────── */}
+                        <AppScreens locale={locale} />
                     </>
                 }
             />

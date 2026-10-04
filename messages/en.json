@@ -1684,5 +1684,58 @@
       "pay": "Illustration: a manager shakes hands with a warehouse worker holding a scanner, with boxes and coins nearby",
       "tips": "Illustration: employees discussing charts on a large screen"
     }
+  },
+  "AppScreens": {
+    "eyebrow": "Ozon Job app",
+    "title": "What the app looks like inside",
+    "lead": "Seven screens — from choosing a warehouse and a shift to withdrawing money. Swipe through the screenshots or tap any of them to see it up close.",
+    "note": "Screenshots taken in the iOS app on {date}, using Kazan warehouses as an example. The interface may differ depending on the app version. Amounts and rates in the screenshots are an example for that date: at other warehouses and on other days they differ and are not guaranteed. Ozon is a trademark of Internet Solutions LLC; this site is not affiliated with Ozon.",
+    "items": [
+      {
+        "title": "Home screen",
+        "text": "Your next booked shift with an estimated amount per slot, your level, a route to the warehouse and open slots at your favourite warehouses.",
+        "alt": "Ozon Job app screenshot: home screen with the next booked shift and the worker level"
+      },
+      {
+        "title": "My bookings",
+        "text": "A calendar and list of your shifts: warehouse, time, type of work, “Confirmed” status and approximate pay per slot and per hour.",
+        "alt": "Ozon Job app screenshot: calendar and list of confirmed shift bookings"
+      },
+      {
+        "title": "Warehouses nearby",
+        "text": "Warehouses in your region with filters by service type, date, time and rate. Each card shows the warehouse type, rating, distance and tags: buses, meals, increased rate.",
+        "alt": "Ozon Job app screenshot: list of regional warehouses with filters and warehouse cards"
+      },
+      {
+        "title": "Choosing days",
+        "text": "Booking calendar: pick several days at once or a ready-made schedule — 2/2, 4/3, 3/3.",
+        "alt": "Ozon Job app screenshot: shift booking calendar and schedule selection"
+      },
+      {
+        "title": "Choosing a time",
+        "text": "Shift length (12, 9 or 8 hours in the screenshot), a convenient time window and the amount per slot. Some bookings are confirmed instantly.",
+        "alt": "Ozon Job app screenshot: choosing the shift length and time window"
+      },
+      {
+        "title": "Types of work",
+        "text": "Tasks at the warehouse: putaway, picking, receiving, packing, sorting. Each type has its own amount, and some come with an increased rate.",
+        "alt": "Ozon Job app screenshot: types of work at the warehouse and their amounts"
+      },
+      {
+        "title": "Payouts",
+        "text": "Your balance — what is being processed and what will be sent to your card, a withdraw button, account history and live earnings: amount earned and number of tasks.",
+        "alt": "Ozon Job app screenshot: balance and payouts screen"
+      }
+    ],
+    "slider": {
+      "region": "Ozon Job app screenshots",
+      "viewer": "Screenshot viewer",
+      "prev": "Previous screenshot",
+      "next": "Next screenshot",
+      "close": "Close viewer",
+      "open": "View larger",
+      "position": "{n} of {total}",
+      "goTo": "Show screenshot {n}"
+    }
   }
 }
