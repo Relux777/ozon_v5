@@ -141,6 +141,11 @@ $ease: cubic-bezier(0.2, 0.9, 0.25, 1);
     }
 }
 
+// узкий телефон (≤360px): точки плотнее — 12 фото помещаются рядом со стрелками и на экране 320px
+@media (max-width: 360px) {
+    .photo-slider-dots { gap: 4px; }
+}
+
 .photo-slider-arrow {
     color: rgb(var(--bg-2) / 90%);
     transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
@@ -290,5 +295,35 @@ $ease: cubic-bezier(0.2, 0.9, 0.25, 1);
         line-clamp: 3;
         overflow: hidden;
         color: rgb(255 255 255 / 75%);
+    }
+
+    // длинная подпись — кнопка: «…» в конце намекает, что её можно раскрыть
+    &.is-toggle {
+        padding: 8px 12px;
+        margin: -8px -12px;
+        border-radius: 16px;
+        color: inherit;
+        font: inherit;
+        text-align: inherit;
+        cursor: pointer;
+        transition: background 0.2s;
+
+        @include mixins.hover { background: rgb(255 255 255 / 8%); }
+    }
+
+    // раскрытая: весь текст на тёмной подложке поверх фото, длинный — прокручивается
+    &.is-open {
+        max-height: 50dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        background: rgb(0 0 0 / 65%);
+        backdrop-filter: blur(12px);
+
+        span {
+            display: block;
+            -webkit-line-clamp: unset;
+            line-clamp: none;
+            overflow: visible;
+        }
     }
 }

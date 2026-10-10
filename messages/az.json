@@ -1,7 +1,7 @@
 {
   "ManifestGlobal": {
     "SiteName": "Ozon İş",
-    "SiteDescription": "Anbar operatoru vakansiyaları — Ozon İş, hər gün ödəniş"
+    "SiteDescription": "Ozon Job tətbiqi ilə Ozon anbarlarında əlavə iş — anbar ünvanları və ödənişlər"
   },
   "Metadata": {
     "siteName": "Ozon İş"
@@ -11,7 +11,11 @@
     "chooseLanguage": "Dil seçin",
     "close": "Bağla",
     "breadcrumbs": "Naviqasiya yolu",
-    "scrollTop": "Yuxarı"
+    "scrollTop": "Yuxarı",
+    "alerts": "Bildirişlər",
+    "alertClose": "Bildirişi bağla",
+    "copyFailed": "Kopyalamaq alınmadı — mətni əl ilə seçin",
+    "skipToContent": "Məzmuna keç"
   },
   "LanguageModal": {
     "title": "Dil seçin"
@@ -41,33 +45,58 @@
     "empty": "Şəhər tapılmadı. Sorğunu dəyişməyi yoxlayın.",
     "count": "{count, plural, one {# anbar} other {# anbar}}",
     "noData": "Ünvanlar dəqiqləşdirilir",
-    "listLabel": "Şəhərlərin siyahısı"
+    "listLabel": "Şəhərlərin siyahısı",
+    "clear": "Axtarışı təmizlə",
+    "hotkey": "Axtarışa başlamaq üçün «/» düyməsini basın",
+    "filterLabel": "Hansı şəhərləri göstərmək",
+    "filterAll": "Hamısı",
+    "filterData": "Ünvanlarla",
+    "popular": "Ən çox anbar",
+    "alphabet": "Şəhərlər əlifba sırası ilə",
+    "region": "region",
+    "showAll": "Bütün şəhərləri göstər",
+    "legend": "Bazamızda anbar ünvanları olan şəhərlər kartla seçilib; qalanlarının ünvanları dəqiqləşdirilir — yaxın anbarları Ozon Job tətbiqi göstərəcək."
   },
   "SkladPage": {
     "title": "Ozon anbarları şəhərlər üzrə: ünvan, gəlir, DMS və yemək",
     "description": "Ozon anbar operatoru kimi işləmək mümkün olan şəhərlər: anbar ünvanları, gəlir, DMS, yemək və anbara nəqliyyat. Şəhərinizi seçin.",
     "heading": "Şəhərinizi seçin",
-    "lead": "Şəhərinizi tapın və anbar operatoru üçün anbar ünvanlarını, gəliri və bonusları öyrənin."
+    "lead": "Şəhərinizi tapın və anbar operatoru üçün anbar ünvanlarını, gəliri və bonusları öyrənin.",
+    "stats": {
+      "cities": "{count, plural, other {şəhər və region}}",
+      "data": "anbar ünvanları ilə",
+      "warehouses": "{count, plural, other {anbar bazada}}"
+    }
   },
   "CityPage": {
-    "titleWithData": "Ozon anbarında əlavə iş, {city} ş.: Ozon Job, ünvanlar",
-    "titleNoData": "Ozon anbarında əlavə iş, {city} ş.: Ozon Job ilə növbə",
-    "descriptionWithData": "Ozon anbarları, {city} ş.: tam ünvanlar və Ozon Job ilə əlavə iş — 4–12 saatlıq slot, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğul.",
-    "descriptionNoData": "Ozon anbarlarında əlavə iş, {city} ş., Ozon Job tətbiqi ilə: 4–12 saatlıq slotlar, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğulluq.",
-    "heading": "Ozon anbarları, {city} ş.: Ozon Job ilə əlavə iş",
-    "heroKicker": "Ozon Job · {city} ş.",
+    "cityPlace": "{city} ş.",
+    "titleWithData": "Ozon anbarında əlavə iş, {place}: Ozon Job, ünvanlar",
+    "titleNoData": "Ozon anbarında əlavə iş, {place}: Ozon Job ilə növbə",
+    "descriptionWithData": "Ozon anbarları, {place}: tam ünvanlar və Ozon Job ilə əlavə iş — 4–12 saatlıq slot, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğul.",
+    "descriptionNoData": "Ozon anbarlarında əlavə iş, {place}, Ozon Job tətbiqi ilə: 4–12 saatlıq slotlar, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğulluq.",
+    "heading": "Ozon anbarları, {place}: Ozon Job ilə əlavə iş",
+    "heroKicker": "Ozon Job · {place}",
     "heroAddresses": "Anbar ünvanları",
     "heroBonus": "Dəvət kodu ilə bonus",
-    "leadWithData": "Anbarı, günü və növbənin müddətini birbaşa Ozon Job tətbiqində seçin — pul slotdan 3–12 saat sonra karta gəlir. Aşağıda — {city} ş. anbarlarının tam ünvanları, şərtlər və necə başlamaq.",
-    "leadNoData": "Ozon anbarlarında Ozon Job tətbiqi ilə növbələrə çıxın: günü və slotun müddətini özünüz seçirsiniz, ödənişlər — 3 saatdan. {city} ş. anbar ünvanları hələlik bazamızda yoxdur — yaxın anbarları qeydiyyatdan sonra tətbiq göstərəcək.",
+    "heroFacts": {
+      "count": "{count, plural, other {# Ozon anbarı}} tam ünvanlarla",
+      "income": "Ştatda — {income}, Ozon məlumatlarına görə",
+      "transport": "Anbara nəqliyyat — {total, plural, other {# anbardan}} {count} anbarda",
+      "job": "Ozon Job ilə — 4–12 saatlıq slotlar, ödəniş 3 saatdan",
+      "bonus": "Dəvət kodu ilə yeni gələnə bonus — {amount, number} ₽-dək"
+    },
+    "leadWithData": "{place}: Ozon anbarlarının tam ünvanları, Ozon məlumatlarına görə ştatda gəlir və Ozon Job tətbiqi ilə növbəyə necə çıxmaq — anbarı, günü və 4–12 saatlıq slotu özünüz seçirsiniz.",
+    "leadNoData": "Ozon anbar ünvanları ({place}) hələlik bazamızda yoxdur — ən yaxın anbarları qeydiyyatdan sonra Ozon Job tətbiqi göstərəcək. Anbarı, günü və 4–12 saatlıq slotu özünüz seçirsiniz, karta ödəniş — 3 saatdan.",
+    "overview": "{place}: bazamızda {count, plural, other {# Ozon anbarı}} — {localities}.",
+    "localitiesMore": "daha {count}",
     "incomeRange": "{from, number} ₽-dən {to, number} ₽-dək / ay",
     "incomeUpTo": "{to, number} ₽-dək / ay",
     "incomeFrom": "{from, number} ₽-dən / ay",
     "why": {
-      "eyebrow": "Anbarlar · {city} ş.",
-      "title": "Ozon anbarları, {city} ş.: ünvanlar və şərtlər",
+      "eyebrow": "Anbarlar · {place}",
+      "title": "Ozon anbarları, {place}: ünvanlar və şərtlər",
       "lead": "Ünvanlar və şərtlər — Ozonun ştata vakansiyalar səhifəsindən (career.ozon.ru). Ozon Job ilə anbarlar daha çoxdur: Rusiya üzrə 500-dən çox, mini-anbarlar daxil — şəhərinizin siyahısını tətbiq göstərəcək.",
-      "countLabel": "{count, plural, other {Ozon anbarı}} — {city} ş. və ətrafı",
+      "countLabel": "{count, plural, other {Ozon anbarı}} — {place} və ətrafı",
       "countShare": "Bazamızdakı {total} anbardan {count}",
       "incomeTitle": "Nə qədər qazanmaq olar",
       "staffTitle": "Ştatda",
@@ -102,7 +131,7 @@
       "transport": "Anbara və geri korporativ nəqliyyat",
       "training": "İlk gündən mentor və təlim",
       "meal": "Kompleks nahar və ya yemək kompensasiyası",
-      "dms": "Könüllü tibbi sığorta"
+      "dms": "DMS — ştatda bir ay işlədikdən sonra"
     },
     "perksJob": {
       "transport": "Ozon Job-da da var",
@@ -118,13 +147,13 @@
     },
     "perksCount": "{total, plural, other {# anbardan}} {count}-də",
     "perksNone": "bazamızda göstərilməyib",
-    "warehousesTitle": "Anbar ünvanları, {city} ş.",
+    "warehousesTitle": "Anbar ünvanları, {place}",
     "warehousesEmpty": "Bu şəhərdə anbar ünvanları hələlik dəqiqləşdirilir. Aktual vakansiyalara Ozonun rəsmi səhifəsində baxın.",
     "addresses": {
       "lead": "Tam ünvan — Ozon məlumatları, region və rayonla tamamlanıb; gəlir və şərtlər — ştata vakansiyalardan. Anbarın dəqiq ünvanı slota yazıldıqdan sonra tətbiqdə gələcək.",
       "number": "Anbar {n}",
       "copy": "Kopyala",
-      "copied": "Ünvan kopyalandı ✓",
+      "copied": "Ünvan kopyalandı",
       "map": "Xəritədə",
       "mapLabel": "«{address}» ünvanını Yandex Xəritələrdə tap",
       "more": "Bütün ünvanları göstər ({count})",
@@ -132,50 +161,123 @@
     },
     "related": {
       "title": "Qonşu şəhərlər və rayonlar",
-      "lead": "{city} ş. anbarları bu səhifələrdə də göstərilir — evinizə daha yaxın yeri seçin."
+      "lead": "Bu anbarların bir hissəsi qonşu şəhər və rayonların səhifələrində də var — evinizə daha yaxın yeri seçin.",
+      "more": "Bütün şəhərləri göstər ({count})"
     },
-    "offer": {
-      "eyebrow": "Ozon Job",
-      "title": "Ozon Job ilə əlavə iş nə verir",
-      "lead": "Tətbiqin şərtləri — job.ozon.ru və icraçılar üçün arayış məlumatlarına görə. Onlar ştatda işdən fərqlənir: mülki-hüquqi müqavilə, özünüməşğulluq və ya fərdi sahibkarlıq və hər slot üçün ödəniş.",
+    "benefits": {
+      "eyebrow": "Ozon Job-un üstünlükləri",
+      "title": "Ozon anbarlarında əlavə iş nə verir, {place}",
+      "lead": "Tətbiq ilə işləmək haqqında əsas — qısaca. Hər bənd üzrə ətraflı — kartdakı keçiddə.",
+      "more": "Ətraflı",
+      "note": "Şərtlər — Ozon Job icraçılar arayışına və Ozon vakansiyalarına görə; onları Ozon müəyyən edir və dəyişə bilər. Gəlirə zəmanət verilmir.",
       "items": {
-        "payments": {
-          "title": "Ödənişlər — slotdan 3 saat sonra",
-          "text": "Ozon Bank kartına — 3 saat sonra («Новичок» və «Бриллиант» səviyyələri) və ya 12 saat sonra. «Бриллиант» səviyyəsində pulu saatda bir dəfə özünüz çıxara bilərsiniz. Digər bankların kartlarına — çərşənbə axşamları."
+        "payouts": {
+          "title": "Pul — növbədən 3 saat sonra",
+          "text": "Ozon Bank kartına — «Новичок» və «Бриллиант» səviyyələrində 3 saatdan, digərlərində 12 saatdan sonra. Digər bankların kartlarına — çərşənbə axşamları."
         },
         "schedule": {
-          "title": "Günü və müddəti özünüz seçirsiniz",
-          "text": "4, 6, 8 və ya 12 saatlıq gündüz və gecə slotları — hansıların mövcud olması anbardan asılıdır. Təhsil və ya işlə birləşdirmək asandır."
-        },
-        "transport": {
-          "title": "Anbara və geri nəqliyyat",
-          "text": "Ozon Job nəqliyyatı şərtlər sırasında göstərir; {city} ş. anbarlarından hansılarında olduğu yuxarıdakı ünvanlarda qeyd olunub."
+          "title": "Qrafikinizə uyğun növbələr",
+          "text": "4-dən 12 saatadək slotlar, gündüz və ya gecə. Bir neçə günü birdən qeyd edə və ya hazır qrafik seçə bilərsiniz — 2/2, 4/3, 3/3."
         },
         "start": {
-          "title": "«Поддержка на старте» — 6 500 ₽-dək",
-          "text": "Yeni icraçılar üçün aksiya: ilk, təlim günü adi slot kimi deyil, bu aksiya üzrə ödənilir."
+          "title": "Təcrübə lazım deyil",
+          "text": "İlk slot təlim slotudur: anbarda sahənizi göstərəcək və məlumat toplama terminalı ilə işləməyi öyrədəcəklər."
         },
-        "contract": {
-          "title": "Mülki-hüquqi müqavilə, özünüməşğulluq və ya fərdi sahibkar",
-          "text": "Qeydiyyat və müqavilə-oferta — birbaşa tətbiqdə, ofisə getmək lazım deyil. Mülki-hüquqi müqavilə üzrə vergini Ozon tutur."
+        "transport": {
+          "title": "Nəqliyyat — {total, plural, other {# anbardan}} {count} anbarda",
+          "text": "Ozon vakansiyalarına görə korporativ nəqliyyat {total, plural, other {# anbardan}} {count} anbarda var ({place}). Ozon Job üçün avtobusların olub-olmadığı tətbiqdə anbar kartında görünür.",
+          "titleNone": "Anbara marşrut — tətbiqdə",
+          "textNone": "Avtobusların olub-olmadığı Ozon Job-da anbar kartında görünür, orada anbara marşrut düyməsi də var."
         },
-        "tasks": {
-          "title": "Nə ilə məşğul olacağınızı seçirsiniz",
-          "text": "Tədarüklərin qəbulu, yerləşdirmə, yığım, çeşidləmə və ya qablaşdırma — prosesi slota yazılarkən seçirsiniz."
+        "online": {
+          "title": "Ofissiz rəsmiləşdirmə",
+          "text": "Qosuslugi və ya Ozon Bank vasitəsilə qeydiyyat, müqavilə — birbaşa tətbiqdə: mülki-hüquqi müqavilə, özünüməşğulluq və ya fərdi sahibkar. Özünüməşğulların vergisini Ozon Job tutur."
         },
-        "transparent": {
-          "title": "Məbləğ əvvəlcədən görünür",
-          "text": "Anbar kartında — saatlıq və 12 saatlıq slot üçün gözlənilən ödəniş, ətraflı hesablama isə tətbiqdə növbəti gün görünür."
+        "rating": {
+          "title": "Səviyyə yüksək — imkan çox",
+          "text": "Reytinq pozuntusuz növbələrə görə artır. Səviyyə nə qədər yüksəkdirsə, slotlar bir o qədər tez açılır, «Бриллиант» səviyyəsində isə Ozon Bank kartına ödəniş 3 saata gəlir."
+        },
+        "tariffs": {
+          "title": "Artırılmış tariflər və aksiyalar",
+          "text": "Bəzi anbarlarda və proseslərdə artırılmış tarif tətbiq olunur, çıxışa görə bonuslar da olur — onlar slota yazılmadan əvvəl tətbiqdə görünür."
         },
         "bonus": {
           "title": "Dəvət kodu ilə bonus",
-          "text": "Yeni icraçıya — 1 000-dən 5 000 ₽-dək: məbləğ ilk yazılış anbarından asılıdır (Ozon Job siyahılarına görə, sentyabr 2026). Şərt — məsələn, ilk çıxışdan sonra 30 gün ərzində 30 000 ₽ qazanmaq."
+          "text": "Yeni gələnə — aksiya şərtləri yerinə yetirildikdən sonra {amount, number} ₽-dək. Məbləğ anbardan asılıdır."
         }
+      }
+    },
+    "faq": {
+      "eyebrow": "Şəhər üzrə suallar",
+      "title": "Ozon anbarları, {place}: tez-tez verilən suallar",
+      "where": {
+        "q": "Ozon anbarları harada yerləşir, {place}?",
+        "a": "Bazamızda {count, plural, other {# anbar}} var: {localities}. Xəritə keçidi ilə tam ünvanlar — yuxarıdakı ünvanlar blokunda. Yazıldığınız anbarın dəqiq ünvanını Ozon Job tətbiqi göstərəcək."
       },
-      "note": "Şərtləri Ozon müəyyən edir və onlar dəyişə bilər — slota yazılmazdan əvvəl tətbiqdə yoxlayın."
+      "pay": {
+        "q": "Ozon anbarlarında nə qədər ödəyirlər, {place}?",
+        "aStaff": "Ştatda — tam qrafiklə {income}, Ozon vakansiyalarına görə ({date} tarixinə). Ozon Job ilə hər slot üçün ödənilir: əməliyyatların sayı × anbar tarifi, ona görə də aylıq gəlir neçə slot götürdüyünüzdən asılıdır. Slot üçün gözlənilən məbləği tətbiq yazılmadan əvvəl göstərir; gəlirə zəmanət verilmir.",
+        "aJob": "Ozon vakansiyalarında bu şəhərin anbarları üzrə gəlir göstərilməyib. Ozon Job ilə hər slot üçün ödənilir: əməliyyatların sayı × anbar tarifi. Saat və slot üçün gözlənilən məbləği tətbiq yazılmadan əvvəl göstərir; gəlirə zəmanət verilmir."
+      },
+      "transport": {
+        "q": "Ozon anbarlarına nəqliyyat varmı, {place}?",
+        "aYes": "Ozon vakansiyalarına görə korporativ nəqliyyat {total, plural, other {# anbardan}} {count} anbarda var: {list}. Ozon Job-da da nəqliyyat şərtlər sırasındadır — anbar kartında avtobus işarəsi olur; marşrutu və vaxtı tətbiqdə dəqiqləşdirin.",
+        "aNo": "Ozon vakansiyalarında bu şəhərin anbarları üçün nəqliyyat göstərilməyib. Avtobusların olub-olmadığı Ozon Job tətbiqində anbar kartında görünür — orada anbara marşrut düyməsi də var."
+      },
+      "meal": {
+        "q": "Ozon anbarlarında yemək verilirmi, {place}?",
+        "aYes": "Yemək və ya yemək kompensasiyası {total, plural, other {# anbardan}} {count} anbarın vakansiyasında göstərilib — bu, ştatda işin şərtidir. Ozon Job üçün nahar olub-olmadığı tətbiqdə anbar kartında görünür; işarə yoxdursa — anbarda dəqiqləşdirin.",
+        "aNo": "Ozon vakansiyalarında bu şəhərin anbarları üçün yemək göstərilməyib. Ozon Job üçün nahar olub-olmadığı tətbiqdə anbar kartında görünür; işarə yoxdursa — anbarda dəqiqləşdirin."
+      },
+      "start": {
+        "q": "Ozon anbarında ilk növbəyə necə çıxmaq olar, {place}?",
+        "a": "Ozon Job-u yükləyin, Qosuslugi və ya Ozon Bank vasitəsilə qeydiyyatdan keçin və əməkdaşlıq növünü seçin — mülki-hüquqi müqavilə, özünüməşğulluq və ya fərdi sahibkar. Sonra anbarı, günü və slotu seçin. İlk çıxışa pasportunuzu götürün; ilk slot təlim slotudur. Aşağıdakı blokdakı dəvət kodu yeni gələnə bonus verir — şərtlər də oradadır."
+      }
+    },
+    "compare": {
+      "eyebrow": "Ştat, yoxsa Ozon Job",
+      "title": "Ştatda iş, yoxsa Ozon Job ilə əlavə iş: fərq nədədir",
+      "lead": "Anbarlar eynidir, şərtlər fərqlidir. «Ştatda» sütununda — bu səhifənin anbarları ({place}) üzrə Ozon vakansiyalarının rəqəmləri, «Ozon Job ilə» sütununda — icraçılar üçün arayışdakı şərtlər.",
+      "staff": "Ştatda",
+      "job": "Ozon Job ilə",
+      "rowLabel": "Şərt",
+      "contract": {
+        "label": "Rəsmiləşdirmə",
+        "staff": "Əmək müqaviləsi, rəsmi işə qəbul",
+        "job": "Mülki-hüquqi müqavilə, özünüməşğulluq və ya fərdi sahibkar — oferta müqaviləsi birbaşa tətbiqdə"
+      },
+      "income": {
+        "label": "Gəlir",
+        "staff": "Tam qrafiklə {income}",
+        "staffNone": "Vakansiyalarda göstərilməyib",
+        "job": "Hər slot üçün: əməliyyatlar × anbar tarifi. Məbləğ yazılmadan əvvəl görünür"
+      },
+      "schedule": {
+        "label": "Qrafik",
+        "staff": "Vakansiya şərtlərinə görə daimi növbəli qrafik",
+        "job": "Günü və 4–12 saatlıq slotu özünüz seçirsiniz, gündüz və ya gecə"
+      },
+      "payouts": {
+        "label": "Ödənişlər",
+        "staff": "Həftəlik — cümə günləri əvvəlki həftə üçün",
+        "job": "Ozon Bank kartına — slotdan 3 və ya 12 saat sonra, digər bankların kartlarına — çərşənbə axşamları"
+      },
+      "perks": {
+        "label": "Anbarda şərtlər",
+        "staff": "Nəqliyyat — {total, plural, other {# anbardan}} {transport} anbarda, yemək — {meal} anbarda, DMS — {dms} anbarda",
+        "staffNone": "Vakansiyalarda göstərilməyib",
+        "job": "Nəqliyyat — var, ilk slot — təlim, yemək — anbarda dəqiqləşdirin, DMS — yoxdur"
+      },
+      "start": {
+        "label": "Necə başlamaq",
+        "staff": "Vakansiyaya müraciət, müsahibə və rəsmiləşdirmə",
+        "job": "Tətbiqdə Qosuslugi və ya Ozon Bank vasitəsilə qeydiyyat — və slota yazılma"
+      },
+      "note": "Ştat rəqəmləri — Ozon vakansiyalarından (career.ozon.ru), Ozon Job şərtləri — icraçılar üçün arayışdan (docs.ozon.ru). Şərtləri Ozon müəyyən edir və onlar dəyişə bilər; gəlirə zəmanət verilmir."
     },
     "duty": {
       "title": "Nə ilə məşğul olacaqsınız",
+      "lead": "Qəbul, yerləşdirmə, yığım, çeşidləmə və ya qablaşdırma — prosesi slota yazılarkən seçirsiniz. İş bunlardan ibarətdir.",
       "items": {
         "scan": {
           "title": "Qəbul və skan",
@@ -195,15 +297,29 @@
         }
       }
     },
+    "more": {
+      "eyebrow": "Ətraflı",
+      "title": "Daha nəyi bilmək vacibdir",
+      "lead": "Ödənişlər necə gəlir, ilk günə nə götürmək lazımdır, səviyyələr necə işləyir və tez-tez verilən suallara cavablar — saytın ayrıca bölmələrində."
+    },
+    "og": {
+      "alt": "Ozon anbarları, {place}: ünvanlar, gəlir və Ozon Job ilə əlavə iş",
+      "kicker": "Ozon anbarları · Ozon Job ilə əlavə iş",
+      "count": "Bazada {count, plural, other {# anbar}}",
+      "income": "ştatda ayda {value, number} ₽-dək",
+      "incomeFrom": "ştatda ayda {value, number} ₽-dan",
+      "noData": "4-dən 12 saatadək slotlar",
+      "tagline": "Anbar ünvanları və şərtlər · 4–12 saatlıq slotlar · ödəniş 3 saatdan"
+    },
     "nav": {
-      "summaryKicker": "Qısaca · {city} ş.",
+      "summaryKicker": "Qısaca · {place}",
       "summaryAverage": "Ştatda — orta hesabla {value, number} ₽-dək / ay",
       "summaryJob": "Ozon Job ilə — hər slot üçün ödəniş, ödənişlər 3 saatdan",
       "summaryNoData": "Bu şəhərdə anbar ünvanları hələlik dəqiqləşdirilir",
       "summaryDate": "Ünvanlar və ştat şərtləri — career.ozon.ru məlumatları, {date} tarixinə",
       "data": "Bizim məlumatlar",
       "extrasTitle": "Faydalı keçidlər",
-      "official": "Ozonun ştata vakansiyaları, {city} ş."
+      "official": "Ozonun ştata vakansiyaları, {place}"
     },
     "disclaimer": "Ünvanlar və ştat şərtləri — Ozon səhifələrindən, {date} tarixinə. Ozon Job şərtləri — job.ozon.ru və icraçılar üçün arayış məlumatlarına görə. Hər şey dəyişə bilər — tətbiqdə yoxlayın.",
     "allCities": "Bütün şəhərlər"
@@ -250,6 +366,16 @@
     },
     "appTitle": "Ozon Job tətbiqi",
     "appText": "Növbələrə yazılış, ödənişlər və dəvət kodu — hamısı tətbiqdə. Onu öz tətbiq mağazanızdan yükləyin.",
+    "appPerks": [
+      "4-dən 12 saatadək slotlar — gündüz və ya gecə",
+      "Karta ödəniş — 3 saatdan",
+      "Ofissiz qeydiyyat — Qosuslugi və ya Ozon Bank ilə"
+    ],
+    "appSteps": [
+      "Yaxın anbarı seçin",
+      "Slota yazılın",
+      "Ödənişi alın"
+    ],
     "officialTitle": "Ozonun rəsmi resursları",
     "officialText": "Şərtləri, tarifləri və məbləğləri Ozon müəyyən edir — ilkin mənbələrlə tutuşdurun.",
     "official": {
@@ -464,7 +590,7 @@
     "ctaText": "Tətbiqdə qeydiyyat zamanı dəvət kodunu daxil edin. Bonus anbardan asılı məbləğdə tapşırıqları yerinə yetirdiyiniz zaman verilir; əvvəllər Ozonda işləməyənlər iştirak edə bilər.",
     "ctaCodeLabel": "Dəvət kodu",
     "ctaCopy": "Kopyala",
-    "ctaCopied": "Kopyalandı ✓",
+    "ctaCopied": "Kopyalandı",
     "ctaLink": "Bonusu necə almaq",
     "sourcesTitle": "Mənbələr",
     "sourcesNote": "Rəqəmlər — Ozon Job tətbiqindən («Рейтинг», «Как считаем рейтинг», «Нарушения» bölmələri) və icraçılar üçün arayışdan, {date} tarixində yoxlanılıb. Ozon qaydaları dəyişə bilər — aktual dəyərlər həmişə tətbiqdədir. Müstəqil məlumat saytı — Ozon deyil və onun nümayəndəsi deyil.",
@@ -498,7 +624,7 @@
     "open": "Rəsmiləşdir",
     "openLabel": "{name}: dəvətlə rəsmiləşdirin — rəsmi səhifə açılacaq",
     "copy": "Kopyala",
-    "copied": "Kopyalandı ✓",
+    "copied": "Kopyalandı",
     "offers": {
       "debit": {
         "name": "Ozon Kart",
@@ -1267,9 +1393,9 @@
   },
   "HomePage": {
     "pageNavLabel": "Səhifə üzrə sürətli keçid",
-    "title": "Ozon-da iş: anbar operatoru, hər gün ödəniş",
-    "description": "Ozon anbar operatoru: sərbəst qrafik, gündüz və gecə növbələri, gündəlik və ya həftəlik ödəniş. Ştat, mülki-hüquqi müqavilə və ya özünüməşğul. Sıfırdan təlim.",
-    "heading": "Ozon anbar operatoru vakansiyası: gündəlik ödənişli iş",
+    "title": "Ozon anbarlarında Ozon Job ilə əlavə iş: ünvanlar və ödəniş",
+    "description": "Ozon Job tətbiqi ilə Ozon anbarında növbəyə necə çıxmaq: 4–12 saatlıq slotlar, hər slot üçün ödəniş, karta 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğul.",
+    "heading": "Ozon Job tətbiqi ilə Ozon anbarlarında əlavə iş",
     "lead": "Şəhərinizdə anbar seçin, real ünvanları və şərtləri öyrənin. Ozon Job tətbiqində dəvət kodu ilə qeydiyyatdan keçin — {amount, number} ₽-dək* bonus aksiyanın şərtləri yerinə yetirildikdən sonra hesablanır.",
     "heroCity": "Şəhəri seçin",
     "heroBonus": "{amount, number} ₽-dək əldə et",
@@ -1308,7 +1434,13 @@
     ],
     "statsEyebrow": "Rəqəmlərlə Ozon*",
     "statsTitle": "Nə üçün Ozonda işləmək lazımdır",
-    "statsNote": "Rəqəmlər Ozonun açıq mənbələrindən götürülüb və yuvarlaqlaşdırılıb; nəşr anına aktualdır və dəyişə bilər. Dost üçün bonus anbardan və aksiyanın şərtlərindən asılıdır. Sayt müstəqildir və Ozonun rəsmi saytı deyil.",
+    "statsNote": "* Rəqəmlər Ozonun açıq mənbələrindən götürülüb və yuvarlaqlaşdırılıb; nəşr anına aktualdır və dəyişə bilər. Dost üçün bonus anbardan və aksiyanın şərtlərindən asılıdır. Sayt müstəqildir və Ozonun rəsmi saytı deyil.",
+    "cities": {
+      "eyebrow": "Şəhərlər üzrə anbarlar",
+      "title": "Şəhərinizdəki Ozon anbarları",
+      "lead": "Bazamızda {count, plural, other {# şəhər və region}} üzrə anbar ünvanları və şərtləri var. Burada — anbarların ən çox olduğu şəhərlər; özünüzünkünü axtarışda bütün {total, plural, other {# şəhər}} arasından tapın.",
+      "all": "Bütün şəhərlər və regionlar"
+    },
     "stepsEyebrow": "İlk addımlar",
     "stepsTitle": "İlk növbəyə necə çıxmaq olar",
     "stepLabel": "Addım {n} / {total}",
@@ -1362,7 +1494,7 @@
       "condition": "* Bonus aksiyanın şərtləri yerinə yetirildikdən sonra verilir: anbardan asılı məbləğdə tapşırıqlar.",
       "codeLabel": "Sizin dəvət kodunuz",
       "copy": "Kopyala",
-      "copied": "Kopyalandı ✓",
+      "copied": "Kopyalandı",
       "codeHint": "Harada daxil etmək olar: ana səhifədə, aksiya səhifəsində və ya Profil → Dostunu dəvət et bölməsində",
       "storesLabel": "Ozon Job-u tətbiq mağazasından yükləyin",
       "stepsLabel": "Bonusu necə almaq olar",
@@ -1651,7 +1783,7 @@
         "Pulsuz: açılış, xidmət, hesab artırma və köçürmələr"
       ],
       "copy": "Linki kopyala",
-      "copied": "Kopyalandı ✓",
+      "copied": "Kopyalandı",
       "openLink": "Linki aç",
       "qrLabel": "Dəvət QR-kodu",
       "stepsLabel": "Keşbeki necə əldə etmək olar",
@@ -1688,43 +1820,68 @@
   "AppScreens": {
     "eyebrow": "Ozon Job tətbiqi",
     "title": "Tətbiq içəridən necə görünür",
-    "lead": "Yeddi ekran — anbar və növbə seçimindən pulun çıxarılmasına qədər. Skrinşotları vərəqləyin və ya böyük görmək üçün istənilən birinə toxunun.",
-    "note": "Skrinşotlar iOS tətbiqində Kazan anbarları nümunəsində çəkilib ({date}). İnterfeys tətbiqin versiyasından asılı olaraq fərqlənə bilər. Skrinşotlardakı məbləğlər və tariflər bu tarix üçün nümunədir: digər anbarlarda və başqa günlərdə onlar fərqlidir və zəmanət verilmir. Ozon — «Интернет Решения» MMC-nin əmtəə nişanıdır; sayt Ozon ilə əlaqəli deyil.",
+    "lead": "On iki ekran — anbar və növbə seçimindən ödənişlərə, reytinqə və dəvət koduna qədər. Skrinşotları vərəqləyin və ya böyük görmək üçün istənilən birinə toxunun.",
+    "note": "Skrinşotlar {date} saytın müəllifinin hesabında, iOS tətbiqində, Kazan anbarları nümunəsində çəkilib. İnterfeys tətbiqin versiyasından asılı olaraq fərqlənə bilər. Skrinşotlardakı məbləğlər, tariflər və aksiyalar bu tarix üçün nümunədir: digər anbarlarda və başqa günlərdə onlar fərqlidir və zəmanət verilmir. Ozon — «Интернет Решения» MMC-nin əmtəə nişanıdır; sayt Ozon ilə əlaqəli deyil.",
     "items": [
       {
         "title": "Əsas ekran",
-        "text": "Ən yaxın növbə qeydiyyatı və slot üçün təxmini məbləğ, səviyyəniz, anbara qədər marşrut və seçilmiş anbarlarda boş slotlar.",
-        "alt": "Ozon Job tətbiqinin skrinşotu: ən yaxın növbə qeydiyyatı və icraçının səviyyəsi ilə əsas ekran"
+        "text": "Səviyyəniz (skrinşotda — «Бриллиант»), anbar aksiyaları — məsələn, çıxış üçün bonus, yaxın qeydiyyatlar və növbə və saat üçün məbləğlə rahat slotlar seçimi.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: icraçının səviyyəsi, aksiyalar və təklif olunan slotlarla əsas ekran"
       },
       {
-        "title": "Qeydiyyatlarım",
-        "text": "Növbələrinizin təqvimi və siyahısı: anbar, vaxt, iş növü, «Təsdiqlənib» statusu, slot və saat üçün təxmini ödəniş.",
-        "alt": "Ozon Job tətbiqinin skrinşotu: təqvim və təsdiqlənmiş növbə qeydiyyatlarının siyahısı"
+        "title": "Regionun anbarları",
+        "text": "Regionun anbarları (skrinşotda — Tatarıstanda 16) xidmət növü, tarix, vaxt və tarif üzrə filtrlərlə. Kartda — anbarın növü, reytinqi, məsafə, 12 saat üçün təxmini məbləğ və işarələr: aksiyalar, avtobuslar, naharlar.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: filtrlər, növbə məbləği, avtobus və nahar işarələri ilə regionun anbar siyahısı"
       },
       {
-        "title": "Yaxın anbarlar",
-        "text": "Regionun anbarları xidmət növü, tarix, vaxt və tarif üzrə filtrlərlə. Kartda — anbarın növü, reytinq, məsafə və qeydlər: avtobuslar, nahar, artırılmış tarif.",
-        "alt": "Ozon Job tətbiqinin skrinşotu: filtrlər və anbar kartları ilə regionun anbarlarının siyahısı"
+        "title": "Anbar səhifəsi",
+        "text": "Anbar kartı: fotolar, 12 saat və bir saat üçün məbləğ, anbara marşrut, boş tarixlər və obyektdə nələr var — iş geyimi, avtobuslar, suallara cavablar. Aşağıda — anbarın aksiyaları.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: fotolar, növbə məbləği, imkanlar və aksiyalarla anbar səhifəsi"
+      },
+      {
+        "title": "İş növləri və tariflər",
+        "text": "Anbardakı proseslər — yerləşdirmə, yığım, qəbul, qablaşdırma, çeşidləmə — növbə məbləği və boş tarixlərlə. Bəzi proseslərdə artırılmış tarif tətbiq olunur (skrinşotda — +5% və +20%).",
+        "alt": "Ozon Job tətbiqinin skrinşotu: məbləğlər və artırılmış tariflə anbarda iş növləri"
       },
       {
         "title": "Günlərin seçimi",
-        "text": "Qeydiyyat təqvimi: bir neçə günü birdən qeyd edin və ya hazır qrafik seçin — 2/2, 4/3, 3/3.",
-        "alt": "Ozon Job tətbiqinin skrinşotu: növbələrə qeydiyyat təqvimi və qrafik seçimi"
+        "text": "Qeydiyyat təqvimi: bir neçə günü birdən qeyd edin və ya hazır qrafik seçin — çevik, 2/2, 4/3, 3/3.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: qrafik seçimi ilə növbələrə yazılma təqvimi"
       },
       {
         "title": "Vaxtın seçimi",
-        "text": "Növbənin müddəti (skrinşotda — 12, 9 və ya 8 saat), uyğun vaxt aralığı və slot üçün məbləğ. Bəzi qeydiyyatlar dərhal təsdiqlənir.",
-        "alt": "Ozon Job tətbiqinin skrinşotu: növbənin müddəti və vaxt aralığının seçimi"
-      },
-      {
-        "title": "İş növləri",
-        "text": "Anbarda tapşırıqlar: yerləşdirmə, yığım, qəbul, qablaşdırma, çeşidləmə. Hər iş növünün öz məbləği var, bəzilərinə artırılmış tarif tətbiq olunur.",
-        "alt": "Ozon Job tətbiqinin skrinşotu: anbarda iş növləri və onların məbləğləri"
+        "text": "Növbənin müddəti (skrinşotda — 12, 9 və ya 8 saat), gündüz və gecə intervalları, slot və saat üçün məbləğ. Bəzi qeydiyyatlar dərhal təsdiqlənir.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: slot məbləği ilə növbə müddəti və vaxt intervalının seçimi"
       },
       {
         "title": "Ödənişlər",
-        "text": "Balans — nə qədəri emaldadır və nə qədəri karta göndəriləcək, pul çıxarma düyməsi, hesab tarixçəsi və onlayn gəlir: qazanılan məbləğ və tapşırıqların sayı.",
-        "alt": "Ozon Job tətbiqinin skrinşotu: balans və ödənişlər ekranı"
+        "text": "Balans: nə qədəri emaldadır və nə qədəri karta gedəcək, pul çıxarma düyməsi, hesab tarixçəsi və onlayn gəlir — günün qazancı və tapşırıqların sayı.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: balans və günün gəliri ilə ödənişlər ekranı"
+      },
+      {
+        "title": "Günlər üzrə gəlir",
+        "text": "Həftə ərzində günlər üzrə qazanc, həmçinin tutulmalar və səhvlər, aksiyalar, aktlar, çeklər və arayışlar, rekvizitlər və əməkdaşlıq tarixçəsi.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: günlük qazanc qrafiki və ödəniş bölmələri"
+      },
+      {
+        "title": "Günün əməliyyatları",
+        "text": "Növbədəki hər əməliyyat — vaxtı, sayı və məbləği, həmçinin slotun şərtlərini yerinə yetirməyə görə əlavə mükafat.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: say və məbləğlərlə günün əməliyyatlarının siyahısı"
+      },
+      {
+        "title": "Reytinq",
+        "text": "Səviyyə və ballar (skrinşotda — «Бриллиант», 792 bal), pozuntular və hər səviyyənin nə verdiyi — məsələn, slotların neçə gün əvvəl açıldığı.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: icraçının reytinqi, səviyyələr və onların üstünlükləri"
+      },
+      {
+        "title": "Profil",
+        "text": "Reytinq, tərəfdaşlardan endirimlər, «Dostunu gətir», səfərlər, şəxsi QR-kod, sənədlər, sorğular və təlim — hamısı profildə.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: bölmələri ilə icraçı profili"
+      },
+      {
+        "title": "Dostunu gətir",
+        "text": "Dəvət kodu olan ekran. Yeni gələn kodu qeydiyyatdan sonra daxil edir, 30 000 ₽-dək tapşırıqları yerinə yetirir — və 5 000 ₽-dək alır. Aksiya müəyyən anbarlarda və xidmət növlərində keçərlidir.",
+        "alt": "Ozon Job tətbiqinin skrinşotu: dəvət kodu ilə «Dostunu gətir» ekranı"
       }
     ],
     "slider": {

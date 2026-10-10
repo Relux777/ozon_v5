@@ -225,13 +225,14 @@ export default function PhotoSlider({ slides, labels, sizes = '(max-width: 620px
                 ))}
             </section>
 
-            {/* пагинация: счётчик · точки (активная вытягивается в «таблетку») · стрелки */}
+            {/* пагинация: счётчик · точки (активная вытягивается в «таблетку») · стрелки. На телефоне счётчик скрыт —
+                он дублирует точки, а 12 точек со счётчиком и стрелками в ширину телефона не помещаются */}
             <div className='photo-slider-bar flex nowrap align-center justify-between gap-15 mt-15'>
-                <p className='photo-slider-count md-0 font-14 space-nowrap' aria-hidden='true'>
+                <p className='photo-slider-count md-0 font-14 space-nowrap m-none' aria-hidden='true'>
                     <b className='color-2-90 font-w-700'>{pad(active + 1)}</b> / {pad(slides.length)}
                 </p>
 
-                <div className='flex nowrap align-center gap-8'>
+                <div className='photo-slider-dots flex nowrap align-center gap-8'>
                     {slides.map((slide, i) => (
                         <button
                             type='button'

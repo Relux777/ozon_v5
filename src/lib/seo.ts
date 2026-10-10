@@ -44,6 +44,11 @@ type PageMetadataInput = {
      * дубль русской страницы), и в hreflang/og:locale:alternate они не попадают. По умолчанию — все языки.
      */
     locales?: readonly AppLocale[];
+    /**
+     * У страницы своя картинка превью — файл opengraph-image.tsx в её папке (страницы городов). Тогда общую
+     * public/og.jpg не подставляем: явные images в metadata перебили бы картинку из файла
+     */
+    ownImage?: boolean;
 };
 
 // Next.js не сливает вложенные объекты metadata: openGraph страницы полностью заменяет
@@ -57,6 +62,7 @@ export function buildPageMetadata({
     absoluteTitle = false,
     noindex = false,
     locales = routing.locales,
+    ownImage = false,
 }: PageMetadataInput): Metadata {
     const languages = getHreflangLinks(href, locales);
     const url = `${BASE_URL}${getPathname({ locale, href })}`;
@@ -66,7 +72,8 @@ export function buildPageMetadata({
         title: absoluteTitle ? { absolute: title } : title,
         description,
         alternates: { canonical: url, languages },
-        ...(hidden && { robots: { index: false, follow: false } }),
+        // не индексируем, но по ссылкам ходить можно: страница-«пустышка» не обрывает обход сайта
+        ...(hidden && { robots: { index: false, follow: true } }),
         openGraph: {
             type: 'website',
             url,
@@ -77,9 +84,9 @@ export function buildPageMetadata({
             alternateLocale: locales.filter((l) => l !== locale).map((l) => OG_LOCALES[l]),
             // превью ссылки в Telegram/WhatsApp/VK/соцсетях; без картинки summary_large_image был пустым.
             // JPEG до 300 КБ — иначе WhatsApp не показывает превью
-            images: [{ ...OG_IMAGE, alt: siteName }],
+            ...(!ownImage && { images: [{ ...OG_IMAGE, alt: siteName }] }),
         },
-        twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
+        twitter: { card: 'summary_large_image', title, description, ...(!ownImage && { images: [OG_IMAGE.url] }) },
     };
 }
 
@@ -93,6 +100,32 @@ export function breadcrumbJsonLd(locale: AppLocale, items: { name: string; href:
             name: item.name,
             item: `${BASE_URL}${getPathname({ locale, href: item.href })}`,
         })),
+    };
+}
+
+/** Разметка ItemList — список страниц (на /sklad — города со складами), чтобы поисковик видел их как набор */
+export function itemListJsonLd(locale: AppLocale, name: string, items: { name: string; href: Href }[]) {
+    return {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        name,
+        inLanguage: locale,
+        numberOfItems: items.length,
+        itemListElement: items.map((item, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: item.name,
+            url: `${BASE_URL}${getPathname({ locale, href: item.href })}`,
+        })),
+    };
+}
+
+/** Поиск по сайту для разметки WebSite: «Склады в городе …» → /sklad?q=… (поиск CitySearch читает q из адреса) */
+export function siteSearchAction(locale: AppLocale) {
+    return {
+        '@type': 'SearchAction',
+        target: { '@type': 'EntryPoint', urlTemplate: `${BASE_URL}${getPathname({ locale, href: '/sklad' })}?q={search_term_string}` },
+        'query-input': 'required name=search_term_string',
     };
 }
 

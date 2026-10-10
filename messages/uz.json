@@ -1,7 +1,7 @@
 {
   "ManifestGlobal": {
     "SiteName": "Ozon Ish",
-    "SiteDescription": "Ombor operatori vakansiyalari — Ozon Ish, har kuni to'lov"
+    "SiteDescription": "Ozon Job ilovasi orqali Ozon omborlarida qo'shimcha ish — ombor manzillari va to'lovlar"
   },
   "Metadata": {
     "siteName": "Ozon Ish"
@@ -11,7 +11,11 @@
     "chooseLanguage": "Tilni tanlash",
     "close": "Yopish",
     "breadcrumbs": "Sahifa yo'li",
-    "scrollTop": "Tepaga"
+    "scrollTop": "Tepaga",
+    "alerts": "Bildirishnomalar",
+    "alertClose": "Bildirishnomani yopish",
+    "copyFailed": "Nusxalab bo'lmadi — matnni qo'lda belgilang",
+    "skipToContent": "Asosiy qismga o'tish"
   },
   "LanguageModal": {
     "title": "Tilni tanlang"
@@ -41,33 +45,58 @@
     "empty": "Shahar topilmadi. So'rovni o'zgartirib ko'ring.",
     "count": "{count, plural, one {# ombor} other {# ombor}}",
     "noData": "Manzillar aniqlanmoqda",
-    "listLabel": "Shaharlar ro'yxati"
+    "listLabel": "Shaharlar ro'yxati",
+    "clear": "Qidiruvni tozalash",
+    "hotkey": "«/» tugmasini bosing — qidiruv boshlanadi",
+    "filterLabel": "Qaysi shaharlarni ko'rsatish",
+    "filterAll": "Hammasi",
+    "filterData": "Manzillari bilan",
+    "popular": "Omborlari eng ko'p",
+    "alphabet": "Shaharlar alifbo bo'yicha",
+    "region": "hudud",
+    "showAll": "Barcha shaharlarni ko'rsatish",
+    "legend": "Ombor manzillari bazamizda bor shaharlar kartochka bilan ajratilgan; qolganlarining manzillari aniqlanmoqda — yaqin omborlarni Ozon Job ilovasi ko'rsatadi."
   },
   "SkladPage": {
     "title": "Ozon omborlari shaharlarda: manzil, daromad, DMS va ovqat",
     "description": "Ozon ombor operatori bo'lib ishlash mumkin bo'lgan shaharlar: ombor manzillari, daromad, DMS, ovqat va omborgacha transport. Shahringizni tanlang.",
     "heading": "Shahringizni tanlang",
-    "lead": "Shahringizni toping va ombor operatori uchun ombor manzillari, daromad va bonuslarni bilib oling."
+    "lead": "Shahringizni toping va ombor operatori uchun ombor manzillari, daromad va bonuslarni bilib oling.",
+    "stats": {
+      "cities": "{count, plural, other {shahar va hudud}}",
+      "data": "ombor manzillari bilan",
+      "warehouses": "{count, plural, other {ombor bazada}}"
+    }
   },
   "CityPage": {
-    "titleWithData": "Ozon omborida qo'shimcha ish, {city} sh.: Ozon Job, manzil",
-    "titleNoData": "Ozon omborida qo'shimcha ish, {city} sh.: Ozon Job orqali",
-    "descriptionWithData": "Ozon omborlari, {city} sh.: to'liq manzillar, Ozon Job orqali qo'shimcha ish — 4–12 soatlik slot, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band.",
-    "descriptionNoData": "Ozon omborlarida qo'shimcha ish, {city} sh., Ozon Job ilovasi orqali: 4–12 soatlik slotlar, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band qilish.",
-    "heading": "Ozon omborlari, {city} sh.: Ozon Job orqali qo'shimcha ish",
-    "heroKicker": "Ozon Job · {city} sh.",
+    "cityPlace": "{city} sh.",
+    "titleWithData": "Ozon omborida qo'shimcha ish, {place}: Ozon Job, manzil",
+    "titleNoData": "Ozon omborida qo'shimcha ish, {place}: Ozon Job orqali",
+    "descriptionWithData": "Ozon omborlari, {place}: to'liq manzillar, Ozon Job orqali qo'shimcha ish — 4–12 soatlik slot, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band.",
+    "descriptionNoData": "Ozon omborlarida qo'shimcha ish, {place}, Ozon Job ilovasi orqali: 4–12 soatlik slotlar, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band qilish.",
+    "heading": "Ozon omborlari, {place}: Ozon Job orqali qo'shimcha ish",
+    "heroKicker": "Ozon Job · {place}",
     "heroAddresses": "Ombor manzillari",
     "heroBonus": "Taklif kodi bo'yicha bonus",
-    "leadWithData": "Omborni, kunni va smena davomiyligini to'g'ridan-to'g'ri Ozon Job ilovasida tanlang — pul slotdan keyin 3–12 soat ichida kartaga tushadi. Quyida — {city} sh. omborlarining to'liq manzillari, shartlar va qanday boshlash kerakligi.",
-    "leadNoData": "Ozon omborlarida Ozon Job ilovasi orqali smenalarga chiqing: kun va slot davomiyligini o'zingiz tanlaysiz, to'lovlar — 3 soatdan. {city} sh. ombor manzillari hozircha bazamizda yo'q — yaqin omborlarni ro'yxatdan o'tgach ilova ko'rsatadi.",
+    "heroFacts": {
+      "count": "{count, plural, other {# ta Ozon ombori}} to'liq manzillari bilan",
+      "income": "Shtatda — {income}, Ozon ma'lumotlariga ko'ra",
+      "transport": "Omborga transport — {total, plural, other {# ta}} ombordan {count} tasida",
+      "job": "Ozon Job orqali — 4–12 soatlik slotlar, to'lov 3 soatdan",
+      "bonus": "Taklif kodi bo'yicha yangi kelganga bonus — {amount, number} ₽ gacha"
+    },
+    "leadWithData": "{place}: Ozon omborlarining to'liq manzillari, Ozon ma'lumotlariga ko'ra shtatdagi daromad va Ozon Job ilovasi orqali smenaga qanday chiqish — ombor, kun va 4–12 soatlik slotni o'zingiz tanlaysiz.",
+    "leadNoData": "Ozon ombor manzillari ({place}) hozircha bazamizda yo'q — eng yaqin omborlarni ro'yxatdan o'tgach Ozon Job ilovasi ko'rsatadi. Ombor, kun va 4–12 soatlik slotni o'zingiz tanlaysiz, kartaga to'lov — 3 soatdan.",
+    "overview": "{place}: bazamizda {count, plural, other {# ta Ozon ombori}} — {localities}.",
+    "localitiesMore": "yana {count} ta",
     "incomeRange": "{from, number} dan {to, number} ₽ gacha / oy",
     "incomeUpTo": "{to, number} ₽ gacha / oy",
     "incomeFrom": "{from, number} ₽ dan / oy",
     "why": {
-      "eyebrow": "Omborlar · {city} sh.",
-      "title": "Ozon omborlari, {city} sh.: manzillar va shartlar",
+      "eyebrow": "Omborlar · {place}",
+      "title": "Ozon omborlari, {place}: manzillar va shartlar",
       "lead": "Manzillar va shartlar — Ozonning shtatga vakansiyalar sahifasidan (career.ozon.ru). Ozon Job orqali omborlar ko'proq: Rossiya bo'ylab 500 dan ortiq, mini-omborlar bilan birga — shahringiz ro'yxatini ilova ko'rsatadi.",
-      "countLabel": "{count, plural, other {ta Ozon ombori}} — {city} sh. va atrofida",
+      "countLabel": "{count, plural, other {ta Ozon ombori}} — {place} va atrofi",
       "countShare": "Bazamizdagi {total} ta ombordan {count} tasi",
       "incomeTitle": "Qancha ishlab topish mumkin",
       "staffTitle": "Shtatda",
@@ -102,7 +131,7 @@
       "transport": "Omborga va orqaga korporativ transport",
       "training": "Birinchi kundan murabbiy va o'qitish",
       "meal": "Kompleks tushliklar yoki ovqat kompensatsiyasi",
-      "dms": "Ixtiyoriy tibbiy sug'urta"
+      "dms": "DMS — shtatda bir oy ishlagandan keyin"
     },
     "perksJob": {
       "transport": "Ozon Job'da ham bor",
@@ -118,13 +147,13 @@
     },
     "perksCount": "{total, plural, other {# ta ombordan}} {count} tasida",
     "perksNone": "bazamizda ko'rsatilmagan",
-    "warehousesTitle": "Ombor manzillari, {city} sh.",
+    "warehousesTitle": "Ombor manzillari, {place}",
     "warehousesEmpty": "Bu shahardagi ombor manzillari hozircha aniqlanmoqda. Dolzarb vakansiyalarni Ozonning rasmiy sahifasida ko'ring.",
     "addresses": {
       "lead": "To'liq manzil — Ozon ma'lumotlari, viloyat va tuman bilan to'ldirilgan; daromad va shartlar — shtatga vakansiyalardan. Omborning aniq manzili slotga yozilgandan keyin ilovada keladi.",
       "number": "{n}-ombor",
       "copy": "Nusxalash",
-      "copied": "Manzil nusxalandi ✓",
+      "copied": "Manzil nusxalandi",
       "map": "Xaritada",
       "mapLabel": "«{address}» manzilini Yandex Xaritalarda topish",
       "more": "Barcha manzillarni ko'rsatish ({count})",
@@ -132,50 +161,123 @@
     },
     "related": {
       "title": "Qo'shni shahar va tumanlar",
-      "lead": "{city} sh. omborlari bu sahifalarda ham ko'rsatiladi — uyingizga yaqinroq joyni tanlang."
+      "lead": "Bu omborlarning bir qismi qo'shni shahar va tumanlar sahifalarida ham bor — uyingizga yaqinroq joyni tanlang.",
+      "more": "Barcha shaharlarni ko'rsatish ({count})"
     },
-    "offer": {
-      "eyebrow": "Ozon Job",
-      "title": "Ozon Job orqali qo'shimcha ish nima beradi",
-      "lead": "Ilova shartlari — job.ozon.ru va ijrochilar uchun ma'lumotnoma bo'yicha. Ular shtatdagi ishdan farq qiladi: GPX shartnomasi, o'zini o'zi band qilish yoki yakka tadbirkorlik va har bir slot uchun to'lov.",
+    "benefits": {
+      "eyebrow": "Ozon Job afzalliklari",
+      "title": "Ozon omborlarida qo'shimcha ish nima beradi, {place}",
+      "lead": "Ilova orqali ishlash haqida eng muhimi — qisqacha. Har bir band bo'yicha batafsil — kartochkadagi havolada.",
+      "more": "Batafsil",
+      "note": "Shartlar — Ozon Job ijrochilar ma'lumotnomasi va Ozon vakansiyalaridan; ularni Ozon belgilaydi va o'zgarishi mumkin. Daromad kafolatlanmaydi.",
       "items": {
-        "payments": {
-          "title": "To'lovlar — slotdan 3 soat keyin",
-          "text": "Ozon Bank kartasiga — 3 soatdan keyin («Новичок» va «Бриллиант» darajalari) yoki 12 soatdan keyin. «Бриллиант» pulni soatiga bir marta o'zi yechib olishi mumkin. Boshqa bank kartalariga — seshanba kunlari."
+        "payouts": {
+          "title": "Pul — smenadan 3 soat keyin",
+          "text": "Ozon Bank kartasiga — «Новичок» va «Бриллиант» darajalarida 3 soatda, boshqalarida 12 soatda. Boshqa banklar kartalariga — seshanba kunlari."
         },
         "schedule": {
-          "title": "Kun va davomiylikni o'zingiz tanlaysiz",
-          "text": "4, 6, 8 yoki 12 soatlik kunduzgi va tungi slotlar — qaysilari mavjudligi omborga bog'liq. O'qish yoki ish bilan birga olib borish oson."
-        },
-        "transport": {
-          "title": "Omborgacha va orqaga transport",
-          "text": "Ozon Job transportni shartlar qatorida ko'rsatadi; {city} sh.ning qaysi omborlarida bor — yuqoridagi manzillarda belgilangan."
+          "title": "Grafigingizga mos smenalar",
+          "text": "4 dan 12 soatgacha slotlar, kunduzi yoki kechasi. Bir nechta kunni birdaniga belgilash yoki tayyor grafikni tanlash mumkin — 2/2, 4/3, 3/3."
         },
         "start": {
-          "title": "«Поддержка на старте» — 6 500 ₽ gacha",
-          "text": "Yangi ijrochilar uchun aksiya: birinchi, o'quv kuni oddiy slot kabi emas, shu aksiya bo'yicha to'lanadi."
+          "title": "Tajriba shart emas",
+          "text": "Birinchi slot — o'quv sloti: omborda uchastkangizni ko'rsatib, ma'lumot yig'ish terminali bilan ishlashni o'rgatishadi."
         },
-        "contract": {
-          "title": "GPX, o'zini o'zi band qilish yoki yakka tadbirkor",
-          "text": "Ro'yxatdan o'tish va shartnoma-oferta — to'g'ridan-to'g'ri ilovada, ofisga borish shart emas. GPX bo'yicha soliqni Ozon ushlab qoladi."
+        "transport": {
+          "title": "Transport — {total, plural, other {# ta}} ombordan {count} tasida",
+          "text": "Ozon vakansiyalariga ko'ra korporativ transport {total, plural, other {# ta}} ombordan {count} tasida bor ({place}). Ozon Job uchun avtobus bor-yo'qligi ilovadagi ombor kartochkasida ko'rinadi.",
+          "titleNone": "Omborgacha yo'nalish — ilovada",
+          "textNone": "Avtobuslar bor-yo'qligi Ozon Job'dagi ombor kartochkasida ko'rinadi, u yerda omborgacha yo'nalish tugmasi ham bor."
         },
-        "tasks": {
-          "title": "Nima bilan shug'ullanishni tanlaysiz",
-          "text": "Yetkazib berishlarni qabul qilish, joylashtirish, terish, saralash yoki qadoqlash — jarayonni slotga yozilishda tanlaysiz."
+        "online": {
+          "title": "Ofissiz rasmiylashtirish",
+          "text": "Gosuslugi yoki Ozon Bank orqali ro'yxatdan o'tish, shartnoma — to'g'ridan-to'g'ri ilovada: GPX, o'zini o'zi band qilish yoki yakka tadbirkor. O'zini o'zi band qilganlar solig'ini Ozon Job ushlab qoladi."
         },
-        "transparent": {
-          "title": "Summa oldindan ko'rinadi",
-          "text": "Ombor kartochkasida — soatlik va 12 soatlik slot uchun kutilayotgan to'lov, batafsil hisob esa ilovada ertasi kuni paydo bo'ladi."
+        "rating": {
+          "title": "Daraja yuqori — imkoniyat ko'p",
+          "text": "Reyting qoidabuzarliksiz smenalar uchun o'sadi. Daraja qanchalik yuqori bo'lsa, slotlar shunchalik erta ochiladi, «Бриллиант» darajasida esa Ozon Bank kartasiga to'lov 3 soatda keladi."
+        },
+        "tariffs": {
+          "title": "Oshirilgan tariflar va aksiyalar",
+          "text": "Ayrim omborlar va jarayonlarda oshirilgan tarif amal qiladi, chiqish uchun bonuslar ham bo'ladi — ular slotga yozilishdan oldin ilovada ko'rinadi."
         },
         "bonus": {
-          "title": "Taklif kodi bo'yicha bonus",
-          "text": "Yangi ijrochiga — 1 000 dan 5 000 ₽ gacha: summa birinchi yozilgan omborga bog'liq (Ozon Job ro'yxatlari bo'yicha, 2026-yil sentyabr). Shart — masalan, birinchi chiqishdan 30 kun ichida 30 000 ₽ ishlab topish."
+          "title": "Taklif kodi bo‘yicha bonus",
+          "text": "Yangi kelganga — aksiya shartlari bajarilgach {amount, number} ₽ gacha. Summa omborga bog'liq."
         }
+      }
+    },
+    "faq": {
+      "eyebrow": "Shahar bo'yicha savollar",
+      "title": "Ozon omborlari, {place}: ko'p beriladigan savollar",
+      "where": {
+        "q": "Ozon omborlari qayerda joylashgan, {place}?",
+        "a": "Bazamizda {count, plural, other {# ta ombor}}: {localities}. Xarita havolasi bilan to'liq manzillar — yuqoridagi manzillar blokida. Yozilgan omboringizning aniq manzilini Ozon Job ilovasi ko'rsatadi."
       },
-      "note": "Shartlarni Ozon belgilaydi va ular o'zgarishi mumkin — slotga yozilishdan oldin ilovada tekshiring."
+      "pay": {
+        "q": "Ozon omborlarida qancha to'lanadi, {place}?",
+        "aStaff": "Shtatda — to'liq grafikda {income}, Ozon vakansiyalariga ko'ra ({date} holatiga). Ozon Job orqali har bir slot uchun to'lanadi: operatsiyalar soni × ombor tarifi, shuning uchun oylik daromad nechta slot olishingizga bog'liq. Slot uchun kutilayotgan summani ilova yozilishdan oldin ko'rsatadi; daromad kafolatlanmaydi.",
+        "aJob": "Ozon vakansiyalarida bu shahar omborlari bo'yicha daromad ko'rsatilmagan. Ozon Job orqali har bir slot uchun to'lanadi: operatsiyalar soni × ombor tarifi. Soat va slot uchun kutilayotgan summani ilova yozilishdan oldin ko'rsatadi; daromad kafolatlanmaydi."
+      },
+      "transport": {
+        "q": "Ozon omborlariga transport bormi, {place}?",
+        "aYes": "Ozon vakansiyalariga ko'ra korporativ transport {total, plural, other {# ta}} ombordan {count} tasida bor: {list}. Ozon Job'da ham transport shartlar qatorida — ombor kartochkasida avtobus belgisi turadi; yo'nalish va vaqtni ilovada aniqlang.",
+        "aNo": "Ozon vakansiyalarida bu shahar omborlari uchun transport ko'rsatilmagan. Avtobuslar bor-yo'qligi Ozon Job ilovasidagi ombor kartochkasida ko'rinadi — u yerda omborgacha yo'nalish tugmasi ham bor."
+      },
+      "meal": {
+        "q": "Ozon omborlarida ovqat bormi, {place}?",
+        "aYes": "Ovqat yoki ovqat kompensatsiyasi {total, plural, other {# ta}} ombordan {count} tasining vakansiyasida ko'rsatilgan — bu shtatdagi ish sharti. Ozon Job uchun tushlik bor-yo'qligi ilovadagi ombor kartochkasida ko'rinadi; belgi bo'lmasa — omborda aniqlang.",
+        "aNo": "Ozon vakansiyalarida bu shahar omborlari uchun ovqat ko'rsatilmagan. Ozon Job uchun tushlik bor-yo'qligi ilovadagi ombor kartochkasida ko'rinadi; belgi bo'lmasa — omborda aniqlang."
+      },
+      "start": {
+        "q": "Ozon omboriga birinchi smenaga qanday chiqish mumkin, {place}?",
+        "a": "Ozon Job'ni yuklab oling, Gosuslugi yoki Ozon Bank orqali ro'yxatdan o'ting va hamkorlik turini tanlang — GPX, o'zini o'zi band qilish yoki yakka tadbirkor. Keyin ombor, kun va slotni tanlang. Birinchi chiqishga pasportni oling; birinchi slot — o'quv sloti. Quyidagi blokdagi taklif kodi yangi kelganga bonus beradi — shartlar ham o'sha yerda."
+      }
+    },
+    "compare": {
+      "eyebrow": "Shtat yoki Ozon Job",
+      "title": "Shtatdagi ish yoki Ozon Job orqali qo'shimcha ish: farqi nimada",
+      "lead": "Omborlar bir xil, shartlar har xil. «Shtatda» ustunida — shu sahifadagi omborlar ({place}) bo'yicha Ozon vakansiyalari raqamlari, «Ozon Job orqali» ustunida — ijrochilar uchun ma'lumotnoma shartlari.",
+      "staff": "Shtatda",
+      "job": "Ozon Job orqali",
+      "rowLabel": "Shart",
+      "contract": {
+        "label": "Rasmiylashtirish",
+        "staff": "Mehnat shartnomasi, rasmiy ishga joylashish",
+        "job": "GPX, o'zini o'zi band qilish yoki yakka tadbirkor — oferta shartnomasi to'g'ridan-to'g'ri ilovada"
+      },
+      "income": {
+        "label": "Daromad",
+        "staff": "To'liq grafikda {income}",
+        "staffNone": "Vakansiyalarda ko'rsatilmagan",
+        "job": "Har bir slot uchun: operatsiyalar × ombor tarifi. Summa yozilishdan oldin ko'rinadi"
+      },
+      "schedule": {
+        "label": "Grafik",
+        "staff": "Vakansiya shartlariga ko'ra doimiy smenali grafik",
+        "job": "Kun va 4–12 soatlik slotni o'zingiz tanlaysiz, kunduzi yoki kechasi"
+      },
+      "payouts": {
+        "label": "To'lovlar",
+        "staff": "Har hafta — juma kunlari o'tgan hafta uchun",
+        "job": "Ozon Bank kartasiga — slotdan 3 yoki 12 soat keyin, boshqa banklar kartalariga — seshanba kunlari"
+      },
+      "perks": {
+        "label": "Ombordagi shartlar",
+        "staff": "Transport — {total, plural, other {# ta}} ombordan {transport} tasida, ovqat — {meal} tasida, DMS — {dms} tasida",
+        "staffNone": "Vakansiyalarda ko'rsatilmagan",
+        "job": "Transport — bor, birinchi slot — o'quv, ovqat — omborda aniqlang, DMS — yo'q"
+      },
+      "start": {
+        "label": "Qanday boshlash",
+        "staff": "Vakansiyaga ariza, suhbat va rasmiylashtirish",
+        "job": "Ilovada Gosuslugi yoki Ozon Bank orqali ro'yxatdan o'tish — va slotga yozilish"
+      },
+      "note": "Shtat raqamlari — Ozon vakansiyalaridan (career.ozon.ru), Ozon Job shartlari — ijrochilar uchun ma'lumotnomadan (docs.ozon.ru). Shartlarni Ozon belgilaydi va ular o'zgarishi mumkin; daromad kafolatlanmaydi."
     },
     "duty": {
       "title": "Nima bilan shug'ullanasiz",
+      "lead": "Qabul qilish, joylashtirish, terish, saralash yoki qadoqlash — jarayonni slotga yozilishda tanlaysiz. Ish mana nimalardan iborat.",
       "items": {
         "scan": {
           "title": "Qabul qilish va skanerlash",
@@ -195,15 +297,29 @@
         }
       }
     },
+    "more": {
+      "eyebrow": "Batafsil",
+      "title": "Yana nimani bilish muhim",
+      "lead": "To'lovlar qanday keladi, birinchi kunga nima olish kerak, darajalar qanday ishlaydi va ko'p beriladigan savollarga javoblar — saytning alohida bo'limlarida."
+    },
+    "og": {
+      "alt": "Ozon omborlari, {place}: manzillar, daromad va Ozon Job orqali qo'shimcha ish",
+      "kicker": "Ozon omborlari · Ozon Job orqali qo'shimcha ish",
+      "count": "Bazada {count, plural, other {# ta ombor}}",
+      "income": "shtatda oyiga {value, number} ₽ gacha",
+      "incomeFrom": "shtatda oyiga {value, number} ₽ dan",
+      "noData": "4 dan 12 soatgacha slotlar",
+      "tagline": "Ombor manzillari va shartlar · 4–12 soatlik slotlar · to'lov 3 soatdan"
+    },
     "nav": {
-      "summaryKicker": "Qisqacha · {city} sh.",
+      "summaryKicker": "Qisqacha · {place}",
       "summaryAverage": "Shtatda — o'rtacha {value, number} ₽ gacha / oy",
       "summaryJob": "Ozon Job orqali — har bir slot uchun to'lov, to'lovlar 3 soatdan",
       "summaryNoData": "Bu shahardagi ombor manzillari hozircha aniqlanmoqda",
       "summaryDate": "Manzillar va shtat shartlari — career.ozon.ru ma'lumotlari, {date} holatiga",
       "data": "Bizning ma'lumotlar",
       "extrasTitle": "Foydali havolalar",
-      "official": "Ozonning shtatga vakansiyalari, {city} sh."
+      "official": "Ozonning shtatga vakansiyalari, {place}"
     },
     "disclaimer": "Manzillar va shtat shartlari — Ozon sahifalaridan, {date} holatiga. Ozon Job shartlari — job.ozon.ru va ijrochilar uchun ma'lumotnoma bo'yicha. Hammasi o'zgarishi mumkin — ilovada tekshiring.",
     "allCities": "Barcha shaharlar"
@@ -250,6 +366,16 @@
     },
     "appTitle": "Ozon Job ilovasi",
     "appText": "Smenalarga yozilish, to'lovlar va taklif kodi — hammasi ilovada. Uni o'z ilovalar do'koningizdan yuklab oling.",
+    "appPerks": [
+      "4 dan 12 soatgacha slotlar — kunduzi yoki kechasi",
+      "Kartaga to'lov — 3 soatdan",
+      "Ofissiz ro'yxatdan o'tish — Gosuslugi yoki Ozon Bank orqali"
+    ],
+    "appSteps": [
+      "Yaqin omborni tanlang",
+      "Slotga yoziling",
+      "To'lovni oling"
+    ],
     "officialTitle": "Ozonning rasmiy manbalari",
     "officialText": "Shartlar, tariflar va summalarni Ozon belgilaydi — birlamchi manbalar bilan solishtiring.",
     "official": {
@@ -464,7 +590,7 @@
     "ctaText": "Ilovada ro'yxatdan o'tishda taklif kodini kiriting. Bonus omborga bog'liq summadagi topshiriqlarni bajarganingizda beriladi; ilgari Ozonda ishlamaganlar qatnasha oladi.",
     "ctaCodeLabel": "Taklif kodi",
     "ctaCopy": "Nusxa olish",
-    "ctaCopied": "Nusxa olindi ✓",
+    "ctaCopied": "Nusxa olindi",
     "ctaLink": "Bonusni qanday olish",
     "sourcesTitle": "Manbalar",
     "sourcesNote": "Raqamlar — Ozon Job ilovasidan («Рейтинг», «Как считаем рейтинг», «Нарушения» bo'limlari) va ijrochilar uchun ma'lumotnomadan, {date} holatiga tekshirilgan. Ozon qoidalarni o'zgartirishi mumkin — dolzarb qiymatlar doim ilovada. Mustaqil axborot sayti — Ozon emas va uning vakili emas.",
@@ -498,7 +624,7 @@
     "open": "Rasmiylashtirish",
     "openLabel": "{name}: taklif bo'yicha rasmiylashtirish — rasmiy sahifa ochiladi",
     "copy": "Nusxalash",
-    "copied": "Nusxalandi ✓",
+    "copied": "Nusxalandi",
     "offers": {
       "debit": {
         "name": "Ozon Karta",
@@ -1267,9 +1393,9 @@
   },
   "HomePage": {
     "pageNavLabel": "Sahifa bo'ylab tezkor o'tish",
-    "title": "Ozonda ish: ombor operatori, to'lov har kuni",
-    "description": "Ozon ombor operatori: erkin grafik, kunduzgi va tungi smenalar, to'lov har kuni yoki haftada bir. RF Mehnat kodeksi, GPX yoki o'zini o'zi band. Noldan o'qitish.",
-    "heading": "Ozon ombor operatori vakansiyasi: har kuni to'lovli ish",
+    "title": "Ozon omborlarida qo'shimcha ish: Ozon Job, manzil va to'lov",
+    "description": "Ozon Job ilovasi orqali Ozon omboridagi smenaga qanday chiqish: 4–12 soatlik slotlar, har bir slot uchun to'lov, kartaga 3 soatdan, GPX yoki o'zini o'zi band.",
+    "heading": "Ozon Job ilovasi orqali Ozon omborlarida qo'shimcha ish",
     "lead": "Shahringizdagi omborni tanlang, haqiqiy manzillar va shartlarni bilib oling. Ozon Job ilovasida taklif kodi bo'yicha ro'yxatdan o'ting — {amount, number} ₽ gacha* bonus aksiya shartlari bajarilgandan keyin hisoblanadi.",
     "heroCity": "Shaharni tanlash",
     "heroBonus": "{amount, number} ₽ gacha olish",
@@ -1309,6 +1435,12 @@
     "statsEyebrow": "Raqamlarda Ozon*",
     "statsTitle": "Nima uchun Ozonda ishlash kerak",
     "statsNote": "* Raqamlar Ozonning ochiq manbalaridan olingan va yaxlitlangan; nashr vaqtida dolzarb, o'zgarishi mumkin. Do'st uchun bonus ombor va aksiya shartlariga bog'liq. Sayt mustaqil va Ozonning rasmiy sayti emas.",
+    "cities": {
+      "eyebrow": "Shaharlar bo'yicha omborlar",
+      "title": "Shahringizdagi Ozon omborlari",
+      "lead": "Bazamizda {count, plural, other {# ta shahar va hudud}} bo'yicha ombor manzillari va shartlari bor. Bu yerda — omborlar eng ko'p shaharlar; o'zingiznikini qidiruvda barcha {total, plural, other {# ta shahar}} orasidan toping.",
+      "all": "Barcha shaharlar va hududlar"
+    },
     "stepsEyebrow": "Birinchi qadamlar",
     "stepsTitle": "Birinchi smenaga qanday chiqish mumkin",
     "stepLabel": "{n}-qadam, jami {total} ta",
@@ -1362,7 +1494,7 @@
       "condition": "* Bonus aksiya shartlari bajarilgach beriladi: omborga bog'liq summadagi topshiriqlar.",
       "codeLabel": "Sizning taklif kodingiz",
       "copy": "Nusxa olish",
-      "copied": "Nusxa olindi ✓",
+      "copied": "Nusxa olindi",
       "codeHint": "Qayerga kiritiladi: bosh sahifada, aksiya sahifasida yoki Profil → Do'stingizni taklif qiling bo'limida",
       "storesLabel": "Ozon Job ni ilovalar do'konidan yuklab oling",
       "stepsLabel": "Bonusni qanday olish mumkin",
@@ -1651,7 +1783,7 @@
         "Bepul: ochish, xizmat ko'rsatish, to'ldirish va o'tkazmalar"
       ],
       "copy": "Havolani nusxalash",
-      "copied": "Nusxalandi ✓",
+      "copied": "Nusxalandi",
       "openLink": "Havolani ochish",
       "qrLabel": "Taklif QR-kodi",
       "stepsLabel": "Keshbekni qanday olish mumkin",
@@ -1688,43 +1820,68 @@
   "AppScreens": {
     "eyebrow": "Ozon Job ilovasi",
     "title": "Ilova ichidan qanday ko'rinadi",
-    "lead": "Yettita ekran — ombor va smenani tanlashdan pul yechib olishgacha. Skrinshotlarni varaqlang yoki kattaroq ko'rish uchun istalganini bosing.",
-    "note": "Skrinshotlar iOS ilovasida Qozon omborlari misolida olingan ({date}). Interfeys ilova versiyasiga qarab farq qilishi mumkin. Skrinshotlardagi summalar va tariflar — shu sana uchun misol: boshqa omborlarda va boshqa kunlarda ular boshqacha va kafolatlanmaydi. Ozon — «Интернет Решения» MChJ tovar belgisi; sayt Ozon bilan bog'liq emas.",
+    "lead": "O'n ikkita ekran — ombor va smenani tanlashdan to'lovlar, reyting va taklif kodigacha. Skrinshotlarni varaqlang yoki kattaroq ko'rish uchun istalganini bosing.",
+    "note": "Skrinshotlar {date} sayt muallifining akkauntida, iOS ilovasida, Qozon omborlari misolida olingan. Interfeys ilova versiyasiga qarab farq qilishi mumkin. Skrinshotlardagi summalar, tariflar va aksiyalar — shu sana uchun misol: boshqa omborlarda va boshqa kunlarda ular boshqacha va kafolatlanmaydi. Ozon — «Интернет Решения» MChJ tovar belgisi; sayt Ozon bilan bog'liq emas.",
     "items": [
       {
         "title": "Bosh ekran",
-        "text": "Eng yaqin smena yozuvi va slot uchun taxminiy summa, darajangiz, omborgacha yo'nalish hamda tanlangan omborlardagi bo'sh slotlar.",
-        "alt": "Ozon Job ilovasi skrinshoti: eng yaqin smena yozuvi va ijrochi darajasi ko'rsatilgan bosh ekran"
+        "text": "Darajangiz (skrinshotda — «Бриллиант»), ombor aksiyalari — masalan, chiqish uchun bonus, yaqin yozuvlar va smena hamda soat uchun summasi ko'rsatilgan qulay slotlar to'plami.",
+        "alt": "Ozon Job ilovasi skrinshoti: ijrochi darajasi, aksiyalar va tavsiya etilgan slotlar bilan bosh ekran"
       },
       {
-        "title": "Mening yozuvlarim",
-        "text": "Smenalaringiz taqvimi va ro'yxati: ombor, vaqt, ish turi, «Tasdiqlangan» holati hamda slot va soat uchun taxminiy to'lov.",
-        "alt": "Ozon Job ilovasi skrinshoti: taqvim va tasdiqlangan smena yozuvlari ro'yxati"
+        "title": "Hudud omborlari",
+        "text": "Hudud omborlari (skrinshotda — Tatarstonda 16 ta) xizmat turi, sana, vaqt va tarif bo'yicha filtrlar bilan. Kartochkada — ombor turi, reyting, masofa, 12 soat uchun taxminiy summa va belgilar: aksiyalar, avtobuslar, tushliklar.",
+        "alt": "Ozon Job ilovasi skrinshoti: filtrlar, smena summasi, avtobus va tushlik belgilari bilan hudud omborlari ro'yxati"
       },
       {
-        "title": "Yaqin omborlar",
-        "text": "Mintaqadagi omborlar xizmat turi, sana, vaqt va tarif bo'yicha filtrlar bilan. Kartochkada — ombor turi, reyting, masofa va belgilar: avtobuslar, tushlik, oshirilgan tarif.",
-        "alt": "Ozon Job ilovasi skrinshoti: filtrlar va ombor kartochkalari bilan mintaqadagi omborlar ro'yxati"
+        "title": "Ombor sahifasi",
+        "text": "Ombor kartochkasi: suratlar, 12 soat va bir soat uchun summa, omborgacha yo'nalish, bo'sh sanalar va obyektda nima borligi — ish kiyimi, avtobuslar, savollarga javoblar. Pastda — ombor aksiyalari.",
+        "alt": "Ozon Job ilovasi skrinshoti: suratlar, smena summasi, qulayliklar va aksiyalar bilan ombor sahifasi"
+      },
+      {
+        "title": "Ish turlari va tariflar",
+        "text": "Ombordagi jarayonlar — joylashtirish, terish, qabul qilish, qadoqlash, saralash — smena summasi va bo'sh sanalar bilan. Ayrim jarayonlarda oshirilgan tarif amal qiladi (skrinshotda — +5% va +20%).",
+        "alt": "Ozon Job ilovasi skrinshoti: summalar va oshirilgan tarif bilan ombordagi ish turlari"
       },
       {
         "title": "Kunlarni tanlash",
-        "text": "Yozilish taqvimi: bir nechta kunni birdaniga belgilang yoki tayyor jadvalni tanlang — 2/2, 4/3, 3/3.",
-        "alt": "Ozon Job ilovasi skrinshoti: smenaga yozilish taqvimi va jadval tanlash"
+        "text": "Yozilish taqvimi: bir nechta kunni birdaniga belgilang yoki tayyor grafikni tanlang — moslashuvchan, 2/2, 4/3, 3/3.",
+        "alt": "Ozon Job ilovasi skrinshoti: grafik tanlash imkoniyati bilan smenalarga yozilish taqvimi"
       },
       {
         "title": "Vaqtni tanlash",
-        "text": "Smena davomiyligi (skrinshotda — 12, 9 yoki 8 soat), qulay vaqt oralig'i va slot uchun summa. Ayrim yozuvlar darhol tasdiqlanadi.",
-        "alt": "Ozon Job ilovasi skrinshoti: smena davomiyligi va vaqt oralig'ini tanlash"
-      },
-      {
-        "title": "Ish turlari",
-        "text": "Ombordagi topshiriqlar: joylashtirish, terish, qabul qilish, qadoqlash, saralash. Har bir ish turining o'z summasi bor, ba'zilariga oshirilgan tarif amal qiladi.",
-        "alt": "Ozon Job ilovasi skrinshoti: ombordagi ish turlari va ular uchun summalar"
+        "text": "Smena davomiyligi (skrinshotda — 12, 9 yoki 8 soat), kunduzgi va tungi oraliqlar hamda slot va soat uchun summa. Ayrim yozuvlar darhol tasdiqlanadi.",
+        "alt": "Ozon Job ilovasi skrinshoti: slot summasi bilan smena davomiyligi va vaqt oralig'ini tanlash"
       },
       {
         "title": "To'lovlar",
-        "text": "Balans — qancha summa ishlov berilmoqda va qanchasi kartaga yuboriladi, pul yechish tugmasi, hisob tarixi va onlayn daromad: ishlangan summa va topshiriqlar soni.",
-        "alt": "Ozon Job ilovasi skrinshoti: balans va to'lovlar ekrani"
+        "text": "Balans: qanchasi ishlov berilmoqda va qanchasi kartaga ketadi, pul yechish tugmasi, hisob tarixi va onlayn daromad — kunlik ishlab topilgan summa va topshiriqlar soni.",
+        "alt": "Ozon Job ilovasi skrinshoti: balans va kunlik daromad bilan to'lovlar ekrani"
+      },
+      {
+        "title": "Kunlar bo'yicha daromad",
+        "text": "Hafta davomida kunlar bo'yicha daromad, shuningdek ushlab qolishlar va xatolar, aksiyalar, dalolatnomalar, cheklar va ma'lumotnomalar, rekvizitlar va hamkorlik tarixi.",
+        "alt": "Ozon Job ilovasi skrinshoti: kunlik daromad grafigi va to'lovlar bo'limlari"
+      },
+      {
+        "title": "Kunlik operatsiyalar",
+        "text": "Smenadagi har bir operatsiya — vaqti, soni va summasi, shuningdek slot shartlarini bajarganlik uchun qo'shimcha mukofot.",
+        "alt": "Ozon Job ilovasi skrinshoti: soni va summalari bilan kunlik operatsiyalar ro'yxati"
+      },
+      {
+        "title": "Reyting",
+        "text": "Daraja va ballar (skrinshotda — «Бриллиант», 792 ball), qoidabuzarliklar va har bir daraja nima berishi — masalan, slotlar necha kun oldin ochilishi.",
+        "alt": "Ozon Job ilovasi skrinshoti: ijrochi reytingi, darajalar va ularning afzalliklari"
+      },
+      {
+        "title": "Profil",
+        "text": "Reyting, hamkorlardan chegirmalar, «Do'stni olib keling», sayohatlar, shaxsiy QR-kod, hujjatlar, so'rovnomalar va o'qitish — hammasi profilda.",
+        "alt": "Ozon Job ilovasi skrinshoti: bo'limlari bilan ijrochi profili"
+      },
+      {
+        "title": "Do'stni olib keling",
+        "text": "Taklif kodi ekrani. Yangi kelgan kodni ro'yxatdan o'tgach kiritadi, 30 000 ₽ gacha topshiriqlarni bajaradi — va 5 000 ₽ gacha oladi. Aksiya ayrim omborlar va xizmat turlarida amal qiladi.",
+        "alt": "Ozon Job ilovasi skrinshoti: taklif kodi bilan «Do'stni olib keling» ekrani"
       }
     ],
     "slider": {

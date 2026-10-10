@@ -7,6 +7,17 @@
 @use "../../components/ui/theme-switch/theme-switch";
 @use "../../components/ui/breadcrumbs/breadcrumbs";
 @use "../../components/ui/photo-slider/photo-slider";
+@use "../../components/ui/alert/alert";
+
+// Уведомления ui/alert: сверху — под шапкой (она sticky и стеклянная), снизу — над нижним меню NavBar
+// (те же числа, что у .float-btn и баннера cookie: отступ меню + высота пункта + 12px)
+:root {
+    --alert-top: calc(var(--header-h) + 10px);
+    --alert-bottom: 98px;
+
+    @media (width < 440px) { --alert-bottom: 88px; }
+    @media (width < 390px) { --alert-bottom: 78px; }
+}
 
 // Фирменный синий берём из токена --bg-5 (= #005bff, одинаков в светлой и тёмной теме — см. _variables.scss).
 // Эти два — только оттенки градиента синего блока-акции (.promo/.card-visual/«целевой» шаг степпера),
@@ -32,7 +43,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     height: 20px;
     border-radius: 50%;
     background: #{$bg};
-    color: rgb(var(--bg-5));
+    color: rgb(var(--text-5, var(--bg-5)));
     font-size: 12px;
     font-weight: 700;
 }
@@ -497,7 +508,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
             height: 30px;
             border-radius: 50%;
             background: rgb(var(--bg-5) / 14%);
-            color: rgb(var(--bg-5));
+            color: rgb(var(--text-5, var(--bg-5)));
             font-size: 13px;
             font-weight: 700;
         }
@@ -690,7 +701,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 .offer-copy,
 .cookie-btn {
     background: rgb(var(--bg-5) / 10%);
-    color: rgb(var(--bg-5));
+    color: rgb(var(--text-5, var(--bg-5)));
     transition: background 0.2s, color 0.2s, translate 0.2s, box-shadow 0.2s;
 
     @include mixins.hover {
@@ -721,7 +732,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 // номер раздела в кружке (и кружок с иконкой у ссылок «Полезные ссылки»)
 .page-nav-num {
     background: rgb(var(--bg-5) / 10%);
-    color: rgb(var(--bg-5));
+    color: rgb(var(--text-5, var(--bg-5)));
 }
 
 // стрелка «перейти» — повёрнутая chevron-down
@@ -749,26 +760,180 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     }
 }
 
-// ── /sklad: строка поиска города — стеклянная, как ссылки городов, с «свечением» при фокусе ──────
-// (было: прилипание к шапке при скролле — убрано по просьбе владельца)
-.search-input {
-    color: rgb(var(--bg-2) / 90%);
-    transition: box-shadow 0.25s, scale 0.2s;
+// ── /sklad: поиск города (components/CitySearch) ─────────────────────────────────────────────────
+// Строка поиска не прилипает к шапке (так просил владелец), указатель букв — тоже в потоке страницы.
 
-    &::placeholder { color: rgb(var(--bg-2) / 45%); }
+// цифры базы под заголовком
+.sklad-fact { color: rgb(var(--bg-2) / 70%); }
 
-    &:focus-visible {
-        outline: none;
-        scale: 1.01;
-        box-shadow: 0 0 0 4px rgb(var(--bg-5) / 18%), 0 16px 30px -16px rgb(var(--bg-5) / 50%);
+// строка поиска: иконка, поле без своей рамки, крестик/подсказка «/»; «свечение» при фокусе — на всей строке
+.city-search-box {
+    padding-inline: 20px 12px;
+    transition: box-shadow 0.25s, border-color 0.25s;
+
+    &:focus-within {
+        border-color: rgb(var(--bg-5) / 50%);
+        box-shadow: 0 0 0 4px rgb(var(--bg-5) / 15%), 0 18px 34px -18px rgb(var(--bg-5) / 55%);
     }
 }
 
-// 400+ карточек: браузер не считает раскладку тех, что вне экрана
-.city-cell {
-    content-visibility: auto;
-    contain-intrinsic-size: auto 44px;
+.city-search-icon { color: rgb(var(--text-5, var(--bg-5))); }
+
+.city-search-input {
+    min-width: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: rgb(var(--bg-2) / 90%);
+    font: inherit;
+    font-size: 16px; // ≥16px: iOS не увеличивает страницу при фокусе
+
+    &::placeholder { color: rgb(var(--bg-2) / 45%); }
+
+    // свой крестик вместо системного
+    &::-webkit-search-cancel-button { display: none; }
 }
+
+.city-search-clear {
+    color: rgb(var(--bg-2) / 60%);
+    background: rgb(var(--bg-2) / 6%);
+    transition: background 0.2s, color 0.2s;
+
+    @include mixins.hover {
+        background: rgb(var(--bg-2) / 12%);
+        color: rgb(var(--bg-2) / 90%);
+    }
+}
+
+.city-search-kbd {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgb(var(--bg-2) / 15%);
+    border-radius: 8px;
+    color: rgb(var(--bg-2) / 55%);
+    font-family: inherit;
+    font-size: 13px;
+    box-shadow: 0 2px 0 rgb(var(--bg-2) / 10%);
+}
+
+// фильтр «Все / С адресами»: сегменты-«таблетки», выбранный — синий
+// <fieldset> — без своей рамки и отступов браузера
+.city-filter {
+    min-width: 0;
+    margin: 0;
+    border: 0;
+    padding: 4px;
+    background: rgb(var(--bg-2) / 6%);
+}
+
+.city-filter-btn {
+    color: rgb(var(--bg-2) / 70%);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+
+    &[aria-pressed='true'] {
+        background: rgb(var(--bg-3));
+        color: rgb(var(--text-5, var(--bg-5)));
+        box-shadow: 0 4px 12px -6px rgb(0 0 0 / 25%);
+    }
+}
+
+.city-filter-count {
+    padding: 1px 7px;
+    border-radius: 20px;
+    background: rgb(var(--bg-2) / 8%);
+}
+
+// заголовки блоков списка («Больше всего складов»)
+.city-section-title { font-size: 18px; }
+
+// «Больше всего складов»: 4 карточки в ряд, номер места, число складов, название крупно
+.city-popular {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    @media (width < 990px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.city-top {
+    transition: translate 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+    @include mixins.hover {
+        translate: 0 -3px;
+        border-color: rgb(var(--bg-5) / 40%);
+
+        .city-top-name { color: rgb(var(--text-5, var(--bg-5))); }
+    }
+}
+
+.city-top-rank { color: rgb(var(--bg-2) / 40%); }
+
+.city-top-name {
+    color: rgb(var(--bg-2) / 90%);
+    transition: color 0.2s;
+}
+
+.city-pill {
+    background: rgb(var(--bg-5) / 10%);
+    color: rgb(var(--text-5, var(--bg-5)));
+}
+
+// указатель букв: строка круглых кнопок, листается вбок
+.city-abc {
+    padding: 6px;
+    border-radius: 36px;
+    background: rgb(var(--bg-3) / 85%);
+    box-shadow: 0 0 0 1px rgb(var(--bg-2) / 8%);
+}
+
+.city-abc-link {
+    color: rgb(var(--bg-2) / 75%);
+    transition: background 0.2s, color 0.2s;
+
+    @include mixins.hover {
+        background: rgb(var(--bg-5));
+        color: #fff;
+    }
+}
+
+// буква группы с линией до края
+.city-letter {
+    color: rgb(var(--text-5, var(--bg-5)));
+    font-size: 22px;
+}
+
+.city-letter-line {
+    height: 1px;
+    background: rgb(var(--bg-2) / 10%);
+}
+
+.city-grid { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+
+// город: с адресами — белая карточка, без адресов — без фона (приглушён), при наведении — подсветка
+.city-row {
+    min-height: 46px;
+    color: rgb(var(--bg-2) / 75%);
+    transition: background 0.2s, border-color 0.2s, color 0.2s;
+    border: 1px solid transparent;
+
+    &.has-data {
+        border-color: rgb(var(--bg-2) / 8%);
+        background: rgb(var(--bg-3));
+        color: rgb(var(--bg-2) / 90%);
+    }
+
+    @include mixins.hover {
+        border-color: rgb(var(--bg-5) / 40%);
+        background: rgb(var(--bg-3));
+
+        .city-row-name { color: rgb(var(--text-5, var(--bg-5))); }
+    }
+}
+
+.city-row-icon { color: rgb(var(--bg-2) / 35%); }
+.city-row.has-data .city-row-icon { color: rgb(var(--text-5, var(--bg-5))); }
+
+.city-empty-icon { color: rgb(var(--bg-2) / 30%); }
 
 // .float-btn (components/ui/scroll-top) на узком экране — над нижним меню NavBar этого проекта
 .float-btn {
@@ -880,6 +1045,238 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
 .city-more-icon { transition: rotate 0.2s; }
 
+// «Что даёт подработка» (#benefits): сетка-«бенто». Первая карточка (выплаты) — крупная синяя на 2×2 клетки,
+// остальные — белые; на планшете — 2 колонки, на телефоне — одна
+.benefits {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    @media (width < 990px) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    @media (width < 620px) { grid-template-columns: minmax(0, 1fr); }
+}
+
+.benefit {
+    grid-template-rows: auto auto 1fr auto;
+    background: rgb(var(--bg-3));
+    transition: translate 0.25s, box-shadow 0.25s, border-color 0.25s;
+
+    @include mixins.hover {
+        translate: 0 -3px;
+        border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+    }
+}
+
+.benefit-title {
+    color: rgb(var(--bg-2) / 90%);
+    font-size: 17px;
+    line-height: 1.25;
+}
+
+// «Подробнее →»: цвет карточки, стрелка уезжает вправо при наведении
+.benefit-link {
+    justify-self: start;
+    color: var(--accent, rgb(var(--text-5, var(--bg-5))));
+
+    svg { transition: translate 0.2s; }
+
+    @include mixins.hover {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        svg { translate: 3px 0; }
+    }
+}
+
+// бонус — на две колонки: закрывает последний ряд сетки (крупная карточка 2×2 + 7 обычных = 11 клеток из 12)
+// подарок справа — текст не заходит под него
+.benefit-bonus {
+    grid-column: span 2;
+    padding-right: 150px;
+
+    @media (width < 620px) { padding-right: 20px; }
+
+    @media (width < 620px) { grid-column: auto; }
+}
+
+.benefit-payouts {
+    grid-column: span 2;
+    grid-row: span 2;
+    overflow: hidden;
+    isolation: isolate;
+    border-color: transparent;
+    background:
+        radial-gradient(90% 70% at 100% 0%, rgb(255 255 255 / 22%) 0%, transparent 60%),
+        linear-gradient(140deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+    color: rgb(255 255 255 / 88%);
+    box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
+
+    .icon-badge {
+        align-self: start;
+        margin-bottom: auto;
+        color: #fff;
+        background: rgb(255 255 255 / 18%);
+    }
+
+    .benefit-title {
+        color: #fff;
+        font-size: clamp(22px, 3vw, 30px);
+    }
+
+    p { font-size: 15px; }
+
+    .benefit-link { color: #fff; }
+
+    p,
+    .benefit-title { max-width: 30ch; }
+
+    @media (width < 620px) {
+        grid-column: auto;
+        grid-row: auto;
+    }
+}
+
+// 3D-подарок в карточке бонуса — справа по центру, слегка наклонён
+.benefit-gift {
+    top: 50%;
+    right: 20px;
+    width: 110px;
+    height: auto;
+    rotate: 8deg;
+    translate: 0 -50%;
+    filter: drop-shadow(0 14px 18px rgb(230 73 128 / 30%));
+}
+
+// иллюстрация в крупной карточке — справа снизу, под текстом; на телефоне — меньше и полупрозрачнее
+.benefit-photo {
+    z-index: -1;
+    right: -24px;
+    bottom: -30px;
+    width: min(62%, 330px);
+    height: auto;
+    filter: drop-shadow(0 20px 30px rgb(0 0 0 / 25%));
+
+    @media (width < 620px) {
+        width: 46%;
+        opacity: 0.35;
+    }
+}
+
+// фото справа от вопросов о городе — едет вместе со страницей, пока читаются ответы
+.faq-photo {
+    top: calc(var(--header-h) + 20px);
+    max-width: 380px;
+    margin-inline: auto;
+    filter: drop-shadow(0 24px 30px rgb(var(--bg-5) / 18%));
+}
+
+// «Чем предстоит заниматься»: три шага в ряд со стрелками между ними; на телефоне — столбиком, стрелки вниз
+.duty-flow {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    @media (width < 770px) { grid-template-columns: minmax(0, 1fr); }
+}
+
+.duty-step {
+    // стрелка к следующему шагу — кружок на стыке карточек
+    &:not(:last-child)::after {
+        content: '→';
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: -21px;
+        display: grid;
+        place-items: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgb(var(--bg-3));
+        box-shadow: 0 0 0 1px rgb(var(--bg-2) / 10%), 0 6px 14px -6px rgb(0 0 0 / 25%);
+        color: rgb(var(--text-5, var(--bg-5)));
+        font-size: 14px;
+        font-weight: 700;
+        translate: 0 -50%;
+
+        @media (width < 770px) {
+            content: '↓';
+            top: auto;
+            right: 50%;
+            bottom: -21px;
+            translate: 50% 0;
+        }
+    }
+}
+
+// иконка шага — «леденец» в цвет процесса
+.duty-icon {
+    border-radius: 14px;
+    color: #fff;
+    background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 65%, #fff), var(--accent));
+    box-shadow: 0 10px 20px -10px var(--accent);
+}
+
+// крупный номер шага — полупрозрачный, в цвет процесса
+.duty-num {
+    font-size: 34px;
+    line-height: 1;
+    opacity: 0.25;
+    font-variant-numeric: tabular-nums;
+}
+
+// «Что понадобится»: полоса-памятка синим оттенком с пунктирной рамкой
+.duty-you {
+    border: 1px dashed rgb(var(--bg-5) / 35%);
+    background: rgb(var(--bg-5) / 6%);
+
+    --accent: rgb(var(--text-5, var(--bg-5)));
+}
+
+.duty-you-icon {
+    color: rgb(var(--text-5, var(--bg-5)));
+    background: rgb(var(--bg-5) / 12%);
+}
+
+// ── Ссылки строками (страница города #more, /menu): должны выглядеть как переходы, а не как плитки ───
+// заголовок — цветом ссылки, справа стрелка в кружке; при наведении строка подсвечивается рамкой цвета раздела,
+// стрелка заливается и сдвигается
+.link-rows {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    @media (width < 770px) { grid-template-columns: minmax(0, 1fr); }
+}
+
+.link-row {
+    transition: border-color 0.2s, box-shadow 0.2s, translate 0.2s;
+
+    @include mixins.hover {
+        border-color: color-mix(in srgb, var(--accent) 45%, transparent);
+        box-shadow: 0 14px 30px -20px color-mix(in srgb, var(--accent) 70%, transparent);
+        translate: 0 -2px;
+
+        .link-row-title {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .link-row-arrow {
+            color: #fff;
+            background: var(--accent);
+            translate: 3px 0;
+        }
+    }
+
+    @include mixins.touch-press { scale: 0.98; }
+}
+
+.link-row-title {
+    color: rgb(var(--text-5, var(--bg-5)));
+    text-decoration-thickness: 1.5px;
+}
+
+.link-row-arrow {
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    transition: background 0.2s, color 0.2s, translate 0.2s;
+}
+
 // ── /menu ─────────────────────────────────────────────────────────────────────────────────────
 // подзаголовки блоков меню: h2 по смыслу, но меньше обычного заголовка секции (main h2 — clamp 23–32px ниже;
 // утилиту font-22 он перебивает, поэтому отдельный класс)
@@ -899,6 +1296,120 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
         > .icon-badge { grid-row: span 2; }
     }
+}
+
+// «Приложение Ozon Job» на /menu: синий блок со светящимися пятнами, плюсами с галочками, белыми кнопками магазинов
+// и макетом телефона справа (три шага в приложении). Белый текст в обеих темах
+.app-card {
+    background:
+        radial-gradient(60% 80% at 100% 0%, rgb(255 255 255 / 22%) 0%, transparent 60%),
+        radial-gradient(50% 60% at 0% 100%, rgb(63 155 255 / 55%) 0%, transparent 70%),
+        linear-gradient(140deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 60%, $promo-blue-light 100%);
+    color: rgb(255 255 255 / 88%);
+    box-shadow: 0 30px 60px -36px rgb(var(--bg-5) / 90%);
+
+    h2 { color: #fff; }
+
+    // декоративное кольцо в углу
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        right: -70px;
+        bottom: -90px;
+        width: 260px;
+        height: 260px;
+        border: 36px solid rgb(255 255 255 / 7%);
+        border-radius: 50%;
+    }
+}
+
+.app-card-icon {
+    border-radius: 14px;
+    color: rgb(var(--bg-5));
+    background: #fff;
+    box-shadow: 0 10px 22px -10px rgb(0 0 0 / 45%);
+}
+
+.app-card-check {
+    width: 22px;
+    height: 22px;
+    color: rgb(var(--bg-5));
+    background: #fff;
+}
+
+// кнопки магазинов: белые «таблетки», при наведении — полупрозрачные со светлой рамкой
+.app-store {
+    background: #fff;
+    color: rgb(var(--bg-5));
+    transition: background 0.2s, color 0.2s, translate 0.2s;
+
+    @include mixins.hover {
+        background: rgb(255 255 255 / 16%);
+        box-shadow: inset 0 0 0 1px rgb(255 255 255 / 60%);
+        color: #fff;
+        translate: 0 -2px;
+    }
+}
+
+// макет телефона: рамка, «чёлка», строки шагов, кнопка-заглушка; чуть наклонён и «парит»
+.app-phone {
+    align-self: center;
+    width: 170px;
+    padding: 8px;
+    border-radius: 30px;
+    background: #0b1a3a;
+    box-shadow:
+        0 0 0 1px rgb(255 255 255 / 20%),
+        0 30px 50px -20px rgb(0 0 0 / 55%);
+    rotate: 4deg;
+
+    @media (prefers-reduced-motion: no-preference) { animation: app-phone-float 5s ease-in-out infinite; }
+}
+
+@keyframes app-phone-float {
+    50% { translate: 0 -8px; }
+}
+
+.app-phone-screen {
+    min-height: 280px;
+    padding: 26px 12px 14px;
+    border-radius: 23px;
+    background: #fff;
+    color: #1a1a1a;
+    position: relative;
+}
+
+.app-phone-notch {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 54px;
+    height: 12px;
+    border-radius: 12px;
+    background: #0b1a3a;
+    translate: -50% 0;
+}
+
+.app-phone-row {
+    padding: 8px;
+    border-radius: 12px;
+    background: rgb(0 91 255 / 7%);
+    line-height: 1.3;
+}
+
+.app-phone-num {
+    width: 22px;
+    height: 22px;
+    background: rgb(var(--bg-5));
+    color: #fff;
+}
+
+.app-phone-btn {
+    height: 30px;
+    margin-top: 6px;
+    border-radius: 30px;
+    background: linear-gradient(90deg, rgb(var(--bg-5)), $promo-blue-light);
 }
 
 // ── /stocks: приглашения Ozon Банка ────────────────────────────────────────────────────────────
@@ -989,7 +1500,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     top: 50%;
     right: 16px;
     translate: 0 -50%;
-    color: rgb(var(--bg-5));
+    color: rgb(var(--text-5, var(--bg-5)));
     transition: rotate 0.25s;
 }
 
@@ -1034,7 +1545,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
         &:checked {
             background: rgb(var(--bg-5) / 8%);
-            color: rgb(var(--bg-5));
+            color: rgb(var(--text-5, var(--bg-5)));
             font-weight: 500;
         }
 
@@ -1155,7 +1666,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     padding-left: 20px;
     list-style: disc;
 
-    li::marker { color: rgb(var(--bg-5)); }
+    li::marker { color: rgb(var(--text-5, var(--bg-5))); }
 }
 
 // краткая справка в модалке быстрой навигации (страница города) — в стиле синего блока-акции
@@ -1170,6 +1681,54 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 .city-summary-chip {
     background: rgb(255 255 255 / 16%);
     color: #fff;
+}
+
+// «Штат или Ozon Job» (страница города, #compare): обычная таблица на широком экране; на телефоне строка —
+// карточка: признак во всю ширину, под ним два значения рядом с подписями столбцов (.compare-tag вместо <thead>)
+.compare {
+    border-collapse: collapse;
+    text-align: left;
+
+    th,
+    td {
+        padding: 14px 16px;
+        vertical-align: top;
+    }
+
+    thead th { border-bottom: 1px solid rgb(var(--bg-2) / 10%); }
+    tbody tr + tr { border-top: 1px solid rgb(var(--bg-2) / 7%); }
+    tbody th { width: 26%; }
+    td { width: 37%; }
+
+    // колонка Ozon Job — с лёгкой синей подложкой: про неё сайт
+    .compare-job { background: rgb(var(--bg-5) / 6%); }
+
+    .compare-tag { display: none; }
+
+    @media (width < 620px) {
+        thead { display: none; }
+
+        tbody tr {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        }
+
+        tbody th {
+            grid-column: 1 / -1;
+            width: auto;
+            padding-bottom: 6px;
+        }
+
+        td {
+            width: auto;
+            padding-top: 6px;
+        }
+
+        .compare-tag {
+            display: block;
+            margin-bottom: 2px;
+        }
+    }
 }
 
 main {

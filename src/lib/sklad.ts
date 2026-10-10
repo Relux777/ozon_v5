@@ -2,6 +2,7 @@
 // клиентским компонентам передаётся уже урезанная проекция (см. getCityIndex).
 import citiesData from '@/data/sklad/cities.json';
 import warehousesData from '@/data/sklad/warehouses.json';
+import { isRegion, latinName, type NameLocale } from '@/lib/city-names';
 
 export const PERKS = ['transport', 'training', 'meal', 'dms'] as const;
 export type Perk = (typeof PERKS)[number];
@@ -26,7 +27,10 @@ type RawWarehouse = Warehouse & {
 export type City = {
     /** slug в наших URL: нижний регистр, без подчёркиваний */
     slug: string;
+    /** название по-русски, как в cities.json; на языке страницы — getCityName() */
     name: string;
+    /** область, край, республика — у них в текстах нет «г.» перед названием (см. getCityPlace) */
+    region: boolean;
     /** slug на career.ozon.ru — нужен только для ссылки на первоисточник */
     ozonSlug: string;
     warehouses: Warehouse[];
@@ -51,7 +55,8 @@ export type NationalStats = {
     average: number;
 };
 
-export type CityIndexItem = { slug: string; name: string; count: number };
+/** name — на языке страницы, search — русское название (ищем по обоим: «Kazan» и «Казань») */
+export type CityIndexItem = { slug: string; name: string; search: string; count: number; region: boolean };
 
 const toUrlSlug = (ozonSlug: string) => ozonSlug.toLowerCase().replace(/_/g, '-');
 
@@ -65,8 +70,16 @@ for (const { cities, ...warehouse } of warehousesData.warehouses as RawWarehouse
 
 const CITIES: City[] = (citiesData as [string, string][]).map(([ozonSlug, name]) => {
     const slug = toUrlSlug(ozonSlug);
-    return { slug, name, ozonSlug, warehouses: warehousesBySlug.get(slug) ?? [] };
+    return { slug, name, region: isRegion(name), ozonSlug, warehouses: warehousesBySlug.get(slug) ?? [] };
 });
+
+/** языки с латиницей — им латинское название города (Kazan, Qozon); остальным — русское */
+const LATIN_LOCALES: readonly string[] = ['en', 'uz', 'az'] satisfies NameLocale[];
+
+/** Название города/региона на языке страницы: «Казань» → «Kazan» (en), «Qozon» (uz); на кириллице, ka и hy — по-русски */
+export function getCityName(city: Pick<City, 'name'>, locale: string): string {
+    return LATIN_LOCALES.includes(locale) ? latinName(city.name, locale as NameLocale) : city.name;
+}
 
 const CITIES_BY_SLUG = new Map(CITIES.map((city) => [city.slug, city]));
 
@@ -148,13 +161,50 @@ export function getCitiesWithWarehouses(): City[] {
 }
 
 /**
- * Лёгкая проекция для клиентского поиска: без адресов и доходов.
+ * Лёгкая проекция для клиентского поиска: без адресов и доходов. Названия — на языке страницы.
  * Сначала города со складами (по убыванию), затем остальные по алфавиту.
  */
-export function getCityIndex(): CityIndexItem[] {
-    return CITIES.map(({ slug, name, warehouses }) => ({ slug, name, count: warehouses.length })).sort(
-        (a, b) => b.count - a.count || a.name.localeCompare(b.name, 'ru')
+export function getCityIndex(locale: string): CityIndexItem[] {
+    return CITIES.map((city) => ({
+        slug: city.slug,
+        name: getCityName(city, locale),
+        search: city.name,
+        count: city.warehouses.length,
+        region: city.region,
+    })).sort(
+        (a, b) => b.count - a.count || a.name.localeCompare(b.name, locale)
     );
+}
+
+// «д. 457» — номер дома, а не деревня; «с. п.» — сельское поселение (район), а не село
+const SETTLEMENT = /^(г|с|д|пос|п|х|рп|пгт)\.\s(?!п\.)(?!\d)/;
+const DISTRICT = /(р-н|г\.о\.)/;
+
+/**
+ * Где находятся склады города — населённые пункты из полных адресов, без повторов:
+ * «с. Новая Тура (Зеленодольский р-н)», «пос. Шушары», «Раменский г.о.». Для текста «где склады» на странице города.
+ */
+export function getCityLocalities(city: City): string[] {
+    const localities = new Set<string>();
+
+    for (const { fullAddress } of city.warehouses) {
+        const parts = fullAddress.split(', ');
+        let index = -1;
+        parts.forEach((part, i) => {
+            if (SETTLEMENT.test(part)) index = i;
+        });
+
+        if (index >= 0) {
+            const before = parts[index - 1] ?? '';
+            localities.add(DISTRICT.test(before) ? `${parts[index]} (${before})` : parts[index]);
+        } else {
+            // поселения в адресе нет (технопарк, трасса) — хотя бы район
+            const district = parts.find((part) => DISTRICT.test(part));
+            if (district) localities.add(district);
+        }
+    }
+
+    return [...localities];
 }
 
 export function getOzonCityUrl(city: City): string {

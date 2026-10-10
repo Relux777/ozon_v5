@@ -40,7 +40,8 @@
 $layers-count: 10;
 $blur-max: 4px;
 
-@for $i from 1 through $layers-count {
+// последняя ступень — blur(0): слоя для неё нет (BLUR_LAYERS_COUNT = 9 в index.tsx), правило не генерируем
+@for $i from 1 through $layers-count - 1 {
     $segment: math.div(100%, $layers-count);
     $start: $segment * ($i - 1);
     $peak: $segment * $i;

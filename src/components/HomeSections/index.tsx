@@ -75,14 +75,18 @@ const SOURCES = [
 type Titled = { title: string; text: string };
 type DocMode = { id: string; label: string; docs: { name: string; note: string }[] };
 
+/** Секции главной по порядку; страница может показать только часть (страница города — без дублей главной) */
+export const HOME_SECTIONS = ['stats', 'steps', 'promo', 'friend', 'pay', 'first-day', 'types', 'card', 'tips', 'sources'] as const;
+export type HomeSection = (typeof HOME_SECTIONS)[number];
+
 /**
  * Пункты быстрой навигации (PageNav) по общим секциям — переиспользуют уже переведённые заголовки.
- * Страница может добавить свои пункты перед ними (так делает страница города).
+ * sections — только эти секции (как в HomeSections). Страница может добавить свои пункты перед ними.
  */
-export async function getHomeNavItems(locale: AppLocale): Promise<PageNavItem[]> {
+export async function getHomeNavItems(locale: AppLocale, sections: readonly HomeSection[] = HOME_SECTIONS): Promise<PageNavItem[]> {
     const t = await getTranslations({ locale, namespace: 'HomePage' });
 
-    return [
+    const items: PageNavItem[] = [
         { kicker: t('statsEyebrow'), title: t('statsTitle'), href: '#stats' },
         { kicker: t('stepsEyebrow'), title: t('stepsTitle'), href: '#steps' },
         { kicker: t('promo.kicker'), title: t('promo.stepsLabel'), href: '#promo' },
@@ -117,15 +121,20 @@ export async function getHomeNavItems(locale: AppLocale): Promise<PageNavItem[]>
         { kicker: t('card.kicker'), title: t('card.stepsLabel'), href: '#card' },
         { kicker: t('pay.tipsEyebrow'), title: t('pay.tipsTitle'), href: '#tips' },
     ];
+
+    return items.filter((item) => sections.includes(item.href.slice(1) as HomeSection));
 }
 
 type Props = {
     locale: AppLocale;
-    /** блоки страницы, которые встают сразу после «Почему стоит работать в Ozon» (#stats) — так делает страница города */
+    /** блоки страницы, которые встают сразу после «Почему стоит работать в Ozon» (#stats) */
     afterStats?: ReactNode;
+    /** какие секции показать (по умолчанию все); порядок — всегда как на главной */
+    sections?: readonly HomeSection[];
 };
 
-export default async function HomeSections({ locale, afterStats }: Props) {
+export default async function HomeSections({ locale, afterStats, sections = HOME_SECTIONS }: Props) {
+    const show = (section: HomeSection) => sections.includes(section);
     const t = await getTranslations({ locale, namespace: 'HomePage' });
     const tSources = await getTranslations({ locale, namespace: 'Sources' });
     const stats = t.raw('stats') as { value: string; label: string }[];
@@ -152,7 +161,8 @@ export default async function HomeSections({ locale, afterStats }: Props) {
 
     return (
         <>
-            <section className='py-20 scroll-anchor' id='stats'>
+            {show('stats') && (
+                <section className='py-20 scroll-anchor' id='stats'>
                 <div className="container">
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('statsEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('statsTitle')}</h2>
@@ -170,9 +180,10 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                     </div>
                     <p className='font-12'>{t('statsNote')}</p>
                 </div>
-            </section>
+            </section>)}
             {afterStats}
-            <section className='py-20 scroll-anchor' id='steps'>
+            {show('steps') && (
+                <section className='py-20 scroll-anchor' id='steps'>
                 <div className="container">
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('stepsEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('stepsTitle')}</h2>
@@ -200,8 +211,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
 
                     <p className='font-12 mt-20'>{t('stepsNote', { date: dataDate })}</p>
                 </div>
-            </section>
-            <section className='py-20 scroll-anchor' id='promo'>
+            </section>)}
+            {show('promo') && (
+                <section className='py-20 scroll-anchor' id='promo'>
                 <div className='container'>
                     <div className='promo grid gap-20 p-relative isolate overflow-hidden br-32 container-type-inline'>
                         <div className='promo-top flex align-center'>
@@ -272,8 +284,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                         </p>
                     </div>
                 </div>
-            </section>
-            <section className='py-20 scroll-anchor' id='friend'>
+            </section>)}
+            {show('friend') && (
+                <section className='py-20 scroll-anchor' id='friend'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('friend.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('friend.title')}</h2>
@@ -320,8 +333,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                         </a>
                     </p>
                 </div>
-            </section>
-            <section className='py-20 scroll-anchor' id='pay'>
+            </section>)}
+            {show('pay') && (
+                <section className='py-20 scroll-anchor' id='pay'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('pay.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('pay.title')}</h2>
@@ -408,8 +422,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                     </div>
                     <p className='font-12 mt-20'>{t('pay.note', { date: dataDate })}</p>
                 </div>
-            </section>
-            <section className='py-20 scroll-anchor' id='first-day'>
+            </section>)}
+            {show('first-day') && (
+                <section className='py-20 scroll-anchor' id='first-day'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('firstDay.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('firstDay.title')}</h2>
@@ -485,8 +500,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                     </div>
                     <p className='font-12'>{t('firstDay.note', { date: dataDate })}</p>
                 </div>
-            </section>
-            <section className='py-20 scroll-anchor' id='types'>
+            </section>)}
+            {show('types') && (
+                <section className='py-20 scroll-anchor' id='types'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('types.eyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('types.title')}</h2>
@@ -506,8 +522,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                     </ul>
                     <p className='font-12'>{t('types.note', { date: dataDate })}</p>
                 </div>
-            </section>
-            <section className='py-20 scroll-anchor' id='card'>
+            </section>)}
+            {show('card') && (
+                <section className='py-20 scroll-anchor' id='card'>
                 <div className='container'>
                     <div className='promo grid gap-20 p-relative isolate overflow-hidden br-32 container-type-inline'>
                         <div className='promo-top flex align-center'>
@@ -569,8 +586,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                         </p>
                     </div>
                 </div>
-            </section>
-            <section className='py-20 scroll-anchor' id='tips'>
+            </section>)}
+            {show('tips') && (
+                <section className='py-20 scroll-anchor' id='tips'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('pay.tipsEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('pay.tipsTitle')}</h2>
@@ -593,8 +611,9 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                         </div>
                     </div>
                 </div>
-            </section>
-            <section className='py-20'>
+            </section>)}
+            {show('sources') && (
+                <section className='py-20'>
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('sourcesEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('sourcesTitle')}</h2>
@@ -612,7 +631,7 @@ export default async function HomeSections({ locale, afterStats }: Props) {
                         {locale !== 'ru' && <span className='block'>{tSources('ruHint')}</span>}
                     </p>
                 </div>
-            </section>
+            </section>)}
         </>
     );
 }

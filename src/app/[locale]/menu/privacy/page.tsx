@@ -21,7 +21,7 @@ const RIGHTS = ['know', 'fix', 'withdraw', 'complain'] as const;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const locale = await getLocaleFromParams(params);
     const t = await getTranslations({ locale, namespace: 'LegalDocs.privacy' });
-    return { title: t('title'), robots: { index: false, follow: false } };
+    return { title: t('title'), robots: { index: false, follow: true } };
 }
 
 export default async function PrivacyPage({ params }: Props) {

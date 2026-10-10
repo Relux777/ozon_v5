@@ -15,7 +15,7 @@ const SECTIONS = ['what', 'sources', 'owner', 'money', 'cooperation'] as const;
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const locale = await getLocaleFromParams(params);
     const t = await getTranslations({ locale, namespace: 'LegalDocs.about' });
-    return { title: t('title'), robots: { index: false, follow: false } };
+    return { title: t('title'), robots: { index: false, follow: true } };
 }
 
 export default async function AboutPage({ params }: Props) {

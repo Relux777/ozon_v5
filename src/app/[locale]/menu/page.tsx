@@ -23,8 +23,9 @@ import ArrowUpRightSVG from '@/assets/svg/menu/arrow-up-right.svg';
 import ChevronRightSVG from '@/assets/svg/menu/chevron-right.svg';
 import CookieSVG from '@/assets/svg/support/cookie.svg';
 import BriefcaseSVG from '@/assets/svg/support/briefcase.svg';
+import CheckSVG from '@/assets/svg/check.svg';
 
-// Меню — хаб сайта: разделы (карточки с иконками), приложение Ozon Job (магазины), официальные ресурсы Ozon
+// Меню — хаб сайта: разделы (строки-ссылки с иконками), приложение Ozon Job (магазины), официальные ресурсы Ozon
 // и документы сайта (компактный список). Тексты — MenuPage.* в messages/*.json, адреса и иконки — здесь.
 
 type Props = {
@@ -98,54 +99,88 @@ export default async function MenuPage({ params }: Props) {
 
                     {/* ── Разделы сайта ─────────────────────────────────────────────────────────── */}
                     <h2 className='menu-title color-2-90 mb-15'>{t('quickTitle')}</h2>
-                    <ul className='flex row-flush'>
+                    {/* разделы — строками-ссылками (заголовок цветом ссылки, стрелка в кружке), как «Что ещё важно знать»
+                        на странице города: плитки читались как блоки, а не как переходы */}
+                    <ul className='link-rows grid gap-10 mb-20'>
                         {QUICK.map(({ key, href, icon: Icon, accent: color }) => (
-                            <li className='f-w-3 f-h-6 mb-15' key={key}>
-                                <Link
-                                    href={href}
-                                    className='menu-card grid gap-10 content-start h-full pd-20 br-20 bg-3-100 border-1px-2-10 shadow-3 translate_0_5 tr-2 hover-none'
-                                    style={accent(color)}
-                                >
-                                    <span className='icon-badge grid place-center w-46 h-46 br-round' aria-hidden='true'>
+                            <li key={key}>
+                                <Link href={href} className='link-row hover-none flex nowrap align-center gap-15 h-full pd-15 br-20 bg-3-100 border-1px-2-10' style={accent(color)}>
+                                    <span className='icon-badge grid place-center w-46 h-46 br-round shrink-0' aria-hidden='true'>
                                         <Icon width={24} height={24} viewBox='0 0 24 24' />
                                     </span>
-                                    <b className='font-16 color-2-90'>{t(`quick.${key}.title`)}</b>
-                                    <span className='font-14 color-2-80'>{t(`quick.${key}.text`)}</span>
+                                    <span className='grid gap-2 flex-1'>
+                                        <b className='link-row-title font-16'>{t(`quick.${key}.title`)}</b>
+                                        <span className='font-14 color-2-80'>{t(`quick.${key}.text`)}</span>
+                                    </span>
+                                    <span className='link-row-arrow grid place-center w-36 h-36 br-round shrink-0' aria-hidden='true'>
+                                        <ChevronRightSVG width={20} height={20} viewBox='0 0 24 24' />
+                                    </span>
                                 </Link>
                             </li>
                         ))}
                     </ul>
 
                     <div className='flex row-flush'>
-                        {/* ── Приложение Ozon Job: ссылки на магазины ─────────────────────────────── */}
-                        <div className='f-w-6 mb-20'>
-                            <div className='city-stat-accent grid gap-15 content-start h-full br-20 border-1px-2-10 pd-20'>
-                                <div className='flex nowrap align-center gap-14'>
-                                    <span className='icon-badge grid place-center w-46 h-46 br-round shrink-0' aria-hidden='true'>
-                                        <MobileSVG width={24} height={24} viewBox='0 0 24 24' />
-                                    </span>
-                                    <h2 className='menu-title'>{t('appTitle')}</h2>
+                        {/* ── Приложение Ozon Job: что даёт, как начать (макет телефона), магазины ─────────── */}
+                        <div className='f-w-7 mb-20'>
+                            <div className='app-card p-relative isolate overflow-hidden flex nowrap align-stretch gap-20 h-full br-20 pd-20'>
+                                <div className='grid gap-15 content-start flex-1'>
+                                    <div className='flex nowrap align-center gap-14'>
+                                        <span className='app-card-icon grid place-center w-46 h-46 shrink-0' aria-hidden='true'>
+                                            <MobileSVG width={24} height={24} viewBox='0 0 24 24' />
+                                        </span>
+                                        <div className='grid'>
+                                            <span className='font-12 text-uppercase letter-s-8 opacity-90'>Ozon Job</span>
+                                            <h2 className='menu-title'>{t('appTitle')}</h2>
+                                        </div>
+                                    </div>
+                                    <p className='md-0 font-14'>{t('appText')}</p>
+                                    <ul className='grid gap-7'>
+                                        {(t.raw('appPerks') as string[]).map((perk) => (
+                                            <li className='flex nowrap align-center gap-8 font-14 font-w-500' key={perk}>
+                                                <span className='app-card-check grid place-center shrink-0 br-round' aria-hidden='true'>
+                                                    <CheckSVG width={14} height={14} viewBox='0 0 24 24' />
+                                                </span>
+                                                {perk}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <ul className='promo-stores grid gap-8 mt-7'>
+                                        {stores.map((store) => (
+                                            <li key={store.id}>
+                                                <a
+                                                    className='app-store hover-none flex nowrap text_center align-center justify-center gap-5 br-36 h-46 font-14 font-w-500'
+                                                    href={store.url}
+                                                    target='_blank'
+                                                    rel='nofollow noopener noreferrer'
+                                                >
+                                                    {store.name}
+                                                    <ArrowUpRightSVG width={16} height={16} viewBox='0 0 24 24' aria-hidden='true' />
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
                                 </div>
-                                <p className='md-0 font-14'>{t('appText')}</p>
-                                <ul className='promo-stores grid gap-8'>
-                                    {stores.map((store) => (
-                                        <li key={store.id}>
-                                            <a
-                                                className='promo-store hover-none flex text_center align-center justify-center br-36 h-46 font-14 font-w-500'
-                                                href={store.url}
-                                                target='_blank'
-                                                rel='nofollow noopener noreferrer'
-                                            >
-                                                {store.name}
-                                            </a>
-                                        </li>
-                                    ))}
-                                </ul>
+
+                                {/* макет телефона: три шага в приложении — только для глаз, тот же смысл есть в тексте слева */}
+                                <div className='app-phone none-max-620 shrink-0' aria-hidden='true'>
+                                    <div className='app-phone-screen grid gap-8 content-start'>
+                                        <span className='app-phone-notch' />
+                                        <b className='font-14'>Ozon Job</b>
+                                        {(t.raw('appSteps') as string[]).map((step, i) => (
+                                            <div className='app-phone-row flex nowrap align-center gap-8' key={step}>
+                                                <span className='app-phone-num grid place-center shrink-0 br-round font-12 font-w-700'>{i + 1}</span>
+                                                <span className='font-12'>{step}</span>
+                                            </div>
+                                        ))}
+                                        <span className='app-phone-btn' />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         {/* ── Официальные ресурсы Ozon (внешние) ──────────────────────────────────── */}
-                        <div className='f-w-6 mb-20'>
+                        <div className='f-w-5 mb-20'>
                             <div className='grid gap-10 content-start h-full br-20 bg-3-100 border-1px-2-10 shadow-3 pd-20'>
                                 <h2 className='menu-title color-2-90'>{t('officialTitle')}</h2>
                                 <p className='md-0 font-14 color-2-80'>{t('officialText')}</p>

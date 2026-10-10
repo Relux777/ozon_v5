@@ -7,8 +7,9 @@
 |---|---|---|---|
 | `modal/` | Модалка: портал, свайп вниз, Escape, фокус; лист снизу / по центру / справа | да | [modal.md](modal/modal.md) |
 | `faq-accordion/` | Аккордеон «вопрос–ответ», открыт один пункт, плавное раскрытие, открытие по `#якорю` | да | [faq-accordion.md](faq-accordion/faq-accordion.md) |
-| `copy-code/` | «Таблетка» с кодом и кнопкой «Скопировать» | да | [copy-code.md](copy-code/copy-code.md) |
-| `copy-link/` | Кнопка, копирующая текст/ссылку (сам текст не показывает) | да | [copy-link.md](copy-link/copy-link.md) |
+| `alert/` | Всплывающие уведомления: 4 типа, 7 позиций, сами пропадают, свайп, анимации | да | [alert.md](alert/alert.md) |
+| `copy-code/` | «Таблетка» с кодом и кнопкой «Скопировать» (результат — уведомлением `alert`) | да | [copy-code.md](copy-code/copy-code.md) |
+| `copy-link/` | Кнопка, копирующая текст/ссылку (сам текст не показывает; результат — уведомлением `alert`) | да | [copy-link.md](copy-link/copy-link.md) |
 | `scroll-top/` | Плавающая кнопка «наверх» + общий класс `.float-btn` | да | [scroll-top.md](scroll-top/scroll-top.md) |
 | `theme-switch/` | Переключатель светлой/тёмной темы без «мигания» | да | [theme-switch.md](theme-switch/theme-switch.md) |
 | `photo-slider/` | Лента фото со свайпом, пагинацией и окном просмотра (размытый фон, свайпы, закрытие вниз) | да | [photo-slider.md](photo-slider/photo-slider.md) |

@@ -6,6 +6,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import ThemeSwitch from "@/components/ui/theme-switch";
 import { getLanguageByCode } from '@/config/languages';
+import { THEME_COLORS } from '@/config/site';
 
 import LogoIcon from '@/assets/svg/logo.svg';
 
@@ -13,7 +14,9 @@ import styles from './header.module.scss'
 
 export default async function HeaderComponent() {
 
-    const BLUR_LAYERS_COUNT = 10;
+    // ступеней размытия 10 ($layers-count в header.module.scss), но слоёв 9: у десятой blur(0) — она ничего
+    // не размывала, а отдельный слой с backdrop-filter всё равно пересчитывался на каждом кадре прокрутки
+    const BLUR_LAYERS_COUNT = 9;
     const t = await getTranslations('LanguageModal');
     const headerT = await getTranslations('Header');
     // флаг и название текущего языка — на сервере: так 7 SVG-флагов не попадают в общий клиентский JS
@@ -25,6 +28,7 @@ export default async function HeaderComponent() {
 
             <div className={`p-absolute p-events-none overflow-hidden ${styles.headerBlur}`} aria-hidden="true">
                 {Array.from({ length: BLUR_LAYERS_COUNT }).map((_, i) => (
+                    // biome-ignore lint/suspicious/noArrayIndexKey: слои одинаковые и не переставляются — номер и есть их ключ
                     <div key={i} className={`p-absolute inset-0 ${styles.headerBlurLayer}`} />
                 ))}
             </div>
@@ -49,7 +53,7 @@ export default async function HeaderComponent() {
                     </li>
                     <li><span className={`block bg-2-20 ${styles.gap}`}></span></li>
                     <li>
-                        <ThemeSwitch />
+                        <ThemeSwitch themeColors={THEME_COLORS} />
                     </li>
                 </ul>
             </nav>

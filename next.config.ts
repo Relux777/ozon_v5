@@ -1,11 +1,18 @@
 // next.config.ts
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
-import path from 'path';
+import path from 'node:path';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
   poweredByHeader: false,
+
+  images: {
+    // AVIF — тем браузерам, что его понимают (Accept: image/avif), остальным WebP. Качество Next подбирает
+    // под WebP сам; на иллюстрациях сайта AVIF легче на 26–36 %, на скриншотах — на 6–11 %. Кодируется
+    // дольше (~0,1 с на картинку при первом запросе), дальше отдаётся из кэша .next/cache/images
+    formats: ['image/avif', 'image/webp'],
+  },
 
   sassOptions: {
     includePaths: [path.join(process.cwd(), 'src/assets/scss')],

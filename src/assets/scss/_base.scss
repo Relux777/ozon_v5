@@ -16,6 +16,27 @@
         scroll-behavior: smooth;
     }
 
+    /* «Перейти к содержимому»: <a class="skip-link" href="#content"> первой в <body>, цель — элемент с id="content"
+       и tabindex="-1" (.skip-target) перед <main>. Не видна, пока на неё не перешли Tab-ом */
+    .skip-link {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 100;
+        padding: 10px 16px;
+        border-radius: 36px;
+        background: rgb(var(--bg-5));
+        color: #fff;
+        font-weight: 500;
+        text-decoration: none;
+        transform: translateY(-150%);
+        transition: transform 0.2s;
+
+        &:focus-visible { transform: none; }
+    }
+
+    .skip-target:focus { outline: none; }
+
     /* [hidden] не должен проигрывать .flex / .block и т.п. */
     [hidden] { display: none !important; }
 

@@ -3,9 +3,11 @@
 // Тексты — AppScreens.* в messages/*.json (порядок items = порядок картинок SCREENS).
 import { getFormatter, getTranslations } from 'next-intl/server';
 import PhotoSlider, { type PhotoSlide, type PhotoSliderLabels } from '@/components/ui/photo-slider';
+// когда сделаны скриншоты (суммы и тарифы на них — на эту дату, см. AppScreens.note); та же дата — в sitemap
+import { APP_SCREENS_TAKEN_AT } from '@/config/site';
 import type { AppLocale } from '@/i18n/routing';
 
-// webp 1080×2337 (из исходных jpg 1170×2532, лежат рядом и в код не импортируются)
+// webp 1080×2337 (из скриншотов 1170×2532, iOS); номер файла = номер слайда
 import Screen1 from '@/assets/img/slider/1.webp';
 import Screen2 from '@/assets/img/slider/2.webp';
 import Screen3 from '@/assets/img/slider/3.webp';
@@ -13,12 +15,15 @@ import Screen4 from '@/assets/img/slider/4.webp';
 import Screen5 from '@/assets/img/slider/5.webp';
 import Screen6 from '@/assets/img/slider/6.webp';
 import Screen7 from '@/assets/img/slider/7.webp';
+import Screen8 from '@/assets/img/slider/8.webp';
+import Screen9 from '@/assets/img/slider/9.webp';
+import Screen10 from '@/assets/img/slider/10.webp';
+import Screen11 from '@/assets/img/slider/11.webp';
+import Screen12 from '@/assets/img/slider/12.webp';
 
-// главный экран, записи, склады, выбор дней, выбор времени, виды работ, выплаты
-const SCREENS = [Screen1, Screen2, Screen3, Screen4, Screen5, Screen6, Screen7];
-
-// когда сделаны скриншоты (суммы и тарифы на них — на эту дату, см. AppScreens.note)
-export const APP_SCREENS_TAKEN_AT = '2026-10-04';
+// путь человека в приложении: главная → склады → склад → виды работ → дни → время → выплаты → статистика →
+// операции → рейтинг → профиль → «Приведите друга» с кодом (дальше на странице — блок с кодом приглашения)
+const SCREENS = [Screen1, Screen2, Screen3, Screen4, Screen5, Screen6, Screen7, Screen8, Screen9, Screen10, Screen11, Screen12];
 
 export const APP_SCREENS_ID = 'app';
 

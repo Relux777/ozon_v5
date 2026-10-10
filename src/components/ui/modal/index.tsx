@@ -10,6 +10,10 @@ import styles from './modal.module.scss';
 export type ModalPosition = 'bottom' | 'center' | 'right';
 export type ModalSize = 360 | 440;
 
+const SWIPE_THRESHOLD = 120; // полный сброс
+const DRAG_START_THRESHOLD = 5; // минимальное движение для начала захвата (в px)
+const MAX_BLUR = 7;
+
 export default function Modal({
   children,
   className = '',
@@ -40,10 +44,6 @@ export default function Modal({
   const contentHeight = useRef<number>(0);
   const rafRef = useRef<number | null>(null);
   const mouseCleanupRef = useRef<(() => void) | null>(null);
-
-  const SWIPE_THRESHOLD = 120; // полный сброс
-  const DRAG_START_THRESHOLD = 5; // минимальное движение для начала захвата (в px)
-  const MAX_BLUR = 7;
 
   useEffect(() => {
     setMounted(true);
@@ -81,7 +81,7 @@ export default function Modal({
           startY.current = null;
           return;
         }
-        if (e && e.cancelable) {
+        if (e?.cancelable) {
           e.preventDefault();
         }
         // ДОБАВЛЯЕМ: как только начался именно drag, вешаем класс
@@ -116,7 +116,7 @@ export default function Modal({
         });
       }
     },
-    [DRAG_START_THRESHOLD]
+    []
   );
 
   const handleDragEnd = useCallback(() => {
@@ -162,7 +162,7 @@ export default function Modal({
 
     startY.current = null;
     currentY.current = 0;
-  }, [onClose, resetStyles]);
+  }, [onClose]);
 
   // Запуск драга – больше НЕ вызывает preventDefault здесь
   const handleDragStart = useCallback(
@@ -265,6 +265,7 @@ export default function Modal({
   const sizeClass = size ? styles[`w_${size}px`] : '';
 
   return createPortal(
+    // biome-ignore lint/a11y/useKeyWithClickEvents: клик по подложке дублирует крестик; с клавиатуры окно закрывает Escape
     <div
       ref={modalRef}
       role="dialog"
@@ -273,6 +274,7 @@ export default function Modal({
       className={`${styles.modal} p-fixed flex justify-center z-20 cursor-pointer w-full visibility-hidden blur-7 inset-0 ${positionClass} ${sizeClass} ${className} ${modalVisibilityClass}`}
       onClick={onClose}
     >
+      {/* biome-ignore lint/a11y/noStaticElementInteractions lint/a11y/useKeyWithClickEvents: только не даёт клику по содержимому дойти до подложки (иначе окно закроется) */}
       <div
         ref={contentRef}
         tabIndex={-1}

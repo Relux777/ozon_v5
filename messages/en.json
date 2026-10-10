@@ -1,7 +1,7 @@
 {
   "ManifestGlobal": {
     "SiteName": "Ozon Work",
-    "SiteDescription": "Warehouse operator jobs — Ozon Work, daily payouts"
+    "SiteDescription": "Part-time work at Ozon warehouses via the Ozon Job app — warehouse addresses and payouts"
   },
   "Metadata": {
     "siteName": "Ozon Work"
@@ -11,7 +11,11 @@
     "chooseLanguage": "Choose language",
     "close": "Close",
     "breadcrumbs": "Breadcrumbs",
-    "scrollTop": "Back to top"
+    "scrollTop": "Back to top",
+    "alerts": "Notifications",
+    "alertClose": "Close notification",
+    "copyFailed": "Couldn't copy — select the text manually",
+    "skipToContent": "Skip to content"
   },
   "LanguageModal": {
     "title": "Choose a language"
@@ -41,33 +45,58 @@
     "empty": "City not found. Try changing your search.",
     "count": "{count, plural, one {# warehouse} other {# warehouses}}",
     "noData": "Addresses pending",
-    "listLabel": "List of cities"
+    "listLabel": "List of cities",
+    "clear": "Clear search",
+    "hotkey": "Press “/” to start searching",
+    "filterLabel": "Which cities to show",
+    "filterAll": "All",
+    "filterData": "With addresses",
+    "popular": "Most warehouses",
+    "alphabet": "Cities A–Z",
+    "region": "region",
+    "showAll": "Show all cities",
+    "legend": "Cities whose warehouse addresses are in our database are shown as cards; for the rest, addresses are still being clarified — the Ozon Job app will show nearby warehouses."
   },
   "SkladPage": {
     "title": "Ozon warehouses by city: addresses, income, insurance, meals",
     "description": "Cities where you can work as an Ozon warehouse operator: warehouse addresses, income, health insurance, meals and transport to the warehouse. Choose your city.",
     "heading": "Choose your city",
-    "lead": "Find your city and see warehouse addresses, income and bonuses for warehouse operators."
+    "lead": "Find your city and see warehouse addresses, income and bonuses for warehouse operators.",
+    "stats": {
+      "cities": "{count, plural, one {city or region} other {cities and regions}}",
+      "data": "with warehouse addresses",
+      "warehouses": "{count, plural, one {warehouse in our database} other {warehouses in our database}}"
+    }
   },
   "CityPage": {
-    "titleWithData": "Ozon warehouse jobs in {city}: Ozon Job, addresses, pay",
-    "titleNoData": "Ozon warehouse jobs in {city}: start shifts via Ozon Job",
-    "descriptionWithData": "Ozon warehouses in {city}: full addresses and Ozon Job part-time work — 4–12 h slots, card payouts from 3 hours, civil-law contract or self-employment.",
-    "descriptionNoData": "Part-time work at Ozon warehouses in {city} via the Ozon Job app: 4–12 hour slots, card payouts from 3 hours, civil-law contract or self-employment.",
-    "heading": "Ozon warehouses in {city}: part-time work via Ozon Job",
-    "heroKicker": "Ozon Job · {city}",
+    "cityPlace": "{city}",
+    "titleWithData": "Ozon warehouses in {place}: Ozon Job, addresses, pay",
+    "titleNoData": "Ozon warehouse jobs in {place}: start shifts via Ozon Job",
+    "descriptionWithData": "Ozon warehouses in {place}: full addresses and Ozon Job part-time work — 4–12 h slots, card payouts from 3 hours, civil-law contract or self-employment.",
+    "descriptionNoData": "Part-time work at Ozon warehouses in {place} via the Ozon Job app: 4–12 hour slots, card payouts from 3 hours, civil-law contract or self-employment.",
+    "heading": "Ozon warehouses in {place}: part-time work via Ozon Job",
+    "heroKicker": "Ozon Job · {place}",
     "heroAddresses": "Warehouse addresses",
     "heroBonus": "Invitation code bonus",
-    "leadWithData": "Choose the warehouse, day and shift length right in the Ozon Job app — money reaches your card 3–12 hours after the slot. Below are full warehouse addresses in {city}, conditions and how to get started.",
-    "leadNoData": "Work shifts at Ozon warehouses through the Ozon Job app: you choose the day and slot length, payouts from 3 hours. We don't have warehouse addresses for {city} yet — the app will show nearby warehouses after you sign up.",
+    "heroFacts": {
+      "count": "{count, plural, one {# Ozon warehouse} other {# Ozon warehouses}} with full addresses",
+      "income": "On staff: {income}, according to Ozon",
+      "transport": "Transport to the warehouse at {count} of {total, plural, one {# warehouse} other {# warehouses}}",
+      "job": "Via Ozon Job: 4–12 hour slots, payouts from 3 hours",
+      "bonus": "Newcomer bonus with an invitation code — up to {amount, number} ₽"
+    },
+    "leadWithData": "{place}: full Ozon warehouse addresses, staff pay according to Ozon and how to start shifts via the Ozon Job app — you choose the warehouse, day and a 4–12 hour slot yourself.",
+    "leadNoData": "We don't have Ozon warehouse addresses for {place} yet — the Ozon Job app will show the nearest warehouses after you sign up. You choose the warehouse, day and a 4–12 hour slot yourself; card payouts from 3 hours.",
+    "overview": "{place}: our database has {count, plural, one {# Ozon warehouse} other {# Ozon warehouses}} — {localities}.",
+    "localitiesMore": "{count} more",
     "incomeRange": "{from, number} to {to, number} ₽/month",
     "incomeUpTo": "up to {to, number} ₽/month",
     "incomeFrom": "from {from, number} ₽/month",
     "why": {
-      "eyebrow": "Warehouses · {city}",
-      "title": "Ozon warehouses in {city}: addresses and conditions",
+      "eyebrow": "Warehouses · {place}",
+      "title": "Ozon warehouses in {place}: addresses and conditions",
       "lead": "Addresses and conditions come from Ozon's staff vacancies page (career.ozon.ru). Ozon Job offers more warehouses: over 500 across Russia, including mini-warehouses — the app will show the list for your city.",
-      "countLabel": "{count, plural, one {Ozon warehouse} other {Ozon warehouses}} in and around {city}",
+      "countLabel": "{count, plural, one {Ozon warehouse} other {Ozon warehouses}} in and around {place}",
       "countShare": "{count} of {total} warehouses in our database",
       "incomeTitle": "How much you can earn",
       "staffTitle": "On staff",
@@ -102,7 +131,7 @@
       "transport": "Company transport to the warehouse and back",
       "training": "A mentor and training from day one",
       "meal": "Set lunches or meal allowance",
-      "dms": "Voluntary health insurance"
+      "dms": "Health insurance — after the first month on staff"
     },
     "perksJob": {
       "transport": "Also available in Ozon Job",
@@ -118,13 +147,13 @@
     },
     "perksCount": "at {count} of {total, plural, one {# warehouse} other {# warehouses}}",
     "perksNone": "not specified in our database",
-    "warehousesTitle": "Warehouse addresses in {city}",
+    "warehousesTitle": "Warehouse addresses in {place}",
     "warehousesEmpty": "Warehouse addresses in this city are still pending. See current vacancies on Ozon's official page.",
     "addresses": {
       "lead": "Full address — based on Ozon data, with region and district added; income and conditions come from staff vacancies. The exact warehouse address will appear in the app after you book a slot.",
       "number": "Warehouse {n}",
       "copy": "Copy",
-      "copied": "Address copied ✓",
+      "copied": "Address copied",
       "map": "On the map",
       "mapLabel": "Find “{address}” on Yandex Maps",
       "more": "Show all addresses ({count})",
@@ -132,50 +161,123 @@
     },
     "related": {
       "title": "Nearby cities and districts",
-      "lead": "Warehouses of {city} are also listed on these pages — pick a place closer to home."
+      "lead": "Some of these warehouses are also listed on the pages of nearby cities and districts — pick a place closer to home.",
+      "more": "Show all cities ({count})"
     },
-    "offer": {
-      "eyebrow": "Ozon Job",
-      "title": "What part-time work via Ozon Job offers",
-      "lead": "App conditions are based on job.ozon.ru and the help centre for contractors. They differ from staff work: a civil-law contract, self-employment or sole proprietorship and payment for each slot.",
+    "benefits": {
+      "eyebrow": "Ozon Job perks",
+      "title": "What part-time work at Ozon warehouses in {place} gives you",
+      "lead": "The essentials of working via the app, in brief. Each card links to the details.",
+      "more": "Learn more",
+      "note": "Conditions are from the Ozon Job contractor help center and Ozon job listings; Ozon sets them and may change them. Income is not guaranteed.",
       "items": {
-        "payments": {
-          "title": "Payouts from 3 hours after the slot",
-          "text": "To an Ozon Bank card — after 3 hours (“Newcomer” and “Diamond” levels) or after 12 hours. “Diamond” can withdraw money manually once an hour. To other banks' cards — on Tuesdays."
+        "payouts": {
+          "title": "Money 3 hours after your shift",
+          "text": "To an Ozon Bank card — in 3 hours on the “Newbie” and “Diamond” levels or in 12 hours on the others. To other banks’ cards — on Tuesdays."
         },
         "schedule": {
-          "title": "You choose the day and length",
-          "text": "Day and night slots of 4, 6, 8 or 12 hours — availability depends on the warehouse. Easy to combine with study or another job."
-        },
-        "transport": {
-          "title": "Transport to the warehouse and back",
-          "text": "Ozon Job lists transport among its conditions; the warehouses in {city} that have it are marked in the addresses above."
+          "title": "Shifts that fit your schedule",
+          "text": "Slots from 4 to 12 hours, day or night. Tick several days at once or pick a ready-made schedule — 2/2, 4/3, 3/3."
         },
         "start": {
-          "title": "Starter support — up to 6,500 ₽",
-          "text": "A promotion for new contractors: the first, training day is paid under it rather than as a regular slot."
+          "title": "No experience needed",
+          "text": "The first slot is a training one: you’ll be shown your area and taught to use the data collection terminal."
         },
-        "contract": {
-          "title": "Civil-law contract, self-employment or sole proprietorship",
-          "text": "Registration and the offer agreement are right in the app — no need to visit an office. Under a civil-law contract Ozon withholds the tax."
+        "transport": {
+          "title": "Transport at {count} of {total, plural, one {# warehouse} other {# warehouses}}",
+          "text": "According to Ozon job listings, company transport is available at {count} of {total, plural, one {# warehouse} other {# warehouses}} in {place}. Whether there are buses for Ozon Job is shown on the warehouse card in the app.",
+          "titleNone": "Route to the warehouse — in the app",
+          "textNone": "Whether there are buses is shown on the warehouse card in Ozon Job, along with a route-to-warehouse button."
         },
-        "tasks": {
-          "title": "You choose what to do",
-          "text": "Receiving deliveries, placement, picking, sorting or packing — you choose the process when booking a slot."
+        "online": {
+          "title": "Sign up without an office",
+          "text": "Register via Gosuslugi or Ozon Bank; the contract is right in the app: civil-law contract, self-employment or sole proprietorship. For the self-employed, Ozon Job withholds the tax."
         },
-        "transparent": {
-          "title": "You see the amount in advance",
-          "text": "The warehouse card shows the expected payout per hour and per 12-hour slot, and a detailed breakdown appears in the app the next day."
+        "rating": {
+          "title": "Higher level, more options",
+          "text": "Your rating grows with shifts without violations. The higher the level, the earlier slots open, and on the “Diamond” level Ozon Bank card payouts arrive in 3 hours."
+        },
+        "tariffs": {
+          "title": "Higher rates and promotions",
+          "text": "Some warehouses and processes have a higher rate, and there are shift bonuses — the app shows them before you book a slot."
         },
         "bonus": {
           "title": "Invitation code bonus",
-          "text": "Newcomers get 1,000 to 5,000 ₽: the amount depends on the warehouse of the first booking (per Ozon Job lists for September 2026). The condition is, for example, earning 30,000 ₽ within 30 days of the first shift."
+          "text": "Newcomers get up to {amount, number} ₽ after meeting the promotion conditions. The amount depends on the warehouse."
         }
+      }
+    },
+    "faq": {
+      "eyebrow": "City questions",
+      "title": "Ozon warehouses in {place}: FAQ",
+      "where": {
+        "q": "Where are the Ozon warehouses in {place}?",
+        "a": "Our database has {count, plural, one {# warehouse} other {# warehouses}}: {localities}. Full addresses with a map link are in the addresses block above. The exact address of the warehouse you book will be shown in the Ozon Job app."
       },
-      "note": "Conditions are set by Ozon and may change — check them in the app before booking a slot."
+      "pay": {
+        "q": "How much do Ozon warehouses in {place} pay?",
+        "aStaff": "On staff: {income} on a full schedule, according to Ozon job listings as of {date}. Via Ozon Job you are paid per slot: number of operations × the warehouse rate, so monthly income depends on how many slots you take. The app shows the expected amount for a slot before you book; income is not guaranteed.",
+        "aJob": "Ozon job listings don't state pay for warehouses in this city. Via Ozon Job you are paid per slot: number of operations × the warehouse rate. The app shows the expected amount per hour and per slot before you book; income is not guaranteed."
+      },
+      "transport": {
+        "q": "Is there transport to the Ozon warehouses in {place}?",
+        "aYes": "According to Ozon job listings, company transport is available at {count} of {total, plural, one {# warehouse} other {# warehouses}}: {list}. Ozon Job also lists transport among its conditions — the warehouse card shows a bus mark; check routes and times in the app.",
+        "aNo": "Ozon job listings don't mention transport for warehouses in this city. Whether there are buses is shown on the warehouse card in the Ozon Job app, along with a route-to-warehouse button."
+      },
+      "meal": {
+        "q": "Are meals provided at the Ozon warehouses in {place}?",
+        "aYes": "Meals or meal compensation are listed for {count} of {total, plural, one {# warehouse} other {# warehouses}} — this is a staff condition. Whether lunches are available for Ozon Job is shown on the warehouse card in the app; if there is no mark, ask at the warehouse.",
+        "aNo": "Ozon job listings don't mention meals for warehouses in this city. Whether lunches are available for Ozon Job is shown on the warehouse card in the app; if there is no mark, ask at the warehouse."
+      },
+      "start": {
+        "q": "How do I start my first shift at an Ozon warehouse in {place}?",
+        "a": "Download Ozon Job, sign up via Gosuslugi or Ozon Bank and choose how you work: civil-law contract, self-employment or sole proprietorship. Then pick a warehouse, day and slot. Bring your passport to the first shift; the first slot is a training one. The invitation code in the block below gives newcomers a bonus — the conditions are there too."
+      }
+    },
+    "compare": {
+      "eyebrow": "Staff or Ozon Job",
+      "title": "Staff job or part-time work via Ozon Job: what's the difference",
+      "lead": "Same warehouses, different conditions. The “On staff” column shows figures from Ozon job listings for the warehouses on this page ({place}); the “Via Ozon Job” column shows conditions from the contractor help center.",
+      "staff": "On staff",
+      "job": "Via Ozon Job",
+      "rowLabel": "Condition",
+      "contract": {
+        "label": "Contract",
+        "staff": "Employment contract, official employment",
+        "job": "Civil-law contract, self-employment or sole proprietorship — an offer agreement right in the app"
+      },
+      "income": {
+        "label": "Pay",
+        "staff": "{income} on a full schedule",
+        "staffNone": "Not stated in listings",
+        "job": "Per slot: operations × warehouse rate. The amount is shown before booking"
+      },
+      "schedule": {
+        "label": "Schedule",
+        "staff": "Fixed shift schedule as per the job listing",
+        "job": "You choose the day and a 4–12 hour slot, day or night"
+      },
+      "payouts": {
+        "label": "Payouts",
+        "staff": "Weekly — on Fridays for the previous week",
+        "job": "To an Ozon Bank card 3 or 12 hours after the slot, to other banks' cards on Tuesdays"
+      },
+      "perks": {
+        "label": "Warehouse perks",
+        "staff": "Transport at {transport} of {total, plural, one {# warehouse} other {# warehouses}}, meals at {meal}, health insurance at {dms}",
+        "staffNone": "Not stated in listings",
+        "job": "Transport available, first slot is training, meals — ask at the warehouse, no health insurance"
+      },
+      "start": {
+        "label": "How to start",
+        "staff": "Apply, interview and get hired",
+        "job": "Sign up in the app via Gosuslugi or Ozon Bank — then book a slot"
+      },
+      "note": "Staff figures are from Ozon job listings (career.ozon.ru), Ozon Job conditions from the contractor help center (docs.ozon.ru). Ozon sets the conditions and may change them; income is not guaranteed."
     },
     "duty": {
       "title": "What you will do",
+      "lead": "Receiving, putaway, picking, sorting or packing — you choose the process when booking a slot. Here’s what the work consists of.",
       "items": {
         "scan": {
           "title": "Receiving and scanning",
@@ -195,15 +297,29 @@
         }
       }
     },
+    "more": {
+      "eyebrow": "Learn more",
+      "title": "What else to know",
+      "lead": "How payouts arrive, what to bring on day one, how levels work and answers to common questions — in separate sections of the site."
+    },
+    "og": {
+      "alt": "Ozon warehouses in {place}: addresses, pay and part-time work via Ozon Job",
+      "kicker": "Ozon warehouses · part-time via Ozon Job",
+      "count": "{count, plural, one {# warehouse} other {# warehouses}} in our database",
+      "income": "up to {value, number} ₽/mo on staff",
+      "incomeFrom": "from {value, number} ₽/mo on staff",
+      "noData": "4 to 12 hour slots",
+      "tagline": "Warehouse addresses and conditions · 4–12 hour slots · payouts from 3 hours"
+    },
     "nav": {
-      "summaryKicker": "In brief · {city}",
+      "summaryKicker": "In brief · {place}",
       "summaryAverage": "On staff — on average up to {value, number} ₽/month",
       "summaryJob": "Via Ozon Job — paid per slot, payouts from 3 hours",
       "summaryNoData": "Warehouse addresses in this city are still pending",
       "summaryDate": "Addresses and staff conditions — per career.ozon.ru as of {date}",
       "data": "Our data",
       "extrasTitle": "Useful links",
-      "official": "Ozon staff vacancies in {city}"
+      "official": "Ozon staff vacancies in {place}"
     },
     "disclaimer": "Addresses and staff conditions come from Ozon's pages (data as of {date}). Ozon Job conditions are based on job.ozon.ru and the help centre for contractors. Everything may change — check in the app.",
     "allCities": "All cities"
@@ -250,6 +366,16 @@
     },
     "appTitle": "The Ozon Job app",
     "appText": "Booking shifts, payouts and the invitation code — all in the app. Download it from your app store.",
+    "appPerks": [
+      "4 to 12 hour slots — day or night",
+      "Card payouts from 3 hours",
+      "Sign up without an office — via Gosuslugi or Ozon Bank"
+    ],
+    "appSteps": [
+      "Choose a warehouse nearby",
+      "Book a slot",
+      "Get paid"
+    ],
     "officialTitle": "Official Ozon resources",
     "officialText": "Conditions, rates and amounts are set by Ozon — check the original sources.",
     "official": {
@@ -464,7 +590,7 @@
     "ctaText": "Enter the invitation code when registering in the app. The bonus is credited when you complete tasks worth an amount that depends on the warehouse; only those who haven't worked at Ozon before can take part.",
     "ctaCodeLabel": "Invitation code",
     "ctaCopy": "Copy",
-    "ctaCopied": "Copied ✓",
+    "ctaCopied": "Copied",
     "ctaLink": "How to get the bonus",
     "sourcesTitle": "Sources",
     "sourcesNote": "Figures come from the Ozon Job app (the “Rating”, “How we calculate the rating” and “Violations” sections) and the help centre for contractors (checked {date}). Ozon may change the rules — current values are always in the app. An independent information site — not Ozon and not its representative.",
@@ -498,7 +624,7 @@
     "open": "Apply",
     "openLabel": "{name}: apply by invitation — the official page will open",
     "copy": "Copy",
-    "copied": "Copied ✓",
+    "copied": "Copied",
     "offers": {
       "debit": {
         "name": "Ozon Card",
@@ -1267,9 +1393,9 @@
   },
   "HomePage": {
     "pageNavLabel": "Jump to a section",
-    "title": "Work at Ozon: warehouse operator with daily payouts",
-    "description": "Ozon warehouse operator jobs: flexible hours, day and night shifts, daily or weekly payouts. Staff, civil-law contract or self-employed. Training from scratch.",
-    "heading": "Ozon warehouse operator job: work with daily payouts",
+    "title": "Part-time Ozon warehouse work via Ozon Job: addresses, pay",
+    "description": "How to work shifts at Ozon warehouses via the Ozon Job app: 4–12 hour slots, pay per slot, card payouts from 3 hours, civil-law contract or self-employment.",
+    "heading": "Part-time work at Ozon warehouses via the Ozon Job app",
     "lead": "Find a warehouse in your city and see real addresses and conditions. Sign up in the Ozon Job app with an invitation code — a bonus of up to {amount, number} ₽* is credited after you meet the promotion conditions.",
     "heroCity": "Choose a city",
     "heroBonus": "Get up to {amount, number} ₽",
@@ -1309,6 +1435,12 @@
     "statsEyebrow": "Ozon in numbers*",
     "statsTitle": "Why work at Ozon",
     "statsNote": "* Figures are taken from Ozon's public sources and rounded; they are current at the time of publication and may change. The bonus for a friend depends on the warehouse and the promotion conditions. This site is independent and is not Ozon's official site.",
+    "cities": {
+      "eyebrow": "Warehouses by city",
+      "title": "Ozon warehouses in your city",
+      "lead": "Our database has warehouse addresses and conditions for {count, plural, one {# city or region} other {# cities and regions}}. Here are the cities with the most warehouses; find yours in the search among all {total, plural, one {# city} other {# cities}}.",
+      "all": "All cities and regions"
+    },
     "stepsEyebrow": "First steps",
     "stepsTitle": "How to get to your first shift",
     "stepLabel": "Step {n} of {total}",
@@ -1362,7 +1494,7 @@
       "condition": "* The bonus is credited after meeting the promotion conditions: tasks worth an amount that depends on the warehouse.",
       "codeLabel": "Your invitation code",
       "copy": "Copy",
-      "copied": "Copied ✓",
+      "copied": "Copied",
       "codeHint": "Where to enter it: on the home screen, on the promotion page or in Profile → Bring a friend",
       "storesLabel": "Download Ozon Job from an app store",
       "stepsLabel": "How to get the bonus",
@@ -1651,7 +1783,7 @@
         "Free: opening, service, top-ups and transfers"
       ],
       "copy": "Copy link",
-      "copied": "Copied ✓",
+      "copied": "Copied",
       "openLink": "Open link",
       "qrLabel": "Invitation QR code",
       "stepsLabel": "How to get the cashback",
@@ -1688,43 +1820,68 @@
   "AppScreens": {
     "eyebrow": "Ozon Job app",
     "title": "What the app looks like inside",
-    "lead": "Seven screens — from choosing a warehouse and a shift to withdrawing money. Swipe through the screenshots or tap any of them to see it up close.",
-    "note": "Screenshots taken in the iOS app on {date}, using Kazan warehouses as an example. The interface may differ depending on the app version. Amounts and rates in the screenshots are an example for that date: at other warehouses and on other days they differ and are not guaranteed. Ozon is a trademark of Internet Solutions LLC; this site is not affiliated with Ozon.",
+    "lead": "Twelve screens — from choosing a warehouse and a shift to payouts, rating and the invitation code. Swipe through the screenshots or tap any of them to see it up close.",
+    "note": "Screenshots taken on {date} in the site author's account, in the iOS app, using Kazan warehouses as an example. The interface may differ depending on the app version. Amounts, rates and promotions in the screenshots are an example for that date: at other warehouses and on other days they differ and are not guaranteed. Ozon is a trademark of Internet Solutions LLC; this site is not affiliated with Ozon.",
     "items": [
       {
         "title": "Home screen",
-        "text": "Your next booked shift with an estimated amount per slot, your level, a route to the warehouse and open slots at your favourite warehouses.",
-        "alt": "Ozon Job app screenshot: home screen with the next booked shift and the worker level"
+        "text": "Your level (here — “Diamond”), warehouse promotions such as a shift bonus, upcoming bookings and a selection of convenient slots with pay per shift and per hour.",
+        "alt": "Ozon Job app screenshot: home screen with the worker level, promotions and suggested slots"
       },
       {
-        "title": "My bookings",
-        "text": "A calendar and list of your shifts: warehouse, time, type of work, “Confirmed” status and approximate pay per slot and per hour.",
-        "alt": "Ozon Job app screenshot: calendar and list of confirmed shift bookings"
+        "title": "Regional warehouses",
+        "text": "Warehouses in the region (here — 16 in Tatarstan) with filters by service type, date, time and rate. Each card shows the warehouse type, rating, distance, approximate pay for 12 hours and marks: promotions, buses, lunches.",
+        "alt": "Ozon Job app screenshot: list of regional warehouses with filters, pay per shift and bus and lunch marks"
       },
       {
-        "title": "Warehouses nearby",
-        "text": "Warehouses in your region with filters by service type, date, time and rate. Each card shows the warehouse type, rating, distance and tags: buses, meals, increased rate.",
-        "alt": "Ozon Job app screenshot: list of regional warehouses with filters and warehouse cards"
+        "title": "Warehouse page",
+        "text": "Warehouse card: photos, pay for 12 hours and per hour, a route to the warehouse, available dates and what's on site — workwear, buses, answers to questions. Below — the warehouse's promotions.",
+        "alt": "Ozon Job app screenshot: warehouse page with photos, pay per shift, amenities and promotions"
+      },
+      {
+        "title": "Work types and rates",
+        "text": "Warehouse processes — putaway, picking, receiving, packing, sorting — with pay per shift and available dates. Some processes have a higher rate (here — +5% and +20%).",
+        "alt": "Ozon Job app screenshot: types of warehouse work with amounts and higher rates"
       },
       {
         "title": "Choosing days",
-        "text": "Booking calendar: pick several days at once or a ready-made schedule — 2/2, 4/3, 3/3.",
-        "alt": "Ozon Job app screenshot: shift booking calendar and schedule selection"
+        "text": "Booking calendar: tick several days at once or pick a ready-made schedule — flexible, 2/2, 4/3, 3/3.",
+        "alt": "Ozon Job app screenshot: shift booking calendar with schedule options"
       },
       {
         "title": "Choosing a time",
-        "text": "Shift length (12, 9 or 8 hours in the screenshot), a convenient time window and the amount per slot. Some bookings are confirmed instantly.",
-        "alt": "Ozon Job app screenshot: choosing the shift length and time window"
-      },
-      {
-        "title": "Types of work",
-        "text": "Tasks at the warehouse: putaway, picking, receiving, packing, sorting. Each type has its own amount, and some come with an increased rate.",
-        "alt": "Ozon Job app screenshot: types of work at the warehouse and their amounts"
+        "text": "Shift length (here — 12, 9 or 8 hours), day and night intervals and pay per slot and per hour. Some bookings are confirmed instantly.",
+        "alt": "Ozon Job app screenshot: choosing the shift length and time interval with pay per slot"
       },
       {
         "title": "Payouts",
-        "text": "Your balance — what is being processed and what will be sent to your card, a withdraw button, account history and live earnings: amount earned and number of tasks.",
-        "alt": "Ozon Job app screenshot: balance and payouts screen"
+        "text": "Balance: how much is being processed and how much goes to your card, a withdraw button, account history and live income — earnings and number of tasks for the day.",
+        "alt": "Ozon Job app screenshot: payouts screen with balance and income for the day"
+      },
+      {
+        "title": "Earnings by day",
+        "text": "Earnings by day for the week, plus deductions and errors, promotions, acts, receipts and certificates, bank details and cooperation history.",
+        "alt": "Ozon Job app screenshot: chart of daily earnings and payout sections"
+      },
+      {
+        "title": "Day's operations",
+        "text": "Every operation of the shift — time, quantity and amount — plus an extra reward for meeting the slot conditions.",
+        "alt": "Ozon Job app screenshot: list of the day's operations with quantities and amounts"
+      },
+      {
+        "title": "Rating",
+        "text": "Level and points (here — “Diamond”, 792 points), violations and what each level gives — for example, how many days ahead slots open up.",
+        "alt": "Ozon Job app screenshot: worker rating, levels and their benefits"
+      },
+      {
+        "title": "Profile",
+        "text": "Rating, partner discounts, “Invite a friend”, trips, personal QR code, documents, surveys and training — all in the profile.",
+        "alt": "Ozon Job app screenshot: worker profile with sections"
+      },
+      {
+        "title": "Invite a friend",
+        "text": "Screen with the invitation code. A newcomer enters the code after signing up, completes tasks worth up to 30,000 ₽ and gets up to 5,000 ₽. The promotion applies to certain warehouses and service types.",
+        "alt": "Ozon Job app screenshot: “Invite a friend” screen with the invitation code"
       }
     ],
     "slider": {

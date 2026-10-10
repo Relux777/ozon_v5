@@ -5,13 +5,14 @@ import { getLocaleFromParams } from '@/i18n/params';
 import { NextIntlClientProvider } from 'next-intl';
 import { getTranslations, getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
-import { SEARCH_VERIFICATION, SITE_CONFIG } from '@/config/site';
+import { SEARCH_VERIFICATION, SITE_CONFIG, THEME_COLORS } from '@/config/site';
 import { GOOGLE_ANALYTICS_ID, YANDEX_METRIKA_ID } from '@/config/legal';
 
 import HeaderComponent from "@/components/Header";
 import NavBarComponent from "@/components/NavBar";
 import BackgroundDecor from "@/components/BackgroundDecor";
 import CookieBanner from '@/components/CookieBanner';
+import { AlertProvider } from '@/components/ui/alert';
 import YandexMetrika from '@/components/YandexMetrika';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 
@@ -50,11 +51,11 @@ const fontVariables = [geist, notoGeorgian, notoArmenian]
   .map((font) => font.variable)
   .join(' ');
 
-// Цвет панели браузера на телефоне — как фон страницы (--bg-phone в _variables.scss)
+// Цвет панели браузера на телефоне — как фон страницы (THEME_COLORS); тему, выбранную кнопкой, подхватывает ThemeSwitch
 export const viewport: Viewport = {
     themeColor: [
-        { media: '(prefers-color-scheme: light)', color: '#ededed' },
-        { media: '(prefers-color-scheme: dark)', color: '#000000' },
+        { media: '(prefers-color-scheme: light)', color: THEME_COLORS.light },
+        { media: '(prefers-color-scheme: dark)', color: THEME_COLORS.dark },
     ],
 };
 
@@ -95,6 +96,7 @@ export default async function RootLayout({ children, params }: Props) {
     const locale = await getLocaleFromParams(params);
     const messages = await getMessages();
     const tCookies = await getTranslations({ locale, namespace: 'Cookies' });
+    const tA11y = await getTranslations({ locale, namespace: 'A11y' });
 
     // В клиентский бандл уходят только ключи, которые реально читают клиентские компоненты
     const clientMessages = {
@@ -111,7 +113,14 @@ export default async function RootLayout({ children, params }: Props) {
                     <ThemeProvider
                       storageKey="theme"
                     >
+                    {/* уведомления ui/alert (копирование и т.п.): по умолчанию сверху справа, под шапкой — --alert-top в style.scss */}
+                    <AlertProvider>
+                      {/* «Перейти к содержимому» — первая ссылка страницы: с клавиатуры не нужно проходить всю шапку */}
+                      <a href='#content' className='skip-link'>
+                        {tA11y('skipToContent')}
+                      </a>
                       <HeaderComponent />
+                      <div id='content' tabIndex={-1} className='skip-target' />
                         {children}
                       <div id="modal-root"></div>
                       <NavBarComponent />
@@ -128,6 +137,7 @@ export default async function RootLayout({ children, params }: Props) {
                       />
                       {YANDEX_METRIKA_ID && <YandexMetrika id={YANDEX_METRIKA_ID} />}
                       {GOOGLE_ANALYTICS_ID && <GoogleAnalytics id={GOOGLE_ANALYTICS_ID} />}
+                    </AlertProvider>
                   </ThemeProvider>
                 </NextIntlClientProvider>
             </body>

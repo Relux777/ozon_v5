@@ -81,6 +81,12 @@ export default function PhotoViewer({ slides, labels, startIndex, getThumb, onOp
     const closing = useRef(false);
     const drag = useRef<Drag | null>(null);
     const suppressClick = useRef(false);
+    // запись в истории браузера на время просмотра: «Назад» (кнопка или жест Android) закрывает окно, а не страницу
+    const historyEntry = useRef(false);
+    const captionTextRef = useRef<HTMLSpanElement>(null);
+    // подпись длиннее трёх строк обрезана — нажатие на неё раскрывает полностью
+    const [captionClamped, setCaptionClamped] = useState(false);
+    const [captionOpen, setCaptionOpen] = useState(false);
 
     const last = slides.length - 1;
     const slide = slides[index];
@@ -99,6 +105,12 @@ export default function PhotoViewer({ slides, labels, startIndex, getThumb, onOp
     const close = () => {
         if (closing.current) return;
         closing.current = true;
+
+        // закрыли крестиком, Esc или жестом — убираем свою запись из истории (popstate её уже снял сам)
+        if (historyEntry.current) {
+            historyEntry.current = false;
+            window.history.back();
+        }
 
         const i = indexRef.current;
         const img = imgRefs.current[i];
@@ -186,6 +198,13 @@ export default function PhotoViewer({ slides, labels, startIndex, getThumb, onOp
         }
     }, []);
 
+    // обрезана ли подпись текущего фото (проверяем свёрнутую — при каждом новом фото)
+    // biome-ignore lint/correctness/useExhaustiveDependencies: пересчёт нужен именно при смене фото
+    useLayoutEffect(() => {
+        const el = captionTextRef.current;
+        setCaptionClamped(Boolean(el && el.scrollHeight > el.clientHeight + 1));
+    }, [index]);
+
     // ── Блокировка прокрутки страницы, клавиатура, фокус ────────────────────────────────────────────
     // biome-ignore lint/correctness/useExhaustiveDependencies: подписка один раз на время жизни окна, текущее фото — в indexRef
     useEffect(() => {
@@ -228,12 +247,26 @@ export default function PhotoViewer({ slides, labels, startIndex, getThumb, onOp
             if (strip) strip.scrollLeft = indexRef.current * strip.clientWidth;
         };
 
+        // «Назад»: своя запись в истории (тот же адрес; Next.js понимает нативный pushState) — её снимет кнопка
+        // «Назад», и окно закроется вместо ухода со страницы
+        const onPopState = () => {
+            if (!historyEntry.current) return;
+            historyEntry.current = false;
+            close();
+        };
+        if (!historyEntry.current) {
+            window.history.pushState({ ...window.history.state, photoViewer: true }, '');
+            historyEntry.current = true;
+        }
+
         document.addEventListener('keydown', onKeyDown);
         window.addEventListener('resize', onResize);
+        window.addEventListener('popstate', onPopState);
 
         return () => {
             document.removeEventListener('keydown', onKeyDown);
             window.removeEventListener('resize', onResize);
+            window.removeEventListener('popstate', onPopState);
             html.style.overflow = '';
             html.style.scrollbarGutter = '';
         };
@@ -249,6 +282,7 @@ export default function PhotoViewer({ slides, labels, startIndex, getThumb, onOp
 
         indexRef.current = i;
         setIndex(i);
+        setCaptionOpen(false);
         setVisited((prev) => (prev.has(i - 1) && prev.has(i + 1) ? prev : new Set([...prev, i - 1, i, i + 1])));
         onIndexChange(i);
     };
@@ -439,12 +473,32 @@ export default function PhotoViewer({ slides, labels, startIndex, getThumb, onOp
             </button>
 
             <div className='photo-viewer-bottom photo-viewer-ui p-absolute grid gap-10 justify-i-center text_center'>
-                {(slide.title || slide.text) && (
-                    <div className='photo-viewer-caption grid gap-5'>
-                        {slide.title && <b className='font-16'>{slide.title}</b>}
-                        {slide.text && <span className='font-14'>{slide.text}</span>}
-                    </div>
-                )}
+                {(slide.title || slide.text) &&
+                    (captionClamped || captionOpen ? (
+                        // длинная подпись: нажатие раскрывает её целиком и сворачивает обратно
+                        <button
+                            type='button'
+                            className={`photo-viewer-caption is-toggle grid gap-5 hover-none${captionOpen ? ' is-open' : ''}`}
+                            aria-expanded={captionOpen}
+                            onClick={() => setCaptionOpen((open) => !open)}
+                        >
+                            {slide.title && <b className='font-16'>{slide.title}</b>}
+                            {slide.text && (
+                                <span ref={captionTextRef} className='font-14'>
+                                    {slide.text}
+                                </span>
+                            )}
+                        </button>
+                    ) : (
+                        <div className='photo-viewer-caption grid gap-5'>
+                            {slide.title && <b className='font-16'>{slide.title}</b>}
+                            {slide.text && (
+                                <span ref={captionTextRef} className='font-14'>
+                                    {slide.text}
+                                </span>
+                            )}
+                        </div>
+                    ))}
                 <div className='flex nowrap align-center gap-8'>
                     {slides.map((item, i) => (
                         <button

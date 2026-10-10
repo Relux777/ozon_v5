@@ -25,12 +25,3 @@
         scale: 0.4;
     }
 }
-
-// смена темы с «раскрытием» кругом от кнопки (View Transitions API): стандартное затухание снимков отключаем —
-// новую тему открывает clip-path из index.tsx. Только пока на <html> висит .theme-reveal — другие
-// View Transitions сайта (если появятся) это не затронет
-.theme-reveal::view-transition-old(root),
-.theme-reveal::view-transition-new(root) {
-    animation: none;
-    mix-blend-mode: normal;
-}

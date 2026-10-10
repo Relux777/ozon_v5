@@ -224,7 +224,7 @@ $border-b-opacities: 10 !default;
     // 3. Text Color
     @each $color in $text-colors {
         @each $opacity in $text-opacities {
-            .color-#{$color}-#{$opacity} { color: rgb(var(--bg-#{$color}) / #{$opacity * 1%}); }
+            .color-#{$color}-#{$opacity} { color: rgb(var(--text-#{$color}, var(--bg-#{$color})) / #{$opacity * 1%}); }
         }
     }
 
