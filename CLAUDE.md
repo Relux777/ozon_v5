@@ -71,8 +71,10 @@ instructions.md          гайд по запуску (юр. часть, дом�
   глобальные стили компонента — партиал `_<имя>.scss` в его папке, подключён `@use` в начале `style.scss`
   (Modal — свой `modal.module.scss`). Подписи для скринридеров — раздел `A11y` в словарях.
   Модалка: `<Modal isOpen onClose ariaLabel position='center|bottom|right' size={360|440}>`, нужен `<div id="modal-root">` в layout.
-  Уведомления: `AlertProvider` в layout, в клиентском компоненте `useAlert().show({ title, text?, type?, position?, duration?, id? })`;
-  по умолчанию сверху справа под шапкой (`--alert-top`/`--alert-bottom` в `style.scss`), стопкой-«колодой», слой 50.
+  Уведомления: `AlertProvider` в layout, в клиентском компоненте `useAlert().show({ title, text?, type?, position?, duration?, id?, action? })`;
+  по умолчанию сверху справа под шапкой (`--alert-top`/`--alert-bottom` в `style.scss`), стопкой-«колодой». Стопка рисуется в верхнем
+  слое браузера (Popover API) — выше любых `z-index`; слой 50 — запасной для старых браузеров. Таймер — CSS-анимация кольца с
+  длительностью через `!important` в `style`: иначе сброс «без анимации» из `_base.scss` закрывал уведомление сразу (см. `alert.md`).
   CopyCode/CopyLink сообщают о копировании только уведомлением — надписей «Скопировано» на кнопках нет.
   Изменили компонент в `ui/` — обновить его `.md`.
 - **Документы** `/menu/{about,privacy,cookies,terms,ads}`: тексты в словарях `LegalDocs.*`, рендер — `components/LegalDoc`

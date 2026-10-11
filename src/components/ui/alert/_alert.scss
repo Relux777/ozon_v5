@@ -1,23 +1,37 @@
 // Стили уведомлений Alert (глобальные классы .alert*). Подключены в src/assets/scss/style.scss через @use.
-// Раскладка содержимого (flex, gap, радиус) — утилитами ReluxCode в разметке; здесь — стопки по углам, «колода»
-// (свёрнутая стопка) и раскрытый список, стекло, цвета типов, анимации. Цвета — токены ReluxCode: --bg-2, --bg-3.
+// Раскладка содержимого (flex, gap) — утилитами ReluxCode в разметке; здесь — стопки по углам, «колода» (свёрнутая
+// стопка) и раскрытый список, стекло, цвета типов, анимации. Цвета — токены ReluxCode: --bg-2, --bg-3, --bg-5.
 //
 // Как устроена стопка: уведомления лежат друг на друге (position: absolute). Свёрнуто — переднее целиком, из-под него
 // выглядывают ещё два, чуть меньше; при наведении, фокусе или на сенсорном экране — раскрываются списком.
 // JS (index.tsx) задаёт: у стопки --front-h (высота переднего), --stack-h (с «хвостом» колоды), --stack-full (весь список);
 // у карточки --i (место: 0 — переднее), --offset (сдвиг в списке), --h (своя высота).
 //
+// Появление: «капля» с иконкой падает от края экрана и пружинит, затем раскрывается в карточку (ширина), текст и крестик
+// выезжают следом, знак в иконке дорисовывается, от иконки по стеклу расходится волна цвета типа.
+//
 // Настройка из проекта (переменные на :root):
 //   --alert-top     — отступ сверху (под фиксированной шапкой), по умолчанию 16px
 //   --alert-bottom  — отступ снизу (над нижним меню), по умолчанию 16px
-//   --alert-z       — слой, по умолчанию 50 (выше модалок и окна просмотра фото)
+//   --alert-z       — слой для браузеров без Popover API, по умолчанию 50 (с Popover API стопка в верхнем слое — выше всего)
 @use "../../../assets/scss/mixins";
 
-$spring: cubic-bezier(0.22, 1.2, 0.36, 1);
-$ease: cubic-bezier(0.2, 0.9, 0.25, 1);
+// Пружины без библиотек — easing-функция linear(): заранее посчитанная кривая затухающего колебания.
+// $spring — мягкая (перелёт ≈ 5 %): положение карточек; $spring-bouncy — упругая (≈ 16 %): иконка, кнопки.
+// Браузерам без linear() (Safari до 17.2) остаётся $spring-fallback — см. блоки @supports ниже.
+$spring: linear(0, 0.001 0.5%, 0.0084 1.7%, 0.0292 3.2%, 0.0683 5%, 0.1283 7.2%, 0.2088 9.6%, 0.3067 12.3%, 0.4169 15.2%, 0.5328 18.3%, 0.6472 21.7%, 0.7538 25.3%, 0.847 29%, 0.9234 33%, 0.9812 37.1%, 1.0207 41.5%, 1.0438 46%, 1.0534 50.7%, 1.0531 55.5%, 1.0463 60.5%, 1.0362 65.7%, 1.0254 71.1%, 1.0156 76.5%, 1.0078 82.2%, 1.0023 88%, 0.999 93.9%, 1);
+$spring-bouncy: linear(0, 0.0018 0.5%, 0.0156 1.7%, 0.0538 3.2%, 0.125 5%, 0.232 7.2%, 0.371 9.6%, 0.532 12.3%, 0.7001 15.2%, 0.8588 18.3%, 0.9926 21.7%, 1.0902 25.3%, 1.1464 29%, 1.163 33%, 1.1476 37.1%, 1.1117 41.5%, 1.0678 46%, 1.0268 50.7%, 0.996 55.5%, 0.9785 60.5%, 0.9734 65.7%, 0.9772 71.1%, 0.9853 76.5%, 0.9939 82.2%, 1.0003 88%, 1.0037 93.9%, 1);
+$spring-fallback: cubic-bezier(0.22, 1.2, 0.36, 1);
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+$has-linear: "(transition-timing-function: linear(0, 1))";
+
 $edge: 16px;
 $peek: 12px; // = PEEK_PX в index.tsx
 $gap: 10px; // = GAP_PX в index.tsx
+$pad: 11px;
+$icon: 38px;
+$pill: $icon + $pad * 2; // = PILL_PX в index.tsx: «капля», из которой раскрывается карточка
+$radius: 22px;
 
 // раскрытое состояние стопки — одинаковое для наведения, фокуса и сенсорных экранов
 @mixin expanded {
@@ -38,15 +52,27 @@ $gap: 10px; // = GAP_PX в index.tsx
 .alert-stack {
     --dir: 1;
 
+    // стопка — [popover] в верхнем слое браузера: сбрасываем его оформление (рамка, фон, центрирование через inset/margin).
+    // inset стоит до правил углов ниже — они задают свои top/right/bottom/left
+    inset: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    overflow: visible;
+    background: none;
+    color: inherit;
     position: fixed;
     z-index: var(--alert-z, 50);
-    width: min(370px, calc(100% - #{$edge * 2}));
+    // ширина стопки для карточек — 100cqw: содержимое держит полную ширину, пока карточка раскрывается из «капли»
+    container-type: inline-size;
+    width: min(380px, calc(100% - #{$edge * 2}));
     height: var(--stack-h);
-    transition: height 0.4s $ease;
+    transition: height 0.45s $ease-out;
 
     // раскрытый список: между уведомлениями — зазор, наведение не должно «проваливаться» в него
-    &:hover,
     &:focus-within { @include expanded; }
+
+    @include mixins.hover { @include expanded; }
 
     @media (hover: none) { @include expanded; }
 }
@@ -92,54 +118,121 @@ $gap: 10px; // = GAP_PX в index.tsx
     }
 }
 
-// ── Карточка ────────────────────────────────────────────────────────────────────────────────────
+// ── Карточка: «жидкое стекло» ───────────────────────────────────────────────────────────────────
 .alert {
-    --alert-accent: #12b886;
+    --alert-accent: #0ca678;
     --alert-accent-2: #38d9a9;
+    // цвет типа для текста (кнопка действия): подмешан цвет текста темы — контраст на стекле ≥ 4.5:1 в обеих темах
+    --alert-accent-text: color-mix(in oklch, var(--alert-accent) 68%, rgb(var(--bg-2)));
+    --alert-rim: rgb(255 255 255 / 95%);
 
     position: absolute;
-    inset-inline: 0;
     top: 0;
+    left: 0;
     z-index: calc(10 - var(--i));
+    width: 100%;
     height: var(--front-h);
-    border: 1px solid rgb(255 255 255 / 60%);
+    border-radius: $radius;
+    // слой 1 — отсвет цвета типа со стороны иконки, слой 2 — само стекло (сверху плотнее)
     background:
-        radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--alert-accent) 12%, transparent) 0%, transparent 55%),
-        rgb(var(--bg-3) / 82%);
-    backdrop-filter: blur(22px) saturate(1.8);
+        radial-gradient(90% 170% at 0% 50%, color-mix(in oklch, var(--alert-accent) 15%, transparent) 0%, transparent 62%),
+        linear-gradient(180deg, rgb(var(--bg-3) / 86%), rgb(var(--bg-3) / 70%));
+    backdrop-filter: blur(24px) saturate(1.9);
     box-shadow:
-        0 1px 0 rgb(255 255 255 / 70%) inset,
-        0 18px 40px -18px rgb(15 23 42 / 35%),
-        0 4px 12px -4px rgb(15 23 42 / 10%);
+        0 1px 0 rgb(255 255 255 / 85%) inset,
+        0 0 0 1px rgb(15 23 42 / 5%),
+        0 2px 5px -1px rgb(15 23 42 / 8%),
+        0 16px 34px -14px rgb(15 23 42 / 28%),
+        0 24px 44px -28px color-mix(in oklch, var(--alert-accent) 70%, transparent);
     color: rgb(var(--bg-2) / 70%);
     touch-action: pan-y;
     user-select: none;
-    // колода: задние — ниже/выше на $peek, меньше и прозрачнее
+    // колода: задние — ниже/выше на $peek и меньше
     transform: translateY(calc(var(--dir) * var(--i) * #{$peek})) scale(calc(1 - var(--i) * 0.05));
     transform-origin: 50% 0;
     transition:
-        transform 0.45s $ease,
-        height 0.4s $ease,
-        opacity 0.3s;
-    animation: alert-in-top 0.55s $spring both;
+        transform 0.6s $spring-fallback,
+        height 0.45s $ease-out,
+        opacity 0.3s ease;
+    // появление — отдельными свойствами translate/scale (transform занят положением в колоде) и шириной
+    animation:
+        alert-in-top 0.6s $spring-fallback both,
+        alert-morph 0.5s 0.14s $ease-out both;
+
+    @supports #{$has-linear} {
+        transition-timing-function: $spring, $ease-out, ease;
+        animation-timing-function: $spring, $ease-out;
+    }
+
+    // блик по кромке стекла: светлый сверху слева, к нижнему правому углу — оттенок цвета типа.
+    // Рамка-градиент: фон остаётся только в полоске padding (маска вырезает середину), скругление — как у карточки
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        padding: 1px;
+        border-radius: inherit;
+        background: linear-gradient(140deg, var(--alert-rim) 0%, rgb(255 255 255 / 30%) 30%, rgb(255 255 255 / 0%) 58%, color-mix(in oklch, var(--alert-accent) 50%, transparent) 100%);
+        mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+        pointer-events: none;
+    }
 
     // задние карточки свёрнутой колоды без текста: высота у них — как у переднего, текст свой
     &:not(.is-front) .alert-inner { opacity: 0; }
 
     &.is-buried { opacity: 0; }
+
+    // закрываемая карточка сворачивается поверх той, что занимает её место (у них уже одинаковый --i)
+    &.is-leaving {
+        z-index: calc(11 - var(--i));
+        pointer-events: none;
+    }
+
+    // карточку ведут пальцем: без задержки от transition, курсор — «схвачено»
+    &.is-dragging {
+        transition: none;
+        cursor: grabbing;
+    }
+}
+
+// углы-«суперэллипсы» (как у иконок iOS) — там, где браузер умеет corner-shape; остальным — обычное скругление
+@supports (corner-shape: squircle) {
+    .alert {
+        border-radius: 30px;
+        corner-shape: squircle;
+
+        &::before { corner-shape: squircle; }
+    }
+}
+
+// от какого края карточка раскрывается из «капли»: слева — вправо (по умолчанию), справа — влево, по центру — в обе стороны
+.alert-top-right .alert,
+.alert-bottom-right .alert {
+    left: auto;
+    right: 0;
+}
+
+.alert-top-center .alert,
+.alert-bottom-center .alert,
+.alert-center .alert {
+    right: 0;
+    margin-inline: auto;
 }
 
 .alert-stack[class*='alert-bottom'] .alert {
     top: auto;
     bottom: 0;
     transform-origin: 50% 100%;
-    animation-name: alert-in-bottom;
+    animation-name: alert-in-bottom, alert-morph;
 }
 
-.alert-center .alert { animation-name: alert-in-center; }
+.alert-center .alert { animation-name: alert-in-center, alert-morph; }
 
 .alert-inner {
-    padding: 12px 12px 12px 12px;
+    position: relative;
+    width: 100cqw;
+    padding: $pad;
     transition: opacity 0.25s;
 }
 
@@ -163,39 +256,64 @@ $gap: 10px; // = GAP_PX в index.tsx
     --alert-accent-2: #4dabf7;
 }
 
-[data-theme='dark'] {
-    .alert {
-        border-color: rgb(255 255 255 / 9%);
-        background:
-            radial-gradient(120% 140% at 0% 0%, color-mix(in srgb, var(--alert-accent) 22%, transparent) 0%, transparent 55%),
-            rgb(28 28 30 / 78%);
-        box-shadow:
-            0 1px 0 rgb(255 255 255 / 8%) inset,
-            0 22px 44px -16px rgb(0 0 0 / 85%);
-    }
+[data-theme='dark'] .alert {
+    --alert-rim: rgb(255 255 255 / 34%);
+
+    background:
+        radial-gradient(90% 170% at 0% 50%, color-mix(in oklch, var(--alert-accent) 26%, transparent) 0%, transparent 62%),
+        linear-gradient(180deg, rgb(44 44 48 / 78%), rgb(24 24 27 / 72%));
+    box-shadow:
+        0 1px 0 rgb(255 255 255 / 10%) inset,
+        0 0 0 1px rgb(0 0 0 / 40%),
+        0 18px 40px -14px rgb(0 0 0 / 80%),
+        0 24px 44px -26px color-mix(in oklch, var(--alert-accent) 60%, transparent);
 }
 
-// иконка — плашка-«леденец» с градиентом цвета типа и мягким свечением; знак внутри дорисовывается
+// ── Иконка: круг с градиентом цвета типа; знак внутри дорисовывается, от круга расходится волна ───────────
 .alert-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
+    position: relative;
+    isolation: isolate;
+    width: $icon;
+    height: $icon;
+    border-radius: 50%;
     color: #fff;
     background: linear-gradient(145deg, var(--alert-accent-2), var(--alert-accent));
     box-shadow:
-        0 1px 0 rgb(255 255 255 / 35%) inset,
-        0 8px 18px -8px var(--alert-accent);
-    animation: alert-icon-pop 0.6s 0.1s $spring both;
+        0 1px 0 rgb(255 255 255 / 45%) inset,
+        0 -6px 10px -6px rgb(0 0 0 / 18%) inset,
+        0 8px 16px -8px var(--alert-accent);
+    animation: alert-icon-pop 0.7s 0.04s $spring-fallback both;
+
+    @supports #{$has-linear} { animation-timing-function: $spring-bouncy; }
+
+    // волна: круг цвета типа растёт от иконки и гаснет; за пределами карточки её обрезает overflow
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: 50%;
+        background: var(--alert-accent);
+        opacity: 0;
+        animation: alert-wave 1s 0.2s $ease-out both;
+        pointer-events: none;
+    }
 }
 
 .alert-icon-mark {
     stroke-dasharray: 1;
     stroke-dashoffset: 0;
-    animation: alert-icon-draw 0.45s 0.3s ease-out both;
+    animation: alert-icon-draw 0.5s 0.3s $ease-out both;
 }
 
+// у каждого типа — свой жест после появления знака: ошибка «мотает головой», предупреждение покачивается
+.alert-error .alert-icon svg { animation: alert-shake 0.45s 0.62s both; }
+.alert-warning .alert-icon svg { animation: alert-wobble 0.6s 0.62s both; }
+
+// ── Текст ──────────────────────────────────────────────────────────────────────────────────────
 .alert-body {
     min-width: 0;
+    animation: alert-body-in 0.5s 0.28s $ease-out both;
 }
 
 .alert-title {
@@ -214,19 +332,50 @@ $gap: 10px; // = GAP_PX в index.tsx
     line-clamp: 2;
     overflow: hidden;
     overflow-wrap: anywhere;
-    color: rgb(var(--bg-2) / 60%);
+    color: rgb(var(--bg-2) / 62%);
     font-size: 12.5px;
     line-height: 1.4;
 }
 
-// крестик в кольце-таймере
+// ── Кнопки: действие и крестик в кольце-таймере ─────────────────────────────────────────────────
+.alert-action,
+.alert-close {
+    animation: alert-pop 0.55s 0.4s $spring-fallback both;
+    transition: background 0.2s, color 0.2s, scale 0.15s;
+
+    @supports #{$has-linear} { animation-timing-function: $spring-bouncy; }
+
+    &:active { scale: 0.92; }
+}
+
+.alert-action {
+    height: 30px;
+    padding-inline: 12px;
+    border-radius: 15px;
+    color: var(--alert-accent-text);
+    background: color-mix(in oklch, var(--alert-accent) 14%, transparent);
+    font-size: 12.5px;
+    font-weight: 600;
+    white-space: nowrap;
+
+    @include mixins.hover { background: color-mix(in oklch, var(--alert-accent) 24%, transparent); }
+}
+
 .alert-close {
     position: relative;
     width: 32px;
     height: 32px;
     color: rgb(var(--bg-2) / 55%);
     background: rgb(var(--bg-2) / 5%);
-    transition: background 0.2s, color 0.2s;
+    // дорожка под кольцом-таймером
+    box-shadow: 0 0 0 2px rgb(var(--bg-2) / 5%) inset;
+
+    // область нажатия — 44px, сама кнопка остаётся 32px
+    &::after {
+        content: '';
+        position: absolute;
+        inset: -6px;
+    }
 
     @include mixins.hover {
         background: rgb(var(--bg-2) / 10%);
@@ -253,48 +402,107 @@ $gap: 10px; // = GAP_PX в index.tsx
     }
 }
 
-// время стоит, пока стопку читают: наведение мышью или фокус с клавиатуры
-.alert-stack:hover .alert-ring circle,
-.alert-stack:focus-within .alert-ring circle { animation-play-state: paused; }
+// Время стоит, пока уведомление читают или держат: фокус с клавиатуры, карточку ведут пальцем, вкладка скрыта (.is-paused
+// ставит JS). Наведение — только там, где оно настоящее: на сенсорном экране :hover «залипает» после касания
+.alert-stack:focus-within .alert-ring circle,
+.alert-stack:has(.is-dragging) .alert-ring circle,
+.alert-stack.is-paused .alert-ring circle { animation-play-state: paused; }
+
+@media (hover: hover) and (pointer: fine) {
+    .alert-stack:hover .alert-ring circle { animation-play-state: paused; }
+}
+
+// сенсорные экраны: размытие фона дороже — стекло плотнее, радиус размытия меньше
+@media (hover: none) {
+    .alert {
+        backdrop-filter: blur(16px) saturate(1.6);
+    }
+}
 
 // ── Анимации ────────────────────────────────────────────────────────────────────────────────────
-// появление — отдельными свойствами translate/scale/filter: transform занят положением в колоде
 @keyframes alert-in-top {
     from {
         opacity: 0;
-        translate: 0 -110%;
-        scale: 0.9;
-        filter: blur(6px);
+        translate: 0 -28px;
+        scale: 0.5;
+        filter: blur(8px);
     }
 }
 
 @keyframes alert-in-bottom {
     from {
         opacity: 0;
-        translate: 0 110%;
-        scale: 0.9;
-        filter: blur(6px);
+        translate: 0 28px;
+        scale: 0.5;
+        filter: blur(8px);
     }
 }
 
 @keyframes alert-in-center {
     from {
         opacity: 0;
-        scale: 0.85;
-        filter: blur(6px);
+        scale: 0.5;
+        filter: blur(8px);
+    }
+}
+
+// «капля» → карточка: до начала (animation-delay) и в первом кадре — круг с иконкой
+@keyframes alert-morph {
+    from {
+        width: $pill;
+        border-radius: #{$pill * 0.5};
     }
 }
 
 @keyframes alert-icon-pop {
     from {
-        scale: 0.4;
-        rotate: -25deg;
-        opacity: 0;
+        scale: 0.3;
+        rotate: -40deg;
     }
 }
 
 @keyframes alert-icon-draw {
     from { stroke-dashoffset: 1; }
+}
+
+@keyframes alert-wave {
+    from {
+        scale: 1;
+        opacity: 0.4;
+    }
+
+    to {
+        scale: 9;
+        opacity: 0;
+    }
+}
+
+@keyframes alert-shake {
+    20% { translate: -2.5px 0; }
+    40% { translate: 2.5px 0; }
+    60% { translate: -1.5px 0; }
+    80% { translate: 1.5px 0; }
+}
+
+@keyframes alert-wobble {
+    25% { rotate: -14deg; }
+    50% { rotate: 10deg; }
+    75% { rotate: -5deg; }
+}
+
+@keyframes alert-body-in {
+    from {
+        opacity: 0;
+        translate: 14px 0;
+        filter: blur(4px);
+    }
+}
+
+@keyframes alert-pop {
+    from {
+        opacity: 0;
+        scale: 0.4;
+    }
 }
 
 @keyframes alert-ring {
@@ -305,6 +513,7 @@ $gap: 10px; // = GAP_PX в index.tsx
     from { opacity: 0; }
 }
 
+// ── Настройки доступности системы ───────────────────────────────────────────────────────────────
 // без движения: уведомление просто проявляется, стопка раскрыта; кольцо-таймер остаётся — по нему закрывается уведомление
 @media (prefers-reduced-motion: reduce) {
     .alert-stack { @include expanded; }
@@ -317,5 +526,44 @@ $gap: 10px; // = GAP_PX в index.tsx
     }
 
     .alert-icon,
-    .alert-icon-mark { animation: none; }
+    .alert-icon::after,
+    .alert-icon svg,
+    .alert-icon-mark,
+    .alert-body,
+    .alert-action,
+    .alert-close { animation: none; }
+}
+
+// «уменьшить прозрачность»: стекло становится сплошным фоном
+@media (prefers-reduced-transparency: reduce) {
+    .alert,
+    [data-theme='dark'] .alert {
+        background: rgb(var(--bg-3));
+        backdrop-filter: none;
+    }
+}
+
+// «повысить контраст»: сплошной фон и чёткая рамка вместо блика
+@media (prefers-contrast: more) {
+    .alert,
+    [data-theme='dark'] .alert {
+        background: rgb(var(--bg-3));
+        backdrop-filter: none;
+        box-shadow: 0 0 0 2px rgb(var(--bg-2) / 85%);
+
+        &::before { display: none; }
+    }
+
+    .alert-text { color: rgb(var(--bg-2) / 90%); }
+}
+
+// режим принудительных цветов Windows: тени и градиенты пропадают — нужна настоящая рамка
+@media (forced-colors: active) {
+    .alert {
+        border: 1px solid CanvasText;
+
+        &::before { display: none; }
+    }
+
+    .alert-icon { forced-color-adjust: none; }
 }
