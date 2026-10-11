@@ -52,7 +52,7 @@ export default function LanguageSwitcher({ modalTitle, label, flag }: Props) {
                 aria-haspopup="dialog"
             >
                 {flag}
-                <span className='none-max-360' aria-hidden="true">{label}</span>
+                <span className='none-max-410' aria-hidden="true">{label}</span>
                 <ChevronDown width={20} height={20} viewBox="0 0 24 24" aria-hidden="true" />
             </button>
             <Modal

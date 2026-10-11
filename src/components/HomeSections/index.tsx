@@ -595,9 +595,6 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                     <div className='flex align-center'>
                         <div className='f-w-8 grid gap-15 content-start mb-20'>
                             <FaqAccordion items={payTips} />
-                            <p className='font-12'>
-                                <Link href='/menu/support' className='color-5-100'>{t('pay.tipsAllLink')}</Link>
-                            </p>
                         </div>
                         <div className='f-w-4 mb-20'>
                             <div className='pay-photo-wrap px-40'>
@@ -610,6 +607,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                             </div>
                         </div>
                     </div>
+                    <p className='font-12'><Link href='/menu/support' className='color-5-100'>{t('pay.tipsAllLink')}</Link></p>
                 </div>
             </section>)}
             {show('sources') && (

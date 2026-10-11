@@ -58,6 +58,9 @@
 
     .none-max-620 { display: none; }
 }
+@media (width <= 410px) {
+    .none-max-410 { display: none; }
+}
 @media (width <= 360px) {
     .none-max-360 { display: none; }
 }
