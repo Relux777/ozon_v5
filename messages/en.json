@@ -821,7 +821,7 @@
   },
   "Cookies": {
     "title": "Cookies on this site",
-    "text": "Necessary cookies remember your language and your choice. Analytics cookies are enabled only if you click “Accept”.",
+    "text": "The necessary cookie only remembers your choice in this notice. Analytics cookies are enabled only if you click “Accept”.",
     "more": "Learn more",
     "accept": "Accept",
     "decline": "Decline",
@@ -847,7 +847,7 @@
       },
       "sources": {
         "title": "Where the data comes from",
-        "text": "We collect warehouse addresses by city, terms, payouts, ratings and promotions from the public Ozon Job help centre, the career.ozon.ru pages, and the Ozon Bank help centre and pages, and retell them in our own words. The date each section was checked is shown next to it. Found a mistake? Write to us and we will fix it."
+        "text": "We take Ozon Job terms, payouts, ratings and promotions from the public Ozon Job help centre and the Ozon Bank help centre and pages, and retell them in our own words. Warehouse addresses and staff income come from the “Warehouse operator” vacancies on career.ozon.ru (data as of {date}): warehouses in our database — {warehouses}, cities and regions with addresses — {withData} of {cities}. The vacancies do not list every site: more warehouses are available via Ozon Job. The app screenshots were taken in the site author’s own account. The date each section was checked is shown next to it. Found a mistake? Write to us and we will fix it."
       },
       "owner": {
         "title": "Who runs the site",
@@ -874,7 +874,7 @@
       },
       "data": {
         "title": "What data, why and on what basis",
-        "intro": "The site has no registration, personal account, forms or mailing lists. Data is processed in three cases only.",
+        "intro": "The site has no registration, personal account, forms or mailing lists. City search works right in your browser: what you type is not sent to the server and stays only in the page address. Data is processed in three cases only.",
         "cases": {
           "tech": {
             "title": "1. Technical data when you visit",
@@ -882,7 +882,7 @@
           },
           "cookies": {
             "title": "2. Cookies",
-            "text": "Necessary cookies remember the language you chose and your choice in the cookie notice — they do not make it possible to identify you and work without consent. Analytics cookies (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) and related data are processed only with your consent — after you click “Accept”. The list of cookies, their retention periods and the consent text are on the <cookies>“Cookies and consent to analytics”</cookies> page."
+            "text": "The necessary cookie stores only your choice in the cookie notice — it does not make it possible to identify you and works without consent. Analytics cookies (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) and related data are processed only with your consent — after you click “Accept”. The list of cookies, their retention periods and the consent text are on the <cookies>“Cookies and consent to analytics”</cookies> page.{counters, select, none { At present no analytics counters are connected to the site, so no analytics cookies are set.} other {}}"
           },
           "requests": {
             "title": "3. Your enquiries",
@@ -948,10 +948,6 @@
           "google": "Google LLC, USA (Google Analytics)"
         },
         "rows": {
-          "locale": {
-            "purpose": "Remembers the site language you chose",
-            "term": "1 year"
-          },
           "consent": {
             "purpose": "Stores your choice in the cookie notice: “Accept” or “Decline”",
             "term": "1 year"
@@ -1007,7 +1003,7 @@
       },
       "info": {
         "title": "Information on the site",
-        "text": "Information about warehouses, income, payouts, ratings and promotions is taken from public sources of Ozon and Ozon Bank; the dates it was checked are shown next to it. Terms may change without notice. The information is for reference only and is not an offer or a promise of income or employment, and information about banking products is not financial or investment advice. Check the terms with the original source before making a decision."
+        "text": "Information about warehouses, income, payouts, ratings and promotions is taken from public sources of Ozon and Ozon Bank; the dates it was checked are shown next to it. Income shown on city pages comes from Ozon staff vacancies (“Warehouse operator”); pay via Ozon Job is calculated at the rates shown in the app. Terms may change without notice. The information is for reference only and is not an offer or a promise of income or employment, and information about banking products is not financial or investment advice. Check the terms with the original source before making a decision."
       },
       "ads": {
         "title": "Advertising and referral links",
@@ -1015,11 +1011,11 @@
       },
       "links": {
         "title": "Links to other sites",
-        "text": "The site links to apps and websites of Ozon, Ozon Bank and other services. The owner does not control them and is not responsible for their content, terms or processing of your data — each of them has its own rules."
+        "text": "The site links to the apps and websites of Ozon and Ozon Bank, app stores, Yandex Maps and other services. The owner does not control them and is not responsible for their content, terms or processing of your data — each of them has its own rules."
       },
       "ip": {
         "title": "Trademarks and site materials",
-        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium and other designations are trademarks of their respective owners (Ozon — Internet Solutions LLC, ООО «Интернет Решения»); they are mentioned on the site only to name the corresponding services. The texts, design, illustrations and code of the site belong to the owner; they may be quoted with an active link to the site. Icons — Boxicons (CC BY 4.0 licence)."
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium and other designations are trademarks of their respective owners (Ozon — Internet Solutions LLC, ООО «Интернет Решения»); they are mentioned on the site only to name the corresponding services. The texts, design, illustrations and code of the site belong to the owner; they may be quoted with an active link to the site. The Ozon Job app screenshots were taken by the owner in the owner’s own account; the interface and designations shown in them belong to Ozon and are displayed only to explain how the app works. Icons — Boxicons (CC BY 4.0 licence); fonts — Geist and Noto Sans (SIL OFL 1.1 licence)."
       },
       "liability": {
         "title": "Liability",
@@ -1047,7 +1043,7 @@
       },
       "reward": {
         "title": "Reward",
-        "text": "If you sign up for a product through our link or code and meet the conditions, the organiser may pay us a reward. This does not affect your bonus or terms. We do not publish the amount of our own reward: it is individual and set by the organiser. The terms of promotions are set, and may be changed, only by the organiser — Ozon or Ozon Bank."
+        "text": "If you sign up for a product through our link or code and meet the conditions, the organiser may pay us a reward. This does not affect your bonus or terms. With the Ozon Job code we take part in the “Bring a friend” promotion on the same terms as any contractor: both the invited person and the inviter receive a bonus; the amounts depend on the warehouse and are shown in the app, and the maximum amounts are on the site’s home page. For the Ozon Bank and Ozon Blogger programmes the reward is individual and set by the organiser — we do not publish those amounts. The terms of promotions are set, and may be changed, only by the organiser — Ozon or Ozon Bank."
       },
       "distributor": {
         "title": "Who places the advertising",
@@ -1393,10 +1389,10 @@
   },
   "HomePage": {
     "pageNavLabel": "Jump to a section",
-    "title": "Part-time Ozon warehouse work via Ozon Job: addresses, pay",
-    "description": "How to work shifts at Ozon warehouses via the Ozon Job app: 4–12 hour slots, pay per slot, card payouts from 3 hours, civil-law contract or self-employment.",
-    "heading": "Part-time work at Ozon warehouses via the Ozon Job app",
-    "lead": "Find a warehouse in your city and see real addresses and conditions. Sign up in the Ozon Job app with an invitation code — a bonus of up to {amount, number} ₽* is credited after you meet the promotion conditions.",
+    "title": "Ozon warehouse work: warehouse operator shifts via Ozon Job",
+    "description": "Work at Ozon warehouses via the Ozon Job app: warehouse addresses and warehouse operator conditions by city, 4–12 hour slots, card payouts from 3 hours.",
+    "heading": "Work at Ozon warehouses: part-time shifts via the Ozon Job app",
+    "lead": "Find a warehouse in your city: real addresses and warehouse operator conditions, based on Ozon data. Sign up in the Ozon Job app with an invitation code — a bonus of up to {amount, number} ₽* is credited after you meet the promotion conditions.",
     "heroCity": "Choose a city",
     "heroBonus": "Get up to {amount, number} ₽",
     "features": [

@@ -20,6 +20,12 @@
 //   --float-distance  (амплитуда, по умолчанию -12px: вверх)
 //   --float-duration  (полпериода, по умолчанию 3s)
 //   --float-shadow-scale / --float-shadow-opacity (минимум тени)
+// состояние «линия дорисована» для .hover-line (см. ниже)
+@mixin -line-drawn {
+    background-position: 0 100%;
+    background-size: 100% var(--line-size, 1.5px);
+}
+
 @keyframes float-y {
     from { translate: 0 0; }
     to   { translate: 0 var(--float-distance, -12px); }
@@ -100,6 +106,33 @@
             transform: rotate(-10deg);
             transition-duration: 0.1s;
         }
+    }
+
+    // ── Линия под текстом, которая «дорисовывается» ──────────────────────────────
+    // .hover-line — на строчном элементе с текстом (span, b, a): при наведении линия цвета текста растёт слева
+    // направо, при уходе курсора — убирается вправо. Срабатывает от наведения и фокуса с клавиатуры на самом
+    // элементе или на предке с классом .hover-line-group (ссылка-карточка: навели на карточку — подчеркнулся
+    // заголовок); на сенсорном экране — на время нажатия.
+    // Рисуется фоном-градиентом, а не text-decoration: его размер анимируется, и на перенесённом тексте линия идёт
+    // по каждой строке (элемент должен быть строчным; у блока она одна — под последней строкой).
+    // Настройка: --line-size (толщина, 1.5px), --line-gap (отступ от текста, 2px), --line-duration (0.35s).
+    .hover-line {
+        padding-bottom: var(--line-gap, 2px);
+        background-image: linear-gradient(currentColor, currentColor);
+        background-repeat: no-repeat;
+        // позиция не анимируется: «дорисованная» линия прижата влево (растёт слева), исходная — вправо (уходит вправо)
+        background-position: 100% 100%;
+        background-size: 0 var(--line-size, 1.5px);
+        transition: background-size var(--line-duration, 0.35s) cubic-bezier(0.22, 1, 0.36, 1);
+
+        @include mixins.hover { @include -line-drawn; }
+        @include mixins.touch-press { @include -line-drawn; }
+        &:focus-visible { @include -line-drawn; }
+    }
+    .hover-line-group {
+        @include mixins.hover { .hover-line { @include -line-drawn; } }
+        @include mixins.touch-press { .hover-line { @include -line-drawn; } }
+        &:focus-visible .hover-line { @include -line-drawn; }
     }
 
     .translateY-50px {

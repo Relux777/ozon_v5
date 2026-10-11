@@ -476,6 +476,9 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     background: #fff;
     box-shadow: 0 20px 40px -20px rgb(0 20 90 / 70%);
     rotate: 4deg;
+
+    // на телефоне карта занимает всю ширину блока — выступающий вправо QR упирался в его край
+    @media (width <= 620px) { right: 0; }
 }
 
 // ── Блоки ниже промо: приглашение, выплаты, первый день ──────────────────────────────────────
@@ -849,6 +852,37 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 .city-section-title { font-size: 18px; }
 
 // «Больше всего складов»: 4 карточки в ряд, номер места, число складов, название крупно
+// «Склады Ozon в вашем городе» на главной (PopularCities). На широком экране — ряд чипов «город · N складов».
+// На телефоне чипы разной ширины вставали по одному, «лесенкой» на 12 строк — там ровная сетка в две колонки:
+// название (обрезается многоточием) над числом складов
+.city-chip-text {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+}
+
+@media (width <= 620px) {
+    .city-chips {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .city-chip {
+        display: flex;
+        height: auto;
+        min-height: 52px;
+        padding: 8px 12px;
+        border-radius: 20px;
+    }
+
+    .city-chip-text {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+    }
+}
+
 .city-popular {
     grid-template-columns: repeat(4, minmax(0, 1fr));
 
@@ -1251,11 +1285,6 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
         box-shadow: 0 14px 30px -20px color-mix(in srgb, var(--accent) 70%, transparent);
         translate: 0 -2px;
 
-        .link-row-title {
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
         .link-row-arrow {
             color: #fff;
             background: var(--accent);
@@ -1266,10 +1295,8 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     @include mixins.touch-press { scale: 0.98; }
 }
 
-.link-row-title {
-    color: rgb(var(--text-5, var(--bg-5)));
-    text-decoration-thickness: 1.5px;
-}
+// линию под заголовком при наведении на строку рисует .hover-line (ReluxCode) — в разметке, на тексте заголовка
+.link-row-title { color: rgb(var(--text-5, var(--bg-5))); }
 
 .link-row-arrow {
     color: var(--accent);

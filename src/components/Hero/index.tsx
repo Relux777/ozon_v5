@@ -22,19 +22,22 @@ type Props = {
 };
 
 // Первый экран: текст слева, «парящая» иллюстрация справа. Должен быть первой <section> в <main> —
-// высота «почти во весь экран» и размер картинки заданы в style.scss через main section:first-of-type
+// высота «почти во весь экран» и размер картинки заданы в style.scss через main section:first-of-type.
+// .container здесь — колонка с центровкой по высоте, а ряд колонок внутри — с .row-flush: текст первого экрана
+// стоит на одной линии с заголовками секций ниже (без него был на 10px правее — заметно на телефоне)
 export default function Hero({ top, kicker, heading, lead, features, actions, imageAlt }: Props) {
     return (
         <section>
-            <div className="container flex align-center">
+            <div className="container flex column justify-center">
+                <div className="flex row-flush align-center">
                 <div className="f-w-8">
                     {top}
                     <p className="color-5-100 font-14">{kicker}</p>
-                    <h1 className="color-2-90">{heading}</h1>
-                    <p className='font-16 max-w-60-ch'>{lead}</p>
+                    <h1 className="color-2-90 text-balance">{heading}</h1>
+                    <p className='font-16 max-w-60-ch text-pretty'>{lead}</p>
                     <ul className='font-14 checks-li grid gap-7 mb-20'>
                         {features.map((feature) => (
-                            <li className='p-relative pl-30' key={feature}>{feature}</li>
+                            <li className='p-relative pl-30 text-pretty' key={feature}>{feature}</li>
                         ))}
                     </ul>
                     <div className='flex gap-15'>
@@ -55,6 +58,7 @@ export default function Hero({ top, kicker, heading, lead, features, actions, im
                         />
                         <span className='shadow float-shadow h-20 mt-15 p-events-none' aria-hidden='true'></span>
                     </div>
+                </div>
                 </div>
             </div>
         </section>

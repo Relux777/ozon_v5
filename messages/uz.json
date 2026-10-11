@@ -69,7 +69,7 @@
     }
   },
   "CityPage": {
-    "cityPlace": "{city} sh.",
+    "cityPlace": "{city} sh.",
     "titleWithData": "Ozon omborida qo'shimcha ish, {place}: Ozon Job, manzil",
     "titleNoData": "Ozon omborida qo'shimcha ish, {place}: Ozon Job orqali",
     "descriptionWithData": "Ozon omborlari, {place}: to'liq manzillar, Ozon Job orqali qo'shimcha ish — 4–12 soatlik slot, kartaga to'lov 3 soatdan, GPX yoki o'zini o'zi band.",
@@ -821,7 +821,7 @@
   },
   "Cookies": {
     "title": "Saytdagi cookie",
-    "text": "Zarur cookie tilni va tanlovingizni eslab qoladi. Analitika cookie faqat «Qabul qilish»ni bossangiz yoqiladi.",
+    "text": "Zarur cookie faqat shu bildirishnomadagi tanlovingizni eslab qoladi. Analitika cookie faqat «Qabul qilish»ni bossangiz yoqiladi.",
     "more": "Batafsil",
     "accept": "Qabul qilish",
     "decline": "Rad etish",
@@ -847,7 +847,7 @@
       },
       "sources": {
         "title": "Ma'lumotlar qayerdan olinadi",
-        "text": "Shaharlar bo'yicha omborlar manzillari, shartlar, to'lovlar, reyting va aksiyalarni biz ochiq Ozon Job ma'lumotnomasidan, career.ozon.ru sahifalaridan, Ozon Bank ma'lumotnomasi va sahifalaridan yig'amiz va o'z so'zlarimiz bilan bayon qilamiz. Solishtirish sanalari har bir bo'lim yonida ko'rsatilgan. Xato topdingizmi — bizga yozing, tuzatamiz."
+        "text": "Ozon Job shartlari, to'lovlar, reyting va aksiyalarni biz ochiq Ozon Job ma'lumotnomasidan, Ozon Bank ma'lumotnomasi va sahifalaridan olamiz va o'z so'zlarimiz bilan bayon qilamiz. Omborlar manzillari va shtatdagi daromad — career.ozon.ru saytidagi «Ombor operatori» vakansiyalaridan ({date} holatiga): bazadagi omborlar — {warehouses}, manzili bor shahar va hududlar — {withData} (jami {cities}). Vakansiyalarda barcha maydonchalar ko'rsatilmagan: Ozon Job orqali omborlar ko'proq. Ilova skrinshotlari sayt muallifining akkauntida olingan. Solishtirish sanalari har bir bo'lim yonida ko'rsatilgan. Xato topdingizmi — bizga yozing, tuzatamiz."
       },
       "owner": {
         "title": "Saytni kim yuritadi",
@@ -874,7 +874,7 @@
       },
       "data": {
         "title": "Qanday ma'lumotlar, nima uchun va qanday asosda",
-        "intro": "Saytda ro'yxatdan o'tish, shaxsiy kabinet, shakllar va xat tarqatmalari yo'q. Ma'lumotlarga faqat uch holatda ishlov beriladi.",
+        "intro": "Saytda ro'yxatdan o'tish, shaxsiy kabinet, shakllar va xat tarqatmalari yo'q. Shahar qidiruvi brauzerning o'zida ishlaydi: siz kiritgan matn serverga yuborilmaydi va faqat sahifa manzilida qoladi. Ma'lumotlarga faqat uch holatda ishlov beriladi.",
         "cases": {
           "tech": {
             "title": "1. Tashrif paytidagi texnik ma'lumotlar",
@@ -882,7 +882,7 @@
           },
           "cookies": {
             "title": "2. Cookie",
-            "text": "Zarur cookie fayllari tanlangan tilni va cookie haqidagi bildirishnomadagi tanlovingizni eslab qoladi — ular sizning kimligingizni aniqlashga imkon bermaydi va roziliksiz ishlaydi. Analitika cookie fayllari (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) va ular bilan bog'liq ma'lumotlarga faqat sizning roziligingiz bilan — «Qabul qilish» tugmasidan keyin ishlov beriladi. Cookie tarkibi, muddatlari va rozilik matni — <cookies>«Cookie va analitikaga rozilik»</cookies> sahifasida."
+            "text": "Zarur cookie fayli faqat cookie haqidagi bildirishnomadagi tanlovingizni saqlaydi — u sizning kimligingizni aniqlashga imkon bermaydi va roziliksiz ishlaydi. Analitika cookie fayllari (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) va ular bilan bog'liq ma'lumotlarga faqat sizning roziligingiz bilan — «Qabul qilish» tugmasidan keyin ishlov beriladi. Cookie tarkibi, muddatlari va rozilik matni — <cookies>«Cookie va analitikaga rozilik»</cookies> sahifasida.{counters, select, none { Hozir saytda analitika hisoblagichlari ulanmagan — analitika cookie fayllari saqlanmaydi.} other {}}"
           },
           "requests": {
             "title": "3. Murojaatlaringiz",
@@ -948,10 +948,6 @@
           "google": "Google LLC, AQSh (Google Analytics)"
         },
         "rows": {
-          "locale": {
-            "purpose": "Saytning tanlangan tilini eslab qoladi",
-            "term": "1 yil"
-          },
           "consent": {
             "purpose": "Cookie haqidagi bildirishnomadagi tanlovingizni saqlaydi: «Qabul qilish» yoki «Rad etish»",
             "term": "1 yil"
@@ -1007,7 +1003,7 @@
       },
       "info": {
         "title": "Saytdagi ma'lumotlar",
-        "text": "Omborlar, daromadlar, to'lovlar, reyting va aksiyalar haqidagi ma'lumotlar Ozon va Ozon Bankning ochiq manbalaridan olingan; yonida solishtirish sanalari ko'rsatilgan. Shartlar ogohlantirishsiz o'zgarishi mumkin. Ma'lumotlar ma'lumotnoma xarakteriga ega va oferta, daromad yoki ishga joylashtirish va'dasi hisoblanmaydi, bank mahsulotlari haqidagi ma'lumotlar esa moliyaviy yoki investitsion tavsiya emas. Qaror qabul qilishdan oldin shartlarni birlamchi manbada tekshiring."
+        "text": "Omborlar, daromadlar, to'lovlar, reyting va aksiyalar haqidagi ma'lumotlar Ozon va Ozon Bankning ochiq manbalaridan olingan; yonida solishtirish sanalari ko'rsatilgan. Shahar sahifalaridagi daromad — Ozonning shtatdagi «Ombor operatori» vakansiyalaridan; Ozon Job orqali to'lov ilovadagi tariflar bo'yicha hisoblanadi. Shartlar ogohlantirishsiz o'zgarishi mumkin. Ma'lumotlar ma'lumotnoma xarakteriga ega va oferta, daromad yoki ishga joylashtirish va'dasi hisoblanmaydi, bank mahsulotlari haqidagi ma'lumotlar esa moliyaviy yoki investitsion tavsiya emas. Qaror qabul qilishdan oldin shartlarni birlamchi manbada tekshiring."
       },
       "ads": {
         "title": "Reklama va referal havolalar",
@@ -1015,11 +1011,11 @@
       },
       "links": {
         "title": "Boshqa saytlarga havolalar",
-        "text": "Saytda Ozon, Ozon Bank va boshqa xizmatlarning ilovalari va saytlariga havolalar bor. Ega ularni boshqarmaydi va ularning mazmuni, shartlari hamda ma'lumotlaringizga ishlov berishi uchun javob bermaydi — ularning har birining o'z qoidalari bor."
+        "text": "Saytda Ozon va Ozon Bank ilovalari va saytlariga, ilovalar do'konlariga, Yandex Xaritalarga va boshqa xizmatlarga havolalar bor. Ega ularni boshqarmaydi va ularning mazmuni, shartlari hamda ma'lumotlaringizga ishlov berishi uchun javob bermaydi — ularning har birining o'z qoidalari bor."
       },
       "ip": {
         "title": "Tovar belgilari va sayt materiallari",
-        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium va boshqa belgilar — ularning huquq egalarining tovar belgilari (Ozon — ООО «Интернет Решения»); saytda ular faqat tegishli xizmatlarni nomlash uchun tilga olinadi. Saytning matnlari, dizayni, illyustratsiyalari va kodi egaga tegishli; ulardan saytga faol havola bilan iqtibos keltirish mumkin. Ikonkalar — Boxicons (CC BY 4.0 litsenziyasi)."
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium va boshqa belgilar — ularning huquq egalarining tovar belgilari (Ozon — ООО «Интернет Решения»); saytda ular faqat tegishli xizmatlarni nomlash uchun tilga olinadi. Saytning matnlari, dizayni, illyustratsiyalari va kodi egaga tegishli; ulardan saytga faol havola bilan iqtibos keltirish mumkin. Ozon Job ilovasi skrinshotlarini ega o'z akkauntida olgan; ulardagi interfeys va belgilar Ozon kompaniyasiga tegishli va faqat ilova qanday ishlashini tushuntirish uchun ko'rsatilgan. Ikonkalar — Boxicons (CC BY 4.0 litsenziyasi), shriftlar — Geist va Noto Sans (SIL OFL 1.1 litsenziyasi)."
       },
       "liability": {
         "title": "Javobgarlik",
@@ -1047,7 +1043,7 @@
       },
       "reward": {
         "title": "Mukofot",
-        "text": "Agar siz bizning havola yoki kod orqali mahsulotni rasmiylashtirsangiz va shartlarni bajarsangiz, tashkilotchi bizga mukofot to'lashi mumkin. Bu sizning bonusingiz va shartlaringizga ta'sir qilmaydi. O'z mukofotimiz miqdorini e'lon qilmaymiz: u individual bo'lib, tashkilotchi tomonidan belgilanadi. Aksiyalar shartlarini faqat tashkilotchi — Ozon yoki Ozon Bank belgilaydi va o'zgartirishi mumkin."
+        "text": "Agar siz bizning havola yoki kod orqali mahsulotni rasmiylashtirsangiz va shartlarni bajarsangiz, tashkilotchi bizga mukofot to'lashi mumkin. Bu sizning bonusingiz va shartlaringizga ta'sir qilmaydi. Ozon Job kodi bo'yicha biz «Do'stingizni taklif qiling» aksiyasida har qanday ijrochi kabi umumiy shartlarda qatnashamiz: bonusni taklif qilingan ham, taklif qilgan ham oladi; summalar omborga bog'liq va ilovada ko'rsatiladi, eng yuqorilari — saytning bosh sahifasida. Ozon Bank va Ozon Blogger dasturlari bo'yicha mukofot miqdori individual, uni tashkilotchi belgilaydi — bu summalarni e'lon qilmaymiz. Aksiyalar shartlarini faqat tashkilotchi — Ozon yoki Ozon Bank belgilaydi va o'zgartirishi mumkin."
       },
       "distributor": {
         "title": "Reklamani kim joylashtiradi",
@@ -1393,10 +1389,10 @@
   },
   "HomePage": {
     "pageNavLabel": "Sahifa bo'ylab tezkor o'tish",
-    "title": "Ozon omborlarida qo'shimcha ish: Ozon Job, manzil va to'lov",
-    "description": "Ozon Job ilovasi orqali Ozon omboridagi smenaga qanday chiqish: 4–12 soatlik slotlar, har bir slot uchun to'lov, kartaga 3 soatdan, GPX yoki o'zini o'zi band.",
-    "heading": "Ozon Job ilovasi orqali Ozon omborlarida qo'shimcha ish",
-    "lead": "Shahringizdagi omborni tanlang, haqiqiy manzillar va shartlarni bilib oling. Ozon Job ilovasida taklif kodi bo'yicha ro'yxatdan o'ting — {amount, number} ₽ gacha* bonus aksiya shartlari bajarilgandan keyin hisoblanadi.",
+    "title": "Ozon omborida ish: ombor operatori, Ozon Job qo'shimcha ishi",
+    "description": "Ozon Job ilovasi orqali Ozon omborlarida ish: shaharlar bo'yicha ombor manzillari va ombor operatori shartlari, 4–12 soatlik slotlar, kartaga to'lov 3 soatdan.",
+    "heading": "Ozon omborida ish: Ozon Job ilovasi orqali qo'shimcha ish",
+    "lead": "Shahringizdagi omborni tanlang: haqiqiy manzillar va ombor operatori shartlari — Ozon ma'lumotlari bo'yicha. Ozon Job ilovasida taklif kodi bo'yicha ro'yxatdan o'ting — {amount, number} ₽ gacha* bonus aksiya shartlari bajarilgandan keyin hisoblanadi.",
     "heroCity": "Shaharni tanlash",
     "heroBonus": "{amount, number} ₽ gacha olish",
     "features": [

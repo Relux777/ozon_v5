@@ -69,7 +69,7 @@
     }
   },
   "CityPage": {
-    "cityPlace": "{city} ş.",
+    "cityPlace": "{city} ş.",
     "titleWithData": "Ozon anbarında əlavə iş, {place}: Ozon Job, ünvanlar",
     "titleNoData": "Ozon anbarında əlavə iş, {place}: Ozon Job ilə növbə",
     "descriptionWithData": "Ozon anbarları, {place}: tam ünvanlar və Ozon Job ilə əlavə iş — 4–12 saatlıq slot, karta ödəniş 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğul.",
@@ -821,7 +821,7 @@
   },
   "Cookies": {
     "title": "Saytda cookie",
-    "text": "Zəruri cookie dili və seçiminizi yadda saxlayır. Analitika cookie-lərini yalnız «Qəbul et» düyməsini bassanız işə salırıq.",
+    "text": "Zəruri cookie yalnız bu bildirişdəki seçiminizi yadda saxlayır. Analitika cookie-lərini yalnız «Qəbul et» düyməsini bassanız işə salırıq.",
     "more": "Ətraflı",
     "accept": "Qəbul et",
     "decline": "İmtina et",
@@ -847,7 +847,7 @@
       },
       "sources": {
         "title": "Məlumatlar haradan götürülür",
-        "text": "Şəhərlər üzrə anbar ünvanlarını, şərtləri, ödənişləri, reytinqi və kampaniyaları biz açıq Ozon Job arayışından, career.ozon.ru səhifələrindən, Ozon Bankın arayışından və səhifələrindən toplayır və öz sözlərimizlə nəql edirik. Yoxlama tarixləri hər bölmənin yanında göstərilib. Səhv tapmısınız — bizə yazın, düzəldək."
+        "text": "Ozon Job şərtlərini, ödənişləri, reytinqi və kampaniyaları biz açıq Ozon Job arayışından, Ozon Bankın arayışından və səhifələrindən götürür və öz sözlərimizlə nəql edirik. Anbar ünvanları və ştatdakı gəlir — career.ozon.ru saytındakı «Anbar operatoru» vakansiyalarından (məlumat: {date}): bazadakı anbarlar — {warehouses}, ünvanı olan şəhər və regionlar — {withData} (cəmi {cities}). Vakansiyalarda bütün meydançalar göstərilmir: Ozon Job vasitəsilə anbarlar daha çoxdur. Tətbiqin skrinşotları sayt müəllifinin hesabında çəkilib. Yoxlama tarixləri hər bölmənin yanında göstərilib. Səhv tapmısınız — bizə yazın, düzəldək."
       },
       "owner": {
         "title": "Saytı kim idarə edir",
@@ -874,7 +874,7 @@
       },
       "data": {
         "title": "Hansı məlumatlar, nə üçün və hansı əsasla",
-        "intro": "Saytda qeydiyyat, şəxsi kabinet, formalar və poçt göndərişləri yoxdur. Məlumatlar yalnız üç halda emal olunur.",
+        "intro": "Saytda qeydiyyat, şəxsi kabinet, formalar və poçt göndərişləri yoxdur. Şəhər axtarışı birbaşa brauzerdə işləyir: daxil etdiyiniz mətn serverə göndərilmir və yalnız səhifənin ünvanında qalır. Məlumatlar yalnız üç halda emal olunur.",
         "cases": {
           "tech": {
             "title": "1. Ziyarət zamanı texniki məlumatlar",
@@ -882,7 +882,7 @@
           },
           "cookies": {
             "title": "2. Cookie",
-            "text": "Zəruri cookie-lər seçilmiş dili və cookie bildirişindəki seçiminizi yadda saxlayır — onlar kim olduğunuzu müəyyən etməyə imkan vermir və razılıq olmadan işləyir. Analitika cookie-ləri (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) və onlarla bağlı məlumatlar yalnız sizin razılığınızla — «Qəbul et» düyməsindən sonra emal olunur. Cookie-lərin tərkibi, müddətləri və razılıq mətni — <cookies>«Cookie və analitikaya razılıq»</cookies> səhifəsində."
+            "text": "Zəruri cookie yalnız cookie bildirişindəki seçiminizi saxlayır — o, kim olduğunuzu müəyyən etməyə imkan vermir və razılıq olmadan işləyir. Analitika cookie-ləri (Yandex Metrica{ga, select, yes {, Google Analytics} other {}}) və onlarla bağlı məlumatlar yalnız sizin razılığınızla — «Qəbul et» düyməsindən sonra emal olunur. Cookie-lərin tərkibi, müddətləri və razılıq mətni — <cookies>«Cookie və analitikaya razılıq»</cookies> səhifəsində.{counters, select, none { Hazırda saytda analitika sayğacları qoşulmayıb — analitika cookie-ləri yazılmır.} other {}}"
           },
           "requests": {
             "title": "3. Müraciətləriniz",
@@ -948,10 +948,6 @@
           "google": "Google LLC, ABŞ (Google Analytics)"
         },
         "rows": {
-          "locale": {
-            "purpose": "Saytın seçilmiş dilini yadda saxlayır",
-            "term": "1 il"
-          },
           "consent": {
             "purpose": "Cookie bildirişindəki seçiminizi saxlayır: «Qəbul et» və ya «İmtina et»",
             "term": "1 il"
@@ -1007,7 +1003,7 @@
       },
       "info": {
         "title": "Saytdakı məlumatlar",
-        "text": "Anbarlar, gəlirlər, ödənişlər, reytinq və kampaniyalar haqqında məlumatlar Ozon və Ozon Bankın açıq mənbələrindən götürülüb; yanında yoxlama tarixləri göstərilib. Şərtlər xəbərdarlıq edilmədən dəyişə bilər. Məlumat arayış xarakterlidir və oferta, gəlir və ya işə düzəltmə vədi deyil, bank məhsulları haqqında məlumatlar isə maliyyə və ya investisiya tövsiyəsi deyil. Qərar verməzdən əvvəl şərtləri ilkin mənbədə yoxlayın."
+        "text": "Anbarlar, gəlirlər, ödənişlər, reytinq və kampaniyalar haqqında məlumatlar Ozon və Ozon Bankın açıq mənbələrindən götürülüb; yanında yoxlama tarixləri göstərilib. Şəhər səhifələrindəki gəlir — Ozon-un ştat üzrə «Anbar operatoru» vakansiyalarındandır; Ozon Job vasitəsilə ödəniş tətbiqdəki tariflərlə hesablanır. Şərtlər xəbərdarlıq edilmədən dəyişə bilər. Məlumat arayış xarakterlidir və oferta, gəlir və ya işə düzəltmə vədi deyil, bank məhsulları haqqında məlumatlar isə maliyyə və ya investisiya tövsiyəsi deyil. Qərar verməzdən əvvəl şərtləri ilkin mənbədə yoxlayın."
       },
       "ads": {
         "title": "Reklam və referal linklər",
@@ -1015,11 +1011,11 @@
       },
       "links": {
         "title": "Digər saytlara linklər",
-        "text": "Sayt Ozon, Ozon Bank və digər xidmətlərin tətbiqlərinə və saytlarına istinad edir. Sahib onları idarə etmir və onların məzmununa, şərtlərinə və məlumatlarınızın emalına görə məsuliyyət daşımır — onların hər birinin öz qaydaları var."
+        "text": "Sayt Ozon və Ozon Bankın tətbiqlərinə və saytlarına, tətbiq mağazalarına, Yandex Xəritələrə və digər xidmətlərə istinad edir. Sahib onları idarə etmir və onların məzmununa, şərtlərinə və məlumatlarınızın emalına görə məsuliyyət daşımır — onların hər birinin öz qaydaları var."
       },
       "ip": {
         "title": "Əmtəə nişanları və saytın materialları",
-        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium və digər işarələr onların hüquq sahiblərinin əmtəə nişanlarıdır (Ozon — ООО «Интернет Решения»); saytda onlar yalnız müvafiq xidmətləri adlandırmaq üçün çəkilir. Saytın mətnləri, dizaynı, illüstrasiyaları və kodu sahibə məxsusdur; onlardan sayta aktiv linklə sitat gətirmək olar. İkonlar — Boxicons (CC BY 4.0 lisenziyası)."
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium və digər işarələr onların hüquq sahiblərinin əmtəə nişanlarıdır (Ozon — ООО «Интернет Решения»); saytda onlar yalnız müvafiq xidmətləri adlandırmaq üçün çəkilir. Saytın mətnləri, dizaynı, illüstrasiyaları və kodu sahibə məxsusdur; onlardan sayta aktiv linklə sitat gətirmək olar. Ozon Job tətbiqinin skrinşotlarını sahib öz hesabında çəkib; onlardakı interfeys və işarələr Ozon-a məxsusdur və yalnız tətbiqin necə işlədiyini izah etmək üçün göstərilir. İkonlar — Boxicons (CC BY 4.0 lisenziyası), şriftlər — Geist və Noto Sans (SIL OFL 1.1 lisenziyası)."
       },
       "liability": {
         "title": "Məsuliyyət",
@@ -1047,7 +1043,7 @@
       },
       "reward": {
         "title": "Mükafat",
-        "text": "Bizim link və ya kodla məhsul rəsmiləşdirsəniz və şərtləri yerinə yetirsəniz, təşkilatçı bizə mükafat ödəyə bilər. Bu, sizin bonusunuza və şərtlərinizə təsir etmir. Öz mükafatımızın məbləğini dərc etmirik: o, fərdidir və təşkilatçı tərəfindən müəyyən edilir. Kampaniyaların şərtlərini yalnız təşkilatçı — Ozon və ya Ozon Bank müəyyən edir və dəyişə bilər."
+        "text": "Bizim link və ya kodla məhsul rəsmiləşdirsəniz və şərtləri yerinə yetirsəniz, təşkilatçı bizə mükafat ödəyə bilər. Bu, sizin bonusunuza və şərtlərinizə təsir etmir. Ozon Job kodu üzrə biz «Dostunu dəvət et» aksiyasında istənilən icraçı kimi ümumi şərtlərlə iştirak edirik: bonusu həm dəvət olunan, həm də dəvət edən alır; məbləğlər anbardan asılıdır və tətbiqdə göstərilir, maksimal məbləğlər — saytın əsas səhifəsində. Ozon Bank və Ozon Blogger proqramları üzrə mükafatın məbləği fərdidir, onu təşkilatçı müəyyən edir — bu məbləğləri dərc etmirik. Kampaniyaların şərtlərini yalnız təşkilatçı — Ozon və ya Ozon Bank müəyyən edir və dəyişə bilər."
       },
       "distributor": {
         "title": "Reklamı kim yerləşdirir",
@@ -1393,10 +1389,10 @@
   },
   "HomePage": {
     "pageNavLabel": "Səhifə üzrə sürətli keçid",
-    "title": "Ozon anbarlarında Ozon Job ilə əlavə iş: ünvanlar və ödəniş",
-    "description": "Ozon Job tətbiqi ilə Ozon anbarında növbəyə necə çıxmaq: 4–12 saatlıq slotlar, hər slot üçün ödəniş, karta 3 saatdan, mülki-hüquqi müqavilə və ya özünüməşğul.",
-    "heading": "Ozon Job tətbiqi ilə Ozon anbarlarında əlavə iş",
-    "lead": "Şəhərinizdə anbar seçin, real ünvanları və şərtləri öyrənin. Ozon Job tətbiqində dəvət kodu ilə qeydiyyatdan keçin — {amount, number} ₽-dək* bonus aksiyanın şərtləri yerinə yetirildikdən sonra hesablanır.",
+    "title": "Ozon anbarında iş: anbar operatoru, Ozon Job ilə əlavə iş",
+    "description": "Ozon Job tətbiqi ilə Ozon anbarlarında iş: şəhərlər üzrə anbar ünvanları və anbar operatorunun şərtləri, 4–12 saatlıq slotlar, karta ödəniş 3 saatdan.",
+    "heading": "Ozon anbarında iş: Ozon Job tətbiqi ilə əlavə iş",
+    "lead": "Şəhərinizdə anbar seçin: real ünvanlar və anbar operatorunun şərtləri — Ozon məlumatlarına görə. Ozon Job tətbiqində dəvət kodu ilə qeydiyyatdan keçin — {amount, number} ₽-dək* bonus aksiyanın şərtləri yerinə yetirildikdən sonra hesablanır.",
     "heroCity": "Şəhəri seçin",
     "heroBonus": "{amount, number} ₽-dək əldə et",
     "features": [

@@ -104,12 +104,15 @@ export default async function MenuPage({ params }: Props) {
                     <ul className='link-rows grid gap-10 mb-20'>
                         {QUICK.map(({ key, href, icon: Icon, accent: color }) => (
                             <li key={key}>
-                                <Link href={href} className='link-row hover-none flex nowrap align-center gap-15 h-full pd-15 br-20 bg-3-100 border-1px-2-10' style={accent(color)}>
+                                <Link href={href} className='link-row hover-line-group hover-none flex nowrap align-center gap-15 h-full pd-15 br-20 bg-3-100 border-1px-2-10' style={accent(color)}>
                                     <span className='icon-badge grid place-center w-46 h-46 br-round shrink-0' aria-hidden='true'>
                                         <Icon width={24} height={24} viewBox='0 0 24 24' />
                                     </span>
                                     <span className='grid gap-2 flex-1'>
-                                        <b className='link-row-title font-16'>{t(`quick.${key}.title`)}</b>
+                                        {/* линия под заголовком дорисовывается при наведении на строку: .hover-line — на строчном тексте */}
+                                        <b className='link-row-title font-16'>
+                                            <span className='hover-line'>{t(`quick.${key}.title`)}</span>
+                                        </b>
                                         <span className='font-14 color-2-80'>{t(`quick.${key}.text`)}</span>
                                     </span>
                                     <span className='link-row-arrow grid place-center w-36 h-36 br-round shrink-0' aria-hidden='true'>
@@ -191,10 +194,12 @@ export default async function MenuPage({ params }: Props) {
                                                 href={href}
                                                 target='_blank'
                                                 rel='nofollow noopener noreferrer'
-                                                className='page-nav-head hover-none flex nowrap align-center gap-12 pd-10 br-20 bg-2-3'
+                                                className='page-nav-head hover-line-group hover-none flex nowrap align-center gap-12 pd-10 br-20 bg-2-3'
                                             >
                                                 <span className='grid gap-2 flex-1'>
-                                                    <b className='color-2-90'>{t(`official.${key}.title`)}</b>
+                                                    <b className='color-2-90'>
+                                                        <span className='hover-line'>{t(`official.${key}.title`)}</span>
+                                                    </b>
                                                     <span className='font-12 color-2-80'>{t(`official.${key}.text`)}</span>
                                                 </span>
                                                 <ArrowUpRightSVG className='shrink-0 color-5-100' width={20} height={20} viewBox='0 0 24 24' aria-hidden='true' />
@@ -213,13 +218,15 @@ export default async function MenuPage({ params }: Props) {
                             <li className='f-w-6 mb-10' key={key}>
                                 <Link
                                     href={href}
-                                    className='page-nav-head hover-none flex nowrap align-center gap-12 h-full pd-10 br-20 bg-3-100 border-1px-2-10'
+                                    className='page-nav-head hover-line-group hover-none flex nowrap align-center gap-12 h-full pd-10 br-20 bg-3-100 border-1px-2-10'
                                 >
                                     <span className='page-nav-num grid place-center w-36 h-36 br-round shrink-0' aria-hidden='true'>
                                         <Icon width={18} height={18} viewBox='0 0 24 24' />
                                     </span>
                                     <span className='grid gap-2 flex-1'>
-                                        <b className='color-2-90'>{t(`docs.${key}.title`)}</b>
+                                        <b className='color-2-90'>
+                                            <span className='hover-line'>{t(`docs.${key}.title`)}</span>
+                                        </b>
                                         <span className='font-12 color-2-80'>{t(`docs.${key}.text`)}</span>
                                     </span>
                                     <ChevronRightSVG className='shrink-0 color-5-100' width={20} height={20} viewBox='0 0 24 24' aria-hidden='true' />

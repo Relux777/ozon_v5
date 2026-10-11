@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
 import { SITE_CONFIG } from '@/config/site';
-import { CONTACTS, GOOGLE_ANALYTICS_ID, HOSTING, OWNER } from '@/config/legal';
+import { CONTACTS, GOOGLE_ANALYTICS_ID, HOSTING, OWNER, YANDEX_METRIKA_ID } from '@/config/legal';
 
 // Общие подстановки для текстов документов (LegalDocs.* в messages): теги-ссылки и значения из config/legal.ts.
 // Передаются в t.rich(key, legalValues(locale)) — лишние значения next-intl просто не использует
@@ -36,6 +36,8 @@ export function legalValues(locale: AppLocale) {
         hasHosting: HOSTING.name ? 'yes' : 'no',
         hostingPlace: HOSTING.name ? (HOSTING.inRussia ? 'russia' : 'abroad') : 'none',
         ga: GOOGLE_ANALYTICS_ID ? 'yes' : 'no',
+        // счётчиков нет вообще — политика прямо говорит, что cookie аналитики сейчас не ставятся
+        counters: YANDEX_METRIKA_ID || GOOGLE_ANALYTICS_ID ? 'yes' : 'none',
         // теги
         b: (chunks: ReactNode) => <b>{chunks}</b>,
         mail: (chunks: ReactNode) => <a href={`mailto:${CONTACTS.email}`} className={LINK}>{chunks}</a>,

@@ -14,12 +14,12 @@ type Props = {
     params: Promise<{ locale: string }>;
 };
 
-type RowKey = 'locale' | 'consent' | 'theme' | 'ym' | 'ymOther' | 'ga' | 'gaState';
+type RowKey = 'consent' | 'theme' | 'ym' | 'ymOther' | 'ga' | 'gaState';
 type Row = { key: RowKey; name?: string; owner: 'site' | 'yandex' | 'google'; analytics?: boolean };
 
-// Имена cookie не переводятся; у строк без name имя берётся из словаря (rows.<key>.name)
+// Имена cookie не переводятся; у строк без name имя берётся из словаря (rows.<key>.name).
+// Cookie языка сайт не ставит (routing.localeCookie: false) — язык определяет адрес страницы
 const COOKIES: Row[] = [
-    { key: 'locale', name: 'NEXT_LOCALE', owner: 'site' },
     { key: 'consent', name: 'cookie_consent', owner: 'site' },
     { key: 'theme', owner: 'site' },
     { key: 'ym', name: '_ym_uid, _ym_d', owner: 'yandex', analytics: true },

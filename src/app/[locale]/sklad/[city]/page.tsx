@@ -876,12 +876,14 @@ export default async function CityPage({ params }: Props) {
                     <ul className='link-rows grid gap-10'>
                         {MORE_LINKS.map(({ key, href, icon: Icon, accent: color }) => (
                             <li key={key}>
-                                <Link href={href} className='link-row hover-none flex nowrap align-center gap-15 h-full pd-15 br-20 bg-3-100 border-1px-2-10' style={accent(color)}>
+                                <Link href={href} className='link-row hover-line-group hover-none flex nowrap align-center gap-15 h-full pd-15 br-20 bg-3-100 border-1px-2-10' style={accent(color)}>
                                     <span className='icon-badge grid place-center w-46 h-46 br-round shrink-0' aria-hidden='true'>
                                         <Icon width={24} height={24} viewBox='0 0 24 24' />
                                     </span>
                                     <span className='grid gap-2 flex-1'>
-                                        <b className='link-row-title font-16'>{tMenu(`quick.${key}.title`)}</b>
+                                        <b className='link-row-title font-16'>
+                                            <span className='hover-line'>{tMenu(`quick.${key}.title`)}</span>
+                                        </b>
                                         <span className='font-14 color-2-80'>{tMenu(`quick.${key}.text`)}</span>
                                     </span>
                                     <span className='link-row-arrow grid place-center w-36 h-36 br-round shrink-0' aria-hidden='true'>

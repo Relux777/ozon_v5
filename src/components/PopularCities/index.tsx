@@ -30,16 +30,19 @@ export default async function PopularCities({ locale }: { locale: AppLocale }) {
                 <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('cities.eyebrow')}</p>
                 <h2 className='mb-7 color-2-90 text-balance'>{t('cities.title')}</h2>
                 <p className='max-w-60-ch mb-20'>{t('cities.lead', { count: withWarehouses.length, total: getCityIndex(locale).length })}</p>
-                <ul className='flex gap-8 mb-15'>
+                {/* на широком экране — ряд чипов; на телефоне — ровная сетка в две колонки (.city-chips в style.scss) */}
+                <ul className='city-chips flex gap-8 mb-15'>
                     {cities.map((city) => (
                         <li key={city.slug}>
                             <Link
                                 href={`/sklad/${city.slug}`}
-                                className='source-chip hover-none inline-flex nowrap align-center gap-8 h-46 px-16 br-36 font-14 font-w-500'
+                                className='city-chip source-chip hover-none inline-flex nowrap align-center gap-8 h-46 px-16 br-36 font-14 font-w-500'
                             >
-                                <LocationSVG width={16} height={16} viewBox='0 0 24 24' aria-hidden='true' />
-                                {getCityName(city, locale)}
-                                <span className='font-12 opacity-90'>{tSearch('count', { count: city.warehouses.length })}</span>
+                                <LocationSVG className='shrink-0' width={16} height={16} viewBox='0 0 24 24' aria-hidden='true' />
+                                <span className='city-chip-text'>
+                                    <span className='truncate'>{getCityName(city, locale)}</span>
+                                    <span className='font-12 font-w-400 opacity-90'>{tSearch('count', { count: city.warehouses.length })}</span>
+                                </span>
                             </Link>
                         </li>
                     ))}

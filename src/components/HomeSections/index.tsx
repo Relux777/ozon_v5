@@ -166,7 +166,8 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                 <div className="container">
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('statsEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('statsTitle')}</h2>
-                    <div className='flex'>
+                    {/* .row-flush у рядов колонок на всей странице: карточки стоят на одной линии с заголовком секции */}
+                    <div className='flex row-flush'>
                         {stats.map(({ value, label }, i) => (
                             <div className='f-w-2 f-h-4 f-m-6 mb-20' key={label}>
                                 <div className='bg-2-3 blur-7 touch-no-blur pd-10 shadow-3 br-36 text_center translate_0_5 tr-2 cursor-pointer'>
@@ -291,7 +292,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('friend.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('friend.title')}</h2>
                     <p className='max-w-60-ch mb-20'>{t('friend.lead')}</p>
-                    <div className='flex'>
+                    <div className='flex row-flush'>
                         {friendRoles.map((role) => (
                             <div className='f-w-6 mb-20' key={role.key}>
                                 <article className='role scroll-anchor p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20' id={`friend-${role.key}`}>
@@ -316,7 +317,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                     </div>
 
                     <h3 className='font-18 color-2-90 mb-15'>{t('friend.rulesTitle')}</h3>
-                    <ul className='flex'>
+                    <ul className='flex row-flush'>
                         {friendRules.map((rule) => (
                             <li className='f-w-3 f-h-6 mb-20' key={rule.title}>
                                 <div className='grid gap-7 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20 font-14 translate_0_5 tr-2'>
@@ -341,7 +342,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                     <h2 className='mb-7 color-2-90 text-balance'>{t('pay.title')}</h2>
                     <p className='max-w-60-ch mb-20'>{t('pay.lead')}</p>
 
-                    <div className='flex align-center'>
+                    <div className='flex row-flush align-center'>
                         <div className='f-w-4 mb-20'>
                             {/* фото держится на месте, пока читаются блоки справа */}
                             <div className='pay-photo-wrap'>
@@ -429,7 +430,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('firstDay.eyebrow')}</p>
                     <h2 className='mb-7 color-2-90 text-balance'>{t('firstDay.title')}</h2>
                     <p className='max-w-60-ch mb-20'>{t('firstDay.lead')}</p>
-                    <div className='flex'>
+                    <div className='flex row-flush'>
                         <div className='f-w-6 mb-20'>
                             {/* переключатель режима + чек-лист: радио и чекбоксы работают без JS (см. .doc-mode-* в style.scss) */}
                             <div className='doc-mode-wrap scroll-anchor p-relative overflow-hidden grid gap-15 content-start h-full bg-3-100 br-20 border-1px-2-10 pd-20' id='first-day-docs'>
@@ -442,7 +443,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                                     {docModes.map((mode, i) => (
                                         <Fragment key={mode.id}>
                                             <input className='doc-mode-input sr-only' type='radio' name='doc-mode' id={`doc-mode-${mode.id}`} defaultChecked={i === 0} />
-                                            <label className='doc-mode-label inline-flex align-center px-16 py-4 br-36 bg-2-7 font-14 font-w-500 cursor-pointer' htmlFor={`doc-mode-${mode.id}`}>
+                                            <label className='doc-mode-label inline-flex align-center justify-center m-w-full h-36 px-16 br-36 bg-2-7 font-14 font-w-500 cursor-pointer' htmlFor={`doc-mode-${mode.id}`}>
                                                 {mode.label}
                                             </label>
                                         </Fragment>
@@ -506,7 +507,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('types.eyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('types.title')}</h2>
-                    <ul className='flex'>
+                    <ul className='flex row-flush'>
                         {typeItems.map((item) => (
                             <li className='f-w-3 f-h-6 mb-20' key={item.name}>
                                 <div className='grid gap-10 content-start h-full bg-3-100 br-20 border-1px-2-10 shadow-3 pd-20 text_center font-14 translate_0_5 tr-2'>
@@ -543,10 +544,10 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                                 </ul>
 
                                 <div className='flex align-center gap-10 mb-15 m-justify-center'>
-                                    <CopyLink url={CARD.url} copyLabel={t('card.copy')} copiedLabel={t('card.copied')} className='promo-btn hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500' />
+                                    <CopyLink url={CARD.url} copyLabel={t('card.copy')} copiedLabel={t('card.copied')} className='promo-btn hover-none flex align-center justify-center m-w-full h-46 px-24 br-36 font-w-500' />
                                     <a
                                         href={CARD.url}
-                                        className='promo-btn-outline hover-none flex align-center justify-center h-46 px-24 br-36 font-w-500'
+                                        className='promo-btn-outline hover-none flex align-center justify-center m-w-full h-46 px-24 br-36 font-w-500'
                                         target='_blank'
                                         rel='sponsored nofollow noopener noreferrer'
                                     >
@@ -592,7 +593,7 @@ export default async function HomeSections({ locale, afterStats, sections = HOME
                 <div className='container'>
                     <p className='color-5-100 text-uppercase font-w-500 letter-s-8 mb-7'>{t('pay.tipsEyebrow')}</p>
                     <h2 className='mb-20 color-2-90 text-balance'>{t('pay.tipsTitle')}</h2>
-                    <div className='flex align-center'>
+                    <div className='flex row-flush align-center'>
                         <div className='f-w-8 grid gap-15 content-start mb-20'>
                             <FaqAccordion items={payTips} />
                         </div>

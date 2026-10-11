@@ -2,7 +2,7 @@
 
 # Ozon V5 — контекст для Claude
 
-> Обновлено 10.10.2026. Прежняя подробная версия (история правок и разборы багов по датам) — в истории git
+> Обновлено 11.10.2026. Прежняя подробная версия (история правок и разборы багов по датам) — в истории git
 > (`git show f0b317c:CLAUDE.md`). Если что-то расходится с кодом — верить коду и поправить этот файл.
 
 ## 1. Проект
@@ -78,11 +78,14 @@ instructions.md          гайд по запуску (юр. часть, дом�
 - **Документы** `/menu/{about,privacy,cookies,terms,ads}`: тексты в словарях `LegalDocs.*`, рендер — `components/LegalDoc`
   через `t.rich(key, legalValues(locale))` из `LegalDoc/rich.tsx` (ссылки-теги, ФИО, контакты, хостинг, ID аналитики из
   `config/legal.ts`). Не на ru — сверху пометка `LegalDocs.translated` со ссылкой на русскую версию. На uz/az/en ФИО латиницей
-  (`OWNER.fullNameLatin`). Поменялись данные владельца — править только `config/legal.ts`.
+  (`OWNER.fullNameLatin`). Поменялись данные владельца — править только `config/legal.ts`. «О проекте» → «Откуда данные»
+  берёт число складов, городов и дату выгрузки из `lib/sklad` (`{warehouses}`, `{withData}`, `{cities}`, `{date}`); политика
+  сама пишет «счётчики не подключены», пока пусты `YANDEX_METRIKA_ID`/`GOOGLE_ANALYTICS_ID` (`{counters}`). Сайт ставит одну
+  cookie — `cookie_consent`; тема — в `localStorage`. Правили тексты документов — обновить `LEGAL_UPDATED_AT`.
 - **Источники** (главная, `/menu/level`): подписи в `Sources.*`; ссылки на справку Ozon с `hrefLang="ru"` и пометкой, что она на русском.
 
 - **Главная** = `Hero` + `HomeSections` (+ `PopularCities` → `#cities` в слоте `afterStats`: 12 городов с наибольшим числом складов —
-  прямые ссылки с главной на страницы городов). Секции главной правятся **только в `HomeSections`**; проп `sections` выбирает,
+  прямые ссылки с главной на страницы городов; на телефоне чипы — сетка в две колонки, `.city-chips`). Секции главной правятся **только в `HomeSections`**; проп `sections` выбирает,
   какие показать (`HOME_SECTIONS`), `getHomeNavItems(locale, sections)` — пункты «Быстрого перехода» для них.
 - **Страница города** (`sklad/[city]/page.tsx`) — свой контент, чтобы поисковик не счёл её дублем главной: Hero с фактами города
   (`CityPage.heroFacts`) → `#city` (обзор с населёнными пунктами из адресов, данные, удобства, адреса, соседние города) →
@@ -91,11 +94,13 @@ instructions.md          гайд по запуску (юр. часть, дом�
   → `#compare` (таблица «В штате / Через Ozon Job»; на телефоне строки — карточки) + `#duties` (3 шага со стрелками + полоса
   «Что понадобится») → `AppScreens` (`#app`) → из главной `steps`, `promo`, `card` (`SHARED_SECTIONS`) → `#more` (строки-ссылки).
 - **Ссылки строками** `.link-row` (страница города `#more`, разделы `/menu`): иконка, заголовок цветом ссылки, стрелка в кружке —
-  чтобы переходы не выглядели плитками-блоками. `/menu` — ещё синий блок «Приложение Ozon Job» с макетом телефона (`MenuPage.appPerks/appSteps`).
+  чтобы переходы не выглядели плитками-блоками. Линия под заголовком плавно дорисовывается при наведении: `.hover-line-group`
+  на ссылке, `.hover-line` на строчном `<span>` с текстом (так же — у документов и официальных ресурсов на `/menu`). `/menu` — ещё синий блок «Приложение Ozon Job» с макетом телефона (`MenuPage.appPerks/appSteps`).
 - **`/sklad`** (`CitySearch`): строка поиска (клавиша «/»), фильтр «Все / С адресами», «Больше всего складов», указатель букв,
   список по буквам (города с адресами — карточками). Весь список — в первом HTML. Строку поиска не делать липкой — владелец против. Город без складов — `noindex, follow`
   и не в sitemap. Регионы («… область», «… край», «Республика …», `city.region`) пишутся без «г.»: в строках `CityPage` —
   `{place}` (= `cityPlace` «г. {city}» для города, просто название для региона), `{city}` — только само название.
+  В `cityPlace` между «г.» и названием — неразрывный пробел: «г. Уфа» не рвётся между строками.
 - **Картинка превью** страницы города — `sklad/[city]/opengraph-image.tsx` (+ `twitter-image.tsx`): название, число складов, доход
   в штате (`CityPage.og.*`), рендер `next/og` при первом запросе. У каждого подмножества шрифта своё имя семейства — с одним именем
   satori берёт один файл на начертание, и ₽/армянский/грузинский выходили «квадратиками». Пути `…/opengraph-image/…` исключены
@@ -108,7 +113,7 @@ instructions.md          гайд по запуску (юр. часть, дом�
 | Что | Где |
 |---|---|
 | Раскладка, отступы, размеры, радиусы, шрифты, цвета из токенов, тени, blur, позиционирование, hover-эффекты | **классы ReluxCode в разметке** (`className='flex align-center gap-10 pd-20 br-20 bg-3-100 shadow-3'`) |
-| Не хватает значения в шкале (например, `gap-6`) | **дописать значение в массив** в `_utilities.scss`, поднять версию в шапке `ReluxCode.scss` (сейчас **v2.2.11**) и строку в журнал |
+| Не хватает значения в шкале (например, `gap-6`) | **дописать значение в массив** в `_utilities.scss`, поднять версию в шапке `ReluxCode.scss` (сейчас **v2.2.12**) и строку в журнал |
 | Нужна новая универсальная утилита (годится любому проекту) | в ReluxCode: `_layout.scss` / `_utilities.scss` / `_animations.scss` / `_media.scss` |
 | Только то, что есть у этого сайта: градиенты, `::before/::after`, `@keyframes`, `@container`, `grid-template-*`, точные смещения, состояния (`:checked`, `.tip-open`, `:has()`), оформление конкретного блока | **`style.scss`** |
 | Стили общего компонента из `components/ui/` | партиал `_<имя>.scss` в папке компонента + строка `@use` в начале `style.scss` |
@@ -139,7 +144,7 @@ ReluxCode — **общий шаблон для всех проектов вла�
 `$promo-blue-light #3f9bff`, `$promo-navy #0a1f44`; акцент карточки — CSS-переменная `--accent` (`.icon-badge`, `.accent-text`,
 `.accent-fill`). Белый текст на синем блоке — `rgb(255 255 255 / 90%)`. Шрифт — Geist (`--font-geist`), ka/hy — Noto через `body:lang()`.
 
-### 5.3 Классы ReluxCode v2.2.11 (шпаргалка)
+### 5.3 Классы ReluxCode v2.2.12 (шпаргалка)
 
 Цвет-классы: `bg-{1,2,3,5}-{3,7,10,20,50,80,100}` (+ `hover-bg-…`), `color-{1,2,4,5,6}-{10,80,90,100}`,
 `border-1px-{1,2}-{10,20}`, `border-b-1px-1-10`, `fill-1-10`. Значение после дефиса — % прозрачности.
@@ -153,9 +158,9 @@ ReluxCode — **общий шаблон для всех проектов вла�
 | текст | `font-{12,14,16,18,22,24,36}` `font-w-{400,500,700}` `letter-s-{0,6,8,12,14}` (сотые em) `text_center/_left/_right` `text-uppercase` `text-balance` `text-pretty` `truncate` `space-nowrap` |
 | форма | `br-{8,20,32,36}` `br-round` `gap-{2,3,4,5,7,8,10,12,14,15,20}` `shadow-1…5` (1/2/4 — стекло) `blur-{3,7}` `opacity-{50,90,100}` |
 | раскладка | `.container` · `.flex`/`.inline-flex` + `align-center/start/stretch/flex-end`, `justify-between/center/start/end/around/evenly`, `nowrap`, `column`, `row-reverse`… · `.f-w-1…12` (колонки, `padding-inline:10px`, на <990px — 100%) · `.row-flush` (−10px) · `.grid` + `place-center`, `justify-i-center`, `content-start`, `rows-auto-1fr` · `flex-1` `flex-none` `shrink-0` `block` `inline-block` `none` `container-type-inline` |
-| адаптив (`_media.scss`) | `none-min-{620,990}` `none-max-{360,620,990}` `m-none` `m-w-full` `m-p-absolute` `m-br-b-0` `flex.m-justify-center` `flex.m-align-end` `touch-no-blur` (≤620px = «m-») |
+| адаптив (`_media.scss`) | `none-min-{620,990}` `none-max-{360,410,620,990}` `m-none` `m-w-full` `m-p-absolute` `m-br-b-0` `flex.m-justify-center` `flex.m-align-end` `touch-no-blur` (≤620px = «m-») |
 | прочее | `overflow-hidden` `overflow-auto` `overscroll-contain` `scrollbar-none` `cover` `sr-only` `pt-safe` `pb-safe` `cursor-pointer` `p-events-none/all` `u-select-none` `t-action-none` `tr-{2,3,4,5}` (transition all) |
-| анимации/hover | `hover-none` (снять стандартное 0.8 у a/button) `hover-80` `translate_0_2` `translate_0_5` `scale_0_1` `hover-rotate-15` `active_scale_09/098` `float` + `float-shadow` `visibility-hidden`/`visible` (+`.active`) |
+| анимации/hover | `hover-none` (снять стандартное 0.8 у a/button) `hover-80` `translate_0_2` `translate_0_5` `scale_0_1` `hover-rotate-15` `active_scale_09/098` `float` + `float-shadow` `visibility-hidden`/`visible` (+`.active`) `hover-line` (+ `hover-line-group` на предке): линия под текстом дорисовывается при наведении |
 
 Важно: `a, button` в `_base.scss` по умолчанию `opacity: .8` (1 при hover) — у ссылок-карточек и кнопок ставить `hover-none`.
 Брейкпоинты: 1400 / 1200 / 990 / 770 / 620 / 360. Слои: `base < layout < utilities < animations`; `_media.scss` и `style.scss` —
@@ -174,6 +179,8 @@ ReluxCode — **общий шаблон для всех проектов вла�
 **Частые ловушки:**
 - `.flex` и `.inline-flex` в ReluxCode — **`flex-wrap: wrap` по умолчанию**: чипы «✓ текст» и строки «заголовок + иконка» разваливаются
   на телефоне — добавлять `nowrap`.
+- Ряд `.flex` с колонками `.f-w-*` — всегда с `.row-flush` (и первый экран `Hero`): без него колонки на 10px правее
+  заголовка секции — на телефоне текст и карточки стоят «лесенкой».
 - Grid/flex с «широким» потомком раздувает мобильную вёрстку — `min-width: 0` на детях. Проверять переполнение через
   `document.documentElement.scrollWidth > clientWidth`.
 - Любой новый `position: fixed` элемент внизу экрана — `z-20` (NavBar на `z-10`, баннер cookie — `z-30`,
@@ -241,7 +248,11 @@ ReluxCode — **общий шаблон для всех проектов вла�
 
 - Метаданные только через `buildPageMetadata` (canonical, hreflang, OG с `public/og.jpg`; `ownImage: true` — у страницы своя
   картинка превью). Непереведённые языки страницы — через `locales`. Скрытые страницы — `noindex, follow` (ссылки с них учитываются).
-- Язык определяет только адрес: `localeDetection: false` в `routing.ts` (без редиректа по языку браузера и cookie — так советует Google).
+- Язык определяет только адрес: `localeDetection: false` в `routing.ts` (без редиректа по языку браузера и cookie — так советует Google);
+  cookie языка не ставится (`localeCookie: false`).
+- Заголовки главной (11.10.2026): title «Работа на складе Ozon: оператор склада, подработка в Ozon Job», h1 «Работа на складе Ozon:
+  подработка через приложение Ozon Job» — ключи «работа на складе» и «оператор склада» вместе с «подработка» и «Ozon Job».
+  «Вакансия» и «ежедневные выплаты» в заголовки не возвращать: сайт не работодатель (§7 п. 5), а выплаты — от 3 часов, а не «каждый день» (п. 3).
 - JSON-LD: `WebSite` + `SearchAction` (главная → `/sklad?q=`; `CitySearch` читает `?q=` и пишет его обратно), `ItemList` городов
   со складами на `/sklad`, `BreadcrumbList` на внутренних.
 - `robots.txt` — `src/app/robots.txt/route.ts`: `Clean-param` для utm/yclid/gclid/fbclid (иначе ссылки с метками — дубли у Яндекса).

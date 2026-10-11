@@ -16,11 +16,9 @@ export const routing = defineRouting({
     // такие редиректы — человек из русской выдачи с английским браузером улетал бы на /en. Язык меняют в шапке
     localeDetection: false,
 
-    // помним выбор языка год, а не только сессию браузера
-    localeCookie: {
-        name: 'NEXT_LOCALE',
-        maxAge: 60 * 60 * 24 * 365,
-    },
+    // cookie с выбранным языком (NEXT_LOCALE) не ставим: при localeDetection: false её никто не читает —
+    // язык берётся только из адреса. Меньше cookie — короче страница /menu/cookies и уведомление в РКН
+    localeCookie: false,
 });
 
 export type AppLocale = (typeof routing.locales)[number];
