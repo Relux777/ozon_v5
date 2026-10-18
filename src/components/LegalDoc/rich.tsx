@@ -25,7 +25,8 @@ export function legalValues(locale: AppLocale) {
 
     return {
         // значения
-        host: new URL(SITE_CONFIG.url).host,
+        // адрес сайта в текстах документов — с подпапкой: job.rendit.ru/ozon
+        host: SITE_CONFIG.url.replace(/^https?:\/\//, ''),
         owner: ownerName(locale),
         email: CONTACTS.email,
         phone: CONTACTS.phone.label,

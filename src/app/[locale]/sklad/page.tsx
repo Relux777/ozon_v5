@@ -7,6 +7,10 @@ import CitySearch from '@/components/CitySearch';
 import ScrollTop from '@/components/ui/scroll-top';
 import JsonLd from '@/components/ui/json-ld';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 type Props = {
     params: Promise<{ locale: string }>;
 };

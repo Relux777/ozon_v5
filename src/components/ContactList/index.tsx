@@ -26,7 +26,7 @@ export default async function ContactList({ locale, mailSubject }: Props) {
         {
             key: 'email',
             icon: EnvelopeSVG,
-            color: '#005bff',
+            color: 'rgb(var(--bg-5))',
             label: t('email'),
             value: CONTACTS.email,
             href: `mailto:${CONTACTS.email}?subject=${encodeURIComponent(mailSubject)}`,

@@ -48,7 +48,7 @@ export default function LanguageModalList() {
                                 width={16}
                                 height={16}
                                 className={isActive ? '' : 'visibility-hidden'}
-                                fill='#005bff'
+                                fill='rgb(var(--text-5, var(--bg-5)))'
                                 viewBox="0 0 24 24"
                             />
                         </button>

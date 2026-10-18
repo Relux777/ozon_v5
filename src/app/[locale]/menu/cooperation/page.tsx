@@ -19,6 +19,10 @@ import EnvelopeSVG from '@/assets/svg/support/envelope.svg';
 import TelegramSVG from '@/assets/svg/support/telegram.svg';
 import MegaphoneSVG from '@/assets/svg/menu/megaphone.svg';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // «Сотрудничество»: компании заказывают такой же рекламный сайт; реклама и партнёрство на этом сайте; контакты.
 // Тексты — CooperationPage.* (все 9 языков), контакты — config/legal.ts (общий блок ContactList)
 

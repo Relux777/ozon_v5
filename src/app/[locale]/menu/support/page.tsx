@@ -21,6 +21,10 @@ import MessageDotsSVG from '@/assets/svg/support/message-dots.svg';
 import BriefcaseSVG from '@/assets/svg/support/briefcase.svg';
 import ArrowUpRightSVG from '@/assets/svg/menu/arrow-up-right.svg';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // «Вопросы и ответы»: темы (иконка + аккордеон) слева, справа — куда писать: поддержка Ozon Job (аккаунт, выплаты)
 // и мы (вопросы по сайту, сотрудничество). Тексты — SupportPage.* (все 9 языков), контакты — config/legal.ts.
 // Вопросы с главной (HomePage.pay.tips) тоже показываются здесь, в своих темах, но в разметку FAQPage не входят:

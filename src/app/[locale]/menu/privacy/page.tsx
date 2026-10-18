@@ -5,6 +5,10 @@ import { GOOGLE_ANALYTICS_ID } from '@/config/legal';
 import LegalDoc from '@/components/LegalDoc';
 import { legalValues } from '@/components/LegalDoc/rich';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // Политика обработки персональных данных (ч. 2 ст. 18.1 152-ФЗ — опубликовать в свободном доступе).
 // Тексты — LegalDocs.privacy (все 9 языков, юридически значима русская версия). Оператор, контакты и хостинг — config/legal.ts.
 // Не юридическая консультация: перед запуском форм, аналитики или рассылок — согласовать с юристом.

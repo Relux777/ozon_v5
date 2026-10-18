@@ -1,9 +1,7 @@
 import type { Metadata } from 'next';
 import { getPathname } from '@/i18n/navigation';
 import { routing, type AppLocale } from '@/i18n/routing';
-import { OG_IMAGE, SITE_CONFIG } from '@/config/site';
-
-const BASE_URL = SITE_CONFIG.url;
+import { absoluteUrl, OG_IMAGE } from '@/config/site';
 
 type Href = Parameters<typeof getPathname>[0]['href'];
 
@@ -23,7 +21,7 @@ const OG_LOCALES: Record<AppLocale, string> = {
 /** locales — языки, на которых страница уже переведена (по умолчанию все); остальные в hreflang не попадают */
 export function getHreflangLinks(href: Href, locales: readonly AppLocale[] = routing.locales): Record<string, string> {
     const languages: Record<string, string> = Object.fromEntries(
-        locales.map((locale) => [locale, `${BASE_URL}${getPathname({ locale, href })}`])
+        locales.map((locale) => [locale, absoluteUrl(getPathname({ locale, href }))])
     );
     languages['x-default'] = languages[routing.defaultLocale];
 
@@ -65,7 +63,7 @@ export function buildPageMetadata({
     ownImage = false,
 }: PageMetadataInput): Metadata {
     const languages = getHreflangLinks(href, locales);
-    const url = `${BASE_URL}${getPathname({ locale, href })}`;
+    const url = absoluteUrl(getPathname({ locale, href }));
     const hidden = noindex || !locales.includes(locale);
 
     return {
@@ -98,7 +96,7 @@ export function breadcrumbJsonLd(locale: AppLocale, items: { name: string; href:
             '@type': 'ListItem',
             position: index + 1,
             name: item.name,
-            item: `${BASE_URL}${getPathname({ locale, href: item.href })}`,
+            item: absoluteUrl(getPathname({ locale, href: item.href })),
         })),
     };
 }
@@ -115,7 +113,7 @@ export function itemListJsonLd(locale: AppLocale, name: string, items: { name: s
             '@type': 'ListItem',
             position: index + 1,
             name: item.name,
-            url: `${BASE_URL}${getPathname({ locale, href: item.href })}`,
+            url: absoluteUrl(getPathname({ locale, href: item.href })),
         })),
     };
 }
@@ -124,7 +122,7 @@ export function itemListJsonLd(locale: AppLocale, name: string, items: { name: s
 export function siteSearchAction(locale: AppLocale) {
     return {
         '@type': 'SearchAction',
-        target: { '@type': 'EntryPoint', urlTemplate: `${BASE_URL}${getPathname({ locale, href: '/sklad' })}?q={search_term_string}` },
+        target: { '@type': 'EntryPoint', urlTemplate: `${absoluteUrl(getPathname({ locale, href: '/sklad' }))}?q={search_term_string}` },
         'query-input': 'required name=search_term_string',
     };
 }
@@ -156,6 +154,6 @@ export function generateJsonLd(
         '@type': type,
         inLanguage: locale,
         ...customData,
-        url: `${BASE_URL}${getPathname({ locale, href: '/' })}`,
+        url: absoluteUrl(getPathname({ locale, href: '/' })),
     };
 }

@@ -21,7 +21,7 @@
     "title": "Dil seçin"
   },
   "Header": {
-    "title": "Ozon İş"
+    "title": "RenDit İş"
   },
   "NavBar": {
     "home": "Əsas səhifə",
@@ -843,7 +843,7 @@
       "title": "Layihə haqqında",
       "what": {
         "title": "Bu hansı saytdır",
-        "text": "«Ozon İş» — Ozon Job tətbiqi vasitəsilə Ozon anbarlarında əlavə iş axtaranlar üçün müstəqil məlumat saytıdır. Biz Ozon deyilik və onun rəsmi nümayəndəsi də deyilik: Ozon — ООО «Интернет Решения» (MMC “Internet Resheniya”) şirkətinin əmtəə nişanıdır. Rəsmi şərtlərə həmişə Ozon Job tətbiqində, <job>job.ozon.ru</job> saytında, <help>Ozon Job arayışında</help> və <career>career.ozon.ru</career> saytında baxın."
+        "text": "«Ozon İş» — «RenDit İş» saytının bölməsi: Ozon Job tətbiqi vasitəsilə Ozon anbarlarında əlavə iş axtaranlar üçün müstəqil məlumat saytıdır. Biz Ozon deyilik və onun rəsmi nümayəndəsi də deyilik: Ozon — ООО «Интернет Решения» (MMC “Internet Resheniya”) şirkətinin əmtəə nişanıdır. Rəsmi şərtlərə həmişə Ozon Job tətbiqində, <job>job.ozon.ru</job> saytında, <help>Ozon Job arayışında</help> və <career>career.ozon.ru</career> saytında baxın."
       },
       "sources": {
         "title": "Məlumatlar haradan götürülür",
@@ -1015,7 +1015,7 @@
       },
       "ip": {
         "title": "Əmtəə nişanları və saytın materialları",
-        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium və digər işarələr onların hüquq sahiblərinin əmtəə nişanlarıdır (Ozon — ООО «Интернет Решения»); saytda onlar yalnız müvafiq xidmətləri adlandırmaq üçün çəkilir. Saytın mətnləri, dizaynı, illüstrasiyaları və kodu sahibə məxsusdur; onlardan sayta aktiv linklə sitat gətirmək olar. Ozon Job tətbiqinin skrinşotlarını sahib öz hesabında çəkib; onlardakı interfeys və işarələr Ozon-a məxsusdur və yalnız tətbiqin necə işlədiyini izah etmək üçün göstərilir. İkonlar — Boxicons (CC BY 4.0 lisenziyası), şriftlər — Geist və Noto Sans (SIL OFL 1.1 lisenziyası)."
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium və digər işarələr onların hüquq sahiblərinin əmtəə nişanlarıdır (Ozon — ООО «Интернет Решения»); saytda onlar yalnız müvafiq xidmətləri adlandırmaq üçün çəkilir. Saytın mətnləri, dizaynı, illüstrasiyaları və kodu sahibə məxsusdur; onlardan sayta aktiv linklə sitat gətirmək olar. Ozon Job tətbiqinin skrinşotlarını sahib öz hesabında çəkib; onlardakı interfeys və işarələr Ozon-a məxsusdur və yalnız tətbiqin necə işlədiyini izah etmək üçün göstərilir. Onlar məlumat məqsədilə, bu məqsədə uyğun həcmdə və mənbə göstərilməklə verilib (RF Mülki Məcəlləsinin 1274-cü maddəsi). İkonlar — Boxicons (CC BY 4.0 lisenziyası), şriftlər — Geist və Noto Sans (SIL OFL 1.1 lisenziyası)."
       },
       "liability": {
         "title": "Məsuliyyət",
@@ -1269,7 +1269,7 @@
     "contactsKicker": "Bizimlə əlaqə",
     "contactsTitle": "Sayt üzrə suallar və əməkdaşlıq",
     "contactsText": "Səhv və ya köhnəlmiş məlumat tapdınız? Şirkətiniz üçün eyni reklam saytı sifariş etmək istəyirsiniz? Yazın və ya zəng edin.",
-    "mailSubject": "«Озон Работа» saytından sual",
+    "mailSubject": "«Ozon İş» saytından sual",
     "cooperationLink": "Əməkdaşlıq haqqında ətraflı",
     "privacyNote": "Müraciətləri necə emal etdiyimiz — <link>şəxsi məlumatların emalı siyasətində</link>."
   },
@@ -1817,7 +1817,7 @@
     "eyebrow": "Ozon Job tətbiqi",
     "title": "Tətbiq içəridən necə görünür",
     "lead": "On iki ekran — anbar və növbə seçimindən ödənişlərə, reytinqə və dəvət koduna qədər. Skrinşotları vərəqləyin və ya böyük görmək üçün istənilən birinə toxunun.",
-    "note": "Skrinşotlar {date} saytın müəllifinin hesabında, iOS tətbiqində, Kazan anbarları nümunəsində çəkilib. İnterfeys tətbiqin versiyasından asılı olaraq fərqlənə bilər. Skrinşotlardakı məbləğlər, tariflər və aksiyalar bu tarix üçün nümunədir: digər anbarlarda və başqa günlərdə onlar fərqlidir və zəmanət verilmir. Ozon — «Интернет Решения» MMC-nin əmtəə nişanıdır; sayt Ozon ilə əlaqəli deyil.",
+    "note": "Skrinşotlar {date} saytın müəllifinin hesabında, iOS tətbiqində, Kazan anbarları nümunəsində çəkilib. İnterfeys tətbiqin versiyasından asılı olaraq fərqlənə bilər. Skrinşotlardakı məbləğlər, tariflər və aksiyalar bu tarix üçün nümunədir: digər anbarlarda və başqa günlərdə onlar fərqlidir və zəmanət verilmir. Ozon — «Интернет Решения» MMC-nin əmtəə nişanıdır; sayt Ozon ilə əlaqəli deyil. Skrinşotlar məlumat məqsədilə sitat kimi verilib (RF Mülki Məcəlləsinin 1274-cü maddəsi): mənbə — Ozon Job tətbiqi, onun interfeysinə hüquqlar ООО «Интернет Решения» şirkətinə məxsusdur.",
     "items": [
       {
         "title": "Əsas ekran",

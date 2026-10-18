@@ -1,14 +1,33 @@
 # Запуск сайта: что сделать и что изменить
 
-> Обновлено 11.10.2026. Юридические пункты — не консультация юриста: документы сайта и схему работы с рекламой
-> стоит один раз показать юристу. Прежняя, подробная версия — в истории git (`git log -- instructions.md`).
+> Обновлено 12.10.2026. Сайт — «РенДит Работа», раздел об Ozon: **job.rendit.ru/ozon**. В корне того же домена
+> (job.rendit.ru) будет отдельное приложение с вакансиями — как они живут вместе, см. [раздел 0](#0-два-приложения-на-одном-домене).
+> Юридические пункты — не консультация юриста: документы сайта и схему работы с рекламой стоит один раз показать юристу.
+
+## 0. Два приложения на одном домене
+
+В Next.js это называется Multi-Zones: несколько независимых приложений под одним доменом, каждое отвечает за свои адреса.
+
+| Адрес | Приложение | Как настроено |
+|---|---|---|
+| `job.rendit.ru/ozon/…` | этот проект | `basePath: '/ozon'` — берётся из адреса сайта в `next.config.ts`; Next сам добавляет `/ozon` к ссылкам, статике и картинкам |
+| `job.rendit.ru/…` (всё остальное) | будущий проект с вакансиями | обычное приложение Next без `basePath`, свой репозиторий, свой порт |
+
+- Каждое приложение собирается и запускается отдельно (свой порт), а Nginx по адресу решает, кому отдать запрос ([6.5](#65-dns-nginx-https)).
+- Ссылки **между** приложениями — обычным `<a href="/ozon">`, не `<Link>`: переход между приложениями — это полная загрузка страницы.
+- `robots.txt` поисковики читают только из корня домена. Наш лежит по адресу `/ozon/robots.txt` — в корень его отдаёт Nginx,
+  пока у корневого приложения нет своего; потом в его `robots.txt` нужно перенести строки `Clean-param` и `Sitemap`.
+- Домен общий, значит общие и cookie с хранилищем браузера: выбор в баннере cookie (`cookie_consent`) и тема сайта действуют
+  в обоих приложениях. В корневом приложении используйте те же имена — или свои, но тогда посетитель увидит баннер дважды.
+- У себя на компьютере сайт открывается по адресу `localhost:3000/ozon` (с корня — переадресация).
+- Нужен ещё раздел (`job.rendit.ru/wb`) — это третье приложение со своим `basePath` и ещё один `location` в Nginx.
 
 ## 1. Порядок запуска
 
 | # | Что сделать | Раздел |
 |---|---|---|
 | 1 | Оформить самозанятость (НПД) | [3.1](#31-самозанятость-нпд) |
-| 2 | Купить домен **без слова «ozon»**, на своё имя, подтвердить через Госуслуги | [4](#4-домен-и-хостинг) |
+| 2 | Купить домен `rendit.ru` на своё имя, подтвердить через Госуслуги, завести поддомен `job` | [4](#4-домен-и-хостинг) |
 | 3 | Арендовать VPS **в России** | [4](#4-домен-и-хостинг) |
 | 4 | Заполнить код: адрес сайта, хостинг, проверить код приглашения и ссылки | [2](#2-что-изменить-в-коде) |
 | 5 | Принять решения из списка «за владельцем» | [2.3](#23-решения-за-владельцем) |
@@ -26,8 +45,7 @@
 
 | Где | Что | Сейчас | Что сделать |
 |---|---|---|---|
-| `.env.production` (на сервере, в git не попадает) | `NEXT_PUBLIC_SITE_URL` | нет | `NEXT_PUBLIC_SITE_URL=https://ваш-домен.ru` — с `https://`, без `/` в конце. Вшивается при сборке: поменяли — пересобрать |
-| `src/config/site.ts` | запасной адрес `SITE_CONFIG.url` | `https://ozon-rabota.ru` | заменить на свой домен: без переменной выше canonical, sitemap и превью ссылок уйдут на этот адрес |
+| `next.config.ts` | адрес сайта `SITE_URL` | `https://job.rendit.ru/ozon` | ничего, если адрес такой. Другой адрес — переменная `NEXT_PUBLIC_SITE_URL` в `.env.production` (с `https://`, без `/` в конце). Из адреса берётся и подпапка (`basePath`); вшивается при сборке — поменяли, пересобрать |
 | `src/config/legal.ts` | `HOSTING` | пусто | `name: 'Провайдер (ООО «…»)'`, `inRussia: true` — политика сама напишет, что данные в России |
 | `src/config/legal.ts` | `OWNER`, `CONTACTS` | заполнено | перечитать: ФИО, почта, телефон, Telegram, часы |
 | `src/config/promo.ts` | `CODE` — код приглашения Ozon Job | `QK3HMR42` | проверить в приложении, что код действует |
@@ -51,13 +69,19 @@ npx qrcode -t svg -o src/assets/svg/card-qr.svg "https://новая-ссылка
 
 ### 2.3. Решения за владельцем
 
-1. **Скриншоты приложения** в слайдере на страницах городов (12 шт.): на них имя, уровень, суммы, экран «Приведите друга».
-   Либо показать юристу, либо заменить/убрать (`src/components/AppScreens`).
+1. **Скриншоты приложения** в слайдере на страницах городов (12 шт.) оставлены. Под слайдером и в соглашении записано
+   основание: цитирование в информационных целях с указанием источника и правообладателя (ст. 1274 ГК РФ). Это снижает
+   риск, но не убирает его. Надёжнее — написать в Ozon (пресс-служба или поддержка партнёров) и попросить письменное
+   разрешение показывать скриншоты приложения на информационном сайте; ответ сохранить. На снимках видны ваши имя и суммы —
+   если не хотите их показывать, пересните или закройте эти места.
 2. **«Ozon в цифрах»** (главная и страницы городов, `HomePage.stats` в `messages/*.json`): цифры Ozon не сверены —
    сверить с источником или убрать блок.
-3. **Название «Озон Работа»** и синий логотип похожи на официальные. Если менять: `Metadata.siteName`, `Header.title`,
-   `ManifestGlobal.*` в 9 словарях, `src/assets/svg/logo.svg`, иконки (`src/app/icon.svg`, `apple-icon.png`, `favicon.ico`,
-   `public/icons/*`), `public/og.jpg`.
+3. **Бренд и раздел.** Бренд проекта — «РенДит Работа» (RenDit Job): красное сердце и слово «РенДит» в шапке,
+   цвет `--color-rendit-job: #e5243f`. Раздел называется «Озон Работа», его цвет — синий `#0d5ef5` (похож на цвет Ozon,
+   но не копия). Значки сайта (вкладка браузера, «на экран телефона») — залитое красное сердце. Поменять рисунок или цвет
+   бренда — `scripts/brand-logos.cjs`, затем `node scripts/brand-assets.cjs` (пересоздаёт логотип, значки и `public/og.jpg`;
+   с флагом `--logos` выгрузит все 14 вариантов логотипа в папку `brand-logos/` — для аватаров и соцсетей); цвет раздела —
+   `--bg-5` в `src/assets/scss/_variables.scss`; названия — `Header.title` (бренд) и `Metadata.siteName` (раздел) в 9 словарях.
 4. **Правила «Приведи друга» Ozon Банка** (`finance.ozon.ru/documents/mgm`): прочитать, разрешена ли публичная реклама ссылок.
 5. **Адреса складов:** у 13 складов, добавленных 10.10.2026, полный адрес по картам не сверен; у Краснодара Ozon пишет
    «ул. Почтовый тракт, д. 999, стр. М» — похоже на заглушку.
@@ -74,7 +98,7 @@ npx qrcode -t svg -o src/assets/svg/card-qr.svg "https://новая-ссылка
 | `RATING_CHECKED_AT` | `src/config/rating.ts` | 2026-09-25 | уровни и баллы `/menu/level` |
 | `REFERRALS_CHECKED_AT` | `src/config/referrals.ts` | 2026-09-25 | условия Ozon Банка в «Акциях» |
 | `APP_SCREENS_TAKEN_AT` | `src/config/site.ts` | 2026-10-09 | менять, если пересняли скриншоты |
-| `LEGAL_UPDATED_AT` | `src/config/legal.ts` | 2026-10-11 | менять при любой правке документов (`LegalDocs.*`) |
+| `LEGAL_UPDATED_AT` | `src/config/legal.ts` | 2026-10-12 | менять при любой правке документов (`LegalDocs.*`) |
 | `updatedAt` | `src/data/sklad/warehouses.json` | 2026-10-10 | склады — как обновлять, см. CLAUDE.md §8 |
 
 Перед запуском пройти первые четыре: с сентября условия Ozon могли измениться.
@@ -124,7 +148,7 @@ npx qrcode -t svg -o src/assets/svg/card-qr.svg "https://новая-ссылка
 ### 3.4. Документы сайта
 
 `/menu/about`, `/menu/privacy`, `/menu/cookies`, `/menu/terms`, `/menu/ads` — тексты в `messages/*.json` → `LegalDocs.*`,
-владелец, контакты и хостинг подставляются из `src/config/legal.ts`. Редакция от 11.10.2026. Что в них заявлено —
+владелец, контакты и хостинг подставляются из `src/config/legal.ts`. Редакция от 12.10.2026. Что в них заявлено —
 и что должно оставаться правдой:
 
 - на сайте нет форм и регистрации; ставится одна cookie — `cookie_consent` (выбор в баннере), тема хранится в браузере;
@@ -138,7 +162,8 @@ npx qrcode -t svg -o src/assets/svg/card-qr.svg "https://новая-ссылка
 
 ## 4. Домен и хостинг
 
-- **Домен:** .ru/.рф, без «ozon» в имени (иначе возможны претензии правообладателя). Регистрировать на своё имя,
+- **Домен:** `rendit.ru`, сайт — на поддомене `job.rendit.ru` (в адресе страниц есть `/ozon` — это название раздела,
+  а не домена; слово «ozon» в самом домене не нужно — возможны претензии правообладателя). Регистрировать на своё имя,
   в кабинете регистратора пройти подтверждение через Госуслуги — без него домен не зарегистрируют и не продлят.
   Включить автопродление и двухфакторный вход.
 - **Хостинг:** VPS с дата-центром в России (Timeweb Cloud, Selectel, REG.RU, Beget, Yandex Cloud). Vercel не подходит:
@@ -158,13 +183,13 @@ npm run lint
 npx next start -p 3495
 ```
 
-`http://localhost:3495`:
+`http://localhost:3495/ozon` (с корня переадресует сам):
 
 - [ ] главная, `/sklad`, страница города, `/stocks`, `/menu`, `/menu/level`, `/menu/support`, `/menu/cooperation`, документы;
 - [ ] 9 языков (`/uz`, `/tg`, `/hy`, `/az`, `/ka`, `/ky`, `/kk`, `/en`), тёмная тема;
 - [ ] баннер cookie: «Принять» и «Отклонить»; на `/menu/cookies` кнопка «Изменить выбор cookie» открывает его снова;
 - [ ] телефон (режим устройства 360–375 px): ничего не вылезает за экран;
-- [ ] `/sitemap.xml` и `/robots.txt` — адреса с вашим доменом.
+- [ ] `/ozon/sitemap.xml` и `/ozon/robots.txt` — адреса вида `https://job.rendit.ru/ozon/…`.
 
 Закоммитить и отправить на GitHub (`Relux777/ozon_v5`) — сервер забирает код оттуда.
 
@@ -172,7 +197,8 @@ npx next start -p 3495
 
 ## 6. Сервер
 
-Ниже `example.ru` — домен, `1.2.3.4` — IP сервера, `deploy` — пользователь сайта.
+Ниже `1.2.3.4` — IP сервера, `deploy` — пользователь сайта. Этот проект слушает порт **3001**, порт 3000 оставлен
+корневому приложению с вакансиями.
 
 ### 6.1. Первый вход, пользователь, защита
 
@@ -212,7 +238,6 @@ sudo apt install -y nodejs git
 sudo mkdir -p /var/www/ozon && sudo chown deploy:deploy /var/www/ozon
 git clone https://github.com/Relux777/ozon_v5.git /var/www/ozon
 cd /var/www/ozon
-echo 'NEXT_PUBLIC_SITE_URL=https://example.ru' > .env.production
 npm ci
 npm run build
 ```
@@ -233,7 +258,7 @@ Type=simple
 User=deploy
 WorkingDirectory=/var/www/ozon
 Environment=NODE_ENV=production
-ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 3000 -H 127.0.0.1
+ExecStart=/usr/bin/node node_modules/next/dist/bin/next start -p 3001 -H 127.0.0.1
 Restart=always
 RestartSec=5
 
@@ -251,7 +276,7 @@ sudo systemctl status ozon
 
 ### 6.5. DNS, Nginx, HTTPS
 
-У регистратора: записи `A` для `@` и `www` → `1.2.3.4`. Когда `ping example.ru` показывает IP сервера:
+У регистратора: запись `A` для `job` → `1.2.3.4`. Когда `ping job.rendit.ru` показывает IP сервера:
 
 ```bash
 sudo apt install -y nginx certbot python3-certbot-nginx
@@ -265,8 +290,8 @@ sudo nano /etc/nginx/sites-available/ozon
 server {
     listen 80;
     listen [::]:80;
-    server_name example.ru www.example.ru;
-    location / { proxy_pass http://127.0.0.1:3000; proxy_set_header Host $host; }
+    server_name job.rendit.ru;
+    location / { proxy_pass http://127.0.0.1:3001; proxy_set_header Host $host; }
 }
 ```
 
@@ -274,42 +299,32 @@ server {
 sudo ln -s /etc/nginx/sites-available/ozon /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 sudo nginx -t && sudo systemctl reload nginx
-sudo certbot --nginx -d example.ru -d www.example.ru
+sudo certbot --nginx -d job.rendit.ru
 ```
 
 Затем заменить содержимое файла на итоговое (сертификат продлевается сам):
 
 ```nginx
+# раздел об Ozon (этот проект)
 upstream ozon_next {
-    server 127.0.0.1:3000;
+    server 127.0.0.1:3001;
     keepalive 32;
 }
 
-# http → https, www → без www
+# http → https
 server {
     listen 80;
     listen [::]:80;
-    server_name example.ru www.example.ru;
-    return 301 https://example.ru$request_uri;
+    server_name job.rendit.ru;
+    return 301 https://job.rendit.ru$request_uri;
 }
 
 server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
-    server_name www.example.ru;
-    ssl_certificate /etc/letsencrypt/live/example.ru/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/example.ru/privkey.pem;
-    include /etc/letsencrypt/options-ssl-nginx.conf;
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
-    return 301 https://example.ru$request_uri;
-}
-
-server {
-    listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-    server_name example.ru;
-    ssl_certificate /etc/letsencrypt/live/example.ru/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/example.ru/privkey.pem;
+    server_name job.rendit.ru;
+    ssl_certificate /etc/letsencrypt/live/job.rendit.ru/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/job.rendit.ru/privkey.pem;
     include /etc/letsencrypt/options-ssl-nginx.conf;
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
 
@@ -320,16 +335,32 @@ server {
     gzip_min_length 1024;
     gzip_types text/plain text/css application/javascript application/json application/xml image/svg+xml;
 
-    location / {
+    proxy_http_version 1.1;
+    proxy_set_header Connection "";
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_buffering off;
+
+    # всё, что начинается с /ozon, — этому проекту
+    location /ozon {
         proxy_pass http://ozon_next;
-        proxy_http_version 1.1;
-        proxy_set_header Connection "";
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_buffering off;
     }
+
+    # ── пока корневого приложения с вакансиями нет ──
+    # robots.txt поисковики читают только из корня домена — отдаём наш
+    location = /robots.txt {
+        proxy_pass http://ozon_next/ozon/robots.txt;
+    }
+    # корень домена временно ведёт в раздел (302 — не «навсегда»)
+    location = / {
+        return 302 /ozon;
+    }
+    # ── когда появится корневое приложение (порт 3000): убрать два блока выше и раскомментировать ──
+    # location / {
+    #     proxy_pass http://127.0.0.1:3000;
+    # }
 }
 ```
 
@@ -369,10 +400,10 @@ echo "Готово: $(git log -1 --format='%h %s')"
 
 ### 7.1. Проверки
 
-- [ ] `https://example.ru` открывается; `http://` и `www.` перенаправляют на него; сертификат действующий;
-- [ ] `/robots.txt` — строка `Sitemap: https://example.ru/sitemap.xml`; в `/sitemap.xml` и в коде страницы
-      (`canonical`, `hreflang`) — ваш домен, а не `ozon-rabota.ru`;
-- [ ] 9 языков, страница города, несуществующий адрес (`/abc`) отдаёт 404;
+- [ ] `https://job.rendit.ru/ozon` открывается; `http://` перенаправляет на `https://`; сертификат действующий;
+- [ ] `https://job.rendit.ru/robots.txt` (в корне!) — строка `Sitemap: https://job.rendit.ru/ozon/sitemap.xml`;
+      в sitemap и в коде страницы (`canonical`, `hreflang`) — адреса вида `https://job.rendit.ru/ozon/…`;
+- [ ] 9 языков, страница города, несуществующий адрес (`/ozon/abc`) отдаёт 404;
 - [ ] баннер cookie появляется в режиме инкогнито;
 - [ ] превью ссылки в Telegram: у главной — `og.jpg`, у страницы города — своя картинка с названием города;
 - [ ] реферальные ссылки в «Акциях» и код приглашения работают; телефон, почта, Telegram открываются;
@@ -383,7 +414,9 @@ echo "Готово: $(git log -1 --format='%h %s')"
 1. [Яндекс Вебмастер](https://webmaster.yandex.ru) → добавить сайт → «Мета-тег»; [Search Console](https://search.google.com/search-console)
    → «Ресурс с префиксом URL» → «Тег HTML». Из обоих тегов взять значение `content`.
 2. Вписать в `src/config/site.ts` → `SEARCH_VERIFICATION = { yandex: '…', google: '…' }`, выложить, нажать «Проверить».
-3. В обеих панелях добавить `https://example.ru/sitemap.xml`. В Вебмастере: региональность — Россия.
+3. Сайт в панелях — `https://job.rendit.ru` (весь поддомен: поисковики подтверждают права по главной странице, тег
+   выводит и наш раздел). Пока корень домена переадресует в `/ozon`, проверка мета-тегом может не пройти — тогда выбрать
+   подтверждение DNS-записью. В обеих панелях добавить `https://job.rendit.ru/ozon/sitemap.xml`. В Вебмастере: региональность — Россия.
 
 ### 7.3. Яндекс Метрика
 

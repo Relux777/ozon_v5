@@ -21,7 +21,7 @@
     "title": "Tilni tanlang"
   },
   "Header": {
-    "title": "Ozon Ish"
+    "title": "RenDit Ish"
   },
   "NavBar": {
     "home": "Bosh sahifa",
@@ -843,7 +843,7 @@
       "title": "Loyiha haqida",
       "what": {
         "title": "Bu qanday sayt",
-        "text": "«Ozon Ish» — Ozon Job ilovasi orqali Ozon omborlarida qo'shimcha ish qidirayotganlar uchun mustaqil axborot sayti. Biz Ozon emasmiz va uning rasmiy vakili ham emasmiz: Ozon — ООО «Интернет Решения» (MChJ “Internet Resheniya”) tovar belgisi. Rasmiy shartlarni doimo Ozon Job ilovasida, <job>job.ozon.ru</job> saytida, <help>Ozon Job ma'lumotnomasida</help> va <career>career.ozon.ru</career> saytida ko'ring."
+        "text": "«Ozon Ish» — «RenDit Ish» saytining bo'limi: Ozon Job ilovasi orqali Ozon omborlarida qo'shimcha ish qidirayotganlar uchun mustaqil axborot sayti. Biz Ozon emasmiz va uning rasmiy vakili ham emasmiz: Ozon — ООО «Интернет Решения» (MChJ “Internet Resheniya”) tovar belgisi. Rasmiy shartlarni doimo Ozon Job ilovasida, <job>job.ozon.ru</job> saytida, <help>Ozon Job ma'lumotnomasida</help> va <career>career.ozon.ru</career> saytida ko'ring."
       },
       "sources": {
         "title": "Ma'lumotlar qayerdan olinadi",
@@ -1015,7 +1015,7 @@
       },
       "ip": {
         "title": "Tovar belgilari va sayt materiallari",
-        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium va boshqa belgilar — ularning huquq egalarining tovar belgilari (Ozon — ООО «Интернет Решения»); saytda ular faqat tegishli xizmatlarni nomlash uchun tilga olinadi. Saytning matnlari, dizayni, illyustratsiyalari va kodi egaga tegishli; ulardan saytga faol havola bilan iqtibos keltirish mumkin. Ozon Job ilovasi skrinshotlarini ega o'z akkauntida olgan; ulardagi interfeys va belgilar Ozon kompaniyasiga tegishli va faqat ilova qanday ishlashini tushuntirish uchun ko'rsatilgan. Ikonkalar — Boxicons (CC BY 4.0 litsenziyasi), shriftlar — Geist va Noto Sans (SIL OFL 1.1 litsenziyasi)."
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium va boshqa belgilar — ularning huquq egalarining tovar belgilari (Ozon — ООО «Интернет Решения»); saytda ular faqat tegishli xizmatlarni nomlash uchun tilga olinadi. Saytning matnlari, dizayni, illyustratsiyalari va kodi egaga tegishli; ulardan saytga faol havola bilan iqtibos keltirish mumkin. Ozon Job ilovasi skrinshotlarini ega o'z akkauntida olgan; ulardagi interfeys va belgilar Ozon kompaniyasiga tegishli va faqat ilova qanday ishlashini tushuntirish uchun ko'rsatilgan. Ular axborot maqsadida, shu maqsad uchun zarur hajmda va manbasi ko'rsatilgan holda keltirilgan (RF Fuqarolik kodeksining 1274-moddasi). Ikonkalar — Boxicons (CC BY 4.0 litsenziyasi), shriftlar — Geist va Noto Sans (SIL OFL 1.1 litsenziyasi)."
       },
       "liability": {
         "title": "Javobgarlik",
@@ -1269,7 +1269,7 @@
     "contactsKicker": "Biz bilan bog'lanish",
     "contactsTitle": "Sayt bo'yicha savollar va hamkorlik",
     "contactsText": "Xato yoki eskirgan ma'lumot topdingizmi? Kompaniyangiz uchun xuddi shunday reklama saytini buyurtma qilmoqchimisiz? Yozing yoki qo'ng'iroq qiling.",
-    "mailSubject": "«Озон Работа» saytidan savol",
+    "mailSubject": "«Ozon Ish» saytidan savol",
     "cooperationLink": "Hamkorlik haqida batafsil",
     "privacyNote": "Murojaatlarga qanday ishlov berishimiz — <link>shaxsiy ma'lumotlarga ishlov berish siyosatida</link>."
   },
@@ -1817,7 +1817,7 @@
     "eyebrow": "Ozon Job ilovasi",
     "title": "Ilova ichidan qanday ko'rinadi",
     "lead": "O'n ikkita ekran — ombor va smenani tanlashdan to'lovlar, reyting va taklif kodigacha. Skrinshotlarni varaqlang yoki kattaroq ko'rish uchun istalganini bosing.",
-    "note": "Skrinshotlar {date} sayt muallifining akkauntida, iOS ilovasida, Qozon omborlari misolida olingan. Interfeys ilova versiyasiga qarab farq qilishi mumkin. Skrinshotlardagi summalar, tariflar va aksiyalar — shu sana uchun misol: boshqa omborlarda va boshqa kunlarda ular boshqacha va kafolatlanmaydi. Ozon — «Интернет Решения» MChJ tovar belgisi; sayt Ozon bilan bog'liq emas.",
+    "note": "Skrinshotlar {date} sayt muallifining akkauntida, iOS ilovasida, Qozon omborlari misolida olingan. Interfeys ilova versiyasiga qarab farq qilishi mumkin. Skrinshotlardagi summalar, tariflar va aksiyalar — shu sana uchun misol: boshqa omborlarda va boshqa kunlarda ular boshqacha va kafolatlanmaydi. Ozon — «Интернет Решения» MChJ tovar belgisi; sayt Ozon bilan bog'liq emas. Skrinshotlar axborot maqsadida iqtibos sifatida keltirilgan (RF Fuqarolik kodeksining 1274-moddasi): manba — Ozon Job ilovasi, uning interfeysiga bo'lgan huquqlar ООО «Интернет Решения» kompaniyasiga tegishli.",
     "items": [
       {
         "title": "Bosh ekran",

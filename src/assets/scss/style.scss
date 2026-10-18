@@ -19,12 +19,18 @@
     @media (width < 390px) { --alert-bottom: 78px; }
 }
 
-// Фирменный синий берём из токена --bg-5 (= #005bff, одинаков в светлой и тёмной теме — см. _variables.scss).
-// Эти два — только оттенки градиента синего блока-акции (.promo/.card-visual/«целевой» шаг степпера),
-// в токенах темы их нет, поэтому — переменные, чтобы значение не повторялось по файлу как «магическое число».
-$promo-blue-dark: #0044c2;
-$promo-blue-light: #3f9bff;
-$promo-navy: #0a1f44;
+// Два цвета. Бренд всего проекта job.rendit.ru («РенДит Работа») — красный: логотип-сердце и слово «РенДит» в шапке.
+// Цвет РАЗДЕЛА — у каждого свой, под компанию, о которой раздел (здесь — синий «под Ozon», токен --bg-5 в _variables.scss):
+// кнопки, ссылки, цветные блоки. Новый раздел (/wb и т.п.) — свои --bg-4/--bg-5/--text-5 и оттенки ниже, бренд не трогать.
+:root { --color-rendit-job: #e5243f; }
+
+// Оттенки градиента цветного блока-акции (.promo/.card-visual/«целевой» шаг степпера): тёмный край, светлый край и глубокий
+// тёмно-синий для текста на белой карточке внутри блока. В токенах темы их нет, поэтому — переменные.
+$promo-dark: #0a44c0;
+$promo-light: #4a9cff;
+$promo-deep: #0b2148;
+// тень под цветными блоками
+$promo-shadow: #06185a;
 
 // ── Шрифты письменностей, которых нет в Geist ────────────────────────────────────────────────
 // Noto Georgian/Armenian — только на страницах ka/hy. Раньше они стояли в общем стеке, и на ЛЮБОЙ
@@ -202,7 +208,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 // кнопки на всю ширину, магазины — сеткой «сколько влезет».
 .promo {
     padding: clamp(18px, 4vw, 40px);
-    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 45%, $promo-blue-light 100%);
+    background: linear-gradient(135deg, $promo-dark 0%, rgb(var(--bg-5)) 45%, $promo-light 100%);
     color: rgb(255 255 255 / 90%);
     box-shadow: 0 40px 80px -40px rgb(var(--bg-5) / 80%);
 
@@ -233,7 +239,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
         left: -120px;
         width: 380px;
         height: 380px;
-        background: radial-gradient(closest-side, rgb(0 20 90 / 45%), transparent);
+        background: radial-gradient(closest-side, rgba($promo-shadow, 0.45), transparent);
     }
 }
 
@@ -289,7 +295,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 .promo-code {
     padding: 6px 6px 6px 18px;
     background: #fff;
-    color: $promo-navy;
+    color: $promo-deep;
     box-shadow: 0 6px 20px -8px rgb(0 0 0 / 35%);
 
     code {
@@ -308,7 +314,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     color: #fff;
     transition: background 0.2s, scale 0.15s;
 
-    @include mixins.hover { background: #0047cc; }
+    @include mixins.hover { background: #0b4fd6; }
     @include mixins.touch-press { scale: 0.96; }
 }
 
@@ -361,18 +367,18 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
         @include mixins.hover {
             translate: 0 -4px;
             background: rgb(255 255 255 / 18%);
-            box-shadow: 0 18px 30px -20px rgb(0 20 90 / 70%);
+            box-shadow: 0 18px 30px -20px rgba($promo-shadow, 0.7);
         }
 
         // последний шаг — «цель»: белая карточка
         &:last-child {
             border-color: transparent;
             background: #fff;
-            color: rgb(10 31 68 / 80%);
+            color: rgb(11 33 72 / 80%);
 
-            h3 { color: $promo-navy; }
+            h3 { color: $promo-deep; }
             .promo-num { background: rgb(var(--bg-5)); color: #fff; }
-            .promo-ghost { color: rgb(0 91 255 / 10%); }
+            .promo-ghost { color: rgb(var(--bg-5) / 10%); }
         }
     }
 
@@ -407,7 +413,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
 .promo-num {
     background: #fff;
-    color: $promo-blue-dark;
+    color: $promo-dark;
 }
 
 .promo-condition { color: rgb(255 255 255 / 90%); }
@@ -424,7 +430,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 // раскладка/отступы/радиус — утилитами ReluxCode в разметке (h-46 px-24 br-36 font-w-500), здесь только цвет и hover
 .promo-btn {
     background: #fff;
-    color: #0a2a6b;
+    color: #0c2b6c;
     transition: translate 0.2s, scale 0.15s;
 
     @include mixins.hover { translate: 0 -2px; }
@@ -454,9 +460,9 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     margin-inline: auto;
     margin-bottom: 56px;
     aspect-ratio: 1.586;
-    background: linear-gradient(135deg, $promo-navy 0%, rgb(var(--bg-5)) 70%, #79b8ff 120%);
+    background: linear-gradient(135deg, $promo-deep 0%, rgb(var(--bg-5)) 70%, #7cb8ff 120%);
     color: #fff;
-    box-shadow: 0 20px 40px -24px rgb(0 20 90 / 70%);
+    box-shadow: 0 20px 40px -24px rgba($promo-shadow, 0.7);
     rotate: -4deg;
 }
 
@@ -474,7 +480,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     bottom: -56px;
     max-width: 140px;
     background: #fff;
-    box-shadow: 0 20px 40px -20px rgb(0 20 90 / 70%);
+    box-shadow: 0 20px 40px -20px rgba($promo-shadow, 0.7);
     rotate: 4deg;
 
     // на телефоне карта занимает всю ширину блока — выступающий вправо QR упирался в его край
@@ -561,7 +567,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
 // итог формулы («Вознаграждение») — синий, как блок-акция: сразу видно, что получается в результате
 .formula-result {
-    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+    background: linear-gradient(135deg, $promo-dark 0%, rgb(var(--bg-5)) 55%, $promo-light 100%);
     color: rgb(255 255 255 / 88%);
     box-shadow: 0 18px 36px -24px rgb(var(--bg-5) / 80%);
 
@@ -1003,7 +1009,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 // карточка «средний доход» — синяя, как блок-акция (.promo): главная цифра страницы, белый текст в обеих темах
 .city-stat-accent {
     border-color: transparent;
-    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+    background: linear-gradient(135deg, $promo-dark 0%, rgb(var(--bg-5)) 55%, $promo-light 100%);
     color: rgb(255 255 255 / 88%);
     box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
 
@@ -1139,7 +1145,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     border-color: transparent;
     background:
         radial-gradient(90% 70% at 100% 0%, rgb(255 255 255 / 22%) 0%, transparent 60%),
-        linear-gradient(140deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+        linear-gradient(140deg, $promo-dark 0%, rgb(var(--bg-5)) 55%, $promo-light 100%);
     color: rgb(255 255 255 / 88%);
     box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
 
@@ -1330,8 +1336,8 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 .app-card {
     background:
         radial-gradient(60% 80% at 100% 0%, rgb(255 255 255 / 22%) 0%, transparent 60%),
-        radial-gradient(50% 60% at 0% 100%, rgb(63 155 255 / 55%) 0%, transparent 70%),
-        linear-gradient(140deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 60%, $promo-blue-light 100%);
+        radial-gradient(50% 60% at 0% 100%, rgb(74 156 255 / 55%) 0%, transparent 70%),
+        linear-gradient(140deg, $promo-dark 0%, rgb(var(--bg-5)) 60%, $promo-light 100%);
     color: rgb(255 255 255 / 88%);
     box-shadow: 0 30px 60px -36px rgb(var(--bg-5) / 90%);
 
@@ -1385,7 +1391,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     width: 170px;
     padding: 8px;
     border-radius: 30px;
-    background: #0b1a3a;
+    background: #0c1b3b;
     box-shadow:
         0 0 0 1px rgb(255 255 255 / 20%),
         0 30px 50px -20px rgb(0 0 0 / 55%);
@@ -1414,14 +1420,14 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     width: 54px;
     height: 12px;
     border-radius: 12px;
-    background: #0b1a3a;
+    background: #0c1b3b;
     translate: -50% 0;
 }
 
 .app-phone-row {
     padding: 8px;
     border-radius: 12px;
-    background: rgb(0 91 255 / 7%);
+    background: rgb(var(--bg-5) / 7%);
     line-height: 1.3;
 }
 
@@ -1436,7 +1442,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
     height: 30px;
     margin-top: 6px;
     border-radius: 30px;
-    background: linear-gradient(90deg, rgb(var(--bg-5)), $promo-blue-light);
+    background: linear-gradient(90deg, rgb(var(--bg-5)), $promo-light);
 }
 
 // ── /stocks: приглашения Ozon Банка ────────────────────────────────────────────────────────────
@@ -1698,7 +1704,7 @@ body:lang(hy) { font-family: var(--font-geist), var(--font-hy), system-ui, Arial
 
 // краткая справка в модалке быстрой навигации (страница города) — в стиле синего блока-акции
 .city-summary {
-    background: linear-gradient(135deg, $promo-blue-dark 0%, rgb(var(--bg-5)) 55%, $promo-blue-light 100%);
+    background: linear-gradient(135deg, $promo-dark 0%, rgb(var(--bg-5)) 55%, $promo-light 100%);
     color: rgb(255 255 255 / 88%);
 
     p { margin: 0; }
@@ -1803,7 +1809,7 @@ main {
 
         .stepper-card {
             border-color: transparent;
-            background: linear-gradient(140deg, rgb(var(--bg-5)) 0%, $promo-blue-light 100%);
+            background: linear-gradient(140deg, rgb(var(--bg-5)) 0%, $promo-light 100%);
             box-shadow: 0 24px 50px -30px rgb(var(--bg-5) / 80%);
             color: rgb(255 255 255 / 90%);
 

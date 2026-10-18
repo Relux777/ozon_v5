@@ -4,6 +4,10 @@ import { getLocaleFromParams } from '@/i18n/params';
 import LegalDoc from '@/components/LegalDoc';
 import { legalValues } from '@/components/LegalDoc/rich';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // Раскрытие рекламы в одном месте: что на сайте реклама, кто рекламодатель, кто её распространяет и как
 // маркируется (ФЗ «О рекламе», ст. 18.1). Пометки «Реклама» стоят и у самих ссылок (#promo/#card на главной, /stocks).
 // Тексты — LegalDocs.ads (все 9 языков)

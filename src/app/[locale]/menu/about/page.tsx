@@ -5,6 +5,10 @@ import LegalDoc from '@/components/LegalDoc';
 import { legalValues } from '@/components/LegalDoc/rich';
 import { DATA_UPDATED_AT, getCitiesWithWarehouses, getCityIndex, getNationalStats } from '@/lib/sklad';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // О проекте: кто ведёт сайт, откуда данные, как сайт зарабатывает. Тексты — LegalDocs.about (все 9 языков)
 
 type Props = {

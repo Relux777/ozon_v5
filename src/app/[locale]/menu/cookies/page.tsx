@@ -6,6 +6,10 @@ import LegalDoc from '@/components/LegalDoc';
 import { legalValues } from '@/components/LegalDoc/rich';
 import CookieSettings from '@/components/CookieSettings';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // Cookie и согласие на аналитику: какие cookie ставит сайт, и отдельно — текст согласия на обработку данных
 // Яндекс Метрикой (с 01.09.2025 согласие оформляется отдельно от других документов, ч. 1 ст. 9 152-ФЗ).
 // Кнопка «Изменить выбор cookie» — отзыв согласия. Тексты — LegalDocs.cookies (все 9 языков, юридически значима русская версия).

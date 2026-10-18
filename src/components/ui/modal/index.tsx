@@ -44,11 +44,23 @@ export default function Modal({
   const contentHeight = useRef<number>(0);
   const rafRef = useRef<number | null>(null);
   const mouseCleanupRef = useRef<(() => void) | null>(null);
+  // актуальные isOpen и onClose — для очистки ниже (у неё пустой список зависимостей)
+  const openRef = useRef(isOpen);
+  const closeRef = useRef(onClose);
+
+  useEffect(() => {
+    openRef.current = isOpen;
+    closeRef.current = onClose;
+  });
 
   useEffect(() => {
     setMounted(true);
     return () => {
       mouseCleanupRef.current?.();
+      // Страницу с открытым окном спрятали при переходе или убрали — окно закрываем. С Cache Components (Next 16.4) прежняя
+      // страница не размонтируется, а прячется вместе со своим состоянием (React <Activity>) и возвращается по «назад»:
+      // без этого человек, сменивший язык и вернувшийся назад, видел бы открытую модалку, которую не открывал
+      if (openRef.current) closeRef.current();
     };
   }, []);
 

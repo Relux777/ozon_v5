@@ -21,7 +21,7 @@
     "title": "Choose a language"
   },
   "Header": {
-    "title": "Ozon Work"
+    "title": "RenDit Job"
   },
   "NavBar": {
     "home": "Home",
@@ -843,7 +843,7 @@
       "title": "About the project",
       "what": {
         "title": "What this site is",
-        "text": "“Ozon Work” is an independent information site for people looking for part-time work at Ozon warehouses through the Ozon Job app. We are not Ozon and not its official representative: Ozon is a trademark of Internet Solutions LLC (ООО «Интернет Решения»). Always check the official terms in the Ozon Job app, on <job>job.ozon.ru</job>, in the <help>Ozon Job help centre</help> and on <career>career.ozon.ru</career>."
+        "text": "“Ozon Work” is a section of the “RenDit Job” site: an independent information resource for people looking for part-time work at Ozon warehouses through the Ozon Job app. We are not Ozon and not its official representative: Ozon is a trademark of Internet Solutions LLC (ООО «Интернет Решения»). Always check the official terms in the Ozon Job app, on <job>job.ozon.ru</job>, in the <help>Ozon Job help centre</help> and on <career>career.ozon.ru</career>."
       },
       "sources": {
         "title": "Where the data comes from",
@@ -1015,7 +1015,7 @@
       },
       "ip": {
         "title": "Trademarks and site materials",
-        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium and other designations are trademarks of their respective owners (Ozon — Internet Solutions LLC, ООО «Интернет Решения»); they are mentioned on the site only to name the corresponding services. The texts, design, illustrations and code of the site belong to the owner; they may be quoted with an active link to the site. The Ozon Job app screenshots were taken by the owner in the owner’s own account; the interface and designations shown in them belong to Ozon and are displayed only to explain how the app works. Icons — Boxicons (CC BY 4.0 licence); fonts — Geist and Noto Sans (SIL OFL 1.1 licence)."
+        "text": "Ozon, Ozon Job, Ozon Bank, Ozon Premium and other designations are trademarks of their respective owners (Ozon — Internet Solutions LLC, ООО «Интернет Решения»); they are mentioned on the site only to name the corresponding services. The texts, design, illustrations and code of the site belong to the owner; they may be quoted with an active link to the site. The Ozon Job app screenshots were taken by the owner in the owner’s own account; the interface and designations shown in them belong to Ozon and are displayed only to explain how the app works. They are shown for information purposes, to the extent justified by that purpose and with the source indicated (Article 1274 of the Civil Code of the Russian Federation). Icons — Boxicons (CC BY 4.0 licence); fonts — Geist and Noto Sans (SIL OFL 1.1 licence)."
       },
       "liability": {
         "title": "Liability",
@@ -1817,7 +1817,7 @@
     "eyebrow": "Ozon Job app",
     "title": "What the app looks like inside",
     "lead": "Twelve screens — from choosing a warehouse and a shift to payouts, rating and the invitation code. Swipe through the screenshots or tap any of them to see it up close.",
-    "note": "Screenshots taken on {date} in the site author's account, in the iOS app, using Kazan warehouses as an example. The interface may differ depending on the app version. Amounts, rates and promotions in the screenshots are an example for that date: at other warehouses and on other days they differ and are not guaranteed. Ozon is a trademark of Internet Solutions LLC; this site is not affiliated with Ozon.",
+    "note": "Screenshots taken on {date} in the site author's account, in the iOS app, using Kazan warehouses as an example. The interface may differ depending on the app version. Amounts, rates and promotions in the screenshots are an example for that date: at other warehouses and on other days they differ and are not guaranteed. Ozon is a trademark of Internet Solutions LLC; this site is not affiliated with Ozon. The screenshots are shown for information purposes as quotations (Article 1274 of the Civil Code of the Russian Federation): the source is the Ozon Job app, and the rights to its interface belong to Internet Solutions LLC (ООО «Интернет Решения»).",
     "items": [
       {
         "title": "Home screen",

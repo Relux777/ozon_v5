@@ -4,6 +4,10 @@ import { getLocaleFromParams } from '@/i18n/params';
 import LegalDoc from '@/components/LegalDoc';
 import { legalValues } from '@/components/LegalDoc/rich';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // Пользовательское соглашение информационного сайта без аккаунтов и форм. Тексты — LegalDocs.terms (все 9 языков,
 // юридически значима русская версия); владелец и контакты — config/legal.ts. Не юридическая консультация — согласовать с юристом.
 

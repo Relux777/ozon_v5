@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getPathname } from '@/i18n/navigation';
 import { routing, type AppLocale } from '@/i18n/routing';
 import { DATA_UPDATED_AT, getCitiesWithWarehouses } from '@/lib/sklad';
-import { APP_SCREENS_TAKEN_AT, HOME_CHECKED_AT, SITE_CONFIG, SUPPORT_CHECKED_AT } from '@/config/site';
+import { absoluteUrl, APP_SCREENS_TAKEN_AT, HOME_CHECKED_AT, SUPPORT_CHECKED_AT } from '@/config/site';
 import { REFERRALS_CHECKED_AT, STOCKS_LOCALES } from '@/config/referrals';
 import { LEVEL_LOCALES, RATING_CHECKED_AT } from '@/config/rating';
 import { LEGAL_UPDATED_AT } from '@/config/legal';
@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return pages.flatMap((href) => {
     const locales = PAGE_LOCALES[href] ?? routing.locales;
     const urls: Record<string, string> = Object.fromEntries(
-      locales.map((locale) => [locale, `${SITE_CONFIG.url}${getPathname({ locale, href })}`]),
+      locales.map((locale) => [locale, absoluteUrl(getPathname({ locale, href }))]),
     );
     // x-default — как в hreflang на самих страницах (lib/seo.ts → getHreflangLinks): русская версия
     const fallback = urls[routing.defaultLocale];

@@ -22,6 +22,9 @@ export default async function HeaderComponent() {
     // флаг и название текущего языка — на сервере: так 7 SVG-флагов не попадают в общий клиентский JS
     // (весь список нужен только в модалке выбора языка, она грузится отдельным чанком)
     const { label: languageLabel, flag: Flag } = getLanguageByCode(await getLocale());
+    // в шапке — бренд всего проекта («РенДит Работа»), а не название раздела: первое слово («РенДит») — красным бренда
+    // (--color-rendit-job), второе («Работа») — цветом текста темы (в тёмной — белым)
+    const [brand, ...rest] = headerT('title').split(' ');
 
     return (
         <header className={`p-sticky t-0 z-20 ${styles.header}`}>
@@ -39,7 +42,9 @@ export default async function HeaderComponent() {
                         {/* Link из next-intl сохраняет текущую локаль */}
                         <Link href="/" className={`flex align-center gap-5 hover-80 ${styles.logo}`}>
                             <LogoIcon style={{ width: '30px', height: '30px' }} aria-hidden="true" />
-                            <span className='font-22 space-nowrap'>{headerT('title')}</span>
+                            <span className='font-22 font-w-700 space-nowrap'>
+                                <span className={styles.brand}>{brand}</span> <span className='color-2-90 font-w-500'>{rest.join(' ')}</span>
+                            </span>
                         </Link>
                     </li>
                 </ul>

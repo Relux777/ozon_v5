@@ -10,6 +10,10 @@ import { getLocaleFromParams } from '@/i18n/params';
 import { buildPageMetadata, faqJsonLd, generateJsonLd, siteSearchAction } from '@/lib/seo';
 import JsonLd from '@/components/ui/json-ld';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // Главная = первый экран (Hero) + общие секции (HomeSections: от «Ozon в цифрах» до «Источников»), а после
 // «Ozon в цифрах» — ссылки на страницы крупных городов (PopularCities). Часть секций (шаги, код приглашения,
 // Ozon Карта) показывает и страница города sklad/[city] — правки их разметки делать в HomeSections.

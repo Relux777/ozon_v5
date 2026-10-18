@@ -9,6 +9,7 @@ import { hasLocale } from 'next-intl';
 import { getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 import { getCity, getCityName, getCityStats } from '@/lib/sklad';
+import { BRAND_HEART, SECTION_GRADIENT } from '@/config/site';
 
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
@@ -35,7 +36,9 @@ const FONT_FILES = [
 
 const FONT_FAMILY = [...new Set(FONT_FILES.map(([family]) => family))].map((family) => `'${family}'`).join(', ');
 
-const fonts = Promise.all(
+// await на уровне модуля: шрифты читаются один раз при загрузке файла, до рендера. С Cache Components чтение файла
+// во время рендера считается «незакэшированным вводом-выводом», и картинка отдавала 500
+const fonts = await Promise.all(
     FONT_FILES.map(async ([name, file, weight]) => ({
         name,
         data: await readFile(join(FONT_DIR, file)),
@@ -66,7 +69,8 @@ export async function generateImageMetadata({ params }: Props) {
 
 export default async function Image({ params }: Props) {
     const { locale, city, t } = await load(params);
-    const tMeta = await getTranslations({ locale, namespace: 'Metadata' });
+    // рядом со знаком — бренд проекта («РенДит Работа»), как в шапке сайта
+    const tHeader = await getTranslations({ locale, namespace: 'Header' });
     const stats = getCityStats(city);
     const name = getCityName(city, locale);
 
@@ -89,15 +93,20 @@ export default async function Image({ params }: Props) {
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 padding: '64px 72px',
-                background: 'linear-gradient(135deg, #0044c2 0%, #005bff 55%, #3f9bff 100%)',
+                // те же оттенки, что у цветных блоков сайта ($promo-dark → --bg-5 → $promo-light в style.scss)
+                background: SECTION_GRADIENT,
                 color: '#fff',
                 fontFamily: FONT_FAMILY,
             }}
         >
             <div style={{ display: 'flex', alignItems: 'center', gap: 18, fontSize: 32, fontWeight: 700 }}>
-                {/* знак сайта — кольцо, как логотип в шапке */}
-                <div style={{ width: 44, height: 44, borderRadius: 22, border: '9px solid #fff' }} />
-                {tMeta('siteName')}
+                {/* знак сайта — сердце, как логотип в шапке */}
+                <svg width='48' height='48' viewBox='0 0 100 100' aria-hidden='true'>
+                    {BRAND_HEART.map((d) => (
+                        <path d={d} fill='#fff' key={d} />
+                    ))}
+                </svg>
+                {tHeader('title')}
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 22 }}>
@@ -124,6 +133,6 @@ export default async function Image({ params }: Props) {
 
             <div style={{ fontSize: 28, fontWeight: 500, opacity: 0.9 }}>{t('og.tagline')}</div>
         </div>,
-        { ...size, fonts: await fonts },
+        { ...size, fonts },
     );
 }

@@ -25,6 +25,10 @@ import CookieSVG from '@/assets/svg/support/cookie.svg';
 import BriefcaseSVG from '@/assets/svg/support/briefcase.svg';
 import CheckSVG from '@/assets/svg/check.svg';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // Меню — хаб сайта: разделы (строки-ссылки с иконками), приложение Ozon Job (магазины), официальные ресурсы Ozon
 // и документы сайта (компактный список). Тексты — MenuPage.* в messages/*.json, адреса и иконки — здесь.
 

@@ -40,6 +40,10 @@ import DiamondSVG from '@/assets/svg/level/diamond.svg';
 import CalculatorSVG from '@/assets/svg/level/calculator.svg';
 import HourglassSVG from '@/assets/svg/level/hourglass.svg';
 
+// Страница целиком статическая: сборка упадёт, если в неё попадёт рендер «на запрос» — cookies, headers, незакэшированные
+// данные (Next 16.4, работает с cacheComponents). У каждой страницы сайта, кроме [...rest]: там адрес заранее не известен
+export const ensureStatic = 'navigation';
+
 // Рейтинг Ozon Job: уровни (шкала + что даёт каждый), как начисляют и списывают баллы (таблицы с полосками),
 // калькулятор баллов за слот, бананы и бан, советы, вопросы (FAQPage) с кодом Ozon Job, источники.
 // Цифры — config/rating.ts (из приложения Ozon Job и справки), тексты — LevelPage.* (все 9 языков, см. LEVEL_LOCALES).

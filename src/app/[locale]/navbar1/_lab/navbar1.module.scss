@@ -1,0 +1,753 @@
+// Страница /navbar1 — варианты нижнего меню. Стили только этой служебной страницы: удаляются вместе с папкой.
+@use "../../../../assets/scss/mixins";
+
+// Пружины — те же кривые, что в ui/alert (_alert.scss): linear() с затухающим колебанием.
+// $spring — мягкая (перелёт ≈ 5 %), $spring-bouncy — упругая (≈ 16 %). Без linear() (Safari до 17.2) — $spring-fallback
+$spring: linear(0, 0.001 0.5%, 0.0084 1.7%, 0.0292 3.2%, 0.0683 5%, 0.1283 7.2%, 0.2088 9.6%, 0.3067 12.3%, 0.4169 15.2%, 0.5328 18.3%, 0.6472 21.7%, 0.7538 25.3%, 0.847 29%, 0.9234 33%, 0.9812 37.1%, 1.0207 41.5%, 1.0438 46%, 1.0534 50.7%, 1.0531 55.5%, 1.0463 60.5%, 1.0362 65.7%, 1.0254 71.1%, 1.0156 76.5%, 1.0078 82.2%, 1.0023 88%, 0.999 93.9%, 1);
+$spring-bouncy: linear(0, 0.0018 0.5%, 0.0156 1.7%, 0.0538 3.2%, 0.125 5%, 0.232 7.2%, 0.371 9.6%, 0.532 12.3%, 0.7001 15.2%, 0.8588 18.3%, 0.9926 21.7%, 1.0902 25.3%, 1.1464 29%, 1.163 33%, 1.1476 37.1%, 1.1117 41.5%, 1.0678 46%, 1.0268 50.7%, 0.996 55.5%, 0.9785 60.5%, 0.9734 65.7%, 0.9772 71.1%, 0.9853 76.5%, 0.9939 82.2%, 1.0003 88%, 1.0037 93.9%, 1);
+$spring-fallback: cubic-bezier(0.22, 1.2, 0.36, 1);
+$has-linear: "(transition-timing-function: linear(0, 1))";
+
+// Сдвиг слайдера, растяжение и «подъём» — зарегистрированные свойства: их можно плавно анимировать transition'ом,
+// и всё, что из них считается (сдвиг копии в линзе, маска, блик, тень), едет вместе с ними без JS.
+// --nb-i (номер пункта) ставит React, во время перетаскивания --nb-x и --nb-st пишет useTabDrag
+@property --nb-x {
+    syntax: "<length>";
+    inherits: true;
+    initial-value: 0px;
+}
+
+@property --nb-st {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 0;
+}
+
+@property --nb-lift {
+    syntax: "<number>";
+    inherits: true;
+    initial-value: 1;
+}
+
+@keyframes dock-in {
+    from {
+        translate: 0 90px;
+    }
+}
+
+@keyframes icon-pop {
+    0% {
+        scale: 1;
+    }
+    35% {
+        scale: 1.18;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+// ───────────── страница ─────────────
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr));
+    gap: 40px 28px;
+
+    > * {
+        min-inline-size: 0;
+    }
+
+    // main h2 на сайте крупный (заголовок секции) — здесь это подписи к экранам
+    h2 {
+        font-size: 20px;
+    }
+}
+
+// «Что попробовать» — чипами
+.tries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    li {
+        padding: 4px 10px;
+        border-radius: 999px;
+        background: rgb(var(--bg-5) / 10%);
+        color: rgb(var(--text-5, var(--bg-5)));
+    }
+}
+
+// «Экран телефона»: внутри прокручивается заглушка, меню стоит поверх. container — для ширины панели варианта 3
+.frame {
+    container-type: inline-size;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    inline-size: 100%;
+    max-inline-size: 420px;
+    block-size: 580px;
+    margin-inline: auto;
+    border-radius: 40px;
+    background: rgb(var(--bg-phone));
+    box-shadow:
+        0 0 0 1px rgb(var(--bg-2) / 10%),
+        0 24px 60px -30px rgb(0 0 0 / 40%);
+
+    @media (width < 440px) {
+        block-size: 540px;
+        border-radius: 32px;
+    }
+}
+
+.screen {
+    position: absolute;
+    inset: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 18px 16px 120px;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+// заглушка страницы
+.fakeHead {
+    padding: 4px 4px 0;
+}
+
+.dot {
+    flex: none;
+    inline-size: 30px;
+    block-size: 30px;
+    border-radius: 50%;
+    background: var(--color-rendit-job);
+}
+
+.line {
+    display: block;
+    block-size: 10px;
+    border-radius: 6px;
+    background: rgb(var(--bg-2) / 10%);
+}
+
+.hero {
+    justify-content: flex-end;
+    min-block-size: 150px;
+    padding: 20px;
+    border-radius: 26px;
+    background: linear-gradient(135deg, #0a44c0 0%, rgb(var(--bg-5)) 55%, #4a9cff 100%);
+}
+
+.heroLine {
+    display: block;
+    block-size: 12px;
+    border-radius: 6px;
+    background: rgb(255 255 255 / 75%);
+}
+
+.heroBtn {
+    display: block;
+    inline-size: 110px;
+    block-size: 34px;
+    margin-block-start: 6px;
+    border-radius: 999px;
+    background: #fff;
+}
+
+.pic {
+    display: block;
+    inline-size: 100%;
+    block-size: auto;
+    border-radius: 24px;
+    background: rgb(var(--bg-3));
+}
+
+.tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.tile {
+    aspect-ratio: 1.4;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--c), color-mix(in srgb, var(--c), #fff 35%));
+}
+
+// ───────────── 2 и 4: наше меню со слайдером, который тянется ─────────────
+// Вид и размеры — из components/NavBar/nav.module.scss. Селекторы с .ourDock и ul — сильнее его «.nav .ul»
+
+.ourDock ul.ourBar {
+    --nb-x: calc(var(--nb-i, 0) * var(--item-width));
+
+    touch-action: pan-y; // вверх-вниз — прокрутка страницы, вбок — слайдер
+    user-select: none;
+    -webkit-touch-callout: none;
+    transition:
+        inline-size 0.4s ease,
+        --nb-x 0.55s $spring-fallback,
+        --nb-st 0.35s ease-out,
+        --nb-lift 0.5s $spring-fallback;
+
+    @supports #{$has-linear} {
+        transition-timing-function: ease, $spring, ease-out, $spring-bouncy;
+    }
+}
+
+// 2: пока тянут — слайдер чуть приподнят и темнее
+.ourDock ul.ourBar:not(.ourLift)[data-dragging] {
+    --nb-lift: 1.05;
+}
+
+// 4: нажали — слайдер переезжает под палец и растёт; держат — растёт дальше; отпустили — садится с покачиванием
+.ourDock ul.ourLift {
+    overflow: visible; // поднятый слайдер выходит за плашку, как стекло в iOS
+
+    &[data-pressed] {
+        --nb-lift: 1.16;
+
+        transition:
+            inline-size 0.4s ease,
+            --nb-x 0.45s $spring-fallback,
+            --nb-st 0.35s ease-out,
+            --nb-lift 0.4s $spring-fallback;
+
+        @supports #{$has-linear} {
+            transition-timing-function: ease, $spring, ease-out, $spring;
+        }
+    }
+
+    &[data-hold] {
+        --nb-lift: 1.3;
+
+        transition:
+            inline-size 0.4s ease,
+            --nb-x 0.45s $spring-fallback,
+            --nb-st 0.35s ease-out,
+            --nb-lift 1.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+}
+
+// за пальцем — без задержки: --nb-x и --nb-st пишутся каждый кадр
+.ourDock ul.ourBar[data-dragging] {
+    transition:
+        inline-size 0.4s ease,
+        --nb-lift 0.45s $spring-fallback;
+}
+
+.ourSlider {
+    translate: var(--nb-x) 0;
+    scale: calc(var(--nb-lift) * (1 + var(--nb-st))) calc(var(--nb-lift) * (1 - var(--nb-st) * 0.45));
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+    will-change: translate, scale;
+}
+
+.ourDock ul.ourBar[data-dragging] .ourSlider {
+    background-color: rgb(var(--bg-2) / 14%);
+}
+
+// 4: поднятый слайдер — прозрачное стекло с яркой кромкой и тенью
+.ourDock ul.ourLift[data-pressed] .ourSlider {
+    background-color: rgb(255 255 255 / 22%);
+    box-shadow:
+        inset 0 0 0 1px rgb(255 255 255 / 60%),
+        inset 0 2px 5px rgb(255 255 255 / 55%),
+        inset 0 -4px 10px rgb(0 0 0 / 8%),
+        0 12px 28px -10px rgb(0 0 0 / 35%);
+
+    [data-theme='dark'] & {
+        background-color: rgb(255 255 255 / 10%);
+        box-shadow:
+            inset 0 0 0 1px rgb(255 255 255 / 25%),
+            inset 0 2px 5px rgb(255 255 255 / 15%),
+            inset 0 -4px 10px rgb(0 0 0 / 30%),
+            0 12px 28px -10px rgb(0 0 0 / 70%);
+    }
+}
+
+.ourItem {
+    svg,
+    span {
+        transition:
+            color 0.2s ease,
+            fill 0.2s ease,
+            scale 0.35s $spring-fallback;
+    }
+
+    &:active svg {
+        scale: 0.9;
+    }
+}
+
+.ourDock ul.ourBar[data-dragging] .ourItem:active svg {
+    scale: 1;
+}
+
+// 4: иконка под поднятым слайдером — крупнее, будто под линзой
+.ourDock ul.ourLift[data-pressed] .on {
+    svg {
+        scale: 1.14;
+    }
+
+    span {
+        scale: 1.05;
+    }
+}
+
+// ───────────── 3: как в iOS ─────────────
+
+.iosDock {
+    position: absolute;
+    inset-inline: 14px;
+    inset-block-end: 16px;
+    z-index: 10;
+    display: flex;
+    pointer-events: none;
+    animation: dock-in 0.7s $spring-fallback both;
+
+    @supports #{$has-linear} {
+        animation-timing-function: $spring;
+    }
+}
+
+.iosBar {
+    --bar-w: calc(100cqi - 28px);
+    --nb-pad: 4px;
+    --nb-h: 62px;
+    --nb-w: calc((var(--bar-w) - var(--nb-pad) * 2) / 4);
+    --nb-x: calc(var(--nb-i, 0) * var(--nb-w));
+
+    position: relative;
+    inline-size: var(--bar-w);
+    block-size: var(--nb-h);
+    overflow: hidden;
+    border-radius: 999px;
+    pointer-events: auto;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-touch-callout: none;
+    background: rgb(var(--bg-1) / 60%);
+    backdrop-filter: blur(18px) saturate(180%);
+    box-shadow:
+        inset 0 0 0 0.5px rgb(var(--bg-2) / 12%),
+        inset 0 1px 0 rgb(255 255 255 / 70%),
+        0 10px 30px -8px rgb(0 0 0 / 22%),
+        0 1px 3px rgb(0 0 0 / 8%);
+    transition:
+        inline-size 0.55s $spring-fallback,
+        --nb-x 0.5s $spring-fallback,
+        --nb-st 0.35s ease-out,
+        --nb-lift 0.45s $spring-fallback;
+
+    @supports #{$has-linear} {
+        transition-timing-function: $spring, $spring, ease-out, $spring-bouncy;
+    }
+
+    [data-theme='dark'] & {
+        background: rgb(40 40 44 / 55%);
+        box-shadow:
+            inset 0 0 0 0.5px rgb(255 255 255 / 14%),
+            inset 0 1px 0 rgb(255 255 255 / 12%),
+            0 10px 30px -8px rgb(0 0 0 / 70%);
+    }
+
+    &[data-pressed] {
+        --nb-lift: 1.06;
+    }
+
+    &[data-dragging] {
+        transition:
+            inline-size 0.55s $spring-fallback,
+            --nb-lift 0.45s $spring-fallback;
+    }
+
+    // свёрнута: кружок с текущим пунктом у левого края
+    &[data-collapsed] {
+        inline-size: var(--nb-h);
+        cursor: pointer;
+    }
+}
+
+.iosPill {
+    position: absolute;
+    inset-block-start: var(--nb-pad);
+    inset-inline-start: var(--nb-pad);
+    inline-size: var(--nb-w);
+    block-size: calc(var(--nb-h) - var(--nb-pad) * 2);
+    border-radius: 999px;
+    pointer-events: none;
+    translate: var(--nb-x) 0;
+    scale: calc(var(--nb-lift) * (1 + var(--nb-st))) calc(var(--nb-lift) * (1 - var(--nb-st) * 0.4));
+    background: rgb(120 120 128 / 16%);
+    transition:
+        opacity 0.25s ease,
+        background-color 0.25s ease;
+
+    [data-theme='dark'] & {
+        background: rgb(255 255 255 / 13%);
+    }
+
+    .iosBar[data-pressed] & {
+        background: rgb(120 120 128 / 26%);
+    }
+
+    [data-theme='dark'] .iosBar[data-pressed] & {
+        background: rgb(255 255 255 / 20%);
+    }
+
+    .iosBar[data-collapsed] & {
+        opacity: 0;
+    }
+}
+
+.iosTrack {
+    position: absolute;
+    inset-block-start: var(--nb-pad);
+    inset-inline-start: var(--nb-pad);
+    display: flex;
+    inline-size: calc(var(--nb-w) * 4);
+    block-size: calc(var(--nb-h) - var(--nb-pad) * 2);
+    transition: translate 0.55s $spring-fallback;
+
+    @supports #{$has-linear} {
+        transition-timing-function: $spring;
+    }
+
+    // текущий пункт — в центр кружка
+    .iosBar[data-collapsed] & {
+        translate: calc((var(--nb-h) - var(--nb-pad) * 2 - var(--nb-w)) / 2 - var(--nb-x)) 0;
+    }
+}
+
+.iosItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    inline-size: var(--nb-w);
+    block-size: 100%;
+    border-radius: 999px;
+    color: rgb(var(--bg-2) / 80%);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition:
+        color 0.25s ease,
+        opacity 0.3s ease;
+
+    svg {
+        flex: none;
+        transition:
+            translate 0.5s $spring-fallback,
+            scale 0.3s $spring-fallback;
+    }
+
+    span {
+        max-inline-size: calc(100% - 6px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        transition: opacity 0.2s ease;
+    }
+
+    &.on {
+        color: rgb(var(--text-5, var(--bg-5)));
+
+        svg {
+            animation: icon-pop 0.6s cubic-bezier(0.3, 0.7, 0.3, 1);
+        }
+    }
+
+    &:active svg {
+        scale: 0.88;
+    }
+
+    &:focus-visible {
+        outline-offset: -2px;
+    }
+
+    .iosBar[data-dragging] &:active svg {
+        scale: 1;
+    }
+
+    .iosBar[data-collapsed] & {
+        &:not(.on) {
+            opacity: 0;
+        }
+
+        span {
+            opacity: 0;
+        }
+
+        svg {
+            translate: 0 6px;
+        }
+    }
+}
+
+// ───────────── 5: жидкое стекло с линзой ─────────────
+
+.lensDock {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 18px;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    animation: dock-in 0.8s $spring-fallback both;
+
+    @supports #{$has-linear} {
+        animation-timing-function: $spring-bouncy;
+    }
+}
+
+.lensBar {
+    --nb-w: 72px;
+    --nb-h: 64px;
+    --nb-pad: 5px;
+    --nb-x: calc(var(--nb-i, 0) * var(--nb-w));
+    // видимая ширина линзы и вырез под ней в настоящем ряду иконок (чуть уже — край линзы закрывает стык)
+    --lens-w: calc(var(--nb-w) * var(--nb-lift) * (1 + var(--nb-st)));
+    --cut-l: calc(var(--nb-x) + (var(--nb-w) - var(--lens-w)) / 2 + 4px);
+    --cut-r: calc(var(--nb-x) + (var(--nb-w) + var(--lens-w)) / 2 - 4px);
+
+    position: relative;
+    display: flex;
+    padding: var(--nb-pad);
+    border-radius: 999px;
+    pointer-events: auto;
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-touch-callout: none;
+    background: rgb(var(--bg-1) / 38%);
+    backdrop-filter: blur(14px) saturate(190%) brightness(1.06);
+    // толщина стекла: светлая кромка сверху, тень по нижнему краю изнутри, мягкая тень под панелью
+    box-shadow:
+        inset 0 0 0 1px rgb(255 255 255 / 22%),
+        inset 0 -10px 16px -12px rgb(0 0 0 / 18%),
+        inset 0 8px 14px -10px rgb(255 255 255 / 55%),
+        0 16px 36px -14px rgb(0 0 0 / 32%),
+        0 2px 6px rgb(0 0 0 / 8%);
+    transition:
+        --nb-x 0.6s $spring-fallback,
+        --nb-st 0.35s ease-out,
+        --nb-lift 0.55s $spring-fallback;
+
+    @supports #{$has-linear} {
+        transition-timing-function: $spring, ease-out, $spring-bouncy;
+    }
+
+    [data-theme='dark'] & {
+        box-shadow:
+            inset 0 0 0 1px rgb(255 255 255 / 12%),
+            inset 0 -10px 16px -12px rgb(0 0 0 / 50%),
+            inset 0 8px 14px -10px rgb(255 255 255 / 14%),
+            0 16px 36px -14px rgb(0 0 0 / 80%);
+    }
+
+    &[data-pressed] {
+        --nb-lift: 1.14;
+
+        transition:
+            --nb-x 0.45s $spring-fallback,
+            --nb-st 0.35s ease-out,
+            --nb-lift 0.4s $spring-fallback;
+
+        @supports #{$has-linear} {
+            transition-timing-function: $spring, ease-out, $spring;
+        }
+    }
+
+    &[data-hold] {
+        --nb-lift: 1.24;
+
+        transition:
+            --nb-x 0.45s $spring-fallback,
+            --nb-st 0.35s ease-out,
+            --nb-lift 1.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    &[data-dragging] {
+        transition: --nb-lift 0.4s $spring-fallback;
+    }
+
+    @media (width < 390px) {
+        --nb-w: 64px;
+        --nb-h: 60px;
+    }
+
+    // кромка: светлая сверху-слева и снизу-справа — как свет, преломлённый на ребре стекла
+    &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        padding: 1px;
+        border-radius: inherit;
+        pointer-events: none;
+        background: linear-gradient(135deg, rgb(255 255 255 / 85%), rgb(255 255 255 / 0%) 30%, rgb(255 255 255 / 0%) 70%, rgb(255 255 255 / 60%));
+        mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+
+        [data-theme='dark'] & {
+            background: linear-gradient(135deg, rgb(255 255 255 / 40%), rgb(255 255 255 / 0%) 30%, rgb(255 255 255 / 0%) 70%, rgb(255 255 255 / 22%));
+        }
+    }
+
+    // блик бежит по панели за линзой и ярче, когда линза поднята
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: inherit;
+        pointer-events: none;
+        background: radial-gradient(110px 50px at calc(var(--nb-pad) + var(--nb-x) + var(--nb-w) / 2) 0, rgb(255 255 255 / 70%), rgb(255 255 255 / 0%) 70%);
+        mix-blend-mode: soft-light;
+        opacity: calc(0.6 + (var(--nb-lift) - 1) * 2);
+    }
+}
+
+// настоящий ряд пунктов; под линзой вырезан, чтобы иконка не двоилась с увеличенной копией
+.lensTrack {
+    position: relative;
+    display: flex;
+    mask: linear-gradient(90deg, #000 var(--cut-l), transparent var(--cut-l), transparent var(--cut-r), #000 var(--cut-r));
+}
+
+.lensItem {
+    display: flex;
+    flex: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    inline-size: var(--nb-w);
+    block-size: calc(var(--nb-h) - var(--nb-pad) * 2);
+    border-radius: 999px;
+    color: rgb(var(--bg-2) / 65%);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+
+    svg {
+        flex: none;
+        inline-size: 24px;
+        block-size: 24px;
+    }
+
+    > span {
+        max-inline-size: calc(100% - 8px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    &:focus-visible {
+        outline-offset: -3px;
+    }
+
+    @include mixins.hover {
+        color: rgb(var(--bg-2) / 90%);
+    }
+}
+
+.lens {
+    position: absolute;
+    inset-block-start: var(--nb-pad);
+    inset-inline-start: var(--nb-pad);
+    z-index: 1;
+    inline-size: var(--nb-w);
+    block-size: calc(var(--nb-h) - var(--nb-pad) * 2);
+    overflow: hidden;
+    border-radius: 999px;
+    pointer-events: none;
+    translate: var(--nb-x) 0;
+    scale: calc(var(--nb-lift) * (1 + var(--nb-st))) calc(var(--nb-lift) * (1 - var(--nb-st) * 0.4));
+    background:
+        linear-gradient(180deg, rgb(255 255 255 / 45%), rgb(255 255 255 / 12%) 60%, rgb(255 255 255 / 25%)),
+        rgb(var(--bg-5) / 8%);
+    // кромка линзы: белая + цветная (красноватая слева, голубоватая справа — дисперсия) + тень, растущая с подъёмом
+    box-shadow:
+        inset 0 0 0 1px rgb(255 255 255 / 60%),
+        inset 2px 0 3px -2px rgb(255 50 110 / 45%),
+        inset -2px 0 3px -2px rgb(30 150 255 / 50%),
+        inset 0 3px 5px -2px rgb(255 255 255 / 70%),
+        inset 0 -4px 8px -3px rgb(0 0 0 / 12%),
+        0 calc(3px + (var(--nb-lift) - 1) * 60px) calc(8px + (var(--nb-lift) - 1) * 110px) -6px rgb(0 0 0 / calc(16% + (var(--nb-lift) - 1) * 90%));
+    will-change: translate, scale;
+
+    [data-theme='dark'] & {
+        background:
+            linear-gradient(180deg, rgb(255 255 255 / 18%), rgb(255 255 255 / 4%) 60%, rgb(255 255 255 / 9%)),
+            rgb(var(--bg-5) / 14%);
+        box-shadow:
+            inset 0 0 0 1px rgb(255 255 255 / 28%),
+            inset 2px 0 3px -2px rgb(255 60 120 / 55%),
+            inset -2px 0 3px -2px rgb(60 170 255 / 60%),
+            inset 0 3px 5px -2px rgb(255 255 255 / 22%),
+            inset 0 -4px 8px -3px rgb(0 0 0 / 40%),
+            0 calc(3px + (var(--nb-lift) - 1) * 60px) calc(8px + (var(--nb-lift) - 1) * 110px) -6px rgb(0 0 0 / calc(50% + (var(--nb-lift) - 1) * 120%));
+    }
+
+    // полоска блика сверху линзы
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 2px 12% auto;
+        block-size: 38%;
+        border-radius: 999px;
+        background: linear-gradient(rgb(255 255 255 / 55%), rgb(255 255 255 / 0%));
+        opacity: calc(0.45 + (var(--nb-lift) - 1) * 2.5);
+    }
+}
+
+// увеличение под линзой: сама линза растёт сильнее, чем содержимое в ней (иначе при подъёме иконки «разъезжались»
+// за края). Делим на подъём — итоговое увеличение 1 + 0,7 × (подъём − 1): при 1,24 это ≈ 1,17
+.lensZoom {
+    position: absolute;
+    inset: 0;
+    scale: calc((1 + (var(--nb-lift) - 1) * 0.7) / var(--nb-lift));
+}
+
+// копия ряда, сдвинутая ровно под настоящий ряд: в линзе видна «своя» часть иконок
+.lensContent {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    display: flex;
+    block-size: 100%;
+    translate: calc(var(--nb-x) * -1) 0;
+
+    .lensItem {
+        color: rgb(var(--text-5, var(--bg-5)));
+        font-weight: 600;
+    }
+
+    .on svg {
+        animation: icon-pop 0.6s cubic-bezier(0.3, 0.7, 0.3, 1);
+    }
+}
+
+// ───────────── доступность ─────────────
+
+@media (prefers-reduced-transparency: reduce) {
+    .iosBar,
+    .lensBar {
+        background: rgb(var(--bg-3));
+        backdrop-filter: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .iosPill,
+    .lens {
+        outline: 2px solid Highlight;
+    }
+}

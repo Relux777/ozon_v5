@@ -3,9 +3,27 @@ import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'node:path';
 
+// Адрес сайта. Приложение живёт в подпапке домена (Multi-Zones): job.rendit.ru/ozon, а в корне домена работает
+// другое приложение (вакансии). Из адреса берётся basePath — Next сам добавляет его к ссылкам, статике и картинкам.
+// Значение вшивается при сборке: поменяли адрес (NEXT_PUBLIC_SITE_URL) — пересобрать. Переедете в корень домена —
+// достаточно адреса без подпапки: basePath станет пустым.
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://job.rendit.ru/ozon').replace(/\/+$/, '');
+const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/+$/, '');
+
 const nextConfig: NextConfig = {
   reactCompiler: true,
   poweredByHeader: false,
+  basePath: BASE_PATH,
+  // Cache Components (стандарт с Next 17): страница пререндерится, пока в ней нет данных «на запрос»; у каждой страницы сайта
+  // стоит ensureStatic = 'navigation' — сборка упадёт, если такие данные появятся. Partial Prefetching — ссылка заранее
+  // подгружает только общую «оболочку» страницы, а не страницу целиком
+  cacheComponents: true,
+  partialPrefetching: true,
+  // код читает адрес и подпапку отсюда (src/config/site.ts) — один источник для ссылок, canonical и sitemap
+  env: {
+    NEXT_PUBLIC_SITE_URL: SITE_URL,
+    NEXT_PUBLIC_BASE_PATH: BASE_PATH,
+  },
 
   images: {
     // AVIF — тем браузерам, что его понимают (Accept: image/avif), остальным WebP. Качество Next подбирает
@@ -40,6 +58,11 @@ const nextConfig: NextConfig = {
         as: '*.js',
       },
     },
+  },
+
+  // у себя на компьютере: localhost:3000 → localhost:3000/ozon (на сервере корень домена отдаёт другое приложение)
+  async redirects() {
+    return BASE_PATH ? [{ source: '/', destination: BASE_PATH, basePath: false, permanent: false }] : [];
   },
 
   async headers() {
