@@ -7,10 +7,9 @@ export const SITE_CONFIG = {
 } as const;
 
 /**
- * Полный адрес страницы по пути внутри сайта ('/', '/sklad/ufa', '/uz/menu'). Для корневого поддомена
- * главная — https://ozon.rendit.ru, а не …/ (со слэшем Next отдаёт редирект — в canonical и sitemap ему не место)
+ * Полный адрес страницы по пути внутри сайта ('/', '/sklad/ufa', '/uz/menu'). Главную канонизируем без завершающего слэша.
  */
-export const absoluteUrl = (path: string) => `${SITE_CONFIG.url}${path === '/' && SITE_CONFIG.basePath ? '' : path}`;
+export const absoluteUrl = (path: string) => `${SITE_CONFIG.url}${path === '/' ? '' : path}`;
 
 /**
  * Дата сверки текстов главной (шаги, выплаты, документы) со справкой Ozon Job (docs.ozon.ru).
@@ -33,11 +32,11 @@ export const APP_SCREENS_TAKEN_AT = '2026-10-09';
  * (<meta name="google-site-verification" content="…">). Пусто — тег не выводится.
  */
 export const SEARCH_VERIFICATION = {
-    yandex: '43691b5335c5ae82',
+    yandex: '0bc53ecab41f1b67',
     google: '',
 };
 
-/** Картинка для превью ссылок (Open Graph / Twitter): public/og.jpg, 1200×630. Адрес полный — с подпапкой сайта */
+/** Картинка для превью ссылок (Open Graph / Twitter): public/og.jpg, 1200×630. Адрес полный — на ozon.rendit.ru */
 export const OG_IMAGE = { url: `${SITE_CONFIG.url}/og.jpg`, width: 1200, height: 630 } as const;
 
 /**

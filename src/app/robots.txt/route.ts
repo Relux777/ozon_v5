@@ -2,9 +2,7 @@
 // Clean-param говорит Яндексу, что метки рекламы и рассылок (utm_*, yclid, gclid…) не меняют страницу, — иначе
 // ссылки с метками из Telegram/рекламы попадают в индекс отдельными страницами-дублями.
 //
-// ВНИМАНИЕ: сайт живёт в подпапке (job.rendit.ru/ozon), и этот файл отдаётся как /ozon/robots.txt. Поисковики читают
-// robots.txt только из корня домена — поэтому его строки (Clean-param и Sitemap) нужно повторить в /robots.txt корневого
-// приложения или отдавать этот файл оттуда через Nginx (см. instructions.md).
+// Приложение живёт в корне ozon.rendit.ru, поэтому маршрут отдаёт robots.txt непосредственно по адресу /robots.txt.
 import { SITE_CONFIG } from '@/config/site';
 
 // export const dynamic = 'force-static' здесь больше не нужен (и с Cache Components запрещён): обработчик не читает

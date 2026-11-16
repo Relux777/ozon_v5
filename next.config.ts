@@ -3,11 +3,10 @@ import path from 'node:path';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 
-// Адрес сайта. Приложение живёт в корне отдельного поддомена: ozon.rendit.ru. Из адреса берётся basePath —
-// Next сам добавляет его к ссылкам, статике и картинкам; для корневого поддомена basePath пустой.
-// Значение вшивается при сборке: поменяли адрес (NEXT_PUBLIC_SITE_URL) — пересобрать.
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ozon.rendit.ru').replace(/\/+$/, '');
-const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/+$/, '');
+// Канонический адрес этого приложения. Не берём его из переменных окружения: старое значение
+// job.rendit.ru/ozon иначе могло бы попасть в canonical, sitemap и Open Graph на продакшене.
+const SITE_URL = 'https://ozon.rendit.ru';
+const BASE_PATH = '';
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
@@ -59,7 +58,7 @@ const nextConfig: NextConfig = {
     },
   },
 
-  // у себя на компьютере: localhost:3000 → localhost:3000/ozon (на сервере корень домена отдаёт другое приложение)
+  // Для корневого поддомена редирект на basePath не требуется.
   async redirects() {
     return BASE_PATH ? [{ source: '/', destination: BASE_PATH, basePath: false, permanent: false }] : [];
   },

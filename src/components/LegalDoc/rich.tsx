@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
+import { CONTACTS, GOOGLE_ANALYTICS_ID, HOSTING, OWNER, YANDEX_METRIKA_ID } from '@/config/legal';
+import { SITE_CONFIG } from '@/config/site';
 import { Link } from '@/i18n/navigation';
 import type { AppLocale } from '@/i18n/routing';
-import { SITE_CONFIG } from '@/config/site';
-import { CONTACTS, GOOGLE_ANALYTICS_ID, HOSTING, OWNER, YANDEX_METRIKA_ID } from '@/config/legal';
 
 // Общие подстановки для текстов документов (LegalDocs.* в messages): теги-ссылки и значения из config/legal.ts.
 // Передаются в t.rich(key, legalValues(locale)) — лишние значения next-intl просто не использует
@@ -25,7 +25,7 @@ export function legalValues(locale: AppLocale) {
 
     return {
         // значения
-        // адрес сайта в текстах документов — с подпапкой: job.rendit.ru/ozon
+        // адрес сайта в текстах документов — на корневом поддомене ozon.rendit.ru
         host: SITE_CONFIG.url.replace(/^https?:\/\//, ''),
         owner: ownerName(locale),
         email: CONTACTS.email,

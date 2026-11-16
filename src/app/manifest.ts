@@ -13,7 +13,7 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
   });
 
 
-  // приложение в подпапке домена: все адреса манифеста — с ней ('/ozon'), иначе «установленный» сайт открыл бы корень домена
+  // basePath пустой: устанавливаемое приложение открывает корень ozon.rendit.ru
   const base = SITE_CONFIG.basePath;
 
   return {
