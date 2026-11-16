@@ -1,14 +1,14 @@
-// Адрес и подпапка задаются в next.config.ts (там же запасной адрес) и вшиваются при сборке
+// Адрес и подпапка задаются в next.config.ts (там же запасной адрес) и вшиваются при сборке.
 export const SITE_CONFIG = {
-    /** полный адрес сайта без «/» в конце: https://job.rendit.ru/ozon */
+    /** полный адрес сайта без «/» в конце: https://ozon.rendit.ru */
     url: process.env.NEXT_PUBLIC_SITE_URL as string,
-    /** подпапка домена, в которой живёт приложение: '/ozon' (или '' — если сайт в корне домена) */
+    /** подпапка домена, в которой живёт приложение: '' — сайт в корне домена */
     basePath: process.env.NEXT_PUBLIC_BASE_PATH ?? '',
 } as const;
 
 /**
- * Полный адрес страницы по пути внутри сайта ('/', '/sklad/ufa', '/uz/menu'). Главная в подпапке — без «/» в конце:
- * job.rendit.ru/ozon, а не …/ozon/ (со слэшем Next отдаёт редирект — в canonical и sitemap ему не место)
+ * Полный адрес страницы по пути внутри сайта ('/', '/sklad/ufa', '/uz/menu'). Для корневого поддомена
+ * главная — https://ozon.rendit.ru, а не …/ (со слэшем Next отдаёт редирект — в canonical и sitemap ему не место)
  */
 export const absoluteUrl = (path: string) => `${SITE_CONFIG.url}${path === '/' && SITE_CONFIG.basePath ? '' : path}`;
 

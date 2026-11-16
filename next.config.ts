@@ -1,13 +1,12 @@
 // next.config.ts
+import path from 'node:path';
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
-import path from 'node:path';
 
-// Адрес сайта. Приложение живёт в подпапке домена (Multi-Zones): job.rendit.ru/ozon, а в корне домена работает
-// другое приложение (вакансии). Из адреса берётся basePath — Next сам добавляет его к ссылкам, статике и картинкам.
-// Значение вшивается при сборке: поменяли адрес (NEXT_PUBLIC_SITE_URL) — пересобрать. Переедете в корень домена —
-// достаточно адреса без подпапки: basePath станет пустым.
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://job.rendit.ru/ozon').replace(/\/+$/, '');
+// Адрес сайта. Приложение живёт в корне отдельного поддомена: ozon.rendit.ru. Из адреса берётся basePath —
+// Next сам добавляет его к ссылкам, статике и картинкам; для корневого поддомена basePath пустой.
+// Значение вшивается при сборке: поменяли адрес (NEXT_PUBLIC_SITE_URL) — пересобрать.
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ozon.rendit.ru').replace(/\/+$/, '');
 const BASE_PATH = new URL(SITE_URL).pathname.replace(/\/+$/, '');
 
 const nextConfig: NextConfig = {
