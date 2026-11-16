@@ -33,7 +33,7 @@ export const APP_SCREENS_TAKEN_AT = '2026-10-09';
  * (<meta name="google-site-verification" content="…">). Пусто — тег не выводится.
  */
 export const SEARCH_VERIFICATION = {
-    yandex: '',
+    yandex: '43691b5335c5ae82',
     google: '',
 };
 
