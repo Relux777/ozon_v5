@@ -41,7 +41,7 @@ export const HOSTING = {
  * «Принять» в баннере cookie и отключается при «Отклонить». Вебвизор выключен (меньше данных).
  * Перед подключением — подать уведомление в Роскомнадзор (см. CLAUDE.md, «Юридические правила», и instructions.md).
  */
-export const YANDEX_METRIKA_ID = '114284937';
+export const YANDEX_METRIKA_ID = '114286003';
 
 /**
  * Идентификатор потока данных Google Analytics 4 — вида 'G-XXXXXXXXXX'. Пусто — не подключается. С ним — загружается,
