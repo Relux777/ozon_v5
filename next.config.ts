@@ -5,7 +5,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 // Канонический адрес этого приложения. Не берём его из переменных окружения: старое значение
 // job.rendit.ru/ozon иначе могло бы попасть в canonical, sitemap и Open Graph на продакшене.
-const SITE_URL = 'https://ozon.rendit.ru';
+const SITE_URL = 'https://job.rendit.ru';
 const BASE_PATH = '';
 
 const nextConfig: NextConfig = {
